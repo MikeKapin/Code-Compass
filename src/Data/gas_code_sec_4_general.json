@@ -1,0 +1,541 @@
+[
+  {
+    "clause": "4.1",
+    "title": "Application",
+    "description": "General application requirements for the gas code."
+  },
+  {
+    "clause": "4.1.1",
+    "title": "Requirements",
+    "description": "For the purpose of this Code, the requirements contained in CAN/CGSB-3.14 for propane or CAN/CGSB-3.13 for butane shall apply."
+  },
+  {
+    "clause": "4.1.2",
+    "title": "Code conflicts",
+    "description": "When a specification or document referenced in Clause 1 contains a requirement that conflicts with a requirement in this Code, the requirement in this Code shall govern."
+  },
+  {
+    "clause": "4.1.3",
+    "title": "Installation instructions",
+    "description": "Except as required by Clause 4.1.4 an appliance, accessory, component, equipment, or any other item shall be installed in accordance with the manufacturer's certified instructions and this Code."
+  },
+  {
+    "clause": "4.1.4",
+    "title": "Field-approved appliance installation",
+    "description": "A field-approved appliance or equipment shall be installed in accordance with the Clause 10.1 of CSA B149.3 and this Code."
+  },
+  {
+    "clause": "4.1.5",
+    "title": "Conflicts",
+    "description": "Where a conflict exists between the manufacturer's instructions and this Code, the requirements of this Code shall prevail unless otherwise approved."
+  },
+  {
+    "clause": "4.2",
+    "title": "Approval of appliances, accessories, components, equipment, and material",
+    "description": "Requirements for approval of equipment and materials used in gas installations."
+  },
+  {
+    "clause": "4.2.1",
+    "title": "Installation",
+    "description": "An appliance, accessory, component, equipment, or material used in an installation shall be of a type and rating approved for the specific purpose for which it is employed."
+  },
+  {
+    "clause": "4.2.2",
+    "title": "Deviation",
+    "description": "When deviation from or postponement of these requirements is necessary, permission in writing shall be obtained from the authority having jurisdiction before the work proceeds, and this permission shall apply only to the particular installation for which it is given."
+  },
+  {
+    "clause": "4.2.3",
+    "title": "Assembly or construction approval",
+    "description": "The approval of the assembly or construction of an appliance is subject to the authority having jurisdiction. (CSA B149.3 contains provisions for the assembly and construction of appliances.)"
+  },
+  {
+    "clause": "4.2.4",
+    "title": "Biogas",
+    "description": "When using biogas, this Code shall be used in conjunction with CSA/ANSI B149.6."
+  },
+  {
+    "clause": "4.3",
+    "title": "Responsibilities of the installer",
+    "description": "Duties and responsibilities of gas equipment installers."
+  },
+  {
+    "clause": "4.3.1",
+    "title": "Initial installation",
+    "description": "Before leaving installations, installers shall ensure that the appliance, accessory, component, equipment, or piping and tubing they installed complies with the Code requirements, and the person initially activating the appliance shall ensure that the appliance is in safe working order."
+  },
+  {
+    "clause": "4.3.2",
+    "title": "User instructions",
+    "description": "Installers shall instruct the user in the safe and correct operation of all appliances or equipment that they install."
+  },
+  {
+    "clause": "4.3.3",
+    "title": "Manufacturer instructions",
+    "description": "The installer shall ensure that the manufacturer's instructions supplied with the appliance are left with the user."
+  },
+  {
+    "clause": "4.3.4",
+    "title": "Replacement parts",
+    "description": "Before installing any replacement part of an appliance, the installer shall ensure that the replacement part provides operational characteristics at least equivalent to those of the original part."
+  },
+  {
+    "clause": "4.3.5",
+    "title": "Appliance conversion",
+    "description": "When the installation or conversion of an appliance constitutes a conversion from another form of energy, the installer shall advise the user of the appliance, at the time of installation or conversion, to have the former form of energy either removed or left safe and secure from accidental activation."
+  },
+  {
+    "clause": "4.3.6",
+    "title": "User procedures",
+    "description": "The installer installing the installation or conversion, as specified in Clause 4.3.5, shall advise the user of the appliance in writing of the procedures to be followed in discontinuing the supply of the former form of energy."
+  },
+  {
+    "clause": "4.3.7",
+    "title": "Piping pressure test",
+    "description": "It shall be the responsibility of the installer of a gas piping system to perform pressure tests in accordance with Clause 6.22.2 and to ensure that the piping or tubing system is gas-tight at the completion of the tests."
+  },
+  {
+    "clause": "4.3.8",
+    "title": "Gas tight test",
+    "description": "It shall be the responsibility of the installer of an appliance to perform tests in accordance with Clause 6.22.3 and to ensure that the system is gas-tight at the completion of the tests."
+  },
+  {
+    "clause": "4.4",
+    "title": "Training and quality of labour",
+    "description": "Requirements for worker training and work quality standards."
+  },
+  {
+    "clause": "4.4.1",
+    "title": "Work quality",
+    "description": "All work shall be done in a skillful, thorough manner. Careful attention shall be paid not only to the mechanical execution of the work but also to the arrangement of the installation."
+  },
+  {
+    "clause": "4.4.2",
+    "title": "Training",
+    "description": "Personnel performing installation, operation, and maintenance work shall be properly trained in such functions."
+  },
+  {
+    "clause": "4.5",
+    "title": "Suitability of use",
+    "description": "Requirements for proper application and use of gas equipment."
+  },
+  {
+    "clause": "4.5.1",
+    "title": "Type of gas and pressure",
+    "description": "An appliance shall not be installed unless it is designed for use with the type of gas to which it is to be connected and is suitable for the pressure supplied."
+  },
+  {
+    "clause": "4.5.2",
+    "title": "Hazards",
+    "description": "The use of an appliance, accessory, component, equipment, or material shall be prohibited where a hazard is created."
+  },
+  {
+    "clause": "4.5.3",
+    "title": "Appliance conversion",
+    "description": "When an appliance is converted from the gas or fuel specified on the rating plate, the conversion shall be in accordance with the manufacturer's certified instructions. If there are no manufacturer's instructions for conversion of the appliance, the converted appliance shall be approved."
+  },
+  {
+    "clause": "4.5.4",
+    "title": "Rating plate conversion",
+    "description": "If an appliance is converted from one gas to another, the gas to which it is converted shall be marked on the appliance rating plate by the fitter making the conversion. For hydrogen-natural gas blends, the maximum percentage of hydrogen shall be marked."
+  },
+  {
+    "clause": "4.5.5",
+    "title": "Damaged appliances and piping",
+    "description": "Appliances, accessories, components, equipment, and gas piping systems that have been exposed to fire, explosion, flood, or other damage shall not be offered for sale, installed, reactivated, or reconnected to the supply until the appliance, accessory, component, equipment, gas piping system has been inspected by a person acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "4.5.6",
+    "title": "Used appliances",
+    "description": "A used appliance shall be inspected and determined to be safe for continued use by the installer before reconnection to the gas piping system."
+  },
+  {
+    "clause": "4.6",
+    "title": "Meter and service regulator installations",
+    "description": "Requirements for meter and service regulator installations."
+  },
+  {
+    "clause": "4.6.1",
+    "title": "Installations",
+    "description": "Meter and service regulator installations shall be in accordance with CSA Z662."
+  },
+  {
+    "clause": "4.6.2",
+    "title": "Supplier distributor systems",
+    "description": "No person other than an employee or person authorized by the supplier or distributor shall perform any alterations, repairs, tests, services, removals, changes, installations, connections, or any other type of work on the supplier's or distributor's system."
+  },
+  {
+    "clause": "4.7",
+    "title": "Electrical connections and components",
+    "description": "Requirements for electrical connections in gas appliance installations."
+  },
+  {
+    "clause": "4.7.1",
+    "title": "Code requirements",
+    "description": "Electrical connections between an appliance and building wiring shall comply with the local electrical code or, in the absence of such, with the Canadian Electrical Code, Part I."
+  },
+  {
+    "clause": "4.7.2",
+    "title": "Electrical circuit",
+    "description": "An electrical circuit employed for operating an automatic main control valve, automatic pilot, room-temperature thermostat, safety limit control, or another electrical device used with an appliance shall be in accordance with the appliance wiring diagram."
+  },
+  {
+    "clause": "4.7.3",
+    "title": "Equipotential bonding",
+    "description": "All building metal gas piping systems connected to one or more gas-fired appliances, shall be made electrically continuous and shall be equipotentially bonded as specified."
+  },
+  {
+    "clause": "4.7.4",
+    "title": "Bonding through appliance",
+    "description": "Gas piping systems shall be considered to be bonded to the electrical system when the metal gas piping system or CSST certified with an arc-resistant jacket or coating system in compliance with CSA/ANSI LC 1/CSA 6.26 used in a gas piping system is connected to one or more appliances permanently connected to the bonding conductor of the circuit supplying the appliance."
+  },
+  {
+    "clause": "4.7.5",
+    "title": "Bonding non arc-resistance CSST",
+    "description": "In addition to the requirements of Clause 4.7.3, CSST that does not have an arc-resistant jacket or coating system in compliance with CSA/ANSI LC 1/CSA 6.26 used in a gas piping system shall be bonded according to the CSST manufacturer's installation instructions."
+  },
+  {
+    "clause": "4.8",
+    "title": "Mobile homes and recreational vehicles",
+    "description": "Special requirements for gas installations in mobile homes and recreational vehicles."
+  },
+  {
+    "clause": "4.8.1",
+    "title": "Appliance installation",
+    "description": "The installation of gas-burning appliances and the gas piping system in mobile homes shall be in accordance with CSA Z240.4.1. In a recreational vehicle, it shall comply with the requirements of CSA Z240.4.2."
+  },
+  {
+    "clause": "4.8.2",
+    "title": "Placement",
+    "description": "When a vehicle ceases to be used as a mobile home or recreational vehicle and is placed at a location in a permanent fixed manner, the system shall comply with all applicable requirements of this Code."
+  },
+  {
+    "clause": "4.8.3",
+    "title": "Appliance application",
+    "description": "An appliance in the application described in Clause 4.8.2 shall not be required to be certified specifically for use within a mobile home."
+  },
+  {
+    "clause": "4.9",
+    "title": "Hazardous and corrosive locations",
+    "description": "Restrictions on appliance installation in hazardous or corrosive environments."
+  },
+  {
+    "clause": "4.9.1",
+    "title": "Installation",
+    "description": "An appliance shall not be installed in a location that has an environment corrosive to an appliance or venting system."
+  },
+  {
+    "clause": "4.9.2",
+    "title": "Approved installation",
+    "description": "An appliance, unless certified or approved for installation in a hazardous location, shall not be installed in any location where a flammable vapour, combustible dust or fibres, or an explosive mixture is present."
+  },
+  {
+    "clause": "4.10",
+    "title": "Smoking",
+    "description": "Smoking or providing any other source of ignition shall not be permitted in the area where work is being done on piping, tubing, or equipment that either contains or has contained gas, unless the gas piping system or equipment has been purged of all gas as outlined in Clause 6.23."
+  },
+  {
+    "clause": "4.11",
+    "title": "Isolation of safety devices",
+    "description": "Isolating or rendering inoperative a safety shut-off valve, safety limit control, or relief valve shall be prohibited."
+  },
+  {
+    "clause": "4.12",
+    "title": "Leak detection",
+    "description": "Safety requirements for detecting gas leaks."
+  },
+  {
+    "clause": "4.12.1",
+    "title": "Sources of ignition",
+    "description": "A match, candle, flame, or other source of ignition shall not be used to check for a gas leak."
+  },
+  {
+    "clause": "4.12.2",
+    "title": "Light and/or flashlight use",
+    "description": "A light, including a flashlight, used in connection with a search for gas leakage shall be of the Class I, Group IIA type."
+  },
+  {
+    "clause": "4.12.3",
+    "title": "Electric switches",
+    "description": "An electric switch either in or adjacent to an area of gas leakage shall not be operated unless it is a Class I, Group IIA type."
+  },
+  {
+    "clause": "4.13",
+    "title": "Appliance clearances to combustible material",
+    "description": "Requirements for maintaining safe clearances between appliances and combustible materials."
+  },
+  {
+    "clause": "4.13.1",
+    "title": "Clearances",
+    "description": "The clearances required in Clause 7 between an appliance and combustible material shall be considered the minimum without protection and shall be measured from the appliance, disregarding either the burner or any other projecting component."
+  },
+  {
+    "clause": "4.13.2",
+    "title": "Clearance reduction",
+    "description": "The clearances to combustible material specified in Clause 7 shall not be reduced unless such reduced clearance is certified as safe by a nationally recognized certification organization acceptable to the authority having jurisdiction and so marked on the appliance nameplate; or protection is provided for the combustible material, and such protection and such reduced clearance are in accordance with Table 4.1."
+  },
+  {
+    "clause": "4.13.3",
+    "title": "Combustible floor material",
+    "description": "An appliance with an input up to and including 400,000 Btu/h (120 kW) and certified for installation on noncombustible flooring may be installed on a floor constructed of combustible material, provided that the floor is protected with at least two continuous courses of 4 in (100 mm) thick hollow masonry units covered with sheet metal at least 0.0195 in (0.56 mm) thick; the masonry units are arranged so that the hollow cores will permit air circulation through them; and the base as specified extends not less than 6 in (150 mm) beyond the sides of the appliance."
+  },
+  {
+    "clause": "4.13.4",
+    "title": "Aircraft storage installations",
+    "description": "A heater located in an aircraft storage or servicing area shall be installed so that no portion of an aircraft that can occupy the area is within the clearance to combustible material, as marked on the appliance rating plate. Clearances specified in Table 4.1 shall not apply."
+  },
+  {
+    "clause": "4.14",
+    "title": "Accessibility",
+    "description": "Requirements for ensuring appliances are accessible for servicing and maintenance."
+  },
+  {
+    "clause": "4.14.1",
+    "title": "Installation",
+    "description": "An appliance shall be installed so that it is accessible for servicing."
+  },
+  {
+    "clause": "4.14.2",
+    "title": "Service clearances",
+    "description": "An appliance shall be installed with a minimum service clearance of 24 in (610 mm) to any side, top, or bottom where service could be necessary, except where a greater distance is indicated on the appliance rating plate; or the distance is not sufficient for the removal, replacement, or repair of a component, an accessory, or any equipment either forming an integral part of the appliance or connected to the appliance."
+  },
+  {
+    "clause": "4.14.3",
+    "title": "Access dimensions",
+    "description": "An access opening with minimum dimensions of 24 x 30 in (610 x 760 mm) shall be provided to the space in which an appliance is located."
+  },
+  {
+    "clause": "4.14.4",
+    "title": "Appliance passageways",
+    "description": "A clear and unobstructed passageway at least 36 in (900 mm) high and 36 in (900 mm) wide shall be provided to each appliance."
+  },
+  {
+    "clause": "4.14.5",
+    "title": "Roof access",
+    "description": "An appliance shall not be installed on a roof exceeding 13 ft (4 m) in height from grade to roof elevation unless fixed access to the roof is provided; and exceeding 26 ft (8 m) in height from grade to roof elevation unless permanent fixed access to the roof by means of either a stairway or a stairway leading to a ladder not exceeding 13 ft (4 m) in height is provided."
+  },
+  {
+    "clause": "4.14.6",
+    "title": "Roof installation clearances",
+    "description": "When an appliance is installed on a roof, specific requirements for drainage, walkways, clearances, and enclosures must be met as detailed in the clause."
+  },
+  {
+    "clause": "4.14.7",
+    "title": "Means of service",
+    "description": "An appliance installed at a distance of 10 ft (3 m) or more from either the floor or finished grade level, as measured from the lowest point of the appliance, shall be provided with either a permanent accessible service platform that permits access to all parts of the appliance requiring service; or other approved means of service access."
+  },
+  {
+    "clause": "4.15",
+    "title": "Outdoor installations",
+    "description": "Special requirements for appliances installed outdoors."
+  },
+  {
+    "clause": "4.15.1",
+    "title": "Appliance approval",
+    "description": "An appliance installed outdoors shall be approved for outdoor use."
+  },
+  {
+    "clause": "4.15.2",
+    "title": "Flue gases",
+    "description": "An appliance installed outdoors shall be located to prevent circulation of flue gases into the combustion air inlet or circulating airstream of an adjacent appliance."
+  },
+  {
+    "clause": "4.15.3",
+    "title": "Space heater or pool heater installation",
+    "description": "A space-heating or pool-heating appliance installed outdoors at grade level shall be placed on a base consisting of poured-in-place concrete or a reinforced concrete slab of the preformed type, extending at least 6 in (150 mm) beyond all sides of the appliance; and 2 in (50 mm) above grade level. The ground shall first be prepared and provided with gravel for drainage."
+  },
+  {
+    "clause": "4.16",
+    "title": "Appliances in garages",
+    "description": "Special requirements for gas appliances installed in garages."
+  },
+  {
+    "clause": "4.16.1",
+    "title": "Protection",
+    "description": "An appliance in a garage shall be protected against damage."
+  },
+  {
+    "clause": "4.16.2",
+    "title": "Flammable vapours",
+    "description": "In a storage garage, except for an appliance certified as flammable vapours ignition resistant (FVIR), an appliance shall be installed so that a component capable of igniting a flammable vapour is located not less than 18 in (450 mm) above the floor."
+  },
+  {
+    "clause": "4.16.3",
+    "title": "Flammable vapour clearance",
+    "description": "In a repair garage, an appliance shall be installed so that a component capable of igniting a flammable vapour is located not less than 4.5 ft (1400 mm) above the floor."
+  },
+  {
+    "clause": "4.16.4",
+    "title": "Building Code requirements",
+    "description": "The installation of a forced-air appliance in a garage shall be in accordance with local building codes or, in the absence of local codes, the National Building Code of Canada."
+  },
+  {
+    "clause": "4.17",
+    "title": "Appliance ductwork connections",
+    "description": "Requirements for connecting ductwork to gas appliances."
+  },
+  {
+    "clause": "4.17.1",
+    "title": "Approved use",
+    "description": "Ductwork shall not be connected to an appliance unless the appliance is approved for use with ductwork."
+  },
+  {
+    "clause": "4.17.2",
+    "title": "Return air ducts",
+    "description": "Return air ducts installed in an enclosure shall be in accordance with the provisions set out for duct systems in the National Building Code of Canada."
+  },
+  {
+    "clause": "4.18",
+    "title": "Combined heating systems",
+    "description": "Requirements for systems that combine gas and solid fuel heating."
+  },
+  {
+    "clause": "4.18.1",
+    "title": "Solid fuel heated air",
+    "description": "Air heated by a solid-fuel-fired appliance or fireplace shall not be introduced into any part of the ductwork system of a gas-fired appliance, except where either a certified combination gas and solid-fuel-fired appliance is installed; or a certified solid-fuel-fired furnace downstream series add-on to a gas-fired furnace is installed."
+  },
+  {
+    "clause": "4.18.2",
+    "title": "Building code requirements",
+    "description": "The installation of a solid-fuel-fired portion of the appliance referred to in Clause 4.18.1 a) and the installation of a solid-fuel-fired downstream series add-on furnace referred to in Clause 4.18.1 b) shall conform to the applicable provincial or territorial building code or, in its absence, to CAN/CSA-B365."
+  },
+  {
+    "clause": "4.19",
+    "title": "Appliances protected by automatic fire-extinguishing systems",
+    "description": "Requirements for appliances protected by automatic fire suppression systems."
+  },
+  {
+    "clause": "4.19.1",
+    "title": "Interlock system",
+    "description": "When an exhaust system protected by an automatic fire-extinguishing system is installed over an appliance not provided with a flame safeguard, the operation of the fire-extinguishing system shall be interlocked with the gas supply to the appliance so as to automatically shut off the gas, including the pilot, to the appliance to be protected by the system and also to any other appliance that can be affected by the extinguishing system."
+  },
+  {
+    "clause": "4.19.2",
+    "title": "Interlock valve",
+    "description": "The valve used to shut off the gas supply referred to in Clause 4.19.1 shall be located outside the protected area, be identified as to its function, and have permanent legible relighting instructions posted adjacent to it. The valve shall be either an approved mechanical non-electric fast-closing valve of the manual-reset type; or an automatic electrically operated fast-closing valve of the manual-reset type; or provided with a remote manual-reset function to open."
+  },
+  {
+    "clause": "4.19.3",
+    "title": "Manual shutoff valve",
+    "description": "A manual shut-off valve shall be installed immediately upstream of the valve referred to in Clause 4.19.2."
+  },
+  {
+    "clause": "4.20",
+    "title": "Control of appliances with self-energizing pilots",
+    "description": "When two or more appliances with self-energizing pilots are installed, each shall be independently controlled by a separate actuating device such as a thermostat."
+  },
+  {
+    "clause": "4.21",
+    "title": "Defective heat exchangers",
+    "description": "Requirements for handling defective heat exchangers in gas appliances."
+  },
+  {
+    "clause": "4.21.1",
+    "title": "Replacement",
+    "description": "Where the heat exchanger of a furnace installed in a dwelling unit is found to be defective, it shall be replaced."
+  },
+  {
+    "clause": "4.21.2",
+    "title": "Temporary repair",
+    "description": "The heat exchanger referred to in Clause 4.21.1 may be temporarily repaired if necessary, and the repair shall be in accordance with procedures acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "4.21.3",
+    "title": "Commercial or industrial repair",
+    "description": "Where the heat exchanger of a commercial or industrial appliance is found to be defective, it may be repaired, and the repair shall be in accordance with procedures acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "4.22",
+    "title": "High-altitude installations",
+    "description": "Special requirements for gas appliances installed at high altitudes."
+  },
+  {
+    "clause": "4.22.1",
+    "title": "Certification and adjustment",
+    "description": "For high-altitude installations, appliances shall be certified in compliance with CSA Z17 and shall be adjusted to the high-altitude rating shown on the nameplate following the manufacturer's instructions when installed at elevations between 2000 and 4500 ft (600 and 1350 m) above sea level."
+  },
+  {
+    "clause": "4.22.2",
+    "title": "Elevation input rating",
+    "description": "When an appliance is installed at elevations above the maximum elevation option provided by the manufacturer, the input rate shall be reduced following the manufacturer's certified instructions. If no instructions are given for configuring the appliance for higher altitudes, the input rate shall be reduced at the rate of 4% for each additional 1000 ft (300 m)."
+  },
+  {
+    "clause": "4.23",
+    "title": "Protection of appliances from physical damage",
+    "description": "Where an appliance is installed in an area where physical damage can be incurred, the appliance shall be protected from such damage."
+  },
+  {
+    "clause": "4.24",
+    "title": "Odourization",
+    "description": "Requirements for adding odorants to gas supplies for safety detection."
+  },
+  {
+    "clause": "4.24.1",
+    "title": "Natural gas odourization",
+    "description": "Natural gas or hydrogen-natural gas blends used for fuel purposes supplying an occupied building shall be odourized in accordance with CSA Z662 or be otherwise readily detectable, or the building shall be equipped with an approved means of gas detection."
+  },
+  {
+    "clause": "4.24.2",
+    "title": "Propane odourization",
+    "description": "Propane distributed for fuel purposes shall be odourized in accordance with CAN/CGSB-3.14."
+  },
+  {
+    "clause": "4.24.3",
+    "title": "Propane odourization responsibility",
+    "description": "Odourization of the propane shall be the responsibility of the producer or processor, who shall indicate on the shipping document its compliance with CAN/CGSB-3.14 as referenced in Clause 4.24.2 of this Code."
+  },
+  {
+    "clause": "4.25",
+    "title": "Mobile homes and recreational vehicles",
+    "description": "Additional specific requirements for mobile homes and recreational vehicles beyond those in Clause 4.8."
+  },
+  {
+    "clause": "4.25.1",
+    "title": "Appliance type and separation",
+    "description": "Every heating appliance, water heater, or refrigerator installed in a mobile home or a vehicle, other than a canvas-top tent trailer, shall be of the direct-vent appliance type or equivalent, and shall be installed to provide complete separation of the combustion system from the atmosphere of the space provided for living."
+  },
+  {
+    "clause": "4.25.2",
+    "title": "Air inlet or flue gas outlet clearances",
+    "description": "A combustion air inlet or flue gas outlet of an appliance or any other vehicle opening shall be located at least 3 ft (0.9 m) from any container filler spout or fixed-liquid-level gauge of a vehicle if the intake, outlet, or opening is located above or at the same level. If any portion of such inlet, outlet, or opening is located below the spout or fixed-liquid-level gauge, the clearance shall be the sum of the vertical distance below the spout or fixed-liquid-level gauge plus 3 ft (0.9 m)."
+  },
+  {
+    "clause": "4.25.3",
+    "title": "Propane vapour supply pressure",
+    "description": "Propane vapour, at a pressure not in excess of 13 in w.c. (3.2 kPa), shall be supplied into the piping or tubing supplying any appliance."
+  },
+  {
+    "clause": "4.25.4",
+    "title": "Appliance certification",
+    "description": "An appliance installed in a propane-equipped mobile home or recreational vehicle shall be certified for use with propane."
+  },
+  {
+    "clause": "4.25.5",
+    "title": "Combustion air",
+    "description": "Provision shall be made to ensure a supply of combustion air for an appliance, other than an appliance of the direct-vent type, as described in Clause 8."
+  },
+  {
+    "clause": "4.25.6",
+    "title": "Alternate means of combustion or ventilation air",
+    "description": "An open door may be used as an alternative means of providing combustion or ventilation air to a wash-mobile or food service vehicle, provided that the door is interlocked to the propane supply to ensure that the door remains open during appliance operation."
+  },
+  {
+    "clause": "4.25.7",
+    "title": "Cargo heater",
+    "description": "A cargo heater shall be installed in a readily accessible location."
+  },
+  {
+    "clause": "4.25.8",
+    "title": "Cargo heater installation",
+    "description": "A cargo heater shall be protected to prevent damage or impaired operation resulting from the shifting or handling of cargo."
+  },
+  {
+    "clause": "4.25.9",
+    "title": "Propane warning labels",
+    "description": "A durable label in both English and French made of a material that is not adversely affected by water, employing an adhesive that is not water soluble, and measuring not less than 4.5 x 5.75 in (100 x 125 mm) shall be provided. This label shall be located on the vehicle, adjacent to the propane container and shall contain specific warnings about propane system use, safety procedures, and operational requirements as detailed in the clause."
+  },
+  {
+    "clause": "4.25.10",
+    "title": "Appliance warning labels",
+    "description": "On all vehicles equipped with appliances, a durable label, made of material not adversely affected by water and employing an adhesive that is not water soluble, shall be provided in both English and French. This label shall be attached adjacent to any fuel-filling locations (gasoline, diesel, or NGV) and propane cylinders. The label warns that engine ignition and all appliance pilot lights shall be turned off before and during refuelling of motor fuel tanks or any mounted propane container."
+  } 

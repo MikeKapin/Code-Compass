@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="description" content="Search CSA B149.1-25 gas codes quickly and efficiently. Perfect for contractors, inspectors, and gas technicians." />
+    <meta name="keywords" content="CSA, B149.1-25, gas codes, appliance, pressure, safety, Canadian Standards" />
+    <meta name="author" content="Code Compass" />
+    
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#2c3e50" />
+    <meta name="msapplication-navbutton-color" content="#2c3e50" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icons/icon-180x180.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/icon-114x114.png" />
+    
+    <!-- Standard Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- iOS Specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Code Compass" />
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+    <meta name="msapplication-TileColor" content="#2c3e50" />
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    
+    <title>Code Compass</title>
+    
+    <style>
+      /* Critical CSS for faster loading */
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        background-color: #f8f9fa;
+        overflow-x: hidden;
+      }
+      
+      /* Loading screen */
+      .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #2c3e50, #3498db);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.3s ease;
+      }
+      
+      .loading-logo {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        animation: pulse 2s infinite;
+      }
+      
+      .loading-text {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-top: 3px solid white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      /* Install prompt styles */
+      .install-prompt {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: white;
+        border-radius: 12px;
+        padding: 1rem;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        display: none;
+        z-index: 1000;
+        animation: slideUp 0.3s ease;
+      }
+      
+      @keyframes slideUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      
+      .install-prompt.show {
+        display: block;
+      }
+      
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .loading-logo {
+          font-size: 3rem;
+        }
+        .loading-text {
+          font-size: 1.2rem;
+          text-align: center;
+          padding: 0 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-logo">🧭</div>
+      <div class="loading-text">Code Compass</div>
+      <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Install Prompt -->
+    <div id="install-prompt" class="install-prompt">
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <span style="font-size: 2rem;">🧭</span>
+        <div style="flex: 1;">
+          <h3 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Install Code Compass</h3>
+          <p style="margin: 0; font-size: 0.85rem; color: #666;">Add to your home screen for quick access</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button id="install-button" style="
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+          ">Install</button>
+          <button id="install-dismiss" style="
+            background: transparent;
+            color: #666;
+            border: 1px solid #ddd;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+          ">Later</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="root"></div>
+    
+    <script type="module" src="/src/main.jsx"></script>
+    
+    <script>
+      // Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+
+      // PWA Install Prompt
+      let deferredPrompt;
+      const installPrompt = document.getElementById('install-prompt');
+      const installButton = document.getElementById('install-button');
+      const installDismiss = document.getElementById('install-dismiss');
+
+      window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Save the event so it can be triggered later
+        deferredPrompt = e;
+        // Show the install prompt
+        installPrompt.classList.add('show');
+      });
+
+      installButton.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          // Show the install prompt
+          deferredPrompt.prompt();
+          // Wait for the user to respond to the prompt
+          const { outcome } = await deferredPrompt.userChoice;
+          console.log(`User response to the install prompt: ${outcome}`);
+          // Clear the saved prompt since it can't be used again
+          deferredPrompt = null;
+        }
+        // Hide the install prompt
+        installPrompt.classList.remove('show');
+      });
+
+      installDismiss.addEventListener('click', () => {
+        installPrompt.classList.remove('show');
+        // Remember user dismissed it (optional)
+        localStorage.setItem('installPromptDismissed', 'true');
+      });
+
+      // Hide loading screen when page loads
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const loadingScreen = document.getElementById('loading-screen');
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => {
+            loadingScreen.style.display = 'none';
+          }, 300);
+        }, 500);
+      });
+
+      // Handle search params for shortcuts
+      window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchParam = urlParams.get('search');
+        if (searchParam) {
+          // This will be handled by React when it loads
+          window.initialSearch = searchParam;
+        }
+      });
+
+      // Add to home screen detection for iOS
+      function isIOS() {
+        return /iPad|iPhone|iPod/.test(navigator.userAgent);
+      }
+
+      function isInStandaloneMode() {
+        return (window.matchMedia('(display-mode: standalone)').matches) || 
+               (window.navigator.standalone) || 
+               document.referrer.includes('android-app://');
+      }
+
+      // Show iOS install instructions if needed
+      if (isIOS() && !isInStandaloneMode()) {
+        setTimeout(() => {
+          if (!localStorage.getItem('iosInstallShown')) {
+            const iosPrompt = document.createElement('div');
+            iosPrompt.innerHTML = `
+              <div style="
+                position: fixed;
+                bottom: 20px;
+                left: 20px;
+                right: 20px;
+                background: white;
+                border-radius: 12px;
+                padding: 1rem;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+                z-index: 1000;
+              ">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <span style="font-size: 2rem;">🧭</span>
+                  <div style="flex: 1;">
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Install Code Compass</h3>
+                    <p style="margin: 0; font-size: 0.85rem; color: #666;">
+                      Tap <span style="font-weight: bold;">Share</span> then 
+                      <span style="font-weight: bold;">Add to Home Screen</span>
+                    </p>
+                  </div>
+                  <button onclick="this.parentElement.parentElement.parentElement.remove(); localStorage.setItem('iosInstallShown', 'true');" style="
+                    background: transparent;
+                    color: #666;
+                    border: 1px solid #ddd;
+                    padding: 0.5rem 1rem;
+                    border-radius: 6px;
+                    font-size: 0.9rem;
+                    cursor: pointer;
+                  ">Got it</button>
+                </div>
+              </div>
+            `;
+            document.body.appendChild(iosPrompt);
+          }
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

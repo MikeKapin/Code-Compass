@@ -1,0 +1,347 @@
+[
+  {
+    "clause": "6.1",
+    "title": "General",
+    "description": "General requirements for gas piping systems."
+  },
+  {
+    "clause": "6.1.1",
+    "title": "Piping",
+    "description": "Gas piping or tubing shall be of steel, copper, or plastic."
+  },
+  {
+    "clause": "6.1.2",
+    "title": "Removal",
+    "description": "If removed from a gas installation, piping, tubing, and fittings shall not be reused unless thoroughly cleaned, inspected, and ascertained to be equivalent to new material. Piping, tubing, or fittings previously used with other gases may be reused with gas, provided that it is ascertained that the piping, tubing, or fittings to be used are equivalent to new material; and the piping, tubing, or fittings to be used are cleaned, inspected, and tested."
+  },
+  {
+    "clause": "6.2",
+    "title": "Material",
+    "description": "Requirements for materials used in gas piping systems."
+  },
+  {
+    "clause": "6.2.1",
+    "title": "Piping standard specification",
+    "description": "Piping shall comply with ASTM A53/A53M or ASTM A106/A106M."
+  },
+  {
+    "clause": "6.2.2",
+    "title": "Fittings",
+    "description": "A fitting used with steel pipe shall be either malleable iron or steel and shall comply with the material selection requirements of CSA Z662 or the applicable ASME B16 series of standards; or certified to CSA/ANSI LC 4/CSA 6.32. When Schedule 80 pipe is required, the minimum Class of fitting used with the pipe shall be Class 300."
+  },
+  {
+    "clause": "6.2.3",
+    "title": "Piping schedule",
+    "description": "Requirements for piping schedules based on operating pressure."
+  },
+  {
+    "clause": "6.2.3.1",
+    "title": "Operating pressure equal to or less than 125 psig (860 kPa)",
+    "description": "A gas piping system using natural gas, hydrogen-natural gas blends, or propane vapour phase with operating pressures up to and including 125 psig (860 kPa) shall comply with the following as applicable: Piping shall be at least Schedule 10 for NPS 1/2 to 2. When using Schedule 10 to less than Schedule 40, piping shall be located indoors, and joints shall use fittings certified to CSA/ANSI LC 4/CSA 6.32. Piping shall be at least Schedule 40 for NPS 2-1/2 to 10. Pipe larger than NPS 10 shall be at least standard weight."
+  },
+  {
+    "clause": "6.2.3.2",
+    "title": "Operating pressure exceeding 125 psig (860 kPa)",
+    "description": "A gas piping system using natural gas, hydrogen-natural gas blends, or propane vapour phase with operating pressures exceeding 125 psig (860 kPa) and all liquid piping systems shall comply with either of the following: For pipe sizes up to and including NPS 10: piping shall be at least Schedule 40 when using welded or flanged joints; or piping shall be at least Schedule 80 when using threaded joints. Threaded joints shall be threaded or threaded and back welded. Pipe larger than NPS 10 shall be at least standard weight."
+  },
+  {
+    "clause": "6.2.4",
+    "title": "Copper tubing for gas",
+    "description": "Copper tubing used for gas shall be Type G, K, or L, and shall meet the requirements of one of the following Standards, as applicable: Type G tube shall meet ASTM B837; or Types K and L tube shall meet ASTM B88."
+  },
+  {
+    "clause": "6.2.5",
+    "title": "Copper tubing for propane",
+    "description": "Copper tubing Types K and L specified in Clause 6.2.4 b) may be used for liquid propane or propane in the vapour phase."
+  },
+  {
+    "clause": "6.2.6",
+    "title": "Flare nuts",
+    "description": "Flare nuts shall be forged from UNS C37700 brass and shall not be externally machined."
+  },
+  {
+    "clause": "6.2.7",
+    "title": "Tubing fittings rated pressure",
+    "description": "Tubing fittings shall be rated for a working pressure of not less than 125 psig (860 kPa) for operating pressures of 125 psig (860 kPa) or less. For higher operating pressures, tubing and fittings shall be rated for a minimum of 250 psig (1725 kPa)."
+  },
+  {
+    "clause": "6.2.8",
+    "title": "Copper tubing underground",
+    "description": "Copper tubing for underground use shall be either Type L or G, externally coated with extruded polyethylene or PVC resin at the time of manufacture, or Type K, and any portion of the copper tubing that extends above ground shall be protected against physical damage."
+  },
+  {
+    "clause": "6.2.9",
+    "title": "Tubing",
+    "description": "Tubing shall be one of the following: CSST; seamless copper; or seamless steel."
+  },
+  {
+    "clause": "6.2.10",
+    "title": "Hoses and hose fittings",
+    "description": "Except as required in Clauses 6.2.11 and 6.2.12, every non-metallic hose and hose fitting shall have a minimum working pressure of 350 psig (2400 kPa) and shall comply with CSA B.1 or CSA B.3."
+  },
+  {
+    "clause": "6.2.11",
+    "title": "Hoses for cutting and welding",
+    "description": "Every hose and hose connection used in cutting or welding systems shall comply with CAN/CSA-W117.2."
+  },
+  {
+    "clause": "6.2.12",
+    "title": "Liquid propane hose prohibition",
+    "description": "Hoses certified to CSA B-3 shall not be used in a liquid propane system."
+  },
+  {
+    "clause": "6.2.13",
+    "title": "Seamless steel tubing standard specification",
+    "description": "Seamless steel tubing shall comply with ASTM A179/A179M."
+  },
+  {
+    "clause": "6.2.14",
+    "title": "Alternative material",
+    "description": "Materials not specified in Clause 6.2 may be used if they conform to a nationally recognized standard or to a test report of a nationally recognized certification organization."
+  },
+  {
+    "clause": "6.2.15",
+    "title": "Plastic piping and tubing standard specification",
+    "description": "Plastic piping and tubing shall comply with CSA B137.4."
+  },
+  {
+    "clause": "6.2.16",
+    "title": "Plastic piping and tubing fittings",
+    "description": "Fittings for plastic piping and tubing systems shall comply with CSA B137.4 or CSA B137.4.L."
+  },
+  {
+    "clause": "6.2.17",
+    "title": "Plastic pipe prohibition",
+    "description": "Plastic pipe shall not be used in a liquid propane system."
+  },
+  {
+    "clause": "6.2.18",
+    "title": "Plastic piping or tubing use",
+    "description": "Except as mentioned in Clause 6.2.19 plastic piping or tubing shall only be used for outdoor underground service."
+  },
+  {
+    "clause": "6.2.19",
+    "title": "Plastic pipe propane prohibition",
+    "description": "Plastic pipe shall not be used for, as a minimum, the first 10 ft (3 m) of piping on the downstream side of a vapourizer in a propane application and shall not exceed the temperatures specified in Clause 6.2.20."
+  },
+  {
+    "clause": "6.2.20",
+    "title": "Plastic piping or tubing temperature",
+    "description": "Plastic piping or tubing shall not be used at ambient temperatures exceeding 122°F (50°C) or where the steady-state operating temperature of the materials will exceed 86°F (30°C)."
+  },
+  {
+    "clause": "6.2.21",
+    "title": "Plastic piping or tubing termination",
+    "description": "Plastic piping or tubing may terminate above ground and outside a building, provided that the aboveground portions are completely encased with a certified metallic sheathing or anodeless riser that extends a minimum of 6 in (15 cm) below grade; and the plastic piping or tubing is not subject to external loading stresses created by other piping, appliances, or equipment."
+  },
+  {
+    "clause": "6.2.22",
+    "title": "CSST standard specification",
+    "description": "CSST and associated fittings shall comply with CSA/ANSI LC 1/CSA 6.26 or CSA publication CGA Certification laboratory Requirement LAB-009."
+  },
+  {
+    "clause": "6.2.23",
+    "title": "CSST prohibition",
+    "description": "CSST shall not be used as a gas connector."
+  },
+  {
+    "clause": "6.3",
+    "title": "Size",
+    "description": "Requirements for sizing gas piping systems."
+  },
+  {
+    "clause": "6.3.1",
+    "title": "General",
+    "description": "Piping, tubing, and hose shall be of sufficient size to provide a supply of gas to meet the requirements of volume and pressure at the point of use."
+  },
+  {
+    "clause": "6.3.2",
+    "title": "Pressure equal to or less than 14 in w.c. (3.5 kPa)",
+    "description": "A gas piping system supplied at pressures up to and including 14 in w.c. (3.5 kPa) shall be designed to prevent the loss in pressure between the appliance and either the termination of the utility installation or the last-stage regulator from exceeding the maximum allowable pressure drop specified in Table 6.1. The minimum size of piping, tubing, and fittings shall be determined in accordance with good engineering practice, such as by the use of Tables A1 and A.8 of Annex A, for natural gas or hydrogen-natural gas blends, which include allowance for a reasonable number of fittings, when the maximum allowable pressure drop is 0.5 in w.c (0.125 kPa); by the use of Tables A2 and A.9 in Annex A for natural gas or hydrogen-natural gas blends or Tables B.1 and B.6 in Annex B for propane, which include allowance for a reasonable number of fittings, when the maximum allowable pressure drop is 1 in w.c. (0.25 kPa); by the method of calculation outlined in Annex A for natural gas or hydrogen-natural gas blends or Annex B for propane; or for CSST, by the use of sizing methods and tables supplied by the manufacturer."
+  },
+  {
+    "clause": "6.3.3",
+    "title": "Pressure exceeding 14 in w.c. (3.5 kPa)",
+    "description": "A gas piping system operating at a pressure exceeding 14 in w.c. (3.5 kPa) shall be designed to ensure an adequate supply of gas to each appliance served at the respective designated pressure rating, and to ensure that the appliance will not be overpressured under conditions of no flow. The minimum size of piping, tubing, and fittings shall be determined in accordance with Clause 6.3.4 for 2 psig (14 kPa) systems or good engineering practice, such as by the use of the applicable tables in Annex A for natural gas or hydrogen-natural gas blends or Annex B for propane, making allowance for fittings as necessary; by the method of calculation outlined in Annex A for natural gas or hydrogen-natural gas blends or Annex B for propane; or for CSST, by the use of sizing methods and tables supplied by the manufacturer."
+  },
+  {
+    "clause": "6.3.4",
+    "title": "Pressure regulator",
+    "description": "The gas piping system shall be designed to provide adequate gas pressure to the 2 psig (14 kPa) pressure regulator to match downstream load requirements. Pressure regulator sizing shall be subject to the minimum available inlet supply pressure. See Tables A.2, A.8, A.9, A.10, and A.11 in Annex A for natural gas or hydrogen-natural gas blends or Tables B.2 and B.7 in Annex B for propane, which include allowance for a reasonable number of fittings."
+  },
+  {
+    "clause": "6.3.5",
+    "title": "Plastic piping",
+    "description": "Plastic piping shall be sized by the use of Table A.7 in Annex A for natural gas or hydrogen-natural gas blends or Tables B.1 to B.5 in Annex B for propane; or by the method of calculation outlined in Annex A for natural gas or Annex B for propane."
+  },
+  {
+    "clause": "6.3.6",
+    "title": "Relative density",
+    "description": "Annex A is based on natural gas of 0.60 relative density. For gas having a relative density other than 0.60, the multipliers given in Table A.15 in Annex A shall be applied to the capacities listed. Annex B is based on propane of 1.52 relative density."
+  },
+  {
+    "clause": "6.3.7",
+    "title": "Equivalent length",
+    "description": "Annexes A and B give the resistance of bends, fittings, and valves as an equivalent length of straight pipe in ft (m) to be added to the actual length to obtain the total equivalent length on which pressure loss calculations shall be based. See Tables A.16 and B.11."
+  },
+  {
+    "clause": "6.3.8",
+    "title": "Size less than NPS 1/2",
+    "description": "Special requirements for piping sizes less than NPS 1/2."
+  },
+  {
+    "clause": "6.3.8.1",
+    "title": "Natural gas and hydrogen-natural gas blends threaded pipe and fittings",
+    "description": "For natural gas and hydrogen-natural gas blends, threaded pipe and fittings less than NPS 1/2 used in a piping system shall be Schedule 80."
+  },
+  {
+    "clause": "6.3.8.2",
+    "title": "Propane piping location",
+    "description": "For propane, piping less than NPS 1/2 shall not be used indoors, except that NPS 3/8 piping may be used as a branch line not exceeding 25 ft (7.5 m) in length."
+  },
+  {
+    "clause": "6.3.9",
+    "title": "Piping concealed location",
+    "description": "Piping less than NPS 1/2 shall not be used in a concealed location."
+  },
+  {
+    "clause": "6.4",
+    "title": "Volume of gas to be used for sizing gas piping systems",
+    "description": "Requirements for determining gas volume for sizing purposes."
+  },
+  {
+    "clause": "6.4.1",
+    "title": "Total volume",
+    "description": "The total volume of gas required shall be determined as the total volume for all appliances supplied, except as permitted in Clause 6.4.3; and include an allowance for known future extensions."
+  },
+  {
+    "clause": "6.4.2",
+    "title": "Volume determination",
+    "description": "The volume of gas required for each appliance shall be determined from either the appliance rating plate; or the appliance manufacturer when the rating is not shown on the appliance."
+  },
+  {
+    "clause": "6.4.3",
+    "title": "Diversity load",
+    "description": "When a diversity of load has been established to the satisfaction of the authority having jurisdiction, a percentage of the total volume may be used."
+  },
+  {
+    "clause": "6.5",
+    "title": "Allowable pressure and pressure drop",
+    "description": "Requirements for pressure determination and regulation."
+  },
+  {
+    "clause": "6.5.1",
+    "title": "Pressure determination",
+    "description": "The gas pressure required for each appliance shall be determined from either the appliance rating plate; or the appliance manufacturer when the required pressure is not shown on the appliance."
+  },
+  {
+    "clause": "6.5.2",
+    "title": "Pressure regulator requirement",
+    "description": "When the pressure is in excess of that determined by Clause 6.5.1 or when either excessive fluctuation or creepage exists, a pressure regulator shall be provided in the gas piping system to the appliance."
+  },
+  {
+    "clause": "6.5.3",
+    "title": "Pressure drop determination",
+    "description": "In determining the pressure drop in the gas piping system, the resistance offered by bends, fittings, and valves shall be included in the calculations, together with the resistance offered by the length of piping or tubing."
+  },
+  {
+    "clause": "6.6",
+    "title": "Extensions",
+    "description": "Requirements for extending existing gas piping systems."
+  },
+  {
+    "clause": "6.6.1",
+    "title": "Adequate capacity",
+    "description": "When an existing gas piping system is of adequate capacity for an additional appliance, any required extension that also contains the existing system shall be sized to meet the requirements of Clause 6.3."
+  },
+  {
+    "clause": "6.6.2",
+    "title": "Insufficient capacity",
+    "description": "When an existing gas piping system is of insufficient capacity for an additional appliance, the supply piping or tubing to any extension shall be sized to meet the requirements of Clause 6.3 to within 24 in (610 mm) of the point of the supplier termination or the pressure regulator, at which point it may be reduced if necessary."
+  },
+  {
+    "clause": "6.7",
+    "title": "Location",
+    "description": "Requirements for gas piping location and installation restrictions."
+  },
+  {
+    "clause": "6.7.1",
+    "title": "Concealed piping or tubing",
+    "description": "Concealed piping or tubing that contains fittings or joints shall not be run where the fittings or joints cannot be inspected and tested in accordance with Clause 6.22 in their final position prior to being concealed."
+  },
+  {
+    "clause": "6.7.2",
+    "title": "Piping or tubing installation prohibition",
+    "description": "Piping or tubing shall not be installed in a stairwell other than a stairwell within a dwelling unit unless it is totally enclosed by a chase consisting of material that has the same fire-resistance rating as that required for the stairwell; in a chimney, flue, elevator, dumbwaiter or material lift shaft, or any chute including for linen or refuse use; in a heating or ventilating plenum, duct, or shaft except as permitted in Clause 6.7.6; or in contact with either cinders, ashes, or other corrosive materials."
+  },
+  {
+    "clause": "6.7.3",
+    "title": "Corrosive chemical",
+    "description": "Piping or tubing shall not be concealed in a location where a corrosive chemical is used."
+  },
+  {
+    "clause": "6.7.4",
+    "title": "Solid flooring",
+    "description": "Piping or tubing in solid flooring, such as concrete, shall be laid in channels and suitably covered to permit access to the piping or tubing. Alternatively, the piping or tubing shall be encased in ducts so that there is free air space around the pipe or tube. Such a duct shall be ventilated."
+  },
+  {
+    "clause": "6.7.5",
+    "title": "Vertical piping",
+    "description": "Each vertical piping chase shall have an opening at the top and bottom, and the opening shall have a minimum area equivalent to a round opening of 1 in (25 mm) in diameter."
+  },
+  {
+    "clause": "6.7.6",
+    "title": "False ceiling space",
+    "description": "Piping or tubing may be installed in a false ceiling space, including one used as a return-air plenum of a central warm-air or air-conditioning system."
+  },
+  {
+    "clause": "6.8",
+    "title": "Piping practices",
+    "description": "General requirements for gas piping installation practices."
+  },
+  {
+    "clause": "6.8.1",
+    "title": "General",
+    "description": "Piping and fittings shall be clear and free from cutting burrs, threading burrs, scale, and defects."
+  },
+  {
+    "clause": "6.8.2",
+    "title": "Piping ends",
+    "description": "The ends of all piping shall be reamed."
+  },
+  {
+    "clause": "6.8.3",
+    "title": "Piping support",
+    "description": "Piping or tubing shall not be supported by other piping or tubing, and shall be installed with individual supports of sufficient strength and quality. Supports shall be spaced in accordance with Table 6.2."
+  },
+  {
+    "clause": "6.8.4",
+    "title": "Structural integrity",
+    "description": "A girder, beam, joist, or other structural member shall not be cut for the installation of piping in such a manner as to reduce its strength below that required for the purpose for which it is intended."
+  },
+  {
+    "clause": "6.8.5",
+    "title": "Back flow prevention",
+    "description": "When air, oxygen, or other gas under pressure is used in connection with the gas supply, either a back-check valve or other suitable equipment shall be provided as close as practicable to the point of interconnection to prevent any interchange of such in the piping or tubing system."
+  },
+  {
+    "clause": "6.8.6",
+    "title": "Filter requirements",
+    "description": "When a filter is used in a piping system, a low-pressure indicator shall be installed directly downstream of the filter."
+  },
+  {
+    "clause": "6.8.7",
+    "title": "Manufacturer's fabricated fittings",
+    "description": "Manufacturer's fabricated fittings shall be used in welded gas piping systems except as permitted in Clause 6.8.8."
+  },
+  {
+    "clause": "6.8.8",
+    "title": "Supply header exceeds NPS 2-1/2",
+    "description": "When a gas supply header is NPS 2-1/2 or larger, the branch line connection may be a job-fabricated welded fitting, provided that the branch line does not exceed 50% of the pipe diameter of the gas supply header, and in no case shall the branch connection be less than NPS 3/4."
+  },
+  {
+    "clause": "6.8.9",
+    "title": "Support material",
+    "description": "Where piping and tubing supports are used, they shall be metallic and shall be installed to avoid galvanic action between the piping or tubing and the supports."
+  }
+]

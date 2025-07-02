@@ -1,0 +1,312 @@
+[
+  {
+    "clause": "5.1",
+    "title": "Delivery pressure",
+    "description": "Requirements for gas delivery pressures in piping systems."
+  },
+  {
+    "clause": "5.1.1",
+    "title": "Gas piping system pressures",
+    "description": "Subject to Clause 5.1.2, the gas pressure in a gas piping system, extending from the termination of the utility/distributor's installation inside a building, shall not be higher than that shown in Table 5.1 in normal operation."
+  },
+  {
+    "clause": "5.1.2",
+    "title": "Piping to central boilers or mechanical rooms",
+    "description": "Piping to central boiler or mechanical rooms at gas pressures that are greater than allowed for other building locations shall not pass anywhere inside the building other than the central boiler or mechanical room."
+  },
+  {
+    "clause": "5.1.3",
+    "title": "Gas piping system design",
+    "description": "A gas piping system shall be designed so that the gas pressure shall not exceed the rated pressure of any accessory, equipment, or appliance, under normal operation and in the event of a failure of an upstream pressure regulator."
+  },
+  {
+    "clause": "5.1.4",
+    "title": "Delivery pressure and overpressure protection set-points",
+    "description": "The delivery pressure and overpressure protection set-points, as supplied by the gas utility or fuel distributor, shall be considered in the design and installation of a gas piping system, including any modifications to an existing gas piping system."
+  },
+  {
+    "clause": "5.1.5",
+    "title": "Residential applications",
+    "description": "In a residential application using propane, propane vapour pressure in a gas piping system between the first-stage pressure regulator and second-stage propane regulator shall not be higher than 10 psig (70 kPa). In other applications using propane, means shall be provided to prevent liquefaction of propane."
+  },
+  {
+    "clause": "5.1.6",
+    "title": "Piping propane in the liquid phase",
+    "description": "Propane shall not be piped into or within any building in the liquid phase, except when the building is used exclusively to house appliances or equipment for vapourization (including grain dryers), pressure reduction, propane/air mixing, or distribution; the building is a container-filling building; the fire-separated portion of the building is used exclusively for housing an internal combustion engine or industrial process; or the fire-separated portion of the building is occupied exclusively by research and experimental laboratories."
+  },
+  {
+    "clause": "5.1.7",
+    "title": "Line pressure regulator location",
+    "description": "For applications using propane, a second stage propane regulator installed within a one- or two-family dwelling or row housing shall not be located more than 3 ft (0.9 m) from the point where the propane supply enters the dwelling."
+  },
+  {
+    "clause": "5.2",
+    "title": "Pressure regulators",
+    "description": "General requirements for pressure regulators in gas systems."
+  },
+  {
+    "clause": "5.2.1",
+    "title": "General",
+    "description": "General requirements for pressure regulator installation and operation."
+  },
+  {
+    "clause": "5.2.1.1",
+    "title": "Gas supply pressures",
+    "description": "Gas shall be supplied to an appliance, equipment, or accessory at a normal operating pressure that is within the pressure range specified on the appliance's, equipment's, or accessory's rating plate, or as indicated by the manufacturer's instructions."
+  },
+  {
+    "clause": "5.2.1.2",
+    "title": "Pressure regulators and overprotection devices",
+    "description": "To meet Clause 5.2.1.1, when the delivery pressure is greater than the maximum rated pressure of the downstream valve train, appliance, or equipment, one or more or a combination of the following shall be installed: a line pressure regulator; or an industrial pressure regulator."
+  },
+  {
+    "clause": "5.2.1.3",
+    "title": "Pressure regulator features",
+    "description": "Every pressure regulator shall be suitable for the gas; of sufficient size to provide the required flow of gas; factory set or field-adjusted to provide, under normal operating conditions, an outlet pressure required for the gas piping system at the extremes of inlet pressures to which the regulator can be exposed; capable of supplying the gas pressure as required by Clause 5.2.1.1; installed in accordance with the manufacturer's instructions and ratings; and be constructed so that the outlet pressure does not exceed 150% of the normal outlet operating pressure under no flow conditions when the downstream appliance or equipment is shut down."
+  },
+  {
+    "clause": "5.2.1.4",
+    "title": "Minimum clearances",
+    "description": "The minimum clearance specified in Clauses 7.4.4 and 7.5.2 between a pressure regulator and the moisture-exhaust duct shall be maintained."
+  },
+  {
+    "clause": "5.2.1.5",
+    "title": "Bypassing pressure regulators",
+    "description": "A pressure regulator shall not be bypassed, and a safety limit or a safety relief device shall not be isolated, bypassed, or in any way made ineffective by a valve or other device."
+  },
+  {
+    "clause": "5.2.1.6",
+    "title": "Lock-up type pressure regulators",
+    "description": "A pressure regulator shall be of the lock-up (positive shut-off) type."
+  },
+  {
+    "clause": "5.2.1.7",
+    "title": "Manual shut-off valves and overpressure protection devices",
+    "description": "A pressure regulator shall have a manual shut-off valve installed upstream of the pressure regulator; and an overpressure protection device in accordance with Clause 5.3."
+  },
+  {
+    "clause": "5.2.1.8",
+    "title": "Pressure regulators",
+    "description": "A pressure regulator provided in a gas supply line shall not be installed where it is inaccessible for repair, replacement, servicing, or inspection; in a concealed location; or where it could be reasonably expected to be subject to physical or chemical damage."
+  },
+  {
+    "clause": "5.2.1.9",
+    "title": "Outdoor installations and unheated areas",
+    "description": "A pressure regulator installed outdoors or in an unheated area shall be positioned so that the bonnet vent opening discharges vertically downward, except that when installed within a container dome, the vent opening shall be positioned downward not less than 15° from the horizontal; and a single-stage pressure regulator of a capacity not exceeding 150,000 Btu/h (45 kW) may be installed in a horizontal position, provided that it is protected from inclement weather."
+  },
+  {
+    "clause": "5.2.1.10",
+    "title": "Pressure regulators installed on vehicles",
+    "description": "A pressure regulator shall be installed on a vehicle in such a manner that its safe operation will not be impeded by weather conditions, and it shall be protected by a substantial metal or plastic hood of the enclosed style."
+  },
+  {
+    "clause": "5.2.1.11",
+    "title": "Mounting cylinders on A-frames",
+    "description": "When provision is made for mounting a cylinder on the A-frame of a vehicle, a rigidly mounted support bracket for mounting the pressure regulator shall be provided. The pressure regulator shall be protected in accordance with Clause 5.2.1.10."
+  },
+  {
+    "clause": "5.2.2",
+    "title": "Additional requirements for line pressure regulators",
+    "description": "Specific requirements for line pressure regulators."
+  },
+  {
+    "clause": "5.2.2.1",
+    "title": "Line pressure regulator",
+    "description": "A line pressure regulator, where installed shall be certified to either CSA/ANSI 221.80/CSA 6.22; or UL 144."
+  },
+  {
+    "clause": "5.2.2.2",
+    "title": "Two-stage regulation",
+    "description": "Not less than two-stage regulation shall be utilized on all permanent propane installations."
+  },
+  {
+    "clause": "5.2.3",
+    "title": "Additional requirements for industrial pressure regulators",
+    "description": "Specific requirements for industrial pressure regulators."
+  },
+  {
+    "clause": "5.2.3.1",
+    "title": "Industrial pressure regulator",
+    "description": "An industrial pressure regulator, where installed, shall directly serve any of the following in the downstream gas piping system: a line pressure regulator that complies with Clause 5.2.2 and mounted upstream of the appliance, equipment, or valve train; another industrial pressure regulator; or a high and a low gas pressure device installed on the valve train of the appliance or in the downstream piping system upstream of the valve train of the appliance."
+  },
+  {
+    "clause": "5.2.3.2",
+    "title": "High and low gas pressure devices",
+    "description": "Where high and low gas pressure devices are required in Clause 5.2.3.1, they shall be interlocked into the downstream appliance(s) to cause safety shut down when either device detects a fault condition."
+  },
+  {
+    "clause": "5.2.3.3",
+    "title": "Pressure regulator(s) downstream of another pressure regulator",
+    "description": "Where a pressure regulator(s) is installed downstream of another pressure regulator, the downstream pressure regulator shall be protected by an overpressure protection device complying with Clause 5.3 if failure of the upstream pressure regulator could result in exposing the downstream pressure regulator to inlet pressure greater than its rated pressure."
+  },
+  {
+    "clause": "5.3",
+    "title": "Overpressure protection devices",
+    "description": "Requirements for overpressure protection devices in gas systems."
+  },
+  {
+    "clause": "5.3.1",
+    "title": "Overpressure protection",
+    "description": "Except as permitted in Clause 5.3.2 a line pressure regulator or an industrial pressure regulator shall be provided with an overpressure protection device, and based on its intended outlet pressure, set to not exceed the maximum allowable downstream pressures shown in Table 5.2."
+  },
+  {
+    "clause": "5.3.2",
+    "title": "Overpressure protection devices",
+    "description": "An overpressure protection device shall not be required for a Class I line pressure regulator certified to CSA/ANSI 221.80/CSA 6.22 and rated for inlet pressure of 2 psig (14 kPa), provided every appliance it directly serves is equipped with either an appliance regulator certified to CSA/ANSI 221.18/CSA 6.3, an automatic gas valve certified to CSA/ANSI 221.21/CSA 6.5, or a combination control valve certified to CSA/ANSI 221.78/CSA 6.20."
+  },
+  {
+    "clause": "5.3.3",
+    "title": "Class I line pressure regulator",
+    "description": "A Class I line pressure regulator certified to CSA ANSI 221.80/CSA 6.22 with a rated inlet pressure of more than 2 psig (14 kPa) shall be installed only with the factory pre-assembled or supplied overpressure protection device with which the regulator is certified."
+  },
+  {
+    "clause": "5.3.4",
+    "title": "Internal relief valve or line relief valve",
+    "description": "If an internal relief valve or line relief valve is used as the overpressure protection device, it shall be sized to fully relieve the rated capacity of the line pressure regulator when in the wide-open position."
+  },
+  {
+    "clause": "5.4",
+    "title": "Hydrostatic relief devices for propane applications",
+    "description": "Requirements for hydrostatic relief devices in propane systems."
+  },
+  {
+    "clause": "5.4.1",
+    "title": "Hydrostatic relief valves",
+    "description": "A hydrostatic relief valve (to relieve at a safe location outdoors) shall be installed between each pair of shut-off valves on a propane liquid piping system. The start-to-discharge pressure setting of such a hydrostatic relief valve shall be neither less than 375 psig (2500 kPa) nor more than 500 psig (3500 kPa)."
+  },
+  {
+    "clause": "5.4.2",
+    "title": "Discharge lines from hydrostatic relief devices",
+    "description": "Discharge lines from two or more hydrostatic relief devices may run into a common discharge header, provided that the cross-sectional area of the header is at least equal to the sum of the cross-sectional areas of the individual discharge lines and that the header is not connected to any vent or bleed line."
+  },
+  {
+    "clause": "5.5",
+    "title": "Venting of pressure control devices",
+    "description": "Requirements for venting of pressure control devices."
+  },
+  {
+    "clause": "5.5.1",
+    "title": "Construction of vent piping for pressure control devices other than overpressure relief devices",
+    "description": "Requirements for vent piping construction for pressure control devices excluding overpressure relief devices."
+  },
+  {
+    "clause": "5.5.1.1",
+    "title": "Inclusions",
+    "description": "The requirements in Clause 5.5.1 apply to bleed vents from pressure control devices including, but not limited to, automatic valves; diaphragm valves; and combination controls."
+  },
+  {
+    "clause": "5.5.1.2",
+    "title": "Exceptions",
+    "description": "The requirements in Clause 5.5.1 do not apply to pressure regulators (including monitoring regulators) equipped with internal relief valves; and line overpressure relief valves."
+  },
+  {
+    "clause": "5.5.1.3",
+    "title": "Venting",
+    "description": "Except as permitted in Clauses 5.5.1.4 and 5.5.1.5 for natural gas and hydrogen-natural gas blend applications and Clauses 5.5.1.5 and 5.5.3.1 for propane, the bleed vent from a pressure control device shall be constructed of steel pipe, copper, seamless aluminum, or steel tubing that complies with Clause 6.2; be of a size at least equal to the nominal pipe size of the vent outlet of the valve, combination control, pressure regulator, or control device, and in no case shall the inside diameter be less than 0.25 in (6 mm); connect to any other bleed vent only as permitted in Clause 5.5.1.5; and terminate in accordance with Clause 5.6."
+  },
+  {
+    "clause": "5.5.1.4",
+    "title": "Natural gas and hydrogen-natural gas blend applications",
+    "description": "For natural gas and hydrogen-natural gas blend applications, the bleed vent line from a diaphragm valve or combination control that is installed on an appliance that has rated inlet pressure not in excess of 0.5 psig (3.5 kPa) may terminate in the appliance combustion chamber adjacent to a continuous pilot, provided that the terminus of the bleed vent is in a burner tip having a melting point in excess of 1450°F (790°C) and that is securely held in a fixed position relative to the pilot flame and that will not adversely affect the operation of the thermal element."
+  },
+  {
+    "clause": "5.5.1.5",
+    "title": "Bleed vents",
+    "description": "The bleed vents of any two or more pressure control devices of any type, or any combination thereof, may be connected into a single, common bleed vent, provided that there is compliance with Clause 5.5.1.3 for inlet pressure not in excess of 0.5 psig (3.5 kPa); or Clause 5.5.2.5 a) and b) for inlet pressure in excess of 0.5 psig (3.5 kPa); and the single, common bleed vent line has an area of not less than twice the total area of the connected bleed vents upstream of the connection."
+  },
+  {
+    "clause": "5.5.2",
+    "title": "Construction of vent lines for overpressure relief devices",
+    "description": "Requirements for vent line construction for overpressure relief devices."
+  },
+  {
+    "clause": "5.5.2.1",
+    "title": "Inclusions",
+    "description": "The requirements in Clause 5.5.2 apply to vent lines originating from pressure regulators (including monitoring regulators) equipped with internal relief valves; and line overpressure relief valve."
+  },
+  {
+    "clause": "5.5.2.2",
+    "title": "Exceptions",
+    "description": "The requirements in Clause 5.5.2 do not apply to bleed vents from pressure control devices, including but not limited to automatic valves; diaphragm valves; and combination controls."
+  },
+  {
+    "clause": "5.5.2.3",
+    "title": "Vent line",
+    "description": "A vent line shall be of sufficient size and configuration to prevent impedance upon a regulator."
+  },
+  {
+    "clause": "5.5.2.4",
+    "title": "Outdoor vent line termination",
+    "description": "The outdoor vent line termination of a pressure regulator or a line relief device shall be equipped with a means to prevent the entry of water, insects, or foreign material."
+  },
+  {
+    "clause": "5.5.2.5",
+    "title": "Vent line material and sizing",
+    "description": "Except as specified in Clause 5.5.2.6 when a pressure regulator with internal relief valve or a line relief valve is installed, it shall be vented separately and terminate in accordance with Clause 5.6 by a vent line of steel pipe, or of seamless steel tubing or copper tubing or CSST that complies with Clause 6.2 and of a size at least equal to the nominal pipe size of the vent outlet of the valve or regulator increased as specified by the manufacturer's instructions and for CSST increased by one pipe size diameter; or in the absence of manufacturer's instructions, increased by one pipe size diameter for every 50 ft (15 m) or part thereof that the vent line extends beyond the initial 50 ft (15 m)."
+  },
+  {
+    "clause": "5.5.2.6",
+    "title": "Common vent lines",
+    "description": "Except as required by Clause 5.5.2.7 when two or more gas overpressure relief valves are installed, they may be connected into a single vent line, provided that there is compliance with Clause 5.5.2.5; the single vent line has an area equal to the largest relief valve opening plus 50% of the total area of the other relief valve openings; the highest inlet pressure of any one line relief valve does not exceed 1.1 times the lowest inlet pressure of any other line relief valve, based on manufacturer's product literature; and the highest start-to-discharge pressure of one line relief valve does not exceed 1.1 times the lowest start-to-discharge pressure of any of the other line relief valves, based on manufacturer's product literature."
+  },
+  {
+    "clause": "5.5.2.7",
+    "title": "Vent line for internal relief valve",
+    "description": "A vent line from a pressure regulator with an internal relief valve shall be piped independently to the outdoors and shall not be manifolded with any other vent line."
+  },
+  {
+    "clause": "5.5.3",
+    "title": "Additional requirements for venting of propane pressure control devices",
+    "description": "Special venting requirements for propane pressure control devices."
+  },
+  {
+    "clause": "5.5.3.1",
+    "title": "Vent lines",
+    "description": "For propane applications, except as specified in Clause 5.5.4, a pressure regulator, line relief device, or hydrostatic relief device on an appliance using gas heavier than air shall be equipped with a vent line in accordance with Clause 5.5.2.4 a) and b); and terminating outdoors in accordance with Clause 5.6."
+  },
+  {
+    "clause": "5.5.3.2",
+    "title": "Propane applications",
+    "description": "For propane applications, a regulator vent, line relief device, or hydrostatic relief valve discharging vertically upward shall be provided with a loose-fitting rain cap. When discharging downward, it shall be provided with a protective screen."
+  },
+  {
+    "clause": "5.5.4",
+    "title": "Venting exemptions for pressure regulators",
+    "description": "Exemptions from venting requirements for certain pressure regulators."
+  },
+  {
+    "clause": "5.5.4.1",
+    "title": "Exemptions",
+    "description": "The following shall be exempt from Clause 5.6 provided the conditions in Clause 5.5.4.2 are also met: a line pressure regulator certified to CSA/ANSI 221.80/CSA 6.22 that incorporates a vent limiter; an appliance pressure regulator certified to ANSI 221.18/CSA 6.3 that incorporates a vent limiter, and with a rated pressure no higher than 2 psig (14 kPa); or an industrial pressure regulator equipped with a safety diaphragm if installed on a valve train of a CSA B149.3 approved appliance having a capacity greater than 400,000 btu/h (120 kW)."
+  },
+  {
+    "clause": "5.5.4.2",
+    "title": "Exemption conditions",
+    "description": "The conditions for exemption from Clause 5.6 shall be the vent limiter limits the escape of gas to not more than 2.5 ft³/h (0.0706 m³/h) for natural gas; and not more than 1 ft³/h (0.0283 m³/h) for LP gases and subject to the limitation in Clause 5.5.4.3; the pressure regulator is installed in a ventilated space and to where the accumulation of fuel gas from the vent limiter does not exceed 25% of the gas's lower explosive limit; and the clearance from the vent limiter to any source of ignition is met, as listed in Table 5.3."
+  },
+  {
+    "clause": "5.5.4.3",
+    "title": "Line pressure regulator rated for 5 psig (35 kPa) or 10 psig (70 kPa)",
+    "description": "The exemption permitted in Clause 5.5.4.1 shall not apply to a line pressure regulator rated for 5 psig (35 kPa) or 10 psig (70 kPa) when the fuel is propane."
+  },
+  {
+    "clause": "5.6",
+    "title": "Termination of vent lines",
+    "description": "Except where permitted by Clauses 5.5.1.4 and 5.5.4, the vent line from overpressure protection devices, relief devices, and internal relief valves, and the termination of any other vent line not eligible to be vented into a ventilated space shall terminate outdoors with the clearances specified in Table 5.3."
+  },
+  {
+    "clause": "5.7",
+    "title": "Pressure regulators on appliances using propane",
+    "description": "Special requirements for pressure regulators on propane appliances."
+  },
+  {
+    "clause": "5.7.1",
+    "title": "Excess propane pressures",
+    "description": "An appliance that can be subjected, through supply pressure, design, creepage, or fluctuation, to propane pressure in excess of that for which it is rated shall be equipped with an appliance pressure regulator."
+  },
+  {
+    "clause": "5.7.2",
+    "title": "Pilots",
+    "description": "When a pressure regulator is required by Clause 5.7.1, the propane supply to the pilot or group of pilots shall be regulated by an approved pressure regulator independent of the main burner propane supply."
+  }
+]

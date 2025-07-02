@@ -1,0 +1,252 @@
+[
+  {
+    "clause": "6.15.8",
+    "title": "Building entrance",
+    "description": "Piping or tubing entering a building shall rise above grade before entry unless otherwise permitted by the authority having jurisdiction."
+  },
+  {
+    "clause": "6.15.9",
+    "title": "Outside wall",
+    "description": "A watertight seal shall be provided at any point where piping or tubing passes through an outside wall below ground level."
+  },
+  {
+    "clause": "6.15.10",
+    "title": "Under pavement",
+    "description": "When piping or tubing is laid under pavement and an entry to a building is made above ground level, a sleeve shall be inserted to protect the piping or tubing where it comes through the pavement to permit free movement of the soil and covering without placing strain on the piping or tubing."
+  },
+  {
+    "clause": "6.15.11",
+    "title": "Vent pipe",
+    "description": "A vent pipe inspection point shall be installed adjacent to a building, either when the entire piping or tubing is covered with paving or when paving extends 25 ft (7.5 m) or more from the building, unless other approved provisions have been made for venting the area surrounding the piping."
+  },
+  {
+    "clause": "6.15.12",
+    "title": "Connection to plastic",
+    "description": "An approved transition fitting shall be used for connecting piping or tubing of either steel or copper to plastic."
+  },
+  {
+    "clause": "6.15.13",
+    "title": "Gas supply to plastic piping or tubing",
+    "description": "The gas supply to underground plastic piping or tubing shall be controlled by a shut-off valve situated above ground."
+  },
+  {
+    "clause": "6.15.14",
+    "title": "Plastic piping or tubing",
+    "description": "Plastic piping or tubing shall be accompanied by a tracing wire or other electronically detectable tracing media."
+  },
+  {
+    "clause": "6.15.15",
+    "title": "Common trench",
+    "description": "When underground piping or tubing share a common trench with underground electrical systems, a minimum separation of 1.2 in (300 mm) shall be maintained between the gas system and the electrical system."
+  },
+  {
+    "clause": "6.16",
+    "title": "Protection of piping and tubing",
+    "description": "General section covering protection requirements for piping and tubing systems."
+  },
+  {
+    "clause": "6.16.1",
+    "title": "Corrosive atmospheres",
+    "description": "Outdoor piping or indoor piping and tubing that is exposed to atmospheres that are corrosive to the piping or tubing shall be protected by either painting or coating."
+  },
+  {
+    "clause": "6.16.2",
+    "title": "Underground",
+    "description": "Piping, tubing, or fittings laid underground shall be protected against corrosion in accordance with good engineering practice or in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "6.16.3",
+    "title": "Movement",
+    "description": "Piping or tubing shall be mounted, braced, and supported to provide for expansion, contraction, jarring, vibration, and settling, and shall be protected against either damage or breakage due to strain, wear, and mechanical impact. Note: Moving snow loads and ice on sloped roofs have been known to damage or break pipes."
+  },
+  {
+    "clause": "6.16.4",
+    "title": "Hollow walls or partitions",
+    "description": "Tubing run inside hollow walls or partitions within 1.75 in (43 mm) of the surface shall be protected against physical damage and puncture at the joists, studs, and plates by the use of No. 16 USG (1.59 mm) plates or sleeves. This provision shall not apply to tubing that passes directly through walls or partitions."
+  },
+  {
+    "clause": "6.16.5",
+    "title": "Appliance doors or covers",
+    "description": "Piping or tubing shall be located in a position free from the arc of movement of all appliance doors or covers."
+  },
+  {
+    "clause": "6.16.6",
+    "title": "Galvanic corrosion",
+    "description": "To avoid galvanic corrosion, metallic piping or tubing shall be installed in such a manner that it is not in contact with any other dissimilar metallic pipe or structure."
+  },
+  {
+    "clause": "6.16.7",
+    "title": "Exterior wall above ground",
+    "description": "When piping or tubing passes through an exterior wall above ground, it shall be sealed watertight and the portion of piping or tubing that runs through the wall shall be sleeved or double wrapped with a pipe wrap tape."
+  },
+  {
+    "clause": "6.16.8",
+    "title": "Masonry or concrete",
+    "description": "When piping or tubing passes through masonry or concrete, the portion of piping or tubing that runs through this material shall be sleeved or double wrapped with a pipe wrap tape."
+  },
+  {
+    "clause": "6.16.9",
+    "title": "Sleeve use",
+    "description": "A sleeve shall enclose the entire length of piping or tubing that passes through an exterior wall to an unheated, inaccessible building element, sealed watertight and the portion of piping or tubing that runs through the sleeve shall be double wrapped with a pipe wrap tape."
+  },
+  {
+    "clause": "6.16.10",
+    "title": "Sleeve material",
+    "description": "When piping or tubing is run in a sleeve, the sleeve shall be of such material and so installed as to protect the piping or tubing from damage and galvanic action."
+  },
+  {
+    "clause": "6.16.11",
+    "title": "Plastic material",
+    "description": "Care shall be exercised to protect plastic materials from excessive heat and harmful chemicals."
+  },
+  {
+    "clause": "6.16.12",
+    "title": "Plastic pipe and tubing support",
+    "description": "Plastic pipe and tubing shall be adequately supported during storage."
+  },
+  {
+    "clause": "6.16.13",
+    "title": "Plastic direct sunlight exposure",
+    "description": "Plastic pipe and tubing shall be protected from exposure to direct sunlight."
+  },
+  {
+    "clause": "6.16.14",
+    "title": "CSST",
+    "description": "CSST and fittings shall be protected against physical damage in accordance with the manufacturer's certified installation instructions and with this Code."
+  },
+  {
+    "clause": "6.16.15",
+    "title": "Vehicle protection",
+    "description": "The portions of gas piping systems installed above grade in locations that do not afford protection from damage from vehicles on any street, highway, avenue, alley, or a parking lot shall be protected by posts or guardrails in compliance with clause 6.16.16 unless otherwise approved by the authority having jurisdiction."
+  },
+  {
+    "clause": "6.16.16",
+    "title": "Vehicle protection requirements",
+    "description": "Gas piping systems shall be protected from vehicular damage by posts or guardrails meeting specific dimensional and material requirements including minimum distances, burial depths, and construction specifications."
+  },
+  {
+    "clause": "6.17",
+    "title": "Identification of piping or tubing",
+    "description": "General section covering identification requirements for gas piping and tubing systems."
+  },
+  {
+    "clause": "6.17.1",
+    "title": "General",
+    "description": "At every care or detention occupancy, commercial, industrial, and assembly building, piping or tubing shall be identified by painting yellow, yellow banding (minimum 1 in/25 mm width), or labeling 'GAS' or 'PROPANE' with yellow labels or markings. Identification intervals shall not exceed 20 ft (6 m)."
+  },
+  {
+    "clause": "6.17.2",
+    "title": "Pressure in excess of 14 in w.c. (3.5 kPa)",
+    "description": "At every care or detention occupancy, commercial, industrial, and assembly building, where the piping or tubing pressure is in excess of 14 in w.c. (3.5 kPa), both the piping or tubing and the pressure shall be identified at shut-off valves and wall, ceiling, and floor penetrations."
+  },
+  {
+    "clause": "6.17.3",
+    "title": "Residential buildings",
+    "description": "Tubing systems for residential buildings shall be identified in accordance with Clause 6.17.1, except that identification intervals shall not exceed 6 ft (2 m) along their entire length."
+  },
+  {
+    "clause": "6.17.4",
+    "title": "Two or more gas meters",
+    "description": "Every piping or tubing system that enters a building that has two or more gas meters shall be permanently identified with the room number, apartment number, or the area of the building it serves."
+  },
+  {
+    "clause": "6.18",
+    "title": "Manual shut-off valves",
+    "description": "General section covering manual shut-off valve requirements."
+  },
+  {
+    "clause": "6.18.1",
+    "title": "Certification or approval",
+    "description": "A manual shut-off valve shall be certified to CSA 3.11, CSA 3.16, or CSA/ANSI 221.15/CSA 9.1, or approved for use with gas, and it shall not be subjected to either a temperature or a pressure outside of its certified rating range."
+  },
+  {
+    "clause": "6.18.2",
+    "title": "Appliance manual shut-off",
+    "description": "A readily accessible manual shut-off valve for each appliance shall be installed in specific locations including the drop or riser, horizontal piping between drop/riser and appliance valve train, or within 50 ft (15 m) of residential appliances with proper identification."
+  },
+  {
+    "clause": "6.18.3",
+    "title": "Appliance manual shut-off exception",
+    "description": "The requirements for an individual manual shut-off valve specified in Clause 6.18.2 may be waived when a readily accessible single manual shut-off valve is installed for commercial cooking appliances manifolded in line or common supply piping to direct-vent room heaters in dwelling units within 50 ft (15 m)."
+  },
+  {
+    "clause": "6.18.4",
+    "title": "Type and size",
+    "description": "A readily accessible manual shut-off valve shall be of either the ball, eccentric, or lubricated-plug-type where the piping is larger than NPS 1, tubing is 1 in (25.4 mm) OD or larger, or pressure exceeds 0.5 psig (3.5 kPa)."
+  },
+  {
+    "clause": "6.18.5",
+    "title": "Several piping systems",
+    "description": "When a shut-off valve controls several piping systems, it shall be readily accessible for operation at all times, provided with an installed handle, installed to provide protection from damage, and clearly marked with permanent tags for identification."
+  },
+  {
+    "clause": "6.18.6",
+    "title": "Spring-loaded valve",
+    "description": "A spring-loaded valve shall be installed in a manner that will prevent its plug from being accidentally lifted off the valve seat."
+  },
+  {
+    "clause": "6.18.7",
+    "title": "Quick-disconnect",
+    "description": "A quick-disconnect device shall not be substituted for a manual shut-off valve."
+  },
+  {
+    "clause": "6.18.8",
+    "title": "Adjoining buildings",
+    "description": "Piping or tubing that extends from one building to another shall have a shut-off valve at the point of exit from the first building and one at the point of entry to the adjoining building."
+  },
+  {
+    "clause": "6.18.9",
+    "title": "Propane",
+    "description": "Where propane is distributed from a storage tank to more than one riser by an underground system, a valve shall be installed on each riser."
+  },
+  {
+    "clause": "6.18.10",
+    "title": "Underground propane storage tank",
+    "description": "Where a building is supplied from an underground propane storage tank, a manual gas shutoff valve shall be installed and readily accessible in the gas supply piping system or riser before it enters the building(s). It shall be identified with a prominent sign with red lettering minimum 1 in (25 mm) high on white background."
+  },
+  {
+    "clause": "6.18.11",
+    "title": "Classroom, laboratory, or similar facility",
+    "description": "When multiple outlets are installed in a classroom, laboratory, or similar facility, they shall be controlled by a clearly identified master shut-off valve in a readily accessible location within that room."
+  },
+  {
+    "clause": "6.18.12",
+    "title": "Classroom, laboratory, or similar facility out of service",
+    "description": "When a facility as described in Clause 6.18.11 is taken out of service, the supply of gas to the facility shall be either plugged or capped."
+  },
+  {
+    "clause": "6.19",
+    "title": "Manual-reset valves",
+    "description": "A safety control device external to a piping system shall include an automatic valve of the manual-reset type to shut off the gas supply."
+  },
+  {
+    "clause": "6.20",
+    "title": "Gas hose and fittings",
+    "description": "General section covering gas hose and fitting requirements."
+  },
+  {
+    "clause": "6.20.1",
+    "title": "Vented appliance",
+    "description": "Except as required in Clause 7.23.3, a gas hose connection to a vented appliance shall be prohibited."
+  },
+  {
+    "clause": "6.20.2",
+    "title": "Vibration",
+    "description": "A gas hose may be used with an unvented appliance when such an appliance is mobile during operation, is portable, or requires isolation from vibration."
+  },
+  {
+    "clause": "6.20.3",
+    "title": "Installation",
+    "description": "Detailed requirements for gas hose installation including length limitations, temperature restrictions, protection requirements, and specific provisions for different applications including permanent installation (10 ft max), portable appliances (30 ft max), construction heaters (15-75 ft), and cutting/welding equipment (100 ft max)."
+  },
+  {
+    "clause": "6.20.4",
+    "title": "Replacement",
+    "description": "When a sign of wear, deterioration, or other damage is apparent in the reinforcement material of a gas hose, the gas hose shall be replaced immediately."
+  },
+  {
+    "clause": "6.20.5",
+    "title": "Metallic gas hose",
+    "description": "A metallic gas hose may be used in commercial, industrial, or process applications when vibration, expansion, contraction, or other circumstances warrant its use. It shall not be used in concealed locations, shall not extend between rooms or pass through walls/partitions/ceilings/floors, requires upstream shut-off valve, and must comply with CGA CR96-001 or ANSI/CAN/UL 536."
+  }
+]

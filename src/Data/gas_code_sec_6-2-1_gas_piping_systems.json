@@ -1,0 +1,247 @@
+[
+  {
+    "clause": "6.8.10",
+    "title": "Test ports",
+    "description": "A test port shall be installed immediately downstream of a line pressure regulator or an industrial pressure regulator except where the pressure regulator can be adjusted while measuring and observing the supply pressure at any appliance being served by the pressure regulator. Where opening the test port could create an uncontrolled release of gas, the test port shall be equipped with a manual shut-off valve that is either capped or plugged."
+  },
+  {
+    "clause": "6.9",
+    "title": "Joints and connections",
+    "description": "General requirements for joints and connections in gas piping systems."
+  },
+  {
+    "clause": "6.9.1",
+    "title": "Steel piping",
+    "description": "Joints in steel piping shall be threaded, flanged, press-connected, or welded, and shall be as specified in Clause 6.15.2. When mating flanges, they shall be of the same face type and rating."
+  },
+  {
+    "clause": "6.9.2",
+    "title": "Type",
+    "description": "Piping of NPS 2-1/2 to 4 shall have either press-connect fittings certified to CSA/ANSI LC 4/CSA 6.32 or welded pipe joints. Piping greater than NPS 4 shall have welded pipe joints."
+  },
+  {
+    "clause": "6.9.3",
+    "title": "Welding",
+    "description": "Welding of gas piping systems shall be performed in accordance with a procedure and by an operator registered under the applicable provincial or territorial legislation."
+  },
+  {
+    "clause": "6.9.4",
+    "title": "Welding acceptance criteria",
+    "description": "The acceptance criteria for any welds shall: a) for design pressures greater than 250 psig (1720 kPa), comply with the visual and radiographic inspection requirements of Clause Z of CSA 2662 or other approved methods; b) for design pressures between 100 psig (700 kPa) and up to 250 psig (1720 kPa), be in accordance with the visual and radiographic inspection requirements of Chapter VI of ASME B31.3; or c) for design pressures of 100 psig (700 kPa) and less, be by visual inspection of the external weld surface, as well as the internal weld surface where accessible without the use of special tools. Acceptance criteria of the weld shall be in accordance with the requirements of Annex I."
+  },
+  {
+    "clause": "6.9.5",
+    "title": "Piping or fitting thread",
+    "description": "A piping or fitting thread shall be tapered and shall comply with ANSI/ASME B1.20.1."
+  },
+  {
+    "clause": "6.9.6",
+    "title": "Jointing sealant",
+    "description": "When a jointing sealant is used, it shall be certified to CAN/ULC-S542 and shall be applied to the male threads of a metal pipe. Tape shall be stretched and applied in a clockwise direction, with a 50% overlap leaving the first two starter threads bare. Tape shall not be used for pipe sizes larger than 1-1/2 in (38 mm) nominal pipe size for hydrogen-natural gas blends."
+  },
+  {
+    "clause": "6.9.7",
+    "title": "Gasket material",
+    "description": "Gasket materials shall be of either neoprene or other similar material resistant to any action of gas. Natural rubber shall not be used."
+  },
+  {
+    "clause": "6.9.8",
+    "title": "Lubricant use",
+    "description": "A lubricant used in either a valve or a control shall be of a type approved for gas use. It shall be capable of withstanding the service conditions to which it can be subjected when used in accordance with the manufacturer's recommendations."
+  },
+  {
+    "clause": "6.9.9",
+    "title": "Seamless copper, brass, or steel tubing",
+    "description": "A joint in seamless copper, brass, or steel tubing shall be made by: a) a flare joint; b) an approved fitting, other than a metallic ball sleeve compression-type fitting; c) brazing with a material that has a melting point exceeding 1000 °F (525 °C); or d) a press-connect fitting."
+  },
+  {
+    "clause": "6.9.10",
+    "title": "Bushing",
+    "description": "A bushing shall be made of: a) steel for a change of one pipe size; or b) steel or malleable iron for a change of two or more pipe sizes."
+  },
+  {
+    "clause": "6.9.11",
+    "title": "Plastic pipe and fittings",
+    "description": "Plastic pipe and fittings shall be joined by heat fusion, electrofusion, or mechanical methods. Such joining methods shall be compatible with the materials being joined, in accordance with CSA 2662 and the manufacturer's instructions."
+  },
+  {
+    "clause": "6.10",
+    "title": "Branch piping outlets",
+    "description": "If a branch piping outlet is installed in the main gas piping system before it is known what size of piping is required to be connected to it, the outlet shall be of the same size as the piping which supplies it."
+  },
+  {
+    "clause": "6.11",
+    "title": "Appliance connections",
+    "description": "General requirements for appliance connections to gas piping systems."
+  },
+  {
+    "clause": "6.11.1",
+    "title": "General",
+    "description": "The following requirements apply to appliance connections: a) Where approved, rigid piping may be used to connect an appliance to the building gas piping system. b) A vented appliance shall be connected directly to the gas supply with piping or tubing or by means specified in Clause 6.21. c) CSST and copper tubing shall only be connected to an appliance secured in place (nonmovable) or to rigid piping."
+  },
+  {
+    "clause": "6.11.2",
+    "title": "Gas hose or connector requirements",
+    "description": "An appliance connection shall satisfy one of the following requirements: a) An appliance permitted by Clauses 6.20 and 6.21 for use with a gas hose may be connected to the building piping by means of a gas convenience outlet or by means of a quick-disconnect device, and where a quick-disconnect device is used, a readily accessible manual shut-off valve shall be installed upstream of, and as close as practicable to, the quick-disconnect device. b) An appliance permitted by Clauses 6.20 and 6.21 for use with a gas connector that is certified to CSA/ANSI 221.24/CSA 6.10 shall be directly connected to the building gas piping system secure outlet. c) An appliance permitted by Clauses 6.20 and 6.21 for use with a gas connector that is certified to ANSI 221.69/CSA 6.16 may be connected directly to the building gas piping system secure outlet or connected by means of a gas convenience outlet or a quick-disconnect device, and where a quick-disconnect device is used, a readily accessible manual shut-off valve shall be installed upstream of, and as close as practicable to, the quick-disconnect device. d) An appliance permitted by Clauses 6.20 and 6.21 for use with a gas connector that is certified to CSA/ANSI 221.101/CSA 8.5 shall be connected to the building gas piping system by means of a gas convenience outlet."
+  },
+  {
+    "clause": "6.11.3",
+    "title": "Quick-disconnect location",
+    "description": "A quick-disconnect device shall not be used to connect appliances indoors in a residential building."
+  },
+  {
+    "clause": "6.11.4",
+    "title": "Gas convenience outlet certification",
+    "description": "A gas convenience outlet shall be certified to CSA/ANSI 221.90/CSA 6.24."
+  },
+  {
+    "clause": "6.11.5",
+    "title": "Quick-disconnect certification",
+    "description": "A quick-disconnect device shall be certified to CSA/ANSI 221.41/CSA 6.9."
+  },
+  {
+    "clause": "6.11.6",
+    "title": "Support",
+    "description": "An appliance shall be adequately supported and connected to the piping so that there is no undue strain on the connection."
+  },
+  {
+    "clause": "6.12",
+    "title": "Piping outlets",
+    "description": "General requirements for piping outlets in gas systems."
+  },
+  {
+    "clause": "6.12.1",
+    "title": "General",
+    "description": "During the period when an appliance is not connected to an outlet of a piping system, the outlet shall be made tight by means of: a) a plugged valve; or b) either a cap or plug made of material compatible with the material of the piping or tubing system."
+  },
+  {
+    "clause": "6.12.2",
+    "title": "Unthreaded piping",
+    "description": "An unthreaded portion of a piping outlet shall extend at least 1 in (25 mm) through either a finished ceiling or a finished wall and at least 2 in (50 mm) through a floor."
+  },
+  {
+    "clause": "6.12.3",
+    "title": "Piping outlet location",
+    "description": "A piping outlet shall be located as close as practicable to the appliance being served."
+  },
+  {
+    "clause": "6.13",
+    "title": "Drip and dirt pockets",
+    "description": "Requirements for drip and dirt pockets in gas piping systems."
+  },
+  {
+    "clause": "6.13.1",
+    "title": "Dirt pocket installation",
+    "description": "A dirt pocket shall be installed at the bottom of any piping or tubing on the final drop serving an appliance other than: a) an illuminating appliance; b) a range; c) a clothes dryer; d) an outdoor grill; e) a portable appliance or equipment; f) a decorative appliance; g) a gas log; h) a room heater; and i) an appliance incorporating a sediment trap."
+  },
+  {
+    "clause": "6.13.2",
+    "title": "Size",
+    "description": "Both a drip pocket and a dirt pocket shall be sized as follows: a) The depth of the pocket shall be either 3 in (75 mm) or equal to the internal diameter of the piping it serves, whichever is greater. b) The diameter of the pocket shall be either NPS 2 or equal to the diameter of the piping it serves, whichever is less."
+  },
+  {
+    "clause": "6.13.3",
+    "title": "Location",
+    "description": "A drip or dirt pocket shall be located where readily accessible to permit cleaning and emptying."
+  },
+  {
+    "clause": "6.13.4",
+    "title": "Termination",
+    "description": "A drip or dirt pocket shall be capped."
+  },
+  {
+    "clause": "6.13.5",
+    "title": "Drip pocket installation",
+    "description": "A drip pocket shall be provided at all points in a piping system where condensation can collect, such as points where the piping is exposed to either wide ranges or sudden changes in temperature."
+  },
+  {
+    "clause": "6.13.6",
+    "title": "Additional requirements",
+    "description": "When a drip or dirt pocket is required by either Clause 6.13.1 or 6.13.5, it shall be connected to the piping it serves through the bottom opening of a tee, the other two openings of which shall serve as continuity for the piping system."
+  },
+  {
+    "clause": "6.14",
+    "title": "Prohibited practices",
+    "description": "General prohibited practices in gas piping systems."
+  },
+  {
+    "clause": "6.14.1",
+    "title": "Defective piping",
+    "description": "A defective section of piping or tubing shall be replaced and not repaired."
+  },
+  {
+    "clause": "6.14.2",
+    "title": "Nesting",
+    "description": "Bushings shall not be nested."
+  },
+  {
+    "clause": "6.14.3",
+    "title": "Left and right hand threads",
+    "description": "A pipe fitting containing both left- and right-hand threads, a thread protector, or running threads shall not be used."
+  },
+  {
+    "clause": "6.14.4",
+    "title": "Union or combination of fittings",
+    "description": "A union or a combination of fittings designed and intended to act as a swing joint shall not be used where piping is concealed."
+  },
+  {
+    "clause": "6.14.5",
+    "title": "Field bending",
+    "description": "Piping shall not be field bent."
+  },
+  {
+    "clause": "6.14.6",
+    "title": "Electrical",
+    "description": "Piping or tubing shall not be used for an electrical ground. An electric circuit shall not utilize piping or tubing in lieu of wiring, except for a low-voltage control circuit, ignition circuit, or electronic flame-detection device circuit incorporated as part of an appliance."
+  },
+  {
+    "clause": "6.14.7",
+    "title": "Fittings",
+    "description": "A close nipple, a street elbow, or a street tee shall not be used in a piping system."
+  },
+  {
+    "clause": "6.14.8",
+    "title": "Meter connection",
+    "description": "CSST or copper tubing shall not be used to connect to a meter, unless the meter assembly is independently supported."
+  },
+  {
+    "clause": "6.15",
+    "title": "Underground piping and tubing",
+    "description": "Requirements for underground gas piping and tubing installations."
+  },
+  {
+    "clause": "6.15.1",
+    "title": "Prohibition",
+    "description": "Piping having a nominal diameter of less than NPS 1/2 shall not be used underground."
+  },
+  {
+    "clause": "6.15.2",
+    "title": "Piping connection",
+    "description": "Underground piping systems shall be joined or connected by welding, approved mechanical compression, or press-connect fittings."
+  },
+  {
+    "clause": "6.15.3",
+    "title": "Tubing connection",
+    "description": "Underground tubing systems shall be joined or connected by brazing, approved mechanical compression, or approved flared or press-connect fittings."
+  },
+  {
+    "clause": "6.15.4",
+    "title": "Location depth",
+    "description": "Piping and tubing shall be located neither less than 15 in (400 mm) underground nor less than 24 in (610 mm) under a commercial driveway or parking lot, except when it rises above ground at the point of supply to either a building or an outdoor appliance. Additional depth of cover shall be required where the piping is located in areas where physical damage is likely to occur, such as farm operations."
+  },
+  {
+    "clause": "6.15.5",
+    "title": "Trench",
+    "description": "A trench for underground piping or tubing shall be properly graded to prevent a sag in the piping or tubing."
+  },
+  {
+    "clause": "6.15.6",
+    "title": "Backfill",
+    "description": "Backfill material shall be free of sharp objects, large stones, or any other material that can damage the piping or tubing."
+  },
+  {
+    "clause": "6.15.7",
+    "title": "Location",
+    "description": "Underground piping or tubing shall not pass below a foundation or wall, or under a building."
+  }
+]

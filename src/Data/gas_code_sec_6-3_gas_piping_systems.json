@@ -1,0 +1,217 @@
+[
+  {
+    "clause": "6.20.6",
+    "title": "Interconnected equipment",
+    "description": "When tanks or pieces of equipment are interconnected, provisions shall be made to compensate for vibration and differential settling of the tanks, equipment, and interconnecting piping. Where a gas hose is used for this purpose, it shall be a metallic gas hose complying with ANSI/CAN/UL 536 or a Type II or Type III gas hose complying with CSA 8.1."
+  },
+  {
+    "clause": "6.20.7",
+    "title": "Transferring liquid propane",
+    "description": "When a gas hose is used for transferring liquid propane from one container to another, the gas hose shall be protected by a hydrostatic relief valve located between the shut-off valves on the gas hose."
+  },
+  {
+    "clause": "6.20.8",
+    "title": "Propane applications",
+    "description": "In propane applications, a gas hose shall not be run from a tank and/or vapourizer that is installed outdoors to an appliance located within a building, except where the gas hose connects to an appliance used for temporary construction-heating purposes."
+  },
+  {
+    "clause": "6.21",
+    "title": "Gas connectors",
+    "description": "Requirements for gas connectors including certification, installation, and various applications."
+  },
+  {
+    "clause": "6.21.1",
+    "title": "Certification for gas connectors",
+    "description": "A gas connector shall be certified to CSA/ANSI 221.24/CSA 6.10, ANSI 221.69/CSA 6.16, ANSI 221.75/CSA 6.27, CSA/ANSI Z21.54/CSA8.4, or CSA/ANSI 221.101/CSA 8.5."
+  },
+  {
+    "clause": "6.21.2",
+    "title": "Installation for gas connectors",
+    "description": "A gas connector shall be protected from damage, not pass through a wall, floor, ceiling, or partition, be connected to rigid piping or tubing located in the same area as the appliance, and comply with Clauses 4.5.2 and 4.9.1."
+  },
+  {
+    "clause": "6.21.3",
+    "title": "Corrugated metal gas connector",
+    "description": "Except as specified in Clause 7.23.3, a corrugated metal gas connector certified to CSA/ANSI 221.24/CSA 6.10 may be used to connect ranges, refrigerators, clothes dryers, built-in counter appliances (max 6 ft), suspended appliances (max 2 ft), or decorative appliances, room heaters, or direct-vent wall furnaces (max 2 ft unless free-standing)."
+  },
+  {
+    "clause": "6.21.4",
+    "title": "Additional application",
+    "description": "A gas connector certified to ANSI 221.101/CSA 8.5 may be used to connect an appliance such as a range, refrigerator, or clothes dryer to the building piping."
+  },
+  {
+    "clause": "6.21.5",
+    "title": "Large gas utilization equipment",
+    "description": "Commercial cooking appliances certified for use with casters or otherwise subject to movement during cleaning and other large gas utilization equipment that can be moved shall be connected by a gas connector that is certified to either ANSI 221.69/CSA 6.16 or CSA/ANSI 221.101/CSA 8.5."
+  },
+  {
+    "clause": "6.21.6",
+    "title": "Commercial cooking appliance",
+    "description": "When the gas connector described in Clause 6.21.5 is used with a commercial cooking appliance installed on wheels or rollers, a noncombustible restraining device shall be provided to protect the gas connector, and the installation shall be in accordance with Clause 7.32.4."
+  },
+  {
+    "clause": "6.21.7",
+    "title": "Vented appliance",
+    "description": "A gas connector not exceeding 2 ft (600 mm) may be used on a vented appliance, such as a freestanding space heater, provided that the appliance is secured to prevent dislodgement of the vent."
+  },
+  {
+    "clause": "6.21.8",
+    "title": "Outdoor gas appliance and manufactured homes",
+    "description": "A gas connector certified to ANSI 221.75/CSA 6.27 may be used to connect an appliance for outdoor use that is not frequently moved after installation, or a mobile home that is not installed on a permanent foundation. These connectors are not intended for use with wheeled, caster mounted, or portable appliances."
+  },
+  {
+    "clause": "6.21.9",
+    "title": "Portable outdoor appliances",
+    "description": "A gas connector certified to CSA/ANSI 221.54/CSA 8.4 may be used to connect a portable outdoor appliance in an unconcealed space."
+  },
+  {
+    "clause": "6.22",
+    "title": "Testing of piping, tubing, hose, and fittings",
+    "description": "Requirements for testing gas piping systems including pressure testing, duration requirements, and procedures."
+  },
+  {
+    "clause": "6.22.1",
+    "title": "Requirements",
+    "description": "The source of test pressure shall be isolated while the piping or tubing system is under test, and the system shall retain the test pressure for the minimum duration required in Table 6.3 without showing any drop in pressure."
+  },
+  {
+    "clause": "6.22.2",
+    "title": "Before connection requirements",
+    "description": "Before an appliance is connected to, and before fuel gas is introduced to, a new gas piping system or a replacement, modification, or addition to an in-service gas piping system, the new, replacement, or modified gas piping system not yet introduced to the fuel gas shall be pressure tested using either air, inert gas, or carbon dioxide according to specific procedures and Table 6.3 requirements."
+  },
+  {
+    "clause": "6.22.3",
+    "title": "After connection requirements",
+    "description": "Before an appliance is first activated after its installation or after gas is reintroduced to part or all of a gas piping system after an interruption of service, one or more valves shall be selected to isolate the necessary portion of the gas piping system and all of the gas piping system downstream of these valves, through to the inlet of the appliance's valve train, shall be tested for leakage in a specific manner including a 10-minute duration test."
+  },
+  {
+    "clause": "6.22.4",
+    "title": "Valve train leak test",
+    "description": "Subsequent to a leak test prescribed in Clause 6.22.3, each appliance connection, valve, valve train, and system component shall be checked for leaks at the threaded or flanged connection to gas piping, tubing, or hose, while under normal operating pressure with either a liquid solution or a leak-detection device."
+  },
+  {
+    "clause": "6.22.5",
+    "title": "Addition to existing piping or tubing",
+    "description": "An addition to an existing piping or tubing system shall be tested as an individual system in accordance with Clause 6.22 except for specific conditions regarding additions 20 ft or less in length and welded tie-ins."
+  },
+  {
+    "clause": "6.22.6",
+    "title": "Enclosed or concealed systems",
+    "description": "When any part of a piping or tubing system is to be enclosed or concealed, the tests specified in Clause 6.22.2 shall precede the work of closing in."
+  },
+  {
+    "clause": "6.23",
+    "title": "Purging of gas piping systems",
+    "description": "Requirements for purging gas piping systems to the outdoors using approved engineering practices."
+  },
+  {
+    "clause": "6.23.1",
+    "title": "Purging outdoors",
+    "description": "A gas piping system shall be purged to the outdoors using approved engineering practices or in accordance with Clauses 6.23.2 through 6.23.4 where the gas pressure is greater than 2 psig (14 kPa) or the system contains sections meeting the size and length criteria described in Table 6.4."
+  },
+  {
+    "clause": "6.23.2",
+    "title": "Containing air",
+    "description": "When a gas piping system meeting the description of Table 6.4 and containing air is placed in service, it shall be first purged with an inert gas and then purged with fuel gas in accordance with Clause 6.23.4."
+  },
+  {
+    "clause": "6.23.3",
+    "title": "Removal of existing gas piping system",
+    "description": "Where an existing gas piping system is removed from service for the purpose of repair, alteration, or abandonment, the section that is opened shall be isolated from the gas supply and the line purged in accordance with Clause 6.23.4. Where the piping, tubing, or gas hose meets the description of Table 6.4, the residual fuel gas shall be purged with an inert gas."
+  },
+  {
+    "clause": "6.23.4",
+    "title": "Purge discharging and operations",
+    "description": "The open end of a gas piping system being purged shall be discharged directly to an outdoor location. Purging operations shall comply with specific requirements including continuous attendance by a qualified person, direct control via quarter-turn shut-off valve within 5 ft of open end, monitoring with combustible gas indicator, proper distances from ignition sources and buildings, and maintenance of continuously burning flame during fuel gas introduction."
+  },
+  {
+    "clause": "6.23.5",
+    "title": "Flaring",
+    "description": "When flaring is used to purge a gas piping system, an approved purge burner shall be used."
+  },
+  {
+    "clause": "6.23.6",
+    "title": "Additional purging conditions",
+    "description": "A gas piping system not meeting the conditions specified in Clause 6.23.1 may be purged either to the outdoors in accordance with Clause 6.23.4, to the indoors in accordance with Clause 6.23.7, or in accordance with good engineering practice."
+  },
+  {
+    "clause": "6.23.7",
+    "title": "Purging indoors",
+    "description": "When the conditions in Clause 6.23.6 allow it, a gas piping system shall be purged in an indoor space only in accordance with specific options: igniting gas at an appliance with input rating up to 400,000 Btu/h with readily accessible burner not in combustion chamber, or for appliances not equipped with continuous pilot, following procedures in Annex. Open discharge points must be continuously attended and monitored with combustible gas indicator."
+  },
+  {
+    "clause": "6.23.8",
+    "title": "Appliance purging",
+    "description": "When all gas piping systems have been purged and placed in service, the appliance or equipment piping shall be purged prior to being placed in service and the pilot lighted."
+  },
+  {
+    "clause": "6.24",
+    "title": "Purging gas from a piping or tubing system",
+    "description": "Carbon dioxide or nitrogen, or a mixture of these, or air shall be used when purging gas from a piping or tubing system for the purpose of repair, alteration, or abandonment. The applicable procedures in Clause 6.23 shall apply."
+  },
+  {
+    "clause": "6.25",
+    "title": "Rooftop gas piping systems",
+    "description": "Requirements for gas piping systems installed on rooftops including support, expansion, and flexibility considerations."
+  },
+  {
+    "clause": "6.25.1",
+    "title": "Piping support",
+    "description": "Piping on a rooftop may be supported with treated wood blocks or material having characteristics at least equivalent to treated wood blocks and protection against outdoor exposure. Support spacing of piping NPS 1 and greater shall comply with specified tables and support shall be provided for every fitting. Piping less than NPS 1 shall be supported vertically according to tables and horizontally every 4 ft (1.2 m)."
+  },
+  {
+    "clause": "6.25.2",
+    "title": "Tubing support",
+    "description": "The support spacing on a rooftop for all tubing shall be supported vertically according to Table 6.2 and continuously with treated wood and planks when it is laid horizontally."
+  },
+  {
+    "clause": "6.25.3",
+    "title": "Expansion and flexibility",
+    "description": "Piping and tubing shall be installed in accordance with Clauses 6.16.1 and 6.16.3, and means for expansion shall be provided."
+  },
+  {
+    "clause": "6.26",
+    "title": "Inspection",
+    "description": "Requirements for inspection of plastic piping and tubing systems."
+  },
+  {
+    "clause": "6.26.1",
+    "title": "Plastic piping and tubing",
+    "description": "Plastic piping and tubing shall be inspected before and after installation for defects such as cuts, scratches, and gouges. Damaged cylindrical pieces shall be cut out and replaced. Inspection shall be adequate to confirm that sound joints have been made."
+  },
+  {
+    "clause": "6.26.2",
+    "title": "Plastic piping and tubing joints",
+    "description": "Joints in plastic piping and tubing shall be visually checked for evidence of poor bonding. Where inspection reveals defective joints, they shall be cut out and replaced."
+  },
+  {
+    "clause": "6.27",
+    "title": "Highway vehicles, recreational vehicles, mobile outdoor food service units, wash-mobiles, and mobile homes",
+    "description": "Special requirements for gas installations in mobile applications and vehicles."
+  },
+  {
+    "clause": "6.27.1",
+    "title": "Hose connector",
+    "description": "A hose connector rated at not less than 350 psig (2500 kPa) shall be provided between the cylinder valve outlet and the inlet of the regulator when the regulator is rigidly mounted on a support bracket, or between the regulator outlet and the main propane piping or tubing when the regulator is rigidly fixed to the cylinder valve outlet."
+  },
+  {
+    "clause": "6.27.2",
+    "title": "Propane piping",
+    "description": "A propane line supplying a furnace in a mobile home may be routed through a combustion air or outdoor air make-up opening in the furnace base, provided that the propane piping through the furnace base consists of a single piece and any connection to this piping is made above the level of the top of the furnace base and below the lowest level of the floor or furnace base extension."
+  },
+  {
+    "clause": "6.27.3",
+    "title": "Shut-off valve",
+    "description": "An individual shut-off valve shall not be required for each appliance in a recreational vehicle."
+  },
+  {
+    "clause": "6.27.4",
+    "title": "Hose",
+    "description": "Hose shall not be used in lieu of piping or tubing but may be used in conjunction with piping or tubing."
+  },
+  {
+    "clause": "6.27.5",
+    "title": "Connections",
+    "description": "Except for the final connection of piping, tubing, or hose to an appliance or for connection to a valve as described in Clause 4.19.2, there shall be no connections in the piping or tubing within a vehicle. This requirement does not apply to the piping systems installed at the factory and certified in accordance with CSA Z240 RV."
+  }
+]

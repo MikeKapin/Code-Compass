@@ -1,0 +1,137 @@
+[
+  {
+    "clause": "9.1.1",
+    "title": "Applicability",
+    "description": "Manifold applications shall comply with the requirements of Clause 7.2, and cylinder-filling applications shall comply with the requirements of Clause 9."
+  },
+  {
+    "clause": "9.1.2",
+    "title": "Protection",
+    "description": "Compressors, cylinders, valves, regulators, gauges, piping, tubing, hose, and other equipment shall be protected against damage."
+  },
+  {
+    "clause": "9.1.3",
+    "title": "Installation occupancy",
+    "description": "The compressor shall only be installed in industrial occupancies as defined in the National Building Code of Canada, unless otherwise approved."
+  },
+  {
+    "clause": "9.1.4",
+    "title": "Exposure",
+    "description": "The compressor shall be installed indoors or outdoors in accordance with its certification."
+  },
+  {
+    "clause": "9.1.5",
+    "title": "Vibration isolation",
+    "description": "Where required, a compressor shall be isolated from vibration at the inlet and outlet by a gas hose."
+  },
+  {
+    "clause": "9.1.6",
+    "title": "Component pressure rating",
+    "description": "Piping, hose, and fittings utilized in the cylinder manifold shall be rated for a minimum of 1.5 times the maximum operating pressure."
+  },
+  {
+    "clause": "9.1.7",
+    "title": "Supply capacity",
+    "description": "The gas supplier or distributor shall be notified by the installer prior to installing a compressor to analyze capacity considerations."
+  },
+  {
+    "clause": "9.2.1",
+    "title": "Qualification",
+    "description": "Refillable cylinders shall be manufactured, tested, inspected, and marked in accordance with the requirements of the Transportation of Dangerous Goods Regulations (TDG Regulations) of Transport Canada."
+  },
+  {
+    "clause": "9.2.2",
+    "title": "Maximum capacity",
+    "description": "Cylinders used indoors shall have a water capacity not greater than 175 lb (80 kg)."
+  },
+  {
+    "clause": "9.2.3",
+    "title": "Marking",
+    "description": "In addition to the marking requirements, the cylinder shall be legibly marked \"FOR NATURAL GAS ONLY\". The equivalent French wording is \"GAZ NATUREL SEULEMENT\"."
+  },
+  {
+    "clause": "9.2.4",
+    "title": "Requalification",
+    "description": "Re-examination and re-marking of a refillable cylinder shall be done in accordance with the TDG Regulations of Transport Canada."
+  },
+  {
+    "clause": "9.2.5",
+    "title": "Protection",
+    "description": "Cylinders shall be protected as required by the TDG Regulations of Transport Canada."
+  },
+  {
+    "clause": "9.3.1",
+    "title": "Visual inspection",
+    "description": "Cylinders shall be selected and filled in accordance with the requirements of the TDG Regulations of Transport Canada. Prior to filling, a cylinder shall be given a thorough visual inspection, and it shall be rejected and taken out of service if evidence is found that it has a bad dent, damaged foot ring or protective collar, corroded area, leak, or another condition that indicates a possible weakness that would render it unfit for service."
+  },
+  {
+    "clause": "9.3.2",
+    "title": "Maximum pressure",
+    "description": "Cylinders used indoors shall not be filled in excess of 300 psig (2100 kPa) at 59 °F (15 °C)."
+  },
+  {
+    "clause": "9.3.3",
+    "title": "Filling operations",
+    "description": "A cylinder connected for filling shall be located outdoors, unless indoor filling is approved by the authority having jurisdiction, and shall be filled through an approved manifold and an approved connector equipped with a back-check valve at the point of cylinder connection; located not less than 3 ft (0.9 m) from a building opening or air intake; and located not less than 10 ft (3 m) from a mechanical air intake."
+  },
+  {
+    "clause": "9.3.4",
+    "title": "Filling manifold",
+    "description": "The manifold specified in Clause 9.3.3 a) i) shall be located outdoors, unless indoor filling is approved by the authority having jurisdiction, and shall be connected to the compressor with rigid piping or tubing; and installed in accordance with Clause 9.1.1."
+  },
+  {
+    "clause": "9.3.5",
+    "title": "Indoor filling",
+    "description": "Where the authority having jurisdiction permits indoor filling, the room in which filling takes place shall be vented to the outdoors by a mechanical ventilation system equipped with a proven airflow interlock to stop the operation of the compressor in the event that the ventilation rate is less than 10 times the flow capacity of the compressor."
+  },
+  {
+    "clause": "9.3.6",
+    "title": "Signage",
+    "description": "Signs marked \"NO SMOKING\" and \"DÉFENSE DE FUMER\" or signs using symbols shall be prominently displayed in the filling area."
+  },
+  {
+    "clause": "9.4.1",
+    "title": "Clearance to fuels",
+    "description": "Any cylinder in storage shall be located not less than 20 ft (6 m) from any flammable liquid, oxidizing agent, or combustible gas other than natural gas, or shall be separated in a manner acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "9.4.2",
+    "title": "Storage cabinet",
+    "description": "Cylinders that have been in service and are not connected for use or filling shall be stored outdoors in a storage cabinet in accordance with Clause 9.4.3."
+  },
+  {
+    "clause": "9.4.3",
+    "title": "Cabinet design",
+    "description": "The storage cabinet shall be supplied with a top cover; be made of noncombustible material and be structurally sound, with no openings greater than 4 in² (25.8 cm²); have at least 2 sides constructed to provide equal ventilation through openings at the top and bottom of the side, providing, as a minimum, the equivalent total opening of 15% open area on each side panel; not restrict the dispersion of any fuel gas leak to ensure it is well ventilated; have its base on a firm level footing in an upright position; and not be located against other objects, or have objects attached, that restrict ventilation."
+  },
+  {
+    "clause": "9.4.4",
+    "title": "Clearance to property line",
+    "description": "Cylinders stored outdoors shall be located 5 ft (1.5 m) from a property line if the aggregate capacity of expanded gas is up to and including 6000 ft³ (170 000 L); 25 ft (7.5 m) from a property line if the aggregate of expanded gas is more than 6000 ft³ (170 000 L) and up to and including 18 000 ft³ (500 000 L); and 50 ft (15 m) from a property line if the aggregate of expanded gas exceeds 18 000 ft³ (500 000 L). This is evaluated at standard pressure of 14.7 psi absolute (101.3 kPa) and temperature of 59 °F (15 °C)."
+  },
+  {
+    "clause": "9.4.5",
+    "title": "Protection",
+    "description": "Each side of a cylinder storage area exposed to vehicular traffic shall be protected by barriers, posts, or guardrails."
+  },
+  {
+    "clause": "9.4.6",
+    "title": "Cylinder valve",
+    "description": "Any cylinder in storage shall have the cylinder valve closed."
+  },
+  {
+    "clause": "9.5.1",
+    "title": "Indoor safety",
+    "description": "A cylinder may be used indoors to supply natural gas for welding, cutting, and preheating when portability is necessary, provided that a pressure regulator is employed and directly connected to the equipment or cylinder valve, or located on a manifold that is connected to the cylinder valve; the total number of cylinders connected to other industrial gas cylinders does not exceed four, and their aggregate volume of expanded gas to the absolute pressure of 14.696 psi (101.325 kPa) and a temperature of 59 °F (15 °C) does not exceed 1000 scf (28.3 m³). If there is more than one manifold of cylinders, the manifolds may be located in the same area, provided that they are separated by a distance of at least 15 ft (4.5 m); the cylinder, regulating equipment, and manifold are not located where they are subject to damage or to temperatures in excess of 125 °F (50 °C); and the cylinder is equipped with an excess-flow valve that is either integral to the cylinder valve or connected to the cylinder valve outlet. In either case, it shall be installed in such a manner that undue strain beyond the excess-flow valve will not cause breakage between the cylinder and the excess flow valve."
+  },
+  {
+    "clause": "9.5.2",
+    "title": "Indoor location",
+    "description": "A cylinder in use inside a building shall not be located near an exit, a stairway, or an area normally used or intended for the safe evacuation of people."
+  },
+  {
+    "clause": "9.5.3",
+    "title": "Connection location",
+    "description": "Connection and disconnection of cylinders shall be done in a well-ventilated area with no source of ignition within 10 ft (3 m) from the point of connection."
+  }
+]

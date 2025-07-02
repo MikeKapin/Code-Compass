@@ -1,0 +1,1312 @@
+[
+  {
+    "clause": "7.1",
+    "title": "Boilers",
+    "description": "General requirements for boiler installation including provincial compliance, location requirements, and clearances."
+  },
+  {
+    "clause": "7.1.1",
+    "title": "Provincial requirement",
+    "description": "A boiler shall conform to the requirements of the provincial boiler and pressure vessel regulations as applicable."
+  },
+  {
+    "clause": "7.1.2",
+    "title": "Installation location",
+    "description": "A boiler shall be installed on a firm and level base and noncombustible floor or support, with specific exceptions for certified installations."
+  },
+  {
+    "clause": "7.1.3",
+    "title": "Clearances",
+    "description": "Minimum clearances from combustible material: vertical - 18 in (450 mm), sides and rear - 18 in (450 mm), front - 48 in (1200 mm)."
+  },
+  {
+    "clause": "7.2",
+    "title": "Generators, compressors/pressure boosters, engines, and turbines",
+    "description": "General requirements for installation of generators, compressors, pressure boosters, engines, and turbines."
+  },
+  {
+    "clause": "7.2.1",
+    "title": "General requirements",
+    "description": "Overall installation requirements including certification, access, venting, housing, foundation, and protection requirements."
+  },
+  {
+    "clause": "7.2.1.1",
+    "title": "Certification body acceptance",
+    "description": "Installation shall comply with this Code, applicable Standards, manufacturer's instructions, and local requirements including fire regulations, building codes, and zoning requirements."
+  },
+  {
+    "clause": "7.2.1.2",
+    "title": "Installation access",
+    "description": "Appliances shall be installed such that all service, maintenance, inspection, and repair as required by the manufacturer can be accomplished."
+  },
+  {
+    "clause": "7.2.1.3",
+    "title": "Venting and air minimum requirements",
+    "description": "Venting and air-supply requirements shall be provided in accordance with applicable clauses or designed per manufacturer's instructions, with ventilation openings arranged to minimize short-circuiting."
+  },
+  {
+    "clause": "7.2.1.4",
+    "title": "Housing codes",
+    "description": "Rooms or enclosures housing appliances shall be constructed in accordance with national or local building codes."
+  },
+  {
+    "clause": "7.2.1.5",
+    "title": "Housing ventilation",
+    "description": "Rooms or structures housing appliances shall have ventilation designed to minimize the possibility of hazardous accumulation of flammable vapours or gases."
+  },
+  {
+    "clause": "7.2.1.6",
+    "title": "Foundation and framework",
+    "description": "Appliances shall be installed on a firm level foundation, set on a suitable framework supplied by the manufacturer, or field fabricated per manufacturer's instructions."
+  },
+  {
+    "clause": "7.2.1.7",
+    "title": "Rooftop installation",
+    "description": "Appliances located on rooftops shall comply with specific clauses and provisions shall be made for oil spill containment."
+  },
+  {
+    "clause": "7.2.1.8",
+    "title": "Installation protection",
+    "description": "Installation shall be protected by approved means against impact, ice build-up, flooding, and blockage of ventilation."
+  },
+  {
+    "clause": "7.2.1.9",
+    "title": "Installation protection",
+    "description": "Ventilation shall be interconnected with a gas detector that activates at gas detection levels at one-fifth of the lower limit of flammability, produces audible and visual alarms, and is interlocked with ventilation and appliance shutdown."
+  },
+  {
+    "clause": "7.2.2",
+    "title": "Compressors/pressure boosters",
+    "description": "Specific requirements for compressor and pressure booster installation including compliance, ventilation, and installation requirements."
+  },
+  {
+    "clause": "7.2.2.1",
+    "title": "Compliance and approval",
+    "description": "A compressor/pressure booster shall comply with Clause 17.2 of CSA B149.3 and shall be approved by the authority having jurisdiction."
+  },
+  {
+    "clause": "7.2.2.2",
+    "title": "Ventilation",
+    "description": "Ventilation air shall be provided to the space occupied by a pressure booster to prevent any accumulation of gas in the event that leakage occurs."
+  },
+  {
+    "clause": "7.2.2.3",
+    "title": "Installation requirements",
+    "description": "Requirements for all piping, tubing, hose, compressor/pressure boosters, and components operating at outlet pressures higher than those permitted by Table 5.1."
+  },
+  {
+    "clause": "7.2.2.4",
+    "title": "Installation location",
+    "description": "The compressor shall be installed outdoors unless approved and labelled for indoor installation."
+  },
+  {
+    "clause": "7.2.2.5",
+    "title": "Fittings",
+    "description": "The number of fittings used in supply line, discharge line, or hose shall be minimized to reduce the possibility of leakage."
+  },
+  {
+    "clause": "7.2.2.6",
+    "title": "Discharge piping",
+    "description": "The discharge piping shall be supported in accordance with manufacturer's instructions or CSA B51 requirements for pressure piping."
+  },
+  {
+    "clause": "7.2.2.7",
+    "title": "Pressure booster",
+    "description": "It is not necessary to meet ventilation requirements where a hermetically sealed pressure booster is installed."
+  },
+  {
+    "clause": "7.2.2.8",
+    "title": "Pressure boosting compressors",
+    "description": "Hermetically sealed compressors used for pressure boosting for burners, torches, or cylinder-filling applications shall comply with requirements and shall not have a capacity greater than 500 scf/h."
+  },
+  {
+    "clause": "7.2.2.9",
+    "title": "Cylinder filling",
+    "description": "Cylinder-filling applications are covered in Clause 9."
+  },
+  {
+    "clause": "7.2.3",
+    "title": "Emergency generators",
+    "description": "Requirements for emergency generator installation including independent piping, dedicated gas supply, and overpressure protection."
+  },
+  {
+    "clause": "7.2.3.1",
+    "title": "Independent piping",
+    "description": "Piping serving a generator for safety purposes shall be independent of other gas supplies and provided with a manual valve with permanent sign at building entry point."
+  },
+  {
+    "clause": "7.2.3.2",
+    "title": "Dedicated gas supply",
+    "description": "When gas supply to generator is required for safety purposes, supply shall be arranged so other appliances can be shut off without interrupting generator supply."
+  },
+  {
+    "clause": "7.2.3.3",
+    "title": "Overpressure protection",
+    "description": "Overpressure protection device for emergency generator piping shall be either a monitoring regulator or overpressure relief device only. Overpressure shut-off devices are not permitted."
+  },
+  {
+    "clause": "7.2.4",
+    "title": "Non-motive engines and turbines",
+    "description": "Requirements for non-motive engines and turbines including certification, supply piping sizing, exhaust gas piping, and venting."
+  },
+  {
+    "clause": "7.2.4.1",
+    "title": "Certification",
+    "description": "An engine or turbine shall be certified to ANSI/CAN UL/ULC 2200 or comply with CSA B149.3."
+  },
+  {
+    "clause": "7.2.4.2",
+    "title": "Supply piping sizing",
+    "description": "Supply piping shall be sized according to maximum rate of gas consumption and Clause 6 requirements. Normal operation considered 10,000 Btu/h per brake horsepower for 4-cycle engines and 13,000 Btu/h for 2-cycle engines."
+  },
+  {
+    "clause": "7.2.4.3",
+    "title": "Exhaust gas piping",
+    "description": "Engine or turbine exhaust gases shall be piped so they can neither be trapped nor be drawn into a building through windows, doors, or other openings."
+  },
+  {
+    "clause": "7.2.4.4",
+    "title": "Venting",
+    "description": "Pressure regulators and overpressure relief devices in valve train shall be vented in accordance with Clause 22, with outdoor vent terminations per Clause 5.6."
+  },
+  {
+    "clause": "7.2.5",
+    "title": "Additional requirements for gas engines and turbines in buildings",
+    "description": "Additional requirements for gas engines and turbines installed within buildings including ventilation location and operation."
+  },
+  {
+    "clause": "7.2.5.1",
+    "title": "Ventilation location",
+    "description": "A room containing an engine or turbine shall be ventilated at floor level for propane fuel or as close as practicable to ceiling for natural gas."
+  },
+  {
+    "clause": "7.2.5.2",
+    "title": "Ventilation operation",
+    "description": "When propane-fuelled engine or turbine is installed below grade, mechanical exhaust ventilation shall be provided and operated continuously with electrical interlock to shut down engine if exhaust system fails."
+  },
+  {
+    "clause": "7.2.5.3",
+    "title": "Fire protection",
+    "description": "Engine or turbine shall be installed in room with minimum 2h fire separation from remainder of building, with 1.5h fire protection rating door that is swinging automatic-closing type and gasketed on all sides."
+  },
+  {
+    "clause": "7.2.5.4",
+    "title": "Exhaust gas discharge",
+    "description": "Exhaust gases shall be discharged from building to outdoors in manner that will not create fire or other hazard, with specific requirements for different exhaust gas temperatures."
+  },
+  {
+    "clause": "7.2.5.5",
+    "title": "Exhaust gas piping",
+    "description": "Exhaust gases shall be piped by most direct route to outdoor location where they cannot be trapped or drawn into building, to conforming chimney, or per manufacturer's instructions."
+  },
+  {
+    "clause": "7.2.5.6",
+    "title": "Exhaust gas discharge",
+    "description": "An exhaust pipe shall not discharge into a gas vent, chimney with temperature rating less than maximum exhaust gas temperature, or chimney serving another appliance."
+  },
+  {
+    "clause": "7.2.5.7",
+    "title": "Exhaust pipe termination",
+    "description": "Exhaust pipe passing through combustible roof shall be insulated at point of passage by ventilated metal thimble extending 9 in above and below roof construction and 12 in larger in diameter than pipe."
+  },
+  {
+    "clause": "7.2.5.8",
+    "title": "Exhaust pipe guarding",
+    "description": "Exhaust pipe passing through combustible wall or partition shall be guarded at point of passage by double-ventilated metal thimble or metal/burned fire clay thimble built into noncombustible material."
+  },
+  {
+    "clause": "7.2.5.9",
+    "title": "Exhaust piping limitations",
+    "description": "Exhaust pipe shall not be installed in floor, ceiling, attic, or concealed space but may pass through such spaces if installed inside masonry or factory-built chimney of appropriate temperature rating."
+  },
+  {
+    "clause": "7.2.5.10",
+    "title": "Exhaust pipe clearances",
+    "description": "Exhaust pipe shall have clearance of at least 9 in to adjacent combustible materials, except as specified in previous clauses."
+  },
+  {
+    "clause": "7.3",
+    "title": "Carbon dioxide generators",
+    "description": "Requirements for carbon dioxide generator installation including certification, combustion air, and carbon dioxide production limits."
+  },
+  {
+    "clause": "7.3.1",
+    "title": "Certification",
+    "description": "A generator used in a greenhouse shall be certified for the application."
+  },
+  {
+    "clause": "7.3.2",
+    "title": "Combustion air",
+    "description": "A generator used in a produce storage area shall take its combustion air from outside the storage area."
+  },
+  {
+    "clause": "7.3.3",
+    "title": "Carbon dioxide production",
+    "description": "Generator for CO2 production in greenhouse may take combustion air from inside when combustion rate doesn't exceed 20 Btu/h/ft³, CO2 doesn't exceed 5000 ppm, and CO doesn't exceed 35 ppm."
+  },
+  {
+    "clause": "7.4",
+    "title": "Commercial-type clothes dryers",
+    "description": "Requirements for commercial clothes dryer installation including hot surface protection, clearances, and exhaust ducting."
+  },
+  {
+    "clause": "7.4.1",
+    "title": "Hot surface protection",
+    "description": "A dryer used in laundromat-type installation shall be installed such that access to top of dryer is screened or otherwise protected to prevent material contact with hot surface."
+  },
+  {
+    "clause": "7.4.2",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material: above - 18 in, front - 18 in, back and sides - 18 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.4.3",
+    "title": "Flexible exhaust ducting",
+    "description": "A UL 2158A certified flexible foil noncombustible-type duct may be used as transition connection between dryer exhaust and rigid moisture duct if no requirement specified in dryer installation instructions."
+  },
+  {
+    "clause": "7.4.4",
+    "title": "Exhaust terminations",
+    "description": "Dryer shall be connected to metal moisture-exhaust duct terminating outdoors not less than 3 ft from pressure regulator vent termination and not less than 10 ft from outdoor air intake."
+  },
+  {
+    "clause": "7.4.5",
+    "title": "Exhaust duct limitations",
+    "description": "Moisture-exhaust duct shall not be secured with screws and shall not be connected into any vent connector, vent, or chimney."
+  },
+  {
+    "clause": "7.4.6",
+    "title": "Make-up air",
+    "description": "Provision shall be made for make-up air to the area where the dryer is installed."
+  },
+  {
+    "clause": "7.4.7",
+    "title": "Exhaust duct clearances",
+    "description": "Moisture-exhaust duct shall have clearance of at least 6 in to combustible material but may be installed with reduced clearance if combustible material is protected as specified in Table 4.1."
+  },
+  {
+    "clause": "7.5",
+    "title": "Domestic-type clothes dryers",
+    "description": "Requirements for domestic clothes dryer installation including exhaust duct requirements, termination, and clearances."
+  },
+  {
+    "clause": "7.5.1",
+    "title": "Exhaust duct requirements",
+    "description": "Dryer shall be equipped with moisture-exhaust duct terminating outside building, constructed of noncombustible material or certified as meeting Class 1 air duct requirements."
+  },
+  {
+    "clause": "7.5.2",
+    "title": "Exhaust duct termination",
+    "description": "Moisture-exhaust duct shall not terminate within 3 ft in any direction of any pressure regulator vent termination or outdoor air intake."
+  },
+  {
+    "clause": "7.5.3",
+    "title": "Exhaust duct limitations",
+    "description": "Moisture-exhaust duct shall not be secured with screws and shall not be connected into any vent connector, vent, or chimney."
+  },
+  {
+    "clause": "7.5.4",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material: above - 6 in, front - 24 in, back and sides - 6 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.6",
+    "title": "Conversions",
+    "description": "Requirements for converting appliances to gas operation including minimum clearances and conversion requirements."
+  },
+  {
+    "clause": "7.6.1",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material for boiler or furnace converted to gas, with specific measurements for different furnace types."
+  },
+  {
+    "clause": "7.6.2",
+    "title": "Conversion requirements",
+    "description": "Appliance to be converted shall be thoroughly cleaned, leak tested, and examined for serviceability. Any unserviceable parts shall be repaired or replaced."
+  },
+  {
+    "clause": "7.6.3",
+    "title": "Chimney requirements",
+    "description": "When existing vented appliance is converted from solid or liquid fuel, chimney shall be examined and meet requirements of Clauses 8.12.2 to 8.12.11."
+  },
+  {
+    "clause": "7.7",
+    "title": "Conversion burners",
+    "description": "Requirements for conversion burner installation including conversion requirements, mobile home applications, and flame impingement prevention."
+  },
+  {
+    "clause": "7.7.1",
+    "title": "Conversion requirements",
+    "description": "A conversion burner designed by appliance manufacturer or compatible burner shall be used for conversions."
+  },
+  {
+    "clause": "7.7.2",
+    "title": "Mobile homes",
+    "description": "When oil-fired furnace in mobile home is converted to gas, conversion shall be by manufacturer's certified burner conversion package or certified conversion burner meeting compatibility requirements."
+  },
+  {
+    "clause": "7.7.3",
+    "title": "Flame impingement",
+    "description": "Conversion burner shall be correctly positioned and firmly secured to eliminate direct flame impingement on any surface other than flame spreader."
+  },
+  {
+    "clause": "7.8",
+    "title": "Conversion of warm air furnaces",
+    "description": "Specific requirements for converting warm air furnaces to gas operation including installation limitations and bypass requirements."
+  },
+  {
+    "clause": "7.8.1",
+    "title": "Installation",
+    "description": "Detailed requirements for installing natural-draft or fan-assisted burners in revertible flue furnaces, including flue collar positioning and bypass requirements."
+  },
+  {
+    "clause": "7.8.2",
+    "title": "Bypass requirements",
+    "description": "Bypass shall be gas-tight and constructed of metal at least equivalent in strength and corrosion resistance to the metal from which it is extended."
+  },
+  {
+    "clause": "7.8.3",
+    "title": "Secondary heating surfaces",
+    "description": "Forced-air furnace with secondary heating surface on suction side of circulating air blower shall not be converted to gas except where heating surface consists of single cylindrical flue pipe with single continuously gas-tight welded joint."
+  },
+  {
+    "clause": "7.8.4",
+    "title": "Markings",
+    "description": "Warning sign with specific bilingual text and letter size requirements shall be attached to circulating air blower compartment access door of fuel converted forced-air furnace."
+  },
+  {
+    "clause": "7.8.5",
+    "title": "Flue outlet material",
+    "description": "Flue outlet shall be made of material at least equivalent in strength and corrosion resistance to No. 24 GSG galvanized steel."
+  },
+  {
+    "clause": "7.8.6",
+    "title": "Temperature limits",
+    "description": "Automatically controlled gravity or forced-air furnace shall be equipped with high-temperature limit control with maximum setting of 350°F for gravity furnace and 250°F for forced-air furnace."
+  },
+  {
+    "clause": "7.9",
+    "title": "Conversion of ranges",
+    "description": "Requirements for converting ranges to gas operation including control valve access, burner location, and draft regulator."
+  },
+  {
+    "clause": "7.9.1",
+    "title": "Control valve access",
+    "description": "Range burner with control valve located at rear of range shall not be installed unless such valve is readily accessible."
+  },
+  {
+    "clause": "7.9.2",
+    "title": "Burner location",
+    "description": "Burner shall be located so that proper flame characteristics are maintained at all times."
+  },
+  {
+    "clause": "7.9.3",
+    "title": "Draft regulator",
+    "description": "Manually operated damper shall be replaced with draft regulator, and vent size may be reduced to minimum of 4 in."
+  },
+  {
+    "clause": "7.10",
+    "title": "Counter appliances",
+    "description": "Minimum clearance requirements for counter appliances from combustible material."
+  },
+  {
+    "clause": "7.11",
+    "title": "Direct-vent appliances",
+    "description": "Requirements for direct-vent appliance vent terminal location."
+  },
+  {
+    "clause": "7.12",
+    "title": "Furnaces used with cooling units",
+    "description": "Requirements for furnace installation in conjunction with cooling units including condensate management and damper control."
+  },
+  {
+    "clause": "7.12.1",
+    "title": "Cooling coil condensate",
+    "description": "When furnace is installed with refrigeration coil, arrangement shall prevent condensate from dripping onto heating surface by disposal or other means."
+  },
+  {
+    "clause": "7.12.2",
+    "title": "Parallel damper control",
+    "description": "When furnace is installed parallel with refrigeration coil, damper or other means shall effectively prevent circulation of cooled air through furnace and heated air over refrigeration coil."
+  },
+  {
+    "clause": "7.12.3",
+    "title": "Furnace upstream requirements",
+    "description": "When forced-air furnace is installed upstream from refrigeration coil, coil shall be designed to withstand high pressure or be equipped with suitable device to prevent excessive pressure."
+  },
+  {
+    "clause": "7.12.4",
+    "title": "Furnace downstream requirements",
+    "description": "Forced-air furnace installed downstream of refrigeration coil shall be designed for such use."
+  },
+  {
+    "clause": "7.13",
+    "title": "Central furnaces",
+    "description": "Requirements for central furnace installation including installation base, clearances, return air inlets, and construction heat applications."
+  },
+  {
+    "clause": "7.13.1",
+    "title": "Installation",
+    "description": "Central furnace shall be installed on firm, level base and noncombustible floor or support, with exceptions for certified installations."
+  },
+  {
+    "clause": "7.13.2",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material: above - 1 in, jacket sides and rear - 6 in, front - 24 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.13.3",
+    "title": "Return air inlets",
+    "description": "Return-air inlets shall not be installed in enclosure or crawl space that provides combustion air to furnace."
+  },
+  {
+    "clause": "7.13.4",
+    "title": "Floor furnaces",
+    "description": "Floor furnaces shall not be installed."
+  },
+  {
+    "clause": "7.13.5",
+    "title": "Construction heat",
+    "description": "Detailed requirements for furnace used to heat residence under construction, including installation options, piping, venting, and thermostat requirements."
+  },
+  {
+    "clause": "7.13.6",
+    "title": "Return air ducting",
+    "description": "Furnace return-air ducting in enclosure with spillage-susceptible appliances shall be sealed to furnace casing with sealed joints to prevent air infiltration from enclosure."
+  },
+  {
+    "clause": "7.14",
+    "title": "Downflow furnaces",
+    "description": "Requirements for downflow furnace installation including marking, floor openings, and enclosure air limitations."
+  },
+  {
+    "clause": "7.14.1",
+    "title": "Marking",
+    "description": "Downflow furnace marked for noncombustible floors only shall be provided with separate certified base when installed on or passing through combustible floor."
+  },
+  {
+    "clause": "7.14.2",
+    "title": "Floor openings",
+    "description": "Downflow furnace shall be installed so there is not an open passage in floor through which flame or hot gases from fire in area below can travel to room above."
+  },
+  {
+    "clause": "7.14.3",
+    "title": "Enclosure air limitations",
+    "description": "When downflow furnace is located in enclosure, circulating air and combustion air shall not be taken from same space."
+  },
+  {
+    "clause": "7.15",
+    "title": "Duct furnaces",
+    "description": "Requirements for duct furnace installation including location, access, circulating air limitations, and control locations."
+  },
+  {
+    "clause": "7.15.1",
+    "title": "Location",
+    "description": "Duct furnace shall not be installed on negative pressure side of air-circulating blower."
+  },
+  {
+    "clause": "7.15.2",
+    "title": "Duct access",
+    "description": "Duct furnace shall have removable access panel located in duct connected to furnace on both upstream and downstream sides."
+  },
+  {
+    "clause": "7.15.3",
+    "title": "Circulating air limitations",
+    "description": "Circulating air shall not be taken from enclosure containing duct furnace."
+  },
+  {
+    "clause": "7.15.4",
+    "title": "Control locations",
+    "description": "All controls shall be located outside duct except for sensing element of control."
+  },
+  {
+    "clause": "7.15.5",
+    "title": "Structural support",
+    "description": "Duct furnace shall be supported in such manner that no weight is carried by supply piping."
+  },
+  {
+    "clause": "7.15.6",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material: above - 6 in, front (burner side) - 24 in, back and sides - 6 in, bottom - 6 in."
+  },
+  {
+    "clause": "7.16",
+    "title": "Horizontal furnaces",
+    "description": "Requirements for horizontal furnace installation including installation options, attic space requirements, and clearances."
+  },
+  {
+    "clause": "7.16.1",
+    "title": "Installation options",
+    "description": "Horizontal furnace may be installed in crawl space or suspended from floor or ceiling."
+  },
+  {
+    "clause": "7.16.2",
+    "title": "Attic space walkway",
+    "description": "When horizontal furnace is installed in attic space, permanent substantial walkway shall be provided to control side of horizontal furnace."
+  },
+  {
+    "clause": "7.16.3",
+    "title": "Attic limitations",
+    "description": "Horizontal furnace shall not be installed in attic space containing exposed combustible insulation or wrapping for such insulation."
+  },
+  {
+    "clause": "7.16.4",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material: above - 6 in, front (burner side) - 24 in, back and sides - 6 in, bottom - 6 in."
+  },
+  {
+    "clause": "7.17",
+    "title": "Wall furnaces (recessed heaters)",
+    "description": "Requirements for wall furnace installation including combustible wall approval, service access, and partition venting."
+  },
+  {
+    "clause": "7.17.1",
+    "title": "Combustible wall approval",
+    "description": "Wall furnace installed in combustible wall shall be approved for such installation."
+  },
+  {
+    "clause": "7.17.2",
+    "title": "Service access",
+    "description": "Panel, grille, or access door that must be removed for normal servicing shall not be attached to building."
+  },
+  {
+    "clause": "7.17.3",
+    "title": "Partition venting",
+    "description": "When vent is required to be concealed in partition, Type BW vent kit shall be used."
+  },
+  {
+    "clause": "7.18",
+    "title": "Construction heaters and torches",
+    "description": "Requirements for construction heater and torch installation including location, installation, clearances, and responsibilities."
+  },
+  {
+    "clause": "7.18.1",
+    "title": "Location",
+    "description": "Construction heater shall be located to minimize danger of damage and upset."
+  },
+  {
+    "clause": "7.18.2",
+    "title": "Installation",
+    "description": "Construction heater shall be installed on solid, level, noncombustible base or suspended per manufacturer's certified installation instructions."
+  },
+  {
+    "clause": "7.18.3",
+    "title": "Clearance to combustibles",
+    "description": "Combustible material such as straw, canvas, wood, and debris shall be kept clear of construction heater per clearances specified on heater's instruction plate."
+  },
+  {
+    "clause": "7.18.4",
+    "title": "Air supply",
+    "description": "When construction heater is operating, adequate air supply shall be provided."
+  },
+  {
+    "clause": "7.18.5",
+    "title": "Piping",
+    "description": "Piping, tubing, hose, and fittings shall be supported, secured, and protected from damage and strain."
+  },
+  {
+    "clause": "7.18.6",
+    "title": "Temporary piping",
+    "description": "When construction heater is connected to temporary piping, piping and connections shall be per Clause 6 requirements, with shut-off valve provided when branch line is in service."
+  },
+  {
+    "clause": "7.18.7",
+    "title": "Lessor responsibility",
+    "description": "Lessor responsibility at delivery to ensure construction heater is approved and in safe operating condition, and lessee is instructed in safe installation and use."
+  },
+  {
+    "clause": "7.18.8",
+    "title": "User responsibility",
+    "description": "User responsibility to ensure construction heater and components are installed and used per requirements, maintained by qualified installer, operated by instructed persons, and malfunctioning units removed from service."
+  },
+  {
+    "clause": "7.18.9",
+    "title": "Installation limitations",
+    "description": "Construction heater shall only be installed in building under construction, repair, or improvement and not be installed in any inhabited dwelling unit or inhabited sections of building."
+  },
+  {
+    "clause": "7.18.10",
+    "title": "Torch attendance",
+    "description": "A torch intended for manual operation shall not be left unattended while in operation."
+  },
+  {
+    "clause": "7.19",
+    "title": "Direct-fired door air heaters",
+    "description": "Requirements for direct-fired door air heaters that were certified to CAN1-3.12 or earlier editions."
+  },
+  {
+    "clause": "7.19.1",
+    "title": "Installation references",
+    "description": "Direct-fired door air heater shall be installed in accordance with requirements of Clauses 7.20.7 to 7.20.11."
+  },
+  {
+    "clause": "7.19.2",
+    "title": "Interlocking",
+    "description": "Direct-fired door air heater shall be interlocked with associated door so heater can operate only when door is at least 80% open or at least 15% open with interlocked time relay proving 80% open within 60s."
+  },
+  {
+    "clause": "7.19.3",
+    "title": "Heated air direction",
+    "description": "Heated air and combustion products from direct-fired door air heater shall be directed outdoors."
+  },
+  {
+    "clause": "7.19.4",
+    "title": "Installation references",
+    "description": "Combination direct-fired make-up air heater for use in doorway shall be installed in accordance with Clauses 7.19 and 7.20."
+  },
+  {
+    "clause": "7.20",
+    "title": "Direct-fired make-up air heaters (DFMAH)",
+    "description": "Requirements for DFMAHs that were certified to CGA 3.7 or CAN1-3.7 or earlier editions."
+  },
+  {
+    "clause": "7.20.1",
+    "title": "Exhaust requirements",
+    "description": "DFMAH shall not be installed unless it is necessary to exhaust inside air and replace it with preheated air, except as specified in certain clauses."
+  },
+  {
+    "clause": "7.20.2",
+    "title": "Sleeping areas",
+    "description": "DFMAH shall not supply make-up air to area where sleeping accommodation is provided."
+  },
+  {
+    "clause": "7.20.3",
+    "title": "Exhaust air balance",
+    "description": "DFMAH shall have air discharge capacity not exceeding total exhaust system discharge capacity by more than 10% and be interlocked to prevent operation unless exhaust system is functioning."
+  },
+  {
+    "clause": "7.20.4",
+    "title": "System air balance",
+    "description": "Total air replacement of installation in spray booth shall not exceed total exhaust capacity of booth."
+  },
+  {
+    "clause": "7.20.5",
+    "title": "Mine shafts",
+    "description": "DFMAH installed in or ducted to mine shaft with adequate exhaust opening need not comply with Clause 7.20.3."
+  },
+  {
+    "clause": "7.20.6",
+    "title": "Interlocking",
+    "description": "When exhaust system can affect satisfactory venting of other gas appliances, DFMAH shall have exhaust system interlocked to function only when DFMAH blower is operating."
+  },
+  {
+    "clause": "7.20.7",
+    "title": "Outside air",
+    "description": "All air handled by DFMAH shall be brought directly from outdoors, except primary combustion air not exceeding 0.5% of total air handled may be taken from inside building."
+  },
+  {
+    "clause": "7.20.8",
+    "title": "Automatic louvre interlocking",
+    "description": "Automatically operated louvres for inlet or discharge air shall have louvres interlocked to ensure maximum designed opening prior to DFMAH start-up."
+  },
+  {
+    "clause": "7.20.9",
+    "title": "Intake location",
+    "description": "Outdoor intake of DFMAH shall be located not less than 20 ft horizontally from vertical plane in which combustible gas, vapour, or dust is present."
+  },
+  {
+    "clause": "7.20.10",
+    "title": "Clearance to combustibles",
+    "description": "DFMAH shall be installed with clearance from combustible material of not less than that marked on rating plate."
+  },
+  {
+    "clause": "7.20.11",
+    "title": "Duct trapping",
+    "description": "Supply or discharge ducting in which accumulations of gas or combustion products can be trapped shall not be attached to DFMAH."
+  },
+  {
+    "clause": "7.20.12",
+    "title": "Elevator shaft or stairwell",
+    "description": "DFMAH for ventilating or pressurizing elevator shaft or stairwell shall be activated only by fire alarm system and equipped with normally open momentary manual switch for testing."
+  },
+  {
+    "clause": "7.20.13",
+    "title": "CO Sensing",
+    "description": "When DFMAH for storage garage ventilation is solely actuated by carbon monoxide sensor, shall be installed with normally open momentary manual switch for testing."
+  },
+  {
+    "clause": "7.20.14",
+    "title": "Kitchens",
+    "description": "When DFMAH is installed in or ducted to kitchen, specific interlocking and airflow capacity requirements apply based on interconnection between food preparation area and public area."
+  },
+  {
+    "clause": "7.21",
+    "title": "Non-recirculating and recirculating direct gas-fired industrial air heaters (DFIAH)",
+    "description": "Requirements for DFIAH installation in industrial buildings with specific functionality and operational requirements."
+  },
+  {
+    "clause": "7.21.1",
+    "title": "Installation limitations",
+    "description": "DFIAH shall be installed only in industrial buildings, except as specified in certain clauses."
+  },
+  {
+    "clause": "7.21.2",
+    "title": "Sleeping areas",
+    "description": "DFIAH shall not supply air to area where sleeping accommodation is provided."
+  },
+  {
+    "clause": "7.21.3",
+    "title": "Functionality references",
+    "description": "DFIAH may be used as door air heater, make-up air heater, or space heater, with requirements superseding those of previous clauses when used in these applications."
+  },
+  {
+    "clause": "7.21.4",
+    "title": "Clearance to combustibles",
+    "description": "DFIAH shall be installed with clearance from combustible material not less than that marked on rating plate."
+  },
+  {
+    "clause": "7.21.5",
+    "title": "Supply air",
+    "description": "Non-recirculating DFIAH supply air shall be ducted directly from outdoors. Recirculating DFIAH may use combination of outdoor and return air with minimum ventilation rate as indicated on rating plate."
+  },
+  {
+    "clause": "7.21.6",
+    "title": "Duct purge",
+    "description": "Inlet ducting, when used, shall be purged with at least four air changes prior to ignition attempt."
+  },
+  {
+    "clause": "7.21.7",
+    "title": "Damper interlocks",
+    "description": "Outside air dampers or closing louvres not certified as integral part of appliance shall be interlocked so main burners do not operate until air dampers are fully open."
+  },
+  {
+    "clause": "7.21.8",
+    "title": "Exhaust options and exfiltration",
+    "description": "Installation design shall include adequate provisions to permit DFIAH to operate at rated capacity, taking into account structure's designed exfiltration rate by providing properly designed relief openings or interlocked powered exhaust system."
+  },
+  {
+    "clause": "7.21.9",
+    "title": "Exhaust interlocking",
+    "description": "When DFIAH is interlocked with powered exhaust system, specific startup, airflow proving, and operation requirements apply, including matching airflow capacity for VAV systems."
+  },
+  {
+    "clause": "7.21.10",
+    "title": "Intake location",
+    "description": "Outdoor air intake of DFIAH shall be located not less than 20 ft horizontally from vertical plane in which combustible gas, vapour, or dust is present."
+  },
+  {
+    "clause": "7.21.11",
+    "title": "Fire alarm",
+    "description": "DFIAH for ventilating or pressurizing elevator shaft or stairwell shall be non-recirculating type, activated only by fire alarm system, and equipped with normally open momentary manual switch for testing."
+  },
+  {
+    "clause": "7.21.12",
+    "title": "Storage garages",
+    "description": "DFIAH for storage garage ventilation solely actuated by carbon monoxide sensor shall be installed with normally open momentary manual switch for testing and provide adequate outside air to positively pressurize storage space."
+  },
+  {
+    "clause": "7.21.13",
+    "title": "Kitchens",
+    "description": "When DFIAH is installed in or ducted to kitchen, specific interlocking and airflow capacity requirements apply based on interconnection between food preparation area and public area."
+  },
+  {
+    "clause": "7.22",
+    "title": "Direct gas-fired process air heaters (DFPAH)",
+    "description": "Requirements for DFPAH installation in industrial buildings with ventilation and process operating modes."
+  },
+  {
+    "clause": "7.22.1",
+    "title": "Location",
+    "description": "DFPAH shall be installed only in industrial buildings."
+  },
+  {
+    "clause": "7.22.2",
+    "title": "Sleeping areas",
+    "description": "DFPAH shall not supply air to area where sleeping accommodation is provided."
+  },
+  {
+    "clause": "7.22.3",
+    "title": "Standard reference",
+    "description": "DFPAH shall be certified to be in compliance with ANSI Z83.25/CSA 3.19."
+  },
+  {
+    "clause": "7.22.4",
+    "title": "Clearance to combustibles",
+    "description": "DFPAH shall be installed with clearance from combustible material not less than that marked on rating plate."
+  },
+  {
+    "clause": "7.22.5",
+    "title": "Operating modes",
+    "description": "DFPAH can have two operating modes: ventilation (space can be occupied, make-up supply air ducted directly from outdoors) and process (space shall not be occupied, recirculation of air allowed)."
+  },
+  {
+    "clause": "7.22.6",
+    "title": "Exhaust and relief - Ventilation mode",
+    "description": "Design and installation requirements for ventilation mode including adequate provisions for rated capacity operation, exfiltration considerations, and relief opening specifications."
+  },
+  {
+    "clause": "7.22.7",
+    "title": "Exhaust and relief - Process mode",
+    "description": "Design and installation requirements for process mode including adequate provisions for non-recirculating airflow, ducted relief openings, and powered exhaust limitations."
+  },
+  {
+    "clause": "7.22.8",
+    "title": "Spray area exhaust interlocking",
+    "description": "For spray area installation, interlocked exhaust system shall be utilized to exhaust ventilation air supply in ventilation mode and outside air supply in process mode."
+  },
+  {
+    "clause": "7.22.9",
+    "title": "Spray booth mode",
+    "description": "In spray booth application, interlock shall be provided to lock out spraying equipment unless DFPAH is operated in ventilation mode."
+  },
+  {
+    "clause": "7.22.10",
+    "title": "Duct purge",
+    "description": "In spray booth application, inlet ducting when used shall be purged with at least four air changes prior to ignition attempt."
+  },
+  {
+    "clause": "7.22.11",
+    "title": "Process mode",
+    "description": "In DFPAH application with process mode, interlock shall be provided to lockout spray area lighting and spraying equipment while in process mode."
+  },
+  {
+    "clause": "7.22.12",
+    "title": "Ventilation mode purge",
+    "description": "Interlock shall ensure DFPAH is operated in ventilation mode for minimum of 3 min or minimum of four air changes of enclosure volume including inlet ducting at start of process."
+  },
+  {
+    "clause": "7.22.13",
+    "title": "Access interlocking",
+    "description": "For space served by DFPAH operating in process mode, interlock for access points shall immediately shut down process mode if entry is made, with specific warning markings required."
+  },
+  {
+    "clause": "7.22.14",
+    "title": "Post process purge",
+    "description": "In process applications intended to be entered by personnel following process mode operation, controls shall include post-purge timer to purge contaminants and cool products."
+  },
+  {
+    "clause": "7.22.15",
+    "title": "Remote interlocking",
+    "description": "Outside air dampers or closing louvres not certified as integral part of appliance shall be interlocked so main burners do not operate until air dampers are fully open."
+  },
+  {
+    "clause": "7.22.16",
+    "title": "Air intake location",
+    "description": "Outdoor air intake of DFPAH shall be located not less than 20 ft horizontally from vertical plane with combustible gas, vapour, or dust, except for DFPAH serving spray area with specific interlocking."
+  },
+  {
+    "clause": "7.22.17",
+    "title": "Process minimum ventilation",
+    "description": "In process mode, DFPAH that recirculates process area air must provide minimum ventilation airflow for complete combustion plus allowance to dilute VOCs to maintain LEL below 25% threshold."
+  },
+  {
+    "clause": "7.22.18",
+    "title": "Inspection and maintenance",
+    "description": "In spray applications or applications with flammable airborne particulate matter, duct system shall be provided with access means for inspection, maintenance, cleaning, and fire protection devices, with suitable filters installed."
+  },
+  {
+    "clause": "7.23",
+    "title": "Infrared heaters",
+    "description": "Requirements for infrared heater installation including unvented and vented installation requirements, vehicle applications, and aircraft area restrictions."
+  },
+  {
+    "clause": "7.23.1",
+    "title": "Unvented installation requirements",
+    "description": "Unvented infrared heaters shall be protected against physical damage, comply with specified clauses, not be installed in residential or care/detention buildings, and meet ventilation requirements including mechanical ventilation specifications."
+  },
+  {
+    "clause": "7.23.2",
+    "title": "CO2 detection",
+    "description": "Where heaters cannot be interlocked due to use of portable infrared heaters, ventilation system shall be connected to carbon dioxide monitor with audible and visual alarm."
+  },
+  {
+    "clause": "7.23.3",
+    "title": "Vented installation requirements",
+    "description": "Vented infrared heaters shall be installed per certified markings and manufacturer's instructions, protected against physical damage, with tube-type heaters connected only with certified Type I gas hose of specified length."
+  },
+  {
+    "clause": "7.23.4",
+    "title": "Vehicles",
+    "description": "When infrared heater is installed in garage or car wash area where vehicles can be exposed to radiant heat, specific clearance and interlock requirements apply to maintain minimum specified clearances."
+  },
+  {
+    "clause": "7.23.5",
+    "title": "Aircraft repair areas",
+    "description": "When infrared heater is installed in repair or shop area communicating with aircraft hangar, minimum clearance from floor to infrared heater shall be 8 ft."
+  },
+  {
+    "clause": "7.23.6",
+    "title": "Aircraft hangers",
+    "description": "Infrared heater shall not be located in area of aircraft hangar where it can be subjected to physical damage by aircraft, cranes, movable scaffolding, or other objects."
+  },
+  {
+    "clause": "7.23.7",
+    "title": "Garages",
+    "description": "Where infrared heater is installed in garage and clearance from combustible material cannot be maintained when vehicle is raised on hoist, electrical interlock shall shut off burner until required clearance is re-established."
+  },
+  {
+    "clause": "7.24",
+    "title": "Room heaters",
+    "description": "Requirements for room heater installation including bathroom heaters, fireplace installation, venting, and clearance requirements."
+  },
+  {
+    "clause": "7.24.1",
+    "title": "Bathroom heaters",
+    "description": "Room heater in bathroom shall be of direct-vent type."
+  },
+  {
+    "clause": "7.24.2",
+    "title": "Fireplace installation",
+    "description": "Room heater installed in fireplace shall be designed for fireplace installation and marked for use in noncombustible fireplaces, with installation complying with local building code or National Building Code of Canada."
+  },
+  {
+    "clause": "7.24.3",
+    "title": "Venting",
+    "description": "Products of combustion from radiant-type room heater shall enter either a vent or chimney."
+  },
+  {
+    "clause": "7.24.4",
+    "title": "Fireplace damper",
+    "description": "When radiant-type room heater is installed in fireplace with manual damper, permanent stop shall be provided on damper control to prevent complete closure of flue outlet."
+  },
+  {
+    "clause": "7.24.5",
+    "title": "Sleeping or public area installation",
+    "description": "Room heater installed in sleeping accommodation or public area shall be automatic temperature-controlled type, equipped with pressure regulator, have 100% safety shut-off control, and be vented."
+  },
+  {
+    "clause": "7.24.6",
+    "title": "General Installation",
+    "description": "Room heater shall be placed so as not to cause hazard to wall, floor, curtain, furniture, or door when open, or hinder free movement of persons."
+  },
+  {
+    "clause": "7.24.7",
+    "title": "Circulating type minimum clearances",
+    "description": "Free-standing circulating-type room heater minimum clearances from combustible material: above - 36 in, front - 24 in, back and sides - 6 in."
+  },
+  {
+    "clause": "7.24.8",
+    "title": "Radiant type minimum clearances",
+    "description": "Free-standing radiant-type room heater minimum clearances from combustible material: above - 36 in, front - 24 in, back and sides - 6 in."
+  },
+  {
+    "clause": "7.25",
+    "title": "Decorative appliances and gas logs",
+    "description": "Requirements for decorative appliance and gas log installation including manufacturer instructions, fireplace installation, and venting."
+  },
+  {
+    "clause": "7.25.1",
+    "title": "Manufacture instructions",
+    "description": "Decorative appliances and gas logs shall be installed in accordance with manufacturer's certified installation instructions."
+  },
+  {
+    "clause": "7.25.2",
+    "title": "Fireplace installation",
+    "description": "Decorative appliance installed in fireplace shall be designed for fireplace installation and marked for use in noncombustible fireplaces, with installation complying with local building code or National Building Code of Canada."
+  },
+  {
+    "clause": "7.25.3",
+    "title": "Venting",
+    "description": "Products of combustion from decorative appliance shall enter either a vent or chimney."
+  },
+  {
+    "clause": "7.25.4",
+    "title": "Bathroom and bedroom installation",
+    "description": "Decorative appliance shall not be installed in bathroom or sleeping accommodation room, except certified appliances may be installed in specific conditions for direct-vent types or specially marked appliances."
+  },
+  {
+    "clause": "7.25.5",
+    "title": "Chimney damper",
+    "description": "Gas log shall be certified for application, and when installed, chimney damper shall be permanently secured in open position to effectively vent the appliance."
+  },
+  {
+    "clause": "7.26",
+    "title": "Pool heaters",
+    "description": "Requirements for pool heater installation including location, clearances, outdoor installation, and maintenance requirements."
+  },
+  {
+    "clause": "7.26.1",
+    "title": "Installation location",
+    "description": "Pool heater shall be installed on firm and level base and noncombustible floor or support, with exceptions for certified installations."
+  },
+  {
+    "clause": "7.26.2",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material: vertical - 18 in, sides and rear - 18 in, front - 48 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.26.3",
+    "title": "Outdoor installation",
+    "description": "Pool heater installed outdoors shall be located minimum of 18 in from any property line."
+  },
+  {
+    "clause": "7.26.4",
+    "title": "Wall-mounted type",
+    "description": "Wall-mounted pool heater shall be securely attached."
+  },
+  {
+    "clause": "7.26.5",
+    "title": "Outdoor type",
+    "description": "Outdoor pool heater shall not be installed beneath any structure, including a deck."
+  },
+  {
+    "clause": "7.26.6",
+    "title": "Finned-tube outdoor installation",
+    "description": "Pool heater of finned-tube type shall be installed outdoors or in enclosure that is not normally occupied and does not directly communicate with occupied areas. Direct-vent pool heaters are exempt."
+  },
+  {
+    "clause": "7.26.7",
+    "title": "Indoor installation",
+    "description": "When finned-tube indoor gas-fired pool heater that had prior approval for indoor installation communicating with occupied area is being replaced, new heater shall be direct-vent type."
+  },
+  {
+    "clause": "7.26.8",
+    "title": "Maintenance",
+    "description": "Where heater is installed per Clause 7.26.7, it shall be owner's responsibility to provide maintenance per manufacturer's instructions, but in no case less than once annually."
+  },
+  {
+    "clause": "7.26.9",
+    "title": "Outdoor flue discharge",
+    "description": "Outdoor pool heater shall be installed so flue discharge is in accordance with Clause 8.14.10."
+  },
+  {
+    "clause": "7.27",
+    "title": "Water heaters",
+    "description": "Requirements for water heater installation including location restrictions, pressure relief termination, and combustible protection."
+  },
+  {
+    "clause": "7.27.1",
+    "title": "Installation location",
+    "description": "Water heater, unless of direct-vent type, shall not be installed in bathroom, bedroom, or any enclosure where sleeping accommodation is provided."
+  },
+  {
+    "clause": "7.27.2",
+    "title": "Pressure relief termination",
+    "description": "Temperature and pressure relief device on tank-type water heater or pressure relief device for instantaneous water heater shall have discharge pipe of size at least equal to device outlet, terminating not more than 12 in above floor."
+  },
+  {
+    "clause": "7.27.3",
+    "title": "Combustibles protection",
+    "description": "Instantaneous-type water heater, unless certified for installation on combustible wall, shall be provided with appropriate protection as specified in Table 4.1, extending full length and width of heater and draft hood."
+  },
+  {
+    "clause": "7.27.4",
+    "title": "Minimum clearances",
+    "description": "Minimum clearance from combustible material for underfired storage-type water heater shall be 2 in, and for any other type shall be 6 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.27.5",
+    "title": "Water supply",
+    "description": "Before installing instantaneous-type water heater, installer shall ensure there is sufficient water supply for proper operation of heater."
+  },
+  {
+    "clause": "7.27.6",
+    "title": "Return and combustion air",
+    "description": "Except for direct-vent water heaters, when water heater is used in combo heating system, return-air inlets shall not be installed in same enclosure containing both air-handling unit and water heater. Adequate combustion air shall be provided."
+  },
+  {
+    "clause": "7.27.7",
+    "title": "Return air infiltration",
+    "description": "When return air duct(s) of air-handling unit in combo heating system is installed in enclosure with spillage-susceptible appliances, it shall be sealed to air-handling unit casing with joints sealed to prevent air infiltration."
+  },
+  {
+    "clause": "7.28",
+    "title": "Unit heaters",
+    "description": "Requirements for unit heater installation including suspended installation, negative pressure considerations, and garage installation."
+  },
+  {
+    "clause": "7.28.1",
+    "title": "Suspended installation",
+    "description": "Suspended unit heater shall be firmly supported with metal hangers or brackets."
+  },
+  {
+    "clause": "7.28.2",
+    "title": "Negative pressure",
+    "description": "Location of suspended unit heater or duct attached to suspended unit heater shall be such that negative pressure will not be created in room in which unit heater is located."
+  },
+  {
+    "clause": "7.28.3",
+    "title": "Garage installation",
+    "description": "When unit heater is installed in garage, minimum clearance of 8 ft shall be maintained between base of heater and garage floor. Minimum clearance may be reduced when substantial guard prevents vehicles from striking heater."
+  },
+  {
+    "clause": "7.28.4",
+    "title": "Clearance to combustibles",
+    "description": "All clearances from combustible material shall be minimum of 18 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.29",
+    "title": "Hotplates",
+    "description": "Requirements for hotplate installation including piping, installation locations, and clearances."
+  },
+  {
+    "clause": "7.29.1",
+    "title": "Piping",
+    "description": "Hotplate shall be connected with rigid piping and secured to prevent movement."
+  },
+  {
+    "clause": "7.29.2",
+    "title": "Installation locations",
+    "description": "Hotplate shall not be installed in bedroom but may be installed in bed-sitting room, provided it is not required to be used for space-heating purposes."
+  },
+  {
+    "clause": "7.29.3",
+    "title": "Clearance to combustibles",
+    "description": "Minimum clearances from combustible material: above - 30 in, front - 6 in, back and sides - 6 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.30",
+    "title": "Incinerators",
+    "description": "Requirements for incinerator installation including chimney location, wall-type installations, and draft regulation."
+  },
+  {
+    "clause": "7.30.1",
+    "title": "Chimney location",
+    "description": "Incinerator shall be installed as close as practicable to a chimney."
+  },
+  {
+    "clause": "7.30.2",
+    "title": "Wall-type installations",
+    "description": "Incinerator of wall type shall be installed in noncombustible wall that communicates directly with chimney flue."
+  },
+  {
+    "clause": "7.30.3",
+    "title": "Draft regulator",
+    "description": "Incinerator shall not be equipped with draft hood. When draft control is required, draft regulator of single-acting type shall be used."
+  },
+  {
+    "clause": "7.30.4",
+    "title": "Chimney connection",
+    "description": "Vent connector shall be directly connected to chimney through separate thimble."
+  },
+  {
+    "clause": "7.30.5",
+    "title": "Vent guarding",
+    "description": "When vent connector passes through wall or partition of combustible material, it shall be guarded at point of passage as specified in Clause 8.18.12."
+  },
+  {
+    "clause": "7.30.6",
+    "title": "Clearance to combustibles",
+    "description": "Incinerator shall be installed with minimum clearance of 12 in from all combustible material, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.31",
+    "title": "Lighting",
+    "description": "Requirements for lighting appliance installation including pendant type support, wall installation, and ventilation."
+  },
+  {
+    "clause": "7.31.1",
+    "title": "Pendant type support",
+    "description": "Pendant-type light fixture shall be supported to remove direct weight of fixture from gas piping systems."
+  },
+  {
+    "clause": "7.31.2",
+    "title": "Wall installation",
+    "description": "Wall bracket fixture shall be firmly supported, and if of swing type, shall be provided with stop to prevent contact of globe with combustible material."
+  },
+  {
+    "clause": "7.31.3",
+    "title": "Clearance to combustibles",
+    "description": "Bracket or pendant fixture minimum clearances from combustible material: above - 18 in, all sides - 5 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.31.4",
+    "title": "Ventilation",
+    "description": "Ventilation shall be provided when lighting appliance is installed or used in enclosure. Ventilation openings shall be at top and bottom of enclosure, minimum 4 in² for each lighting appliance installed."
+  },
+  {
+    "clause": "7.32",
+    "title": "Commercial cooking appliances",
+    "description": "Requirements for commercial cooking appliance installation including floor mounting, clearances, and fryer separation."
+  },
+  {
+    "clause": "7.32.1",
+    "title": "Floor mounting",
+    "description": "Commercial cooking appliance shall be installed level on firm foundation."
+  },
+  {
+    "clause": "7.32.2",
+    "title": "Floor mount clearances",
+    "description": "When installed on unprotected combustible material, appliance shall have legs that provide minimum of 4 in clearance between metal base and material."
+  },
+  {
+    "clause": "7.32.3",
+    "title": "Floor mount construction",
+    "description": "When appliance does not have legs at least 4 in high, it shall not be installed on combustible material, except when material under appliance is protected with sheet metal and 2 in of air space is maintained between base and sheet metal."
+  },
+  {
+    "clause": "7.32.4",
+    "title": "Side clearances",
+    "description": "Noncombustible fixed means shall be provided to maintain minimum clearance of 6 in between combustible material and sides and rear of appliance."
+  },
+  {
+    "clause": "7.32.5",
+    "title": "Top clearances",
+    "description": "Any portion of combustible material located within 18 in horizontally of cooking top section shall be protected for vertical distance of 36 in above surface of cooking top."
+  },
+  {
+    "clause": "7.32.6",
+    "title": "Fryer separation",
+    "description": "Clearance of not less than 16 in shall be provided between deep fat fryer and open flame of adjacent appliance unless noncombustible divider extending not less than 7 in above fryer and open flame is provided."
+  },
+  {
+    "clause": "7.33",
+    "title": "Residential-type ranges",
+    "description": "Requirements for residential-type range installation including installation limitations, floor mounting, venting, and clearances."
+  },
+  {
+    "clause": "7.33.1",
+    "title": "Installation limitations",
+    "description": "Range shall not be installed in bedroom but may be installed in bed-sitting room, provided it is not required to be used for space-heating purposes."
+  },
+  {
+    "clause": "7.33.2",
+    "title": "Floor mounting",
+    "description": "Residential-type range shall be installed level. When installed on combustible floor, it shall be set on its own legs or baffled base and shall be certified for such mounting."
+  },
+  {
+    "clause": "7.33.3",
+    "title": "Venting",
+    "description": "When vent connector is attached to range, suitable provision shall be made by installer for protection of adjacent combustible material."
+  },
+  {
+    "clause": "7.33.4",
+    "title": "Clearance to combustibles",
+    "description": "Minimum clearances from combustible material: above - 30 in, back and sides - 6 in, except where permitted by specified clauses."
+  },
+  {
+    "clause": "7.33.5",
+    "title": "Zero clearance requirements",
+    "description": "Residential-type range certified for zero side and rear clearances may be installed with zero side clearance from combustible material, provided there is 1 in clearance at back and 28 MSG sheet metal shield on side walls spaced out minimum 0.25 in."
+  },
+  {
+    "clause": "7.33.6",
+    "title": "New appliance clearances",
+    "description": "New residential-type range shall be installed in accordance with its certified clearances from combustible material as specified on appliance rating plate."
+  },
+  {
+    "clause": "7.33.7",
+    "title": "Clearance reductions",
+    "description": "When underside of combustible material above residential-type range is protected with insulating millboard at least 0.25 in thick covered with sheet metal not less than 28 MSG, clearance above range may be reduced to 24 in."
+  },
+  {
+    "clause": "7.33.8",
+    "title": "Exhaust hoods",
+    "description": "Exhaust hood, exhaust appliance, or combination thereof installed above range shall be installed in accordance with instructions for such exhaust hood or appliance."
+  },
+  {
+    "clause": "7.34",
+    "title": "Refrigerators",
+    "description": "Requirements for refrigerator installation including minimum clearances, direct vent requirements, and unvented installation restrictions."
+  },
+  {
+    "clause": "7.34.1",
+    "title": "Minimum clearances",
+    "description": "Minimum clearances from combustible material, disregarding any guard or baffle on refrigerator: above - 12 in, back and sides - 2 in, except where permitted by Clause 4.13.2."
+  },
+  {
+    "clause": "7.34.2",
+    "title": "Direct vent",
+    "description": "Refrigerator installed in dwelling unit shall be of direct-vent type."
+  },
+  {
+    "clause": "7.34.3",
+    "title": "Unvented",
+    "description": "Unvented refrigerator shall be installed in area that is not normally occupied and does not directly communicate with occupied areas."
+  },
+  {
+    "clause": "7.35",
+    "title": "Operation of appliances at shows, exhibitions, or other similar events",
+    "description": "Operation of appliances at shows, exhibitions, or other similar events shall comply with Annex M and meet any additional requirements of authority having jurisdiction."
+  }
+]

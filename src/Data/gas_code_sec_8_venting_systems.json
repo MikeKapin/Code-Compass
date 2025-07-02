@@ -1,0 +1,797 @@
+[
+  {
+    "clause": "8.1.1",
+    "title": "Requirements",
+    "description": "The requirements of Clause 8.2 shall apply to central-heating furnaces, boilers, and hot-water heaters."
+  },
+  {
+    "clause": "8.1.2",
+    "title": "Direct vent exceptions",
+    "description": "The requirements of Clauses 8.2 to 8.5 shall not apply to a direct-vent appliance. Note: Regardless of the category type, when an appliance utilizes indoor combustion air, it is not considered a direct-vent appliance."
+  },
+  {
+    "clause": "8.1.3",
+    "title": "Air supply interference",
+    "description": "Interference with the air supply for an appliance shall be prohibited."
+  },
+  {
+    "clause": "8.1.4",
+    "title": "Input reference",
+    "description": "Air supply shall be provided in accordance with a) Clauses 8.2 and 8.3 when either an appliance or a combination of appliances has a total input of up to and including 400 000 Btu/h (120 kW); or b) Clause 8.4 when either an appliance or a combination of appliances has a total input exceeding 400 000 Btu/h (120 kW)."
+  },
+  {
+    "clause": "8.1.5",
+    "title": "Combustion air",
+    "description": "When an appliance other than a central-heating appliance or a domestic water heater is installed in a location where there is insufficient air for combustion, provisions shall be made to provide an air supply sized in accordance with Table 8.1 or 8.2."
+  },
+  {
+    "clause": "8.2.1",
+    "title": "Requirements",
+    "description": "An outdoor air supply sized in accordance with Clause 8.2.2 shall be provided for an enclosure or a structure in which an appliance is installed when the enclosure or structure a) has windows and doors of either close-fitting or sealed construction, and the exterior walls are covered by a continuous, sealed vapour barrier and gypsum wallboard (drywall) or plywood or a similar material having sealed joints; or b) has an equivalent leakage area of 78 in² (0.05 m²) or less at a differential pressure of 0.00145 psig (10 Pa) as determined by a recognized Canadian fan depressurization test procedure."
+  },
+  {
+    "clause": "8.2.2",
+    "title": "Sizing",
+    "description": "Except as required in Clause 8.2.3, the free area of the outdoor air supply required by Clause 8.2.1 shall be determined from Table 8.1 for an appliance having a draft-control device and from Table 8.2 for an appliance not having a draft-control device, using the total input of all appliances in the structure or enclosure."
+  },
+  {
+    "clause": "8.2.3",
+    "title": "Input exceptions",
+    "description": "An outdoor air supply shall not be required for a single water heater with an input of 50 000 Btu/h (15 kW) or less within an enclosure or structure where there are no other appliances that require an air supply. Except for direct-vent water heaters, when the water heater is contained in an enclosure, permanent openings shall be provided as described in Clause 8.2.6."
+  },
+  {
+    "clause": "8.2.4",
+    "title": "Other exceptions",
+    "description": "An outdoor air supply, if required, shall be sized in accordance with Clause 8.2.5 and shall be provided for an enclosure or a structure in which an appliance is installed when the enclosure or structure is neither constructed as described in Clause 8.2.1 a) nor complies with Clause 8.2.1 b)."
+  },
+  {
+    "clause": "8.2.5",
+    "title": "Free area sizing",
+    "description": "The free area of the outdoor air supply, if required by Clause 8.2.4 shall be determined from Table 8.3 for an appliance having a draft-control device and Table 8.4 for an appliance not having a draft-control device, using the total input of all appliances in the structure or enclosure."
+  },
+  {
+    "clause": "8.2.6",
+    "title": "Enclosure volume",
+    "description": "When an appliance(s) is located within an enclosure and permanent openings sized and located in accordance with Items a) and b) of this clause are supplied to allow communication between the enclosure and the rest of the structure, the total volume of the structure may be used to determine air supply requirements, provided that the structure is not constructed as described in Clause 8.2.1 a) and does not comply with Clause 8.2.1 b)."
+  },
+  {
+    "clause": "8.3.1",
+    "title": "General requirements",
+    "description": "Except as specified in Clauses 8.3.3 and 8.3.4, a duct shall be used to provide the outside air supply required by Clauses 8.2.1 and 8.2.4. The duct shall a) be of either metal or a material meeting the Class I requirements of CAN/ULC-S110; b) communicate directly with the outdoors; c) be of at least the same cross-sectional area as the free area of the air-supply inlet opening to which it connects; and d) terminate within 1 ft (300 mm) above, and within 2 ft (600 mm) horizontally from, the burner level of the appliance having the largest input."
+  },
+  {
+    "clause": "8.3.2",
+    "title": "Duct type",
+    "description": "A square- or rectangular-shaped duct shall only be used when the required free area of the air-supply opening is 9 in² (5800 mm²) or larger, and when used, its smaller dimension shall not be less than 3 in (75 mm)."
+  },
+  {
+    "clause": "8.3.3",
+    "title": "Non-ducted openings",
+    "description": "An opening may be used in lieu of a duct to provide the outside air supply to an appliance as required by Clauses 8.2.1 and 8.2.4. The opening shall be located within 1 ft (300 mm) above, and 2 ft (600 mm) horizontally from, the burner level of the appliance having the largest input."
+  },
+  {
+    "clause": "8.3.4",
+    "title": "Combustion-air supply devices",
+    "description": "A certified combustion-air supply device may be used in lieu of a duct to provide the outside air supply to an appliance as required in Clauses 8.2.1 and 8.2.4. The combustion-air supply system shall have air flow proving interlocked to the appliance(s) served, and sufficient airflow shall be demonstrated."
+  },
+  {
+    "clause": "8.3.5",
+    "title": "Inlet opening",
+    "description": "An air-supply inlet opening from the outdoors shall be equipped with a means to prevent the direct entry of rain and wind, and such means shall not reduce the required free area of the air-supply opening."
+  },
+  {
+    "clause": "8.3.6",
+    "title": "Inlet location",
+    "description": "An air-supply inlet opening from the outdoors shall be located not less than 12 in (300 mm) above the outside grade level."
+  },
+  {
+    "clause": "8.3.7",
+    "title": "Inlet clearances",
+    "description": "An air-supply opening shall not be located within 3 ft (0.9 m) of a moisture exhaust duct. Note: A moisture-exhaust duct (e.g., a gas or electric clothes dryer discharge; spa exhaust) is considered to interfere with the combustion air intake when located within 3 ft (0.9 m) of the air intake."
+  },
+  {
+    "clause": "8.4.1",
+    "title": "Location",
+    "description": "Ventilation of the space occupied by an appliance or equipment shall be provided by an opening for ventilation air at the highest practicable point communicating with the outdoors, and this opening shall not terminate within 12 in (300 mm) of any combustion air opening. The total cross-sectional area of such an opening shall be at least 10% of the area required in Clauses 8.4.2 and 8.4.3, but in no case shall the cross-sectional area be less than 10 in² (6500 mm²)."
+  },
+  {
+    "clause": "8.4.2",
+    "title": "With draft control device",
+    "description": "When the air supply is provided by natural airflow from the outdoors for an appliance and a venting system with a draft control device is installed in the same space or enclosure, there shall be a permanent air-supply opening having a cross-sectional area of not less than 1 in²/7000 Btu/h (310 mm²/kW) up to and including 1 000 000 Btu/h (300 kW), plus 1 in²/14 000 Btu/h (155 mm²/kW) in excess of 1 000 000 Btu/h (300 kW)."
+  },
+  {
+    "clause": "8.4.3",
+    "title": "Without draft control device",
+    "description": "When air supply is provided by natural airflow from outdoors for an appliance and a venting system without a draft-control device is installed in the same space or enclosure, there shall be a permanent air-supply opening having a total cross-sectional area of not less than 1 in² for each 30 000 Btu/h (70 mm² for each kW) of the total rated input."
+  },
+  {
+    "clause": "8.4.4",
+    "title": "Combination",
+    "description": "When air is provided by natural airflow from outdoors into a space or enclosure containing both types of appliances or venting systems described in Clauses 8.4.2 and 8.4.3, the cross-sectional area of the opening shall not be less than the sum of the required cross-sectional areas for all types of appliances or venting systems when calculated in accordance with Clauses 8.4.2 and 8.4.3 as applicable."
+  },
+  {
+    "clause": "8.4.5",
+    "title": "Discharge opening",
+    "description": "When an air-supply duct is used to meet the requirements of either Clause 8.4.2 or 8.4.3, its discharge opening shall be located where there is no possibility of cold air affecting steam or water pipes and electrical or mechanical equipment."
+  },
+  {
+    "clause": "8.5.1",
+    "title": "Free area calculation",
+    "description": "The free area of an air-supply opening required in Clauses 8.2 and 8.3 shall be calculated by subtracting the blockage area of all fixed louvres, grilles, or screens from the gross area of the opening."
+  },
+  {
+    "clause": "8.5.2",
+    "title": "Minimum aperture size",
+    "description": "Apertures in a fixed louvre, grille, or screen shall have no dimension smaller than 0.25 in (6 mm)."
+  },
+  {
+    "clause": "8.5.3",
+    "title": "Manual dampers and louvres",
+    "description": "Neither a manually operated damper nor manually adjustable louvres shall be used."
+  },
+  {
+    "clause": "8.5.4",
+    "title": "Automatic dampers and louvres",
+    "description": "Except as permitted by Clause 8.5.6, an automatically operated damper or automatically adjustable louvre shall be interlocked so that the main burner cannot operate unless either the damper or louvre is in the fully open position."
+  },
+  {
+    "clause": "8.5.5",
+    "title": "Automatic combustion air damper",
+    "description": "An automatic combustion air damper installed in the air supply within a dwelling unit shall be certified."
+  },
+  {
+    "clause": "8.5.6",
+    "title": "Emergency generators, stand-by generators, and firewater pumps",
+    "description": "For emergency generators, stand-by generators, or firewater pumps, the combustion air damper interlock is not required, provided the intake combustion air dampers and the ventilation air dampers, if provided separately, are sized for a maximum face velocity of 500 fpm (2.5 m/s)."
+  },
+  {
+    "clause": "8.6",
+    "title": "Conditions created by exhaust fans, air-supply fans, circulating fans, or fireplaces",
+    "description": "When it is determined that the operation of another appliance or other equipment, including an exhaust fan, air-supply fan, circulating fan, or fireplace adversely affects the venting, combustion, or burning characteristics of a gas appliance, either the condition shall be corrected or the fuel supply to the affected appliance shall be discontinued."
+  },
+  {
+    "clause": "8.7",
+    "title": "Engineered installations",
+    "description": "Subject to the approval of the authority having jurisdiction, outdoor air-supply provisions other than those described in Clauses 8.2 and 8.3 may be used if designed in accordance with good engineering practice."
+  },
+  {
+    "clause": "8.8.1",
+    "title": "Airflow sensing",
+    "description": "When the air supply is provided by mechanical means, an airflow-sensing device shall be installed. It shall be wired into the safety limit circuit of the primary safety control to shut off the gas in the event of air-supply failure. When an appliance is not equipped with a combustion safety control, the restoration of the gas supply shall be by a manual-reset device."
+  },
+  {
+    "clause": "8.8.2",
+    "title": "Make-up air heater",
+    "description": "When adequate air supply is provided for combustion air for all appliances by a make-up air heater and the appliances are interlocked with the heater, the requirements of Clauses 8.1 to 8.6 shall not apply."
+  },
+  {
+    "clause": "8.9.1",
+    "title": "General exceptions",
+    "description": "Every appliance shall be connected to either an effective chimney or a vent, except a) for a radiant heater installed in a masonry fireplace with a permanently opened flue; b) for an appliance that is approved for use without a vent; c) for an appliance installed in accordance with Clause 8.24.5 in a building (other than a residential or care or detention occupancy building) where adequate ventilation is provided by an exhaust fan, by a natural-draft ventilator, or by other means acceptable to the authority having jurisdiction; d) for an appliance installed for the production of carbon dioxide in a greenhouse where the rate of combustion does not exceed 3 Btu/h/ft³ (30 W/m³) of greenhouse volume and the concentration of carbon dioxide in the atmosphere does not exceed 5000 ppm (0.5%); and e) as provided in Clauses 8.14.12, 8.24, and 8.30."
+  },
+  {
+    "clause": "8.9.2",
+    "title": "Appliance location",
+    "description": "Except for a direct-vent appliance, an appliance requiring venting shall be located as close as practicable to either a chimney or vent."
+  },
+  {
+    "clause": "8.9.3",
+    "title": "Fasteners",
+    "description": "A venting system shall be firmly attached to either a draft-hood outlet or flue collar by sheet metal screws or mechanical fasteners, or in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.9.4",
+    "title": "Hangers",
+    "description": "A venting system shall be securely supported by noncombustible hangers suitable for the weight and design of the materials employed. A slip joint in the horizontal section of a venting system shall be secured either with sheet metal screws or in accordance with the manufacturer's instructions to prevent sagging."
+  },
+  {
+    "clause": "8.9.5",
+    "title": "Plastic vent inspection",
+    "description": "Venting systems that employ plastic vents shall be installed such that the first 3 ft (0.9 m), or total vent run if less than 3 ft (0.9 m) from the appliance flue outlet, is readily accessible for visual inspection."
+  },
+  {
+    "clause": "8.9.6",
+    "title": "Plastic vent type",
+    "description": "Vents constructed using plastic piping shall be certified to ULC S636."
+  },
+  {
+    "clause": "8.10.1",
+    "title": "Effective venting",
+    "description": "A vent or chimney shall provide effective venting and shall be designed and constructed to remove all flue gases to the outdoors."
+  },
+  {
+    "clause": "8.10.2",
+    "title": "Chimney applications",
+    "description": "A chimney suitable to the application shall be used for venting the following appliances: a) an incinerator, except as provided in Clause 8.10.11; b) an appliance that may be readily converted to the use of solid or liquid fuels; c) a combination gas- and oil-burning appliance; and d) an appliance approved for use with a chimney only."
+  },
+  {
+    "clause": "8.10.3",
+    "title": "Venting system",
+    "description": "The type of venting system to be used shall be in accordance with Table 8.5."
+  },
+  {
+    "clause": "8.10.4",
+    "title": "Special venting system",
+    "description": "A special venting system or a BH venting system shall be installed in accordance with the terms of its listing and the appliance and vent manufacturer's instructions."
+  },
+  {
+    "clause": "8.10.5",
+    "title": "Draft control device location",
+    "description": "When used on an appliance having a special venting system, a draft-control device shall be located in a position where positive vent pressures will not occur."
+  },
+  {
+    "clause": "8.10.6",
+    "title": "Positive venting limitations",
+    "description": "An appliance that operates at a positive vent pressure shall not be connected to a venting system serving any other appliance (common vent), except for cases in which all of the following conditions are met: All the appliances sharing the vent are of the same type and manufacturer. All the appliances are certified by the manufacturer for application in common vent configurations. The venting system is sized appropriately by the appliance manufacturer or in accordance with its instructions and as such is considered a special venting system as defined in Clause 1. The venting components are either supplied or as recommended by the appliance manufacturer. A method of flue backflow prevention is present in either the appliance or vent for each appliance and is installed in accordance with the appliance manufacturer's instructions. The manufacturer's operation and installation instructions include common venting specific instructions. The special venting system or unique feature(s) necessary for common venting application are in accordance with the applicable ANSI or CSA standards for the specific appliance type."
+  },
+  {
+    "clause": "8.10.7",
+    "title": "Type B vent",
+    "description": "A Type B vent shall only be used with an appliance that is a) certified with a draft hood; or b) certified and marked for use with a Type B vent."
+  },
+  {
+    "clause": "8.10.8",
+    "title": "Type BW vent",
+    "description": "A Type BW vent shall only be used with a recessed wall furnace."
+  },
+  {
+    "clause": "8.10.9",
+    "title": "Type L vent",
+    "description": "Except as specified in Clause 8.10.10, a Type L vent shall only be used with an appliance certified for use with Type L vents."
+  },
+  {
+    "clause": "8.10.10",
+    "title": "Type L in lieu of type B",
+    "description": "A Type L vent may be used in lieu of a Type B vent."
+  },
+  {
+    "clause": "8.10.11",
+    "title": "Incinerator venting",
+    "description": "Pipe that is either metal of not less than No. 20 GSG (0.8 mm) galvanized sheet steel or an equivalent noncombustible, corrosion-resistant material shall be used for venting an incinerator installed in locations such as an open shed, a breezeway, or a carport, provided that the metal pipe is exposed for its full length and suitable clearances are maintained."
+  },
+  {
+    "clause": "8.10.12",
+    "title": "Vent location limitations",
+    "description": "A flue gas vent or a vent connector shall not be installed in either a duct or a shaft used for return air, hot air, ventilating air, or combustion air."
+  },
+  {
+    "clause": "8.10.13",
+    "title": "Vent joints and seams",
+    "description": "Joints and seams in vents or vent connectors installed in space used to convey return air, such as the space in a false ceiling, shall be sealed."
+  },
+  {
+    "clause": "8.10.14",
+    "title": "Special venting limitations",
+    "description": "A special venting system shall neither pass through an unheated space nor be installed outdoors unless insulated in accordance with the appliance and/or vent manufacturer's instructions."
+  },
+  {
+    "clause": "8.11",
+    "title": "Vent and chimney requirements",
+    "description": "A Type B, BH, BW, or L vent or a factory-built chimney used for venting an appliance shall be certified."
+  },
+  {
+    "clause": "8.12.1",
+    "title": "Code requirements",
+    "description": "A masonry, concrete, or metal chimney shall be built and installed in accordance with the local building code or, in the absence of such, in accordance with the National Building Code of Canada."
+  },
+  {
+    "clause": "8.12.2",
+    "title": "Chimney flue examination",
+    "description": "Except as provided in Clause 8.21.6 before replacing an existing appliance or connecting a vent connector to a chimney, the chimney flue shall be examined to ascertain that the chimney a) is properly constructed; b) is lined with a tile or a metal liner; c) is clear and free of soot, creosote, or obstructions; d) will effectively conduct the products of combustion outdoors; and e) is sized in accordance with Clause 8.13."
+  },
+  {
+    "clause": "8.12.3",
+    "title": "Connection to solid fuel flues",
+    "description": "An appliance installed in a dwelling unit shall not be connected to a flue serving a) a solid-fuelled appliance; or b) a solid-fuelled fireplace unless the opening from the fireplace to the flue is permanently closed."
+  },
+  {
+    "clause": "8.12.4",
+    "title": "Connection to liquid fuel flues",
+    "description": "When a chimney flue serving an appliance that burns a liquid fuel also serves a gas-fuelled appliance, the gas-fuelled appliance vent connector shall be a) through a separate flue opening above the flue pipe connection from the liquid-fuelled appliance; or b) connected into a shop-fabricated branch fitting that is located i) in a dwelling unit, not more than 30 in (760 mm) from the flue entrance; and ii) in other than a dwelling unit, as close as practicable to the chimney."
+  },
+  {
+    "clause": "8.12.5",
+    "title": "Two or more openings",
+    "description": "When two or more openings are provided into one chimney flue, they shall be at different levels."
+  },
+  {
+    "clause": "8.12.6",
+    "title": "Connection to gas fuel flues",
+    "description": "When a chimney flue serving an appliance that burns a solid fuel also serves a gas-fuelled appliance in other than a dwelling unit, the venting of the gas-fuelled appliance shall be through a separate flue opening above the flue pipe connection from the other appliance."
+  },
+  {
+    "clause": "8.12.7",
+    "title": "Chimney clean-outs",
+    "description": "A chimney shall be provided with a clean-out opening. The clean-out shall be of such construction that it will remain tightly closed when not in use. A tee fitting used as either a clean-out or condensate drain shall have a tight-fitting cap to prevent entrance of air into the chimney at that point."
+  },
+  {
+    "clause": "8.12.8",
+    "title": "Masonry chimneys",
+    "description": "The flue of a masonry chimney that vents one or more gas-fuelled space-heating appliances with combined inputs of 400 000 Btu/h (120 kW) or less shall be lined in accordance with Clause 8.12.10, except where the flue has an existing clay-tile or transite liner a) that is capable of removing the total volume of flue gases to the outdoors; b) in which the capacity of the liner, as determined by the use of Table C.5, C.6, C.7, or C.8 in Annex C, does not exceed the total input of the appliances to be connected thereto by more than 25%; and c) that has been inspected and accepted by an installer in accordance with Clause 8.12.2."
+  },
+  {
+    "clause": "8.12.9",
+    "title": "Unsafe chimneys",
+    "description": "Where inspection reveals that an existing masonry, concrete, or metal chimney is not safe for the intended application, it shall be a) repaired or rebuilt; b) replaced with a chimney of the same type that complies with Clause 8.12.1; or c) replaced by either an approved vent or approved factory-built chimney that complies with Clause 8.13."
+  },
+  {
+    "clause": "8.12.10",
+    "title": "Chimney liner",
+    "description": "A metal chimney liner shall provide a continuous lining from the base inside the space where the appliance is located to the top of the masonry chimney flue, and it shall comply with the requirements of ULC S635. It shall be installed in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.12.11",
+    "title": "Semi-detached house venting",
+    "description": "The venting of a gas-fired appliance into a chimney flue common to both halves of a semi-detached house shall not be permitted."
+  },
+  {
+    "clause": "8.13.1",
+    "title": "Sizing",
+    "description": "A vent or a chimney serving a single appliance shall provide effective venting and shall be sized a) so that its effective area is not less than that of the draft-control device outlet or the flue outlet; or b) in accordance with good engineering practice, such as by the use of i) Table C.1, C.2, C.5, or C.6 of Annex C for a draft-hood-equipped or a fan-assisted category I appliance; or ii) engineered venting tables acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "8.13.2",
+    "title": "Multiple appliance venting",
+    "description": "A vent or a chimney serving more than one appliance shall provide effective venting and shall be sized a) so that its effective flue area is not less than that of the largest draft-control device outlet or the largest flue outlet, plus 50% of the sum of the outlet areas of the additional appliances; or b) in accordance with good engineering practice, such as by the use of i) Table C.3, C.4, C.7 or C.8 of Annex C for a draft-hood-equipped or a fan-assisted category I appliance; or ii) engineered venting tables acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "8.13.3",
+    "title": "Vent shape",
+    "description": "A vent may be any shape, provided that its venting capacity is equal to the capacity of the round pipe for which it is substituted, and its minimum internal dimension is not less than 2 in (50 mm). In no case shall the area be less than the area of a 3 in (75 mm) inside diameter pipe."
+  },
+  {
+    "clause": "8.14.1",
+    "title": "Wind consideration",
+    "description": "A vent or chimney shall extend high enough above either a building or a neighbouring obstruction so that wind from any direction will not create a positive pressure in the vicinity of either the vent termination or the chimney termination."
+  },
+  {
+    "clause": "8.14.2",
+    "title": "Vent minimum distances",
+    "description": "Except for a special venting system with positive vent pressure, a vent shall extend not less than 2 ft (600 mm) above the highest point where it passes through a flat roof of a building and not less than 2 ft (600 mm) higher than any portion of a building within a horizontal distance of 10 ft (3 m)."
+  },
+  {
+    "clause": "8.14.3",
+    "title": "Positive vent pressure minimum distances",
+    "description": "A vent used in a special venting system with positive vent pressure and passing through a roof shall extend at least 18 in (450 mm) above the highest point where it passes through the roof surface and the same distance above any other obstruction within a horizontal distance of 18 in (450 mm)."
+  },
+  {
+    "clause": "8.14.4",
+    "title": "Chimney minimum distances",
+    "description": "A chimney shall extend not less than 3 ft (0.9 m) above the highest point where it passes through the roof of a building and not less than 2 ft (600 mm) higher than any portion of a building within a horizontal distance of 10 ft (3 m)."
+  },
+  {
+    "clause": "8.14.5",
+    "title": "Pitched roof distances",
+    "description": "Except for a special venting system with positive vent pressure, a vent passing through a pitched roof shall extend above the highest point where it passes through a roof surface in accordance with Figure 8.1 and shall extend not less than 2 ft (600 mm) above any obstruction within a horizontal distance of 10 ft (3 m)."
+  },
+  {
+    "clause": "8.14.6",
+    "title": "Height above appliance",
+    "description": "A vent or chimney shall extend not less than 5 ft (1.5 m) in height above either the highest connected appliance draft-hood outlet or flue collar except as provided in Clause 8.24.1."
+  },
+  {
+    "clause": "8.14.7",
+    "title": "Wall furnace vent height",
+    "description": "A vent serving a wall furnace shall extend not less than 12 ft (3.6 m) in height above the bottom of the furnace and shall contain neither lateral nor horizontal sections unless the furnace is certified for room-heater-type venting and is so marked."
+  },
+  {
+    "clause": "8.14.8",
+    "title": "Vent termination limitations",
+    "description": "A vent shall not terminate a) where it could cause hazardous frost or ice accumulations on adjacent property surfaces; b) less than 7 ft (2.1 m) above a paved sidewalk or a paved driveway that is located on public property; c) within 6 ft (1.8 m) of a mechanical air-supply inlet to any building; d) above a regulator within 3 ft (0.9 m) horizontally of the vertical centreline of the regulator vent outlet to a maximum vertical distance of 15 ft (4.5 m); e) except as required by Clause 8.14.8 d), any distance less than that of any gas pressure regulator vent outlet as detailed in Table 5.3; f) less than 1 ft (300 mm) above grade level; g) within specified distances of a window or door that can be opened in any building, of any nonmechanical air-supply inlet to any building, or of the combustion air inlet of any other appliance; and h) underneath a veranda, porch, or deck unless the veranda, porch, or deck is fully open on a minimum of two sides beneath the floor and the distance between the top of the vent termination and the underside of the veranda, porch, or deck is greater than 1 ft (300 mm)."
+  },
+  {
+    "clause": "8.14.9",
+    "title": "Direct-vent clearances",
+    "description": "When more than one direct-vent appliance of the same make and model are installed, the clearances between the air-intake and exhaust vent terminals may be reduced from the clearances required by this Code, provided that the appliances have been tested and certified for such reduced clearances. The manufacturer's instructions shall specify and illustrate the reduced clearances."
+  },
+  {
+    "clause": "8.14.10",
+    "title": "Outdoor pool heater flue",
+    "description": "The flue gas discharge opening for an outdoor pool heater shall terminate not less than 10 ft (3 m) from any building opening."
+  },
+  {
+    "clause": "8.14.11",
+    "title": "Termination cap",
+    "description": "A terminus of a vent shall be fitted with a cap either in accordance with the vent manufacturer's installation instructions or in accordance with the manufacturer's installation instructions for a special venting system."
+  },
+  {
+    "clause": "8.14.12",
+    "title": "Wall termination vent limitations",
+    "description": "A vent from an appliance shall not extend through an exterior wall and terminate adjacent to the exterior wall unless a) the appliance is a direct-vent appliance; b) the appliance is intended for connection to a special venting system; c) the appliance and its complete vent assembly are specifically certified to be installed in this manner; d) the venting system is equipped with a certified power venter that complies with Clause 8.29.2; or e) the venting system is equipped with a certified power venter that complies with Clause 8.24.2."
+  },
+  {
+    "clause": "8.14.13",
+    "title": "Dormant vent installation",
+    "description": "The vent from one or more gas-fired appliances may be installed vertically inside a dormant masonry flue, a dormant certified chimney, or a dormant vent, provided that a) each appliance is equipped with its own individual vent or common stack(s), as is the case with common vented appliance sets meeting the requirements of Clause 8.10.6 installed in accordance with the requirements of Clauses 8.12 to 8.14, as applicable; and b) spacers are installed to maintain a minimum clearance of 1 in (25 mm) between an active vent and a combustible vent. The space surrounding any vent shall not be used to convey flue gases for any other appliance."
+  },
+  {
+    "clause": "8.15.1",
+    "title": "Independent support",
+    "description": "A vent or chimney shall be adequately supported independent of the appliance being served."
+  },
+  {
+    "clause": "8.15.2",
+    "title": "Manufacturer's instructions",
+    "description": "A vent or factory-built chimney shall be installed in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.15.3",
+    "title": "Direct connection to flue outlet or draft-hood outlet",
+    "description": "A vent may be directly connected to the flue outlet or draft-hood outlet of the appliance that it serves, provided that the vent is independently supported, and the connection is made in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.15.4",
+    "title": "Double to single wall adapter",
+    "description": "When the vent referred to in Clause 8.15.3 is of double-wall construction, the connection shall be made by the use of a certified double-wall to single-wall adapter, and by a) an adjustable telescopic-type fitting, fabricated by the vent manufacturer; or b) a single-wall vent connector having a maximum length not exceeding 18 in (450 mm) and a minimum length not less than 12 in (300 mm)."
+  },
+  {
+    "clause": "8.15.5",
+    "title": "Single-wall vent connector",
+    "description": "When a single-wall vent connector connects an appliance to a Type B vent a) the base fitting shall be accessible for inspection; b) the connection shall be by means of a certified double-wall to single-wall adapter; and c) the clearance from combustibles as specified in Table 8.6 shall be maintained."
+  },
+  {
+    "clause": "8.16.1",
+    "title": "Connection locations",
+    "description": "When two or more vent connectors enter either a common vent or a common chimney, they shall not enter at the same horizontal plane. The smallest vent connector shall enter at the highest level consistent with the available headroom and clearance from combustible material, except that a vent connector from an incinerator shall be installed at the lowest level. When the vent connectors are of the same diameter, the vent connector serving the appliance with the lowest British thermal unit input shall be connected at the highest level."
+  },
+  {
+    "clause": "8.16.2",
+    "title": "Common vent connector",
+    "description": "When two or more appliances are vented through a common vent connector, the common vent connector shall be located at the highest level consistent with the available headroom and clearance from combustible material."
+  },
+  {
+    "clause": "8.17.1",
+    "title": "Natural-draft type",
+    "description": "When the installation of a vent used in a natural-draft venting system is impracticable inside a building, it may be done outdoors, provided that the vent is a) certified for outside installation; and b) installed in accordance with the vent manufacturer's instructions."
+  },
+  {
+    "clause": "8.17.2",
+    "title": "Type B or Type L",
+    "description": "The portion of an indoor-installed Type B or Type L vent that extends above the roof line shall be certified for exterior use, and each length shall be so identified."
+  },
+  {
+    "clause": "8.18.1",
+    "title": "Materials without dilution air",
+    "description": "A vent connector that serves an appliance without flue gas dilution air shall be constructed of materials having corrosion resistance at least equivalent to that of No. 24 GSG (0.60 mm) galvanized steel."
+  },
+  {
+    "clause": "8.18.2",
+    "title": "Materials for incinerators",
+    "description": "A vent connector that serves an incinerator shall be constructed of materials suitable for the intended use of the incinerator and shall have corrosion resistance and durability to heat at least equivalent to that of No. 20 GSG (0.90 mm) galvanized steel."
+  },
+  {
+    "clause": "8.18.3",
+    "title": "Materials with dilution air",
+    "description": "Unless certified, a vent connector that serves an appliance with a draft hood shall not be made of material less than a) No. 28 GSG (0.38 mm) for all sizes up to and including 5 in (127 mm) diameter; b) No. 26 GSG (0.47 mm) for sizes over 5 in (127 mm) up to and including 8 in (203 mm) diameter; c) No. 24 GSG (0.60 mm) for sizes over 8 in (203 mm) up to and including 16 in (406 mm) diameter; and d) No. 20 GSG (0.90 mm) for sizes over 16 in (406 mm) up to and including 30 in (760 mm) diameter."
+  },
+  {
+    "clause": "8.18.4",
+    "title": "Minimum size",
+    "description": "A vent connector that serves a single appliance with a single flue outlet shall not be smaller than the minimum size of either the vent or chimney as determined in Clause 8.13.1."
+  },
+  {
+    "clause": "8.18.5",
+    "title": "Size change",
+    "description": "When a vent connector is required to have a size other than that of either the appliance flue collar or draft-hood outlet, the change in size shall be made as follows: a) If the size is increased, the change in size shall be made at either the appliance flue collar or draft-hood outlet, except that when either the flue collar or draft-hood outlet is inside the casing of the appliance, the increase shall be made immediately external to the appliance casing. b) If the size is reduced, the change in size shall be made at the appliance flue collar."
+  },
+  {
+    "clause": "8.18.6",
+    "title": "Size change calculations",
+    "description": "When the size of either a draft hood or a flue collar is changed in accordance with Clause 8.18.5, the revised size shall be considered the size of either the draft hood or flue-collar outlet when making calculations in accordance with Clauses 8.13.1 to 8.13.3 and 8.18.7."
+  },
+  {
+    "clause": "8.18.7",
+    "title": "Multiple appliances",
+    "description": "A vent connector that serves two or more appliances, or a vent connector that serves a single appliance with two or more flue outlets, shall a) have i) an area not less than the total area of all vent connectors, with the size of each individual vent connector determined separately in accordance with Clause 8.18.5; and ii) a total length not exceeding the values specified in Table C.9. The total length of the connector in Table C.9 shall include manifold length and each individual appliance length; or b) be sized in accordance with an engineering table acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "8.18.8",
+    "title": "Size change location",
+    "description": "When either a chimney or a vent has been sized in accordance with the requirements of Clauses 8.13.1 and 8.13.2, and the flue area is less than the area of the vent connector, the change in size shall be made where the vent connector is attached to either the chimney or the vent."
+  },
+  {
+    "clause": "8.18.9",
+    "title": "Special venting system minimum clearances",
+    "description": "A special venting system shall be installed with a minimum clearance from combustible material in accordance with its certification."
+  },
+  {
+    "clause": "8.18.10",
+    "title": "Type B minimum clearances",
+    "description": "Except as provided in Clause 8.18.13, a vent connector material of Type B vent shall be installed with a minimum clearance from combustible material. This clearance shall be maintained if it passes through either a combustible wall or partition, in accordance with Table 8.6."
+  },
+  {
+    "clause": "8.18.11",
+    "title": "Appliance minimum clearances",
+    "description": "Except as provided in Clause 8.18.13, the minimum clearance of a vent connector of other than Type B vent material from a combustible wall or partition shall be in accordance with Table 8.6."
+  },
+  {
+    "clause": "8.18.12",
+    "title": "Combustible wall or partition penetrations",
+    "description": "When a vent connector of other than Type B vent material passes through either a combustible wall or partition, the combustible material shall be guarded at the point of passage with a) a ventilated metal thimble not smaller than specified requirements; or b) noncombustible insulation and clearances that will prevent the surface temperature of the combustible material from exceeding 194 °F (90 °C)."
+  },
+  {
+    "clause": "8.18.13",
+    "title": "Combustible wall protection",
+    "description": "Except for passage through either a combustible wall or combustible partition, the clearance from a vent connector to combustible material may be reduced when the combustible material is protected as specified in Table 8.7."
+  },
+  {
+    "clause": "8.18.14",
+    "title": "General installation",
+    "description": "A vent connector shall be installed so as to avoid unnecessary turns and other features that create added resistance to the flow of flue gases."
+  },
+  {
+    "clause": "8.18.15",
+    "title": "Fasteners",
+    "description": "A vent connector shall be firmly attached to either a draft-hood outlet or flue collar by sheet metal screws or mechanical fasteners, or in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.18.16",
+    "title": "General installation for type B",
+    "description": "A vent connector of Type B vent material shall be securely assembled in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.18.17",
+    "title": "No dips or sags",
+    "description": "A vent connector shall be installed without dips or sags."
+  },
+  {
+    "clause": "8.18.18",
+    "title": "Converted furnace or boiler",
+    "description": "A vent connector of either Type B or Type L vent material shall not be used between the flue outlet and the draft-control device of either a converted furnace or converted boiler."
+  },
+  {
+    "clause": "8.18.19",
+    "title": "Horizontal design",
+    "description": "The horizontal run of a vent connector shall be as short as practicable, and the appliance shall be located as near the vent or chimney as practicable."
+  },
+  {
+    "clause": "8.18.20",
+    "title": "Hanger support",
+    "description": "A vent connector shall be securely supported by noncombustible hangers suitable for the weight and design of the materials employed. A slip joint in the horizontal section of a vent connector shall be secured with either sheet metal screws or in accordance with the manufacturer's instructions to prevent sagging."
+  },
+  {
+    "clause": "8.18.21",
+    "title": "Unheated spaces",
+    "description": "When a vent connector from a Category I appliance passes through an unheated space, that portion of the vent connector shall be either a Type B or Type L vent."
+  },
+  {
+    "clause": "8.18.22",
+    "title": "General construction",
+    "description": "A vent connector shall be of either metal or other noncombustible material capable of withstanding the flue gas temperatures involved. It shall have sufficient strength to withstand damage likely to occur under the conditions of use and shall be securely supported."
+  },
+  {
+    "clause": "8.18.23",
+    "title": "Floor or ceiling limitations",
+    "description": "A single-wall vent connector shall not pass through either a floor or a ceiling."
+  },
+  {
+    "clause": "8.19.1",
+    "title": "Location above clean-out",
+    "description": "The entrance of a vent connector into a chimney shall be above the chimney clean-out opening."
+  },
+  {
+    "clause": "8.19.2",
+    "title": "Connection to chimney",
+    "description": "The vent connector shall not protrude into the chimney and obstruct the chimney flue."
+  },
+  {
+    "clause": "8.19.3",
+    "title": "Cleaning sleeve",
+    "description": "A sleeve shall be used to facilitate removal of the vent connector for cleaning."
+  },
+  {
+    "clause": "8.19.4",
+    "title": "Chimney liner connection",
+    "description": "The space between a chimney and chimney liner shall be sealed at the point of entry of a vent connector."
+  },
+  {
+    "clause": "8.20",
+    "title": "Size and height of interconnected vent connectors",
+    "description": "Two or more vent connectors may be joined through a common vent connector, provided that a) each vent connector has the greatest possible rise consistent with the headroom available and has the required clearances from combustible material; b) the size of each vent connector is in accordance with Clauses 8.18.5 and 8.18.7; and c) in the case of positive pressure appliances, the appliance or common vent system meets the requirements of Clause 8.10.6, as applicable."
+  },
+  {
+    "clause": "8.21.1",
+    "title": "Common gas vents",
+    "description": "A common gas vent is permissible in multi-storey installations to vent appliances a) certified with a draft hood; or b) certified and marked for use with a Type B vent and located on one or more floor levels, provided that the venting system is installed in accordance with the requirements of Clause 8.21."
+  },
+  {
+    "clause": "8.21.2",
+    "title": "Appliance location and combustion air",
+    "description": "When a common gas vent is used in accordance with Clause 8.21.1, the gas appliances shall a) be installed in an enclosure having access solely from an unoccupied space such as a hallway, service area, or outdoor balcony; and b) have combustion air supplied to the enclosure by means of grilles or ducts that communicate directly with the outdoors, are sized in accordance with the requirements of Table 8.1 or 8.2, and are installed in accordance with Clause 8.3. Combustion air shall not be taken from inhabited or occupied spaces within the building."
+  },
+  {
+    "clause": "8.21.3",
+    "title": "Location exemption for one dwelling unit",
+    "description": "The requirements of Clause 8.21.2 shall not apply if all appliances served by a common venting system are located within one dwelling unit."
+  },
+  {
+    "clause": "8.21.4",
+    "title": "Return air requirements",
+    "description": "When a forced-air furnace is installed in an enclosure in accordance with Clause 8.21.2 no opening shall be located in the furnace return-air system within the enclosure, and means shall be provided on the return-air system to prevent the infiltration of air from inside the enclosure."
+  },
+  {
+    "clause": "8.21.5",
+    "title": "Vent size and type",
+    "description": "When a common gas vent is used in accordance with Clause 8.21.1, the common gas vent shall be a) of a Type B or Type L vent; b) sized in accordance with the requirements indicated in Tables C.3 and C.4 and illustrated in Figures C.11 and C.12 of Annex C; and c) installed in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.21.6",
+    "title": "Replacement appliances",
+    "description": "With approval of the authority having jurisdiction, a common chimney is permissible in multi-storey installations to vent appliances replacing existing appliances, provided that a) new appliances are of the same size (input capacity with similar efficiency range) and venting type (fan-assisted or natural draft) as the original; b) the venting system does not include significant changes; and c) the venting system provides effective venting and shows no signs of condensation or deterioration. Evidence shall be provided to authenticate the characteristics of the replaced appliance to the authority having jurisdiction."
+  },
+  {
+    "clause": "8.22",
+    "title": "Dampers and attachments",
+    "description": "A device or attachment that might in any way impair either the combustion or safe venting of the combustion products shall be prohibited."
+  },
+  {
+    "clause": "8.23.1",
+    "title": "Zero over-fire draft appliances",
+    "description": "Except for an incinerator, a dual oven-type combination range, and a direct-vent appliance, an appliance requiring zero over-fire draft for operation shall be installed with a draft hood."
+  },
+  {
+    "clause": "8.23.2",
+    "title": "Positive over-fire or induced draft appliances",
+    "description": "A draft hood shall not be used on an appliance with either positive over-fire draft or an induced draft."
+  },
+  {
+    "clause": "8.23.3",
+    "title": "Appliance supplied draft hood",
+    "description": "A draft hood either supplied with or forming part of an appliance shall be installed without alteration."
+  },
+  {
+    "clause": "8.23.4",
+    "title": "Approved design",
+    "description": "When a draft hood is required and it is not supplied by the appliance manufacturer, it shall be supplied by the installer, and it shall be of an approved design."
+  },
+  {
+    "clause": "8.23.5",
+    "title": "Outlet size",
+    "description": "The draft-hood outlet shall be of the same size as the appliance flue collar unless otherwise sized in the appliance manufacturer's instructions."
+  },
+  {
+    "clause": "8.23.6",
+    "title": "Location to combustion air",
+    "description": "A draft hood shall be in the same room as the combustion air opening of the appliance. A draft hood shall not be installed in a false ceiling space, in a room other than the one the appliance serves, or in any manner that could permit a difference in pressure between the draft-hood relief opening and the combustion air supply."
+  },
+  {
+    "clause": "8.23.7",
+    "title": "Installation orientation",
+    "description": "A draft hood shall be installed in the position for which it was designed with reference to the horizontal and vertical planes, and shall be located so that the relief opening is not obstructed by any part of the appliance or adjacent construction. The appliance and its draft hood shall be located so that the relief opening is accessible for checking vent operation."
+  },
+  {
+    "clause": "8.23.8",
+    "title": "Draft regulators",
+    "description": "A draft regulator shall not be used as a substitute for a draft hood."
+  },
+  {
+    "clause": "8.24.1",
+    "title": "Exclusions",
+    "description": "The requirements for a draft-control device in Clauses 8.8 to 8.24 shall not apply either to a direct-vent appliance or to an appliance requiring a special venting system."
+  },
+  {
+    "clause": "8.24.2",
+    "title": "Power venters",
+    "description": "A power venter may be used in place of a natural-draft vent, provided that means are provided to prevent the flow of gas to the main burner in the event of failure of the power venter. Such a venter shall not be used in conjunction with an incinerator."
+  },
+  {
+    "clause": "8.24.3",
+    "title": "Vent connectors",
+    "description": "A vent connector that serves an appliance designed for natural-draft venting shall not be connected to any portion of a venting system that is under positive pressure or serves an appliance requiring a special venting system."
+  },
+  {
+    "clause": "8.24.4",
+    "title": "Exhaust systems",
+    "description": "An exhaust hood or canopy for an industrial appliance may be used in place of a direct flue connection in certain cases, for instance, when the process itself requires fume disposal. The design of the venting system shall conform to the requirements of the authority having jurisdiction."
+  },
+  {
+    "clause": "8.24.5",
+    "title": "Venting directly into space",
+    "description": "When located in a large and adequately ventilated space, an appliance may be operated by discharging the combustion products directly into the space, subject to the approval of the authority having jurisdiction and provided that the maximum input of the appliance does not exceed 20 Btu/h/ft³ (0.2 kW/m³) of the space in which the appliance is located."
+  },
+  {
+    "clause": "8.24.6",
+    "title": "Multiple appliances",
+    "description": "A venting system that serves one or more appliances shall provide adequate venting and shall be sized in accordance with approved engineering design."
+  },
+  {
+    "clause": "8.25",
+    "title": "Draft regulators",
+    "description": "A draft regulator, when used, shall be located so that the relief opening is not obstructed by any part of the appliance or adjacent construction. When used with an incinerator, a draft regulator shall be of the single-acting type. In all other installations, it shall be of the double-acting type."
+  },
+  {
+    "clause": "8.26.1",
+    "title": "Integral component",
+    "description": "An electrically operated automatic vent damper device shall not be used in a dwelling unit except where the device is provided as an integral component of a certified appliance."
+  },
+  {
+    "clause": "8.26.2",
+    "title": "Vent types",
+    "description": "A residential appliance certified with an automatically operated vent damper device shall be connected to a) a Type B vent complying with CAN/ULC-S605; b) a Type L vent complying with CAN/ULC-S609; c) a factory-built chimney complying with CAN/ULC-S604, CAN/ULC-S629, or UL 959; or d) either a masonry or a concrete chimney lined with a certified chimney liner."
+  },
+  {
+    "clause": "8.26.3",
+    "title": "Thermally actuated vent damper",
+    "description": "A thermally actuated automatic vent damper device shall be installed a) in accordance with the manufacturer's instructions; and b) only in the vent connector of an appliance equipped with a draft hood that is connected to i) a certified factory-built chimney, Type B vent, or Type L vent; or ii) a masonry chimney flue that is lined in accordance with Clause 8.12.10."
+  },
+  {
+    "clause": "8.26.4",
+    "title": "Appliance installation",
+    "description": "An automatic flue damper a) shall not be installed on an appliance within a dwelling unit except when provided as an integral component of a certified appliance; b) shall not be installed on an appliance equipped with a draft hood or a draft regulator; c) when installed on an appliance equipped with a continuous pilot, shall be designed or constructed to provide a fixed minimum opening of 20% of the flue area and shall be interlocked with the burner control system; and d) when installed on an appliance equipped with an intermittent pilot, an interrupted pilot, direct-spark ignition, or hot surface ignition of the main burner, shall be interlocked with the burner control system."
+  },
+  {
+    "clause": "8.27.1",
+    "title": "Limitations for use",
+    "description": "A manually operated flue damper shall not be used with a) a residential appliance; b) an appliance equipped with a draft-control device; or c) a commercial- or industrial-type appliance, unless the damper is i) provided with a fixed opening; and ii) designed, constructed, and field tested to ensure safe operation at a fixed minimum opening."
+  },
+  {
+    "clause": "8.27.2",
+    "title": "Pressure point adjuster",
+    "description": "When a baffle or neutral pressure point adjuster is used, it shall a) be located upstream of the draft regulator; and b) have a fixed safe minimum opening."
+  },
+  {
+    "clause": "8.28.1",
+    "title": "Installation requirements",
+    "description": "When a draft-control device is either part of an appliance or supplied by the appliance manufacturer, it shall be installed in accordance with the appliance manufacturer's installation instructions."
+  },
+  {
+    "clause": "8.28.2",
+    "title": "Installation orientation",
+    "description": "A draft-control device shall be installed in the position for which it is designed with reference to the horizontal and vertical planes and shall be so located that relief openings are not obstructed."
+  },
+  {
+    "clause": "8.29.1",
+    "title": "Failure provisions",
+    "description": "When an induced- or forced-draft device is used, provision shall be made to prevent the flow of gas to the burner on failure of the device."
+  },
+  {
+    "clause": "8.29.2",
+    "title": "Water heater size limitation",
+    "description": "A power venter certified for use as an add-on to a water heater may be used on a water heater that has an input of 50 000 Btu/h (15 kW) or less."
+  },
+  {
+    "clause": "8.30.1",
+    "title": "General requirements",
+    "description": "An appliance may be vented through an exhaust canopy installed in a location other than a dwelling unit, provided that a) the canopy complies with the requirements of the local building code or, in the absence of such, with the requirements of the National Building Code of Canada; b) the exhaust volume of the canopy is sufficient to provide for capture and removal of grease-laden vapours and products of combustion; c) the appliance has an input not exceeding 400 000 Btu/h (120 kW) and its flue outlet is directly under the canopy; and d) the appliance is interlocked with the exhaust in accordance with Clause 8.30.2, except where it is approved to ANSI Z83.11/CSA 1.8."
+  },
+  {
+    "clause": "8.30.2",
+    "title": "Appliance interlocking",
+    "description": "An approved appliance not identified in Clause 8.30.1 d) may be installed under a canopy, provided that the appliance is interlocked so that operation is permitted only when exhaust airflow is proven."
+  },
+  {
+    "clause": "8.30.3",
+    "title": "Multiple appliance interlocking",
+    "description": "Where more than one appliance is installed under the same canopy in accordance with Clause 8.30.2, a single system installed in accordance with Clause 8.30.2 may be used to interlock the appliances."
+  },
+  {
+    "clause": "8.30.4",
+    "title": "Booster water heater",
+    "description": "Clause 8.30.2 shall not apply to a booster water heater with an input of 50 000 Btu/h (15 kW) or less that supplies water to an automatic dishwasher."
+  },
+  {
+    "clause": "8.31.1",
+    "title": "Installation requirements",
+    "description": "A heat reclaimer shall not be used with a gas-fired appliance installed in a dwelling unit, in mobile housing, or in a recreational vehicle unless it is a) approved for the application; and b) installed in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.31.2",
+    "title": "Commercial or industrial requirements",
+    "description": "A heat reclaimer installed on a commercial or industrial gas-fired appliance shall be a) approved for the application; and b) installed in accordance with the manufacturer's instructions."
+  },
+  {
+    "clause": "8.32.1",
+    "title": "Overpressure forces",
+    "description": "Combustion exhaust systems for engine-driven appliances shall be designed and constructed to withstand forces caused by the ignition of unburned fuel or shall have provisions to relieve those forces without damaging the exhaust system."
+  },
+  {
+    "clause": "8.32.2",
+    "title": "Protection of fabricated venting systems",
+    "description": "Unlisted exhaust venting systems shall be deemed to meet the requirements of Clause 8.32.1 provided that a) the unlisted chimney conforms to Clause 8.18.2 and NFPA 211; and b) are constructed of material that is at least equivalent to Schedule 10 stainless steel pipe, fabricated with welded joints, and pressure tested to 50 psig (340 kPa)."
+  },
+  {
+    "clause": "8.32.3",
+    "title": "Commercial or industrial requirements",
+    "description": "Where over-pressure relief devices that form part of a certified chimney system are used to meet the requirement of Clause 8.32.1 the over-pressure relief device may terminate inside a dedicated service room containing the engine-driven appliance or engine enclosure provided a) they are readily visible for inspection; and b) there is no visual evidence that the relief device is leaking combustion products."
+  }
+]
