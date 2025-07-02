@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import SearchBar from './components/SearchBar';
+import SearchBar from './Components/SearchBar';
 
 // Sample CSA Code Data (we'll replace this with real JSON later)
 const csaData = [
