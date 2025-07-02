@@ -5282,10 +5282,7 @@ const csaData = [
     "clause": "10.6",
     "title": "Refuelling of vehicles",
     "description": "A vehicle being refuelled with NGV shall have its engine turned off."
-  }
-
-];
-[
+  },
   {
     "clause": "C.1",
     "title": "General",
@@ -5439,9 +5436,7 @@ const csaData = [
     "description": "For Single Appliance Venting Applications: Where the vertical vent has a larger diameter than the vent connector, the vertical vent diameter shall be used to determine the minimum vent capacity and the vent connector diameter shall be used to determine the maximum vent capacity. The flow area of the vertical vent shall not exceed 7 times the flow area of the listed appliance categorized vent area, flue collar area, or draft hood outlet area unless designed with approved engineering methods. For Multiple Appliances Venting Applications: Where 2 or more appliances are connected to a vertical vent or chimney the flow area of the largest section of vertical vent or chimney shall not exceed 7 times the flow area of smallest listed appliance categorized vent area, flue collar area, or draft hood outlet area unless designed with approved engineering methods.",
     "annex": "C",
     "category": "Calculations"
-  }
-]
-[
+  },
   {
     "clause": "H.1",
     "title": "Purging requirement scope",
@@ -5539,9 +5534,7 @@ const csaData = [
     "description": "Table H.1 - Approximate purging times: NPS 1/2 pipe/tubing: 10 ft (3 m) = 3 s, 20 ft (6 m) = 5 s, 60 ft (18 m) = 15 s, 100 ft (30 m) = 26 s. NPS 1 pipe/tubing: 10 ft (3 m) = 7 s, 20 ft (6 m) = 14 s, 60 ft (18 m) = 43 s, 100 ft (30 m) = 84 s. NTS 1/2 tubing: 10 ft (3 m) = 1 s, 20 ft (6 m) = 2 s, 60 ft (18 m) = 6 s, 100 ft (30 m) = 10 s. NTS 3/4 tubing: 10 ft (3 m) = 3 s, 20 ft (6 m) = 5 s, 60 ft (18 m) = 15 s, 100 ft (30 m) = 26 s.",
     "annex": "H",
     "category": "Tables"
-  }
-]
-[
+  },
   {
     "clause": "K.2",
     "title": "ANSI Z21.80/CSA 6.22 Line pressure regulators",
@@ -5646,9 +5639,7 @@ const csaData = [
     "description": "Line pressure regulators certified to ANSI Z21.80/CSA 6.22 can be provided with a vent limiter (also known informally as a leak-limiting device), which, if there is a small leak in the diaphragm, will limit the leakage rate through the regulator vent connection to a prescribed amount. The Code permits such regulators to be installed inside the building and does not require the regulator to be piped to the outdoors provided the regulator is located in a ventilated space. While high pressure regulators and other uncertified regulators may also be equipped with a vent limiter, this Code does not allow this exemption for such pressure regulators. While the Code provides a definition for a ventilated space, it does not state any performance criteria to demonstrate if the space is suitably ventilated to prevent a hazardous accumulation of gas in the space. However, if such demonstration is required by an authority having jurisdiction, CSA C22.1, rule 18-050, Appendix B, references API RP 505, which states that the concentration of a flammable gas should not exceed 25% of the lower explosion limit (LEL) of a flammable gas for a room to be a \"ventilated room\". This 25% LEL is commonly used in other standards as an upper control limit. Natural gas LEL is 5% by room volume. For a pressure regulator emitting 2.5 CFH natural gas, and for it not to exceed 1.25% by room volume, then the space must have an air change rate of only 200 CFH or 3.33 CFM. This is a very low ventilation rate (it cannot be measured accurately by commercial measuring equipment). For propane, the LEL is 2.1% by room volume. At a release rate of 1 CFH, this has the same ventilation rate for natural gas (i.e., a ventilation rate of 200 CFH or 3.333 CFM). One possible means of meeting this requirement is to provide a mechanical ventilation system that will exhaust 500 ft³ in 1 h (on a continuous or non-continuous basis); this will provide a factor of safety of 2.5:1 to allow for incomplete mixing of the gas in the space. For a continuous ventilation system, 500 CFH is only 8.3 CFM. If the fan only operates 5 min per h, then the required ventilation exhaust rate is 100 CFM. For comparison, a typical residential washroom exhaust fan is 80 to 100 CFM.",
     "annex": "K",
     "category": "Calculations"
-  }
-]
-[
+  },
   {
     "clause": "M.1",
     "title": "Annex M application scope",
@@ -5726,7 +5717,7 @@ const csaData = [
     "annex": "M",
     "category": "Safety"
   }
-]
+];
 function App() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
