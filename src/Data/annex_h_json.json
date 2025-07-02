@@ -1,0 +1,100 @@
+[
+  {
+    "clause": "H.1",
+    "title": "Purging requirement scope",
+    "description": "Purging of piping and tubing systems where a readily accessible burner is not available or where an appliance is not equipped with a continuous pilot shall be undertaken as outlined in Clauses H.2 to H.7.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.2",
+    "title": "Purging procedure applicability",
+    "description": "The procedure shall be applicable to the purging of air or inert gas using natural gas from a piping/tubing system downstream of the meter.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.3",
+    "title": "No smoking during purging",
+    "description": "No smoking shall be permitted when purging.",
+    "annex": "H",
+    "category": "Safety"
+  },
+  {
+    "clause": "H.4",
+    "title": "Ignition source removal",
+    "description": "Prior to commencing the purge, all sources, or potential sources, of ignition shall be removed or shut off.",
+    "annex": "H",
+    "category": "Safety"
+  },
+  {
+    "clause": "H.5",
+    "title": "Purging procedure conditions",
+    "description": "The purging procedure shall be used only under the following conditions: a) maximum piping system size is NPS 1; b) maximum tubing size is NTS 3/4; c) maximum piping or tubing system gas pressure is 2 psig (14 kPa); d) maximum gas pressure at purging point is 11 in w.c. (2.74 kPa) or less; and e) the longest run of pipe or tubing in the system is 100 ft (30 m) or less.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.6",
+    "title": "Purging location requirements",
+    "description": "Piping and tubing systems not meeting the conditions listed in Clause H.5 shall be purged to the outdoors. Those that do meet these conditions shall be purged in accordance with Clause H.7.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.7",
+    "title": "Purging procedure steps",
+    "description": "The purging procedure shall be as follows: a) Use only the approved purging assembly. See Figure H.1. b) Inspect the purging assembly prior to use. Replace worn or damaged hose, and ensure that all joints are tight. c) Ensure that the manual shut-off valve for the appliance is closed. d) Connect the purging assembly to the appliance dirt pocket, where so equipped, or to the appliance piping, as close to the appliance as is practicable. e) Ensure that no sources of ignition are present within the purge area and that the purge area is well ventilated.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.f",
+    "title": "Purging time determination",
+    "description": "Determine the approximate purging time from Table H.1. Ensure that the purge does not exceed 100 s.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.g",
+    "title": "Manual shut-off valve operation",
+    "description": "Open the manual shut-off valve for the appliance.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.h",
+    "title": "Begin purging process",
+    "description": "Begin purging by fully opening the automatic shut-off release purging valve on the purging assembly. Purge in a continuous and uninterrupted manner. Caution: Under no circumstances shall the automatic shut-off release purging valve be fixed in the open position.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.i",
+    "title": "Purging termination conditions",
+    "description": "Terminate purging when the smell of gas is detected at the purging valve outlet or when the approximate purging time has been reached. Do not exceed the purging time by more than 10 s.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.j",
+    "title": "Post-purging valve closure",
+    "description": "When purging is terminated, close the manual shut-off valve and disconnect the purging assembly from the piping system.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.k",
+    "title": "Post-purging leak testing",
+    "description": "Reassemble the appliance piping, open the manual shut-off valve, and soap test the affected joints to ensure that there are no leaks.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.1.Table",
+    "title": "Approximate purging times at 7 in w.c. (1.74 kPa)",
+    "description": "Table H.1 - Approximate purging times: NPS 1/2 pipe/tubing: 10 ft (3 m) = 3 s, 20 ft (6 m) = 5 s, 60 ft (18 m) = 15 s, 100 ft (30 m) = 26 s. NPS 1 pipe/tubing: 10 ft (3 m) = 7 s, 20 ft (6 m) = 14 s, 60 ft (18 m) = 43 s, 100 ft (30 m) = 84 s. NTS 1/2 tubing: 10 ft (3 m) = 1 s, 20 ft (6 m) = 2 s, 60 ft (18 m) = 6 s, 100 ft (30 m) = 10 s. NTS 3/4 tubing: 10 ft (3 m) = 3 s, 20 ft (6 m) = 5 s, 60 ft (18 m) = 15 s, 100 ft (30 m) = 26 s.",
+    "annex": "H",
+    "category": "Tables"
+  }
+]

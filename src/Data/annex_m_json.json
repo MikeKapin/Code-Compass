@@ -1,0 +1,79 @@
+[
+  {
+    "clause": "M.1",
+    "title": "Annex M application scope",
+    "description": "This Annex applies to appliances that a) are on display at shows, exhibitions, or other similar events; and b) are designed to be used outdoors or vented to the outdoors.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.2",
+    "title": "Indoor operation conditions",
+    "description": "An appliance may be operated and vented indoors if it meets the requirements of this Annex.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.3",
+    "title": "Demonstration purpose only",
+    "description": "An appliance shall only be used for the purpose of demonstrating its operation and shall not be used for heating space, water, or any other thing or for any other purpose.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.4",
+    "title": "Warning sign requirements",
+    "description": "An appliance certified or approved for outdoor use being operated indoors for the purpose of demonstration shall be clearly marked with a warning that this appliance is for outdoor use only and the sign shall read: WARNING - THE USE OF THIS TYPE OF APPLIANCE IS PROHIBITED FOR INDOOR USE. FOR YOUR SAFETY THE UNIT IN THIS DISPLAY IS CONSTANTLY MONITORED FOR THE PRESENCE OF CARBON MONOXIDE. TO PROTECT YOU AND YOUR FAMILY NEVER USE A (name of the appliance i.e. BBQ, Patio Heater, Fire Pit, etc.) INDOORS, INCLUDING A GARAGE. ATTENTION - L'UTILISATION DE CE TYPE D'APPAREIL EST INTERDITE POUR L'UTILISATION À L'INTÉRIEUR. POUR VOTRE SÉCURITÉ L'APPAREIL DANS CETte EXPOSITION EST SURVEILLÉ CONSTAMMENT POUR LA PRÉSENCE DE MONOXYDE DE CARBONE. POUR PROTÉGER VOUS ET VOTRE FAMILLE, N'UTILISER JAMAIS (name of the appliance i.e. BBQ, Patio Heater, Fire Pit, etc.) À L'INTÉRIEUR, Y COMPRIS UN GARAGE. The sign shall be located immediately adjacent to the appliance and in clear view of the public, and the letters shall be a minimum 1 in (25 mm) high.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.5",
+    "title": "Installation and activation requirements",
+    "description": "An appliance shall be installed and activated initially by a person holding an appropriate valid certificate under the authority having jurisdiction.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.6",
+    "title": "Knowledgeable operator requirements",
+    "description": "A person who has knowledge of the manufacturer's operating instructions for the appliance shall be in constant and immediate control of the operation of the appliance. A copy of the manufacturer's instructions shall be left with the appliance.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.7",
+    "title": "Appliance certification requirement",
+    "description": "An appliance shall be certified or approved.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.8",
+    "title": "Carbon monoxide monitoring requirements",
+    "description": "The level of carbon monoxide in the vicinity of an appliance shall a) be measured at intervals not exceeding 3 h; b) be measured 4 ft (1.2 m) above the floor and 4 ft (1.2 m) horizontally from the appliance; and c) be recorded with the date and time the measurements were made. The record of levels of carbon monoxide made shall be kept where the appliance is displayed and for the entire period of its display.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.9",
+    "title": "Carbon monoxide shutdown requirement",
+    "description": "An appliance shall be shut down if the carbon monoxide level determined under Clause M.8 exceeds 25 ppm.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.10",
+    "title": "Physical protection requirements",
+    "description": "A means shall be provided to physically protect any person from contact with hot surfaces, hot gases, or flames resulting from operation of an appliance.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.11",
+    "title": "Fire extinguisher requirements",
+    "description": "A certified portable fire extinguisher classified in accordance with ULC Standard CAN/ULC-S508-02 (R2013) \"Standard for the Rating and Fire Testing of Fire Extinguishers\" of not less than 10-B:C rating shall be located at each booth or stall displaying appliances.",
+    "annex": "M",
+    "category": "Safety"
+  }
+]

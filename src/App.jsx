@@ -5285,7 +5285,448 @@ const csaData = [
   }
 
 ];
-
+[
+  {
+    "clause": "C.1",
+    "title": "General",
+    "description": "This informative (non-mandatory) Annex has been written in normative (mandatory) language to facilitate adoption where users of the Code or regulatory authorities wish to adopt it formally as additional requirements to this Code.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.1.1",
+    "title": "Vent sizing table development and application",
+    "description": "These tables were developed to provide a convenient method of determining vent sizes for venting natural-draft and fan-assisted Category I appliances. Additionally, the tables provide the vent sizes that apply to spillage-susceptible appliances such as natural-draft appliances in either tight structures (as defined in Clause 8.2.1) or structures where the mechanical ventilation is designed for no more than 5 Pa (0.02 in w.c.) depressurization.",
+    "annex": "C",
+    "category": "Tables"
+  },
+  {
+    "clause": "C.1.2",
+    "title": "Depressurization (DP) column application",
+    "description": "The values applicable to spillage-susceptible appliances are listed in the DP (depressurization) column and are based upon building depressurization of 0.02 in w.c. (5 Pa). The DP column shall not be used for mechanically ventilated systems that allow more than 0.02 in w.c. (5 Pa) depressurization, nor shall spillage-susceptible appliances be installed in this type of environment.",
+    "annex": "C",
+    "category": "Tables"
+  },
+  {
+    "clause": "C.1.3",
+    "title": "Vent sizing limitations and table coverage",
+    "description": "Currently, this Code does not provide vent sizing for Category I fan-assisted appliances and for spillage-susceptible appliances under depressurization. These tables address this deficiency in the Code. Values under the DP column apply only to installations containing draft-hood-equipped appliances or combinations of Category I fan-assisted appliances and draft-hood-equipped appliances. These tables also provide vent sizes for several vented appliances that share a common vent, and vent sizes for tile-lined masonry chimneys. Notes: 1) The Installation Code Committee gratefully acknowledges the research conducted by the Canadian Gas Research Institute (CGRI) and the independent research sponsored by the Gas Research Institute to generate the tables in this Annex. The research was conducted using a computer program, VENT-II, developed by Batelle. Recognition is given to both research organizations for allowing CSA Group to publish the tables in this Annex. 2) For vent-sizing requirements not covered by the tables in this Annex, please refer to the applicable installation codes. 3) Please refer to Clause 3 of this Code for definitions of terms used in this Annex.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2",
+    "title": "General venting requirements (GVRs)",
+    "description": "General venting requirements that apply to both Category I draft-hood-equipped and Category I fan-assisted combustion appliances.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.1",
+    "title": "Table application scope",
+    "description": "All requirements contained in this Annex apply to both Category I draft-hood-equipped and Category I fan-assisted combustion appliances. At no time shall a venting system for a certified Category II, III, or IV appliance be sized with these tables. The alternative sizing methods described in this Code may also be used to size the venting system for a draft-hood-equipped appliance. At this time, alternative sizing methods have not been developed for fan-assisted appliances; therefore, until engineering data is developed to allow alternative sizing methods for Category I fan-assisted appliances, these vent tables shall be used.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.2",
+    "title": "Vent table application and limitations",
+    "description": "The vent tables included in this Annex apply to vents and chimneys internal to the structure below the roof line. Exterior chimneys or vents not enclosed by the structure or a chase below the roof line can experience continuous condensation, depending on locality. A chimney with one or more sides exposed to the outside of the structure shall be considered to be an exterior chimney. A Type B vent or a certified chimney lining system passing through an unused masonry chimney flue shall not be considered to be exposed to the outdoors. The DP column shall be used to determine the capacity of a venting system within a building constructed in accordance with Clause 8.2.1.",
+    "annex": "C",
+    "category": "Tables"
+  },
+  {
+    "clause": "C.2.3",
+    "title": "Vent connector size reduction requirements",
+    "description": "If the vent or vent connector size, determined from the tables, is smaller than the appliance draft-hood outlet or flue collar, the smaller size may be used, provided that a) the total vent height (H) is at least 10 ft (3 m); b) vents or vent connectors for appliance draft-hood outlets or flue collars 12 in (305 mm) in diameter or smaller are not reduced more than one table size [e.g., 12 in (305 mm) to 10 in (254 mm) is a one-size reduction]; c) vents or vent connectors for appliance draft-hood outlets or flue collars above 12 in (305 mm) in diameter are not reduced more than two table sizes [e.g., 24 in (610 mm) to 20 in (508 mm) is a two-size reduction]; d) the maximum capacity listed in the tables for a fan-assisted appliance is reduced by 10% (calculated as 0.90 × maximum capacity); and e) the draft-hood outlet is greater than 4 in (102 mm) in diameter. For example, a 3 in (76 mm) diameter vent or vent connector shall not be connected to a 4 in (102 mm) diameter draft-hood outlet. This provision shall not apply to fan-assisted appliances.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.4",
+    "title": "Vent system configuration assumptions",
+    "description": "A single-appliance venting configuration with zero lateral lengths is assumed to have no elbows in the vent system in Tables C.1 and C.2. For all other vent configurations of single or multiple appliances, each vent connector shall be assumed to have two 90° turns. For each additional 90° turn or its equivalent*, the maximum capacity of each individual vent connector listed in the venting table should be reduced by 10% (calculated as 0.90 × maximum listed capacity) for a natural draft appliance and 15% for a fan-assisted appliance. Except for manifolded common vents (see Figure C.9), the final turn into the vertical vent shall be counted as one 90° turn for each vent connector. Note: *Two 45° turns are equivalent to one 90° turn.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.5",
+    "title": "Common vent connector capacity reduction",
+    "description": "If vent connectors are combined prior to entering the common vent, the maximum common vent capacity listed in the common venting tables shall be reduced by 10%, the equivalent of one 90° elbow (0.90 × maximum common vent capacity). See Figure C.9. The horizontal length of the common vent connector manifold (L in Figure C.9) should not exceed 1-1/2 ft (457 mm) for each inch (25.4 mm) of common vent connector manifold diameter.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.6",
+    "title": "Offset common vent capacity reduction",
+    "description": "If the common vertical vent is offset as shown in Figure C.10, the maximum common vent capacity listed in the common venting tables should be reduced by 20%, the equivalent of two 90° elbows (0.80 × maximum common vent capacity). The horizontal length of the offset shall not exceed 1-1/2 ft (457 mm) for each inch (25.4 mm) of common vent diameter.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.7",
+    "title": "High-altitude installation requirements",
+    "description": "Use sea-level input rating when determining maximum capacity for high-altitude installation. Use actual input rating for determining minimum capacity for high-altitude installation.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.8",
+    "title": "Modulating input rate requirements",
+    "description": "For appliances with modulating input rates, the minimum vent or vent connector (FAN Min) capacity (determined from the tables) shall be less than the lowest appliance input rating, and the maximum vent or vent connector (FAN or NAT Max) capacity (determined from the tables) shall be greater than the highest appliance input rating.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.9",
+    "title": "Fan-assisted furnace common venting requirements",
+    "description": "A fan-assisted furnace may be common-vented into an existing masonry chimney, provided that a) the chimney is currently serving at least one draft-hood-equipped appliance; and b) the vent connectors and chimney are sized in accordance with Tables C.7 and C.8.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.10",
+    "title": "Fan-assisted furnace single venting prohibition",
+    "description": "Single-appliance venting of a fan-assisted furnace into a tile-lined masonry chimney shall be prohibited. The chimney shall first be lined with either a Type B vent, sized in accordance with Table C.1 or C.2, or a certified lining system.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.11",
+    "title": "Corrugated metallic chimney liner requirements",
+    "description": "Certified, corrugated metallic chimney liner systems in masonry chimneys shall be sized according to Table C.1 or C.2 for dedicated venting and Table C.3 or C.4 for common venting, with the maximum capacity reduced by 20% (0.80 × maximum capacity) and the minimum capacity as shown in the applicable table. Corrugated metal vent systems installed with bends or offsets require additional reduction of the vent maximum capacity (see Clause C.2.6).",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.12",
+    "title": "Multiple unit height measurement - single floor",
+    "description": "For multiple units of gas-utilization equipment all located on one floor, available total height shall be measured from the highest draft-hood outlet or flue collar up to the level of the cap or terminal. Vent connector rise shall be measured from the draft-hood outlet or flue collar to the level where the vent gas streams come together. (This is not applicable to multi-storey installations.)",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.13",
+    "title": "Multi-storey installation height measurement",
+    "description": "For multi-storey installations, available total height for each segment of the system shall be the vertical distance between the highest draft-hood outlet or flue collar entering that segment and the centreline of the next higher interconnection tee. (See Figure C.11.)",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.14",
+    "title": "Multi-storey system lowest connector sizing",
+    "description": "The size of the lowest vent connector and of the vertical vent leading to the lowest interconnection of a multi-storey system shall be in accordance with Table C.1 or C.2 for available total height up to the lowest interconnection. (See Figure C.12.)",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.15",
+    "title": "Interpolation and extrapolation limitations",
+    "description": "If the desired vent height and vent connector rise and/or lateral are between the table entries, linear interpolation shall be permitted for calculation of the permissible appliance input ratings. Extrapolation beyond the table entries shall not be acceptable.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.16",
+    "title": "Vent diameter selection",
+    "description": "When the vent table permits more than one diameter of pipe to be used for a vent connector or vent, the smallest permitted diameter shall be preferred.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.16",
+    "title": "Single and Multiple Appliance Venting Applications",
+    "description": "For Single Appliance Venting Applications: Where the vertical vent has a larger diameter than the vent connector, the vertical vent diameter shall be used to determine the minimum vent capacity and the vent connector diameter shall be used to determine the maximum vent capacity. The flow area of the vertical vent shall not exceed 7 times the flow area of the listed appliance categorized vent area, flue collar area, or draft hood outlet area unless designed with approved engineering methods. For Multiple Appliances Venting Applications: Where 2 or more appliances are connected to a vertical vent or chimney the flow area of the largest section of vertical vent or chimney shall not exceed 7 times the flow area of smallest listed appliance categorized vent area, flue collar area, or draft hood outlet area unless designed with approved engineering methods.",
+    "annex": "C",
+    "category": "Calculations"
+  }
+]
+[
+  {
+    "clause": "H.1",
+    "title": "Purging requirement scope",
+    "description": "Purging of piping and tubing systems where a readily accessible burner is not available or where an appliance is not equipped with a continuous pilot shall be undertaken as outlined in Clauses H.2 to H.7.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.2",
+    "title": "Purging procedure applicability",
+    "description": "The procedure shall be applicable to the purging of air or inert gas using natural gas from a piping/tubing system downstream of the meter.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.3",
+    "title": "No smoking during purging",
+    "description": "No smoking shall be permitted when purging.",
+    "annex": "H",
+    "category": "Safety"
+  },
+  {
+    "clause": "H.4",
+    "title": "Ignition source removal",
+    "description": "Prior to commencing the purge, all sources, or potential sources, of ignition shall be removed or shut off.",
+    "annex": "H",
+    "category": "Safety"
+  },
+  {
+    "clause": "H.5",
+    "title": "Purging procedure conditions",
+    "description": "The purging procedure shall be used only under the following conditions: a) maximum piping system size is NPS 1; b) maximum tubing size is NTS 3/4; c) maximum piping or tubing system gas pressure is 2 psig (14 kPa); d) maximum gas pressure at purging point is 11 in w.c. (2.74 kPa) or less; and e) the longest run of pipe or tubing in the system is 100 ft (30 m) or less.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.6",
+    "title": "Purging location requirements",
+    "description": "Piping and tubing systems not meeting the conditions listed in Clause H.5 shall be purged to the outdoors. Those that do meet these conditions shall be purged in accordance with Clause H.7.",
+    "annex": "H",
+    "category": "General"
+  },
+  {
+    "clause": "H.7",
+    "title": "Purging procedure steps",
+    "description": "The purging procedure shall be as follows: a) Use only the approved purging assembly. See Figure H.1. b) Inspect the purging assembly prior to use. Replace worn or damaged hose, and ensure that all joints are tight. c) Ensure that the manual shut-off valve for the appliance is closed. d) Connect the purging assembly to the appliance dirt pocket, where so equipped, or to the appliance piping, as close to the appliance as is practicable. e) Ensure that no sources of ignition are present within the purge area and that the purge area is well ventilated.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.f",
+    "title": "Purging time determination",
+    "description": "Determine the approximate purging time from Table H.1. Ensure that the purge does not exceed 100 s.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.g",
+    "title": "Manual shut-off valve operation",
+    "description": "Open the manual shut-off valve for the appliance.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.h",
+    "title": "Begin purging process",
+    "description": "Begin purging by fully opening the automatic shut-off release purging valve on the purging assembly. Purge in a continuous and uninterrupted manner. Caution: Under no circumstances shall the automatic shut-off release purging valve be fixed in the open position.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.i",
+    "title": "Purging termination conditions",
+    "description": "Terminate purging when the smell of gas is detected at the purging valve outlet or when the approximate purging time has been reached. Do not exceed the purging time by more than 10 s.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.j",
+    "title": "Post-purging valve closure",
+    "description": "When purging is terminated, close the manual shut-off valve and disconnect the purging assembly from the piping system.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.7.k",
+    "title": "Post-purging leak testing",
+    "description": "Reassemble the appliance piping, open the manual shut-off valve, and soap test the affected joints to ensure that there are no leaks.",
+    "annex": "H",
+    "category": "Procedures"
+  },
+  {
+    "clause": "H.1.Table",
+    "title": "Approximate purging times at 7 in w.c. (1.74 kPa)",
+    "description": "Table H.1 - Approximate purging times: NPS 1/2 pipe/tubing: 10 ft (3 m) = 3 s, 20 ft (6 m) = 5 s, 60 ft (18 m) = 15 s, 100 ft (30 m) = 26 s. NPS 1 pipe/tubing: 10 ft (3 m) = 7 s, 20 ft (6 m) = 14 s, 60 ft (18 m) = 43 s, 100 ft (30 m) = 84 s. NTS 1/2 tubing: 10 ft (3 m) = 1 s, 20 ft (6 m) = 2 s, 60 ft (18 m) = 6 s, 100 ft (30 m) = 10 s. NTS 3/4 tubing: 10 ft (3 m) = 3 s, 20 ft (6 m) = 5 s, 60 ft (18 m) = 15 s, 100 ft (30 m) = 26 s.",
+    "annex": "H",
+    "category": "Tables"
+  }
+]
+[
+  {
+    "clause": "K.2",
+    "title": "ANSI Z21.80/CSA 6.22 Line pressure regulators",
+    "description": "Standards and requirements for line pressure regulators used with natural gas or propane installations.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.1",
+    "title": "Line pressure regulator application and classification",
+    "description": "ANSI 221.80/CSA 6.22 applies to line pressure regulators for use with either natural gas or propane. These regulators are used where it is necessary to reduce the delivered pressure after the utility service regulator to the required inlet pressure to the appliance. ANSI 221.80/CSA 6.22 only applies to regulators with an inlet pressure of either 2, 5 or 10 psig (13.8, 34.5, or 68.9 kPa), and for outlet pressures of either 2 psig (13.8 kPa), or 0.5 (3.5 kPa) psig or less, and are organized into Class I or Class II regulators as shown in Table K.1.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.1.Table",
+    "title": "Line Pressure Regulator Class Rating Table",
+    "description": "Table K.1 - Line Pressure Regulator Class Rating: Rated inlet pressure 2 psig (13.8 kPa) - Class I maximum outlet pressure 1/2 psig (3.5 kPa), Class II not applicable. Rated inlet pressure 5 psig (34.5 kPa) - Class I maximum outlet pressure 1/2 psig (3.5 kPa), Class II maximum outlet pressure 2 psig (13.8 kPa). Rated inlet pressure 10 psig (68.9 kPa) - Class I maximum outlet pressure 1/2 psig (3.5 kPa), Class II maximum outlet pressure 2 psig (13.8 kPa). Note: Class I regulators may be adjustable to 1/2 psig (3.5 kPa) or less.",
+    "annex": "K",
+    "category": "Tables"
+  },
+  {
+    "clause": "K.2.2.1",
+    "title": "Overpressure protection device types",
+    "description": "ANSI Z21.80/CSA 6.22 includes requirements for overpressure protection devices of the following types: a) overpressure shut-off device; b) overpressure relief device (either a regulator with internal relief, or by use of an external relief device); and c) monitoring regulator.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.2.2",
+    "title": "Overpressure protection device requirements",
+    "description": "ANSI Z21.80/CSA 6.22 only requires a line pressure regulator to be provided with an overpressure protection device under the following conditions: a) The rated inlet pressure to the regulator is greater than 2 psig (13.8 kPa) [i.e., rated to either 5 psig or 10 psig (34.5 or 68.9 kPa)]; b) The outlet pressure is capable of being adjusted to deliver a pressure of 0.5 psig (3.5 kPa) or less; and c) The overpressure protection device is set to limit the downstream pressure to a maximum of 2 psig (13.8 kPa) in the event of a failure of the regulator. If a separate overpressure protection device is used, ANSI 221.80/CSA 6.22 requires that the overprotection pressure device be factory pre-assembled and supplied to the field as a unit. This would apply to overpressure shut-off devices, monitoring regulators (where a separate regulator is used), and a line relief valve.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.2.3",
+    "title": "Overpressure protection testing and pressure limits",
+    "description": "The testing of the overpressure protection device only determines that, once the protection device has activated, the downstream pressure does not exceed 2 psig (13.8 kPa). This means that for an appliance with an inlet pressure of 14 in w.c. or less, in event of a failure of the upstream line pressure regulator, the appliance could be subjected to pressures of up to 2 psig (14 kPa).",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.3",
+    "title": "High pressure regulator requirements",
+    "description": "When the operating pressure is required to be greater than 2 psig (13.8 kPa), then a high pressure regulator (uncertified) will need to be used, since there is presently no certified regulator available that can regulate the outlet pressure to more than 2 psig.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3",
+    "title": "Types of overpressure protection devices",
+    "description": "Overview of different types of overpressure protection devices used with line pressure regulators.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.1",
+    "title": "Monitoring regulators",
+    "description": "Monitoring regulators consist of a working regulator and a second regulator which \"monitors\" the downstream pressure of the working regulator. In the event of a failure of the working regulator, the monitoring regulator will then operate to control the downstream pressure and should be set to deliver a safe operating pressure (i.e., in accordance with overpressure setpoint requirements). If a working regulator fails, it is usually because of a failure of the diaphragm, in which case gas will leak into the upper diaphragm chamber and be vented through the bleed vent; the odour should then attract attention to the failed regulator. The monitoring regulator may be constructed either as a) a physically separate regulator, mounted either downstream of the working regulator, or mounted upstream of the working regulator and provided with a regulation sensing line piped downstream of the working regulator; or b) an integrated regulator mounted directly to the working regulator. In either case, the operating principle is the same. In event of a failure of the working regulator, this arrangement will continue to supply pressure to the downstream system, at the pressure to which the monitoring regulator is set.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.2",
+    "title": "Overpressure shut-off device (or cut-off device)",
+    "description": "An overpressure shut-off device is a special diaphragm valve mounted upstream of the working regulator and provided with an external registration line piped to the downstream side of the working regulator. In the event of a failure of the working regulator, when the downstream pressure rises above setpoint, the shut-off device will close the supply of gas to the system. The pressure setpoint, therefore, must be in accordance with overpressure setpoint requirements.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.3",
+    "title": "Regulator with internal relief",
+    "description": "A line pressure regulator with internal relief has a pressure relief valve that is built into the diaphragm of the working regulator that senses downstream pressure. On a pressure rise above its setpoint, the internal relief valve opens, causing downstream gas to pass into the upper diaphragm chamber, to be vented to the outdoors through the regulator vent port. The pressure setpoint, therefore, must be in accordance with overpressure setpoint requirements. The regulator will continue to supply gas to the downstream system. Note: Some regulators are offered with partial internal relief, meaning they have limited relieving capacity and might not control the downstream pressure. This Code requires internal relief valves to fully relieve the capacity of the regulator.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.4",
+    "title": "Line relief valve",
+    "description": "Similar in function to the regulator with internal relief, the line relief valve is mounted on piping network immediately downstream of the pressure regulator. Note: Where a line pressure regulator is certified to ANSI 221.80/CSA 6.22 and a line relief valve is used, the relief valve must be provided with the regulator as a complete set.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.5",
+    "title": "Overpressure protection setpoints",
+    "description": "Clause 5.3 specifies the requirements for use of overpressure protection devices and for setting of their control setpoints. Figure K.2 illustrates the logic for determining these requirements.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.4",
+    "title": "Multi-stage regulation for natural gas",
+    "description": "Where the delivery pressure after the service regulator is either than 2, 5, or 10 psig (13.8, 34.5, or 68.9 kPa) and the appliance inlet pressure is 2 psig (13.8 kPa) or less, then two (or more) stages of line pressure regulators will be required. The first-stage regulator will reduce the service delivery pressure to a pressure of 2, 5, or 10 psig (13.8, 34.5, or 68.39 kPa), and then the second-stage pressure regulator (i.e., uncertified regulator since there is presently no certified regulator available that can regulate the outlet pressure to greater than 2 psig (13.8 kPa). See Figure K.3.",
+    "annex": "K",
+    "category": "Calculations"
+  },
+  {
+    "clause": "K.5",
+    "title": "Leak limiters and ventilated spaces",
+    "description": "Line pressure regulators certified to ANSI Z21.80/CSA 6.22 can be provided with a vent limiter (also known informally as a leak-limiting device), which, if there is a small leak in the diaphragm, will limit the leakage rate through the regulator vent connection to a prescribed amount. The Code permits such regulators to be installed inside the building and does not require the regulator to be piped to the outdoors provided the regulator is located in a ventilated space. While high pressure regulators and other uncertified regulators may also be equipped with a vent limiter, this Code does not allow this exemption for such pressure regulators. While the Code provides a definition for a ventilated space, it does not state any performance criteria to demonstrate if the space is suitably ventilated to prevent a hazardous accumulation of gas in the space. However, if such demonstration is required by an authority having jurisdiction, CSA C22.1, rule 18-050, Appendix B, references API RP 505, which states that the concentration of a flammable gas should not exceed 25% of the lower explosion limit (LEL) of a flammable gas for a room to be a \"ventilated room\". This 25% LEL is commonly used in other standards as an upper control limit. Natural gas LEL is 5% by room volume. For a pressure regulator emitting 2.5 CFH natural gas, and for it not to exceed 1.25% by room volume, then the space must have an air change rate of only 200 CFH or 3.33 CFM. This is a very low ventilation rate (it cannot be measured accurately by commercial measuring equipment). For propane, the LEL is 2.1% by room volume. At a release rate of 1 CFH, this has the same ventilation rate for natural gas (i.e., a ventilation rate of 200 CFH or 3.333 CFM). One possible means of meeting this requirement is to provide a mechanical ventilation system that will exhaust 500 ft³ in 1 h (on a continuous or non-continuous basis); this will provide a factor of safety of 2.5:1 to allow for incomplete mixing of the gas in the space. For a continuous ventilation system, 500 CFH is only 8.3 CFM. If the fan only operates 5 min per h, then the required ventilation exhaust rate is 100 CFM. For comparison, a typical residential washroom exhaust fan is 80 to 100 CFM.",
+    "annex": "K",
+    "category": "Calculations"
+  }
+]
+[
+  {
+    "clause": "M.1",
+    "title": "Annex M application scope",
+    "description": "This Annex applies to appliances that a) are on display at shows, exhibitions, or other similar events; and b) are designed to be used outdoors or vented to the outdoors.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.2",
+    "title": "Indoor operation conditions",
+    "description": "An appliance may be operated and vented indoors if it meets the requirements of this Annex.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.3",
+    "title": "Demonstration purpose only",
+    "description": "An appliance shall only be used for the purpose of demonstrating its operation and shall not be used for heating space, water, or any other thing or for any other purpose.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.4",
+    "title": "Warning sign requirements",
+    "description": "An appliance certified or approved for outdoor use being operated indoors for the purpose of demonstration shall be clearly marked with a warning that this appliance is for outdoor use only and the sign shall read: WARNING - THE USE OF THIS TYPE OF APPLIANCE IS PROHIBITED FOR INDOOR USE. FOR YOUR SAFETY THE UNIT IN THIS DISPLAY IS CONSTANTLY MONITORED FOR THE PRESENCE OF CARBON MONOXIDE. TO PROTECT YOU AND YOUR FAMILY NEVER USE A (name of the appliance i.e. BBQ, Patio Heater, Fire Pit, etc.) INDOORS, INCLUDING A GARAGE. ATTENTION - L'UTILISATION DE CE TYPE D'APPAREIL EST INTERDITE POUR L'UTILISATION À L'INTÉRIEUR. POUR VOTRE SÉCURITÉ L'APPAREIL DANS CETte EXPOSITION EST SURVEILLÉ CONSTAMMENT POUR LA PRÉSENCE DE MONOXYDE DE CARBONE. POUR PROTÉGER VOUS ET VOTRE FAMILLE, N'UTILISER JAMAIS (name of the appliance i.e. BBQ, Patio Heater, Fire Pit, etc.) À L'INTÉRIEUR, Y COMPRIS UN GARAGE. The sign shall be located immediately adjacent to the appliance and in clear view of the public, and the letters shall be a minimum 1 in (25 mm) high.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.5",
+    "title": "Installation and activation requirements",
+    "description": "An appliance shall be installed and activated initially by a person holding an appropriate valid certificate under the authority having jurisdiction.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.6",
+    "title": "Knowledgeable operator requirements",
+    "description": "A person who has knowledge of the manufacturer's operating instructions for the appliance shall be in constant and immediate control of the operation of the appliance. A copy of the manufacturer's instructions shall be left with the appliance.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.7",
+    "title": "Appliance certification requirement",
+    "description": "An appliance shall be certified or approved.",
+    "annex": "M",
+    "category": "General"
+  },
+  {
+    "clause": "M.8",
+    "title": "Carbon monoxide monitoring requirements",
+    "description": "The level of carbon monoxide in the vicinity of an appliance shall a) be measured at intervals not exceeding 3 h; b) be measured 4 ft (1.2 m) above the floor and 4 ft (1.2 m) horizontally from the appliance; and c) be recorded with the date and time the measurements were made. The record of levels of carbon monoxide made shall be kept where the appliance is displayed and for the entire period of its display.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.9",
+    "title": "Carbon monoxide shutdown requirement",
+    "description": "An appliance shall be shut down if the carbon monoxide level determined under Clause M.8 exceeds 25 ppm.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.10",
+    "title": "Physical protection requirements",
+    "description": "A means shall be provided to physically protect any person from contact with hot surfaces, hot gases, or flames resulting from operation of an appliance.",
+    "annex": "M",
+    "category": "Safety"
+  },
+  {
+    "clause": "M.11",
+    "title": "Fire extinguisher requirements",
+    "description": "A certified portable fire extinguisher classified in accordance with ULC Standard CAN/ULC-S508-02 (R2013) \"Standard for the Rating and Fire Testing of Fire Extinguishers\" of not less than 10-B:C rating shall be located at each booth or stall displaying appliances.",
+    "annex": "M",
+    "category": "Safety"
+  }
+]
 function App() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);

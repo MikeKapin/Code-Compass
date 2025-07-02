@@ -1,0 +1,156 @@
+[
+  {
+    "clause": "C.1",
+    "title": "General",
+    "description": "This informative (non-mandatory) Annex has been written in normative (mandatory) language to facilitate adoption where users of the Code or regulatory authorities wish to adopt it formally as additional requirements to this Code.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.1.1",
+    "title": "Vent sizing table development and application",
+    "description": "These tables were developed to provide a convenient method of determining vent sizes for venting natural-draft and fan-assisted Category I appliances. Additionally, the tables provide the vent sizes that apply to spillage-susceptible appliances such as natural-draft appliances in either tight structures (as defined in Clause 8.2.1) or structures where the mechanical ventilation is designed for no more than 5 Pa (0.02 in w.c.) depressurization.",
+    "annex": "C",
+    "category": "Tables"
+  },
+  {
+    "clause": "C.1.2",
+    "title": "Depressurization (DP) column application",
+    "description": "The values applicable to spillage-susceptible appliances are listed in the DP (depressurization) column and are based upon building depressurization of 0.02 in w.c. (5 Pa). The DP column shall not be used for mechanically ventilated systems that allow more than 0.02 in w.c. (5 Pa) depressurization, nor shall spillage-susceptible appliances be installed in this type of environment.",
+    "annex": "C",
+    "category": "Tables"
+  },
+  {
+    "clause": "C.1.3",
+    "title": "Vent sizing limitations and table coverage",
+    "description": "Currently, this Code does not provide vent sizing for Category I fan-assisted appliances and for spillage-susceptible appliances under depressurization. These tables address this deficiency in the Code. Values under the DP column apply only to installations containing draft-hood-equipped appliances or combinations of Category I fan-assisted appliances and draft-hood-equipped appliances. These tables also provide vent sizes for several vented appliances that share a common vent, and vent sizes for tile-lined masonry chimneys. Notes: 1) The Installation Code Committee gratefully acknowledges the research conducted by the Canadian Gas Research Institute (CGRI) and the independent research sponsored by the Gas Research Institute to generate the tables in this Annex. The research was conducted using a computer program, VENT-II, developed by Batelle. Recognition is given to both research organizations for allowing CSA Group to publish the tables in this Annex. 2) For vent-sizing requirements not covered by the tables in this Annex, please refer to the applicable installation codes. 3) Please refer to Clause 3 of this Code for definitions of terms used in this Annex.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2",
+    "title": "General venting requirements (GVRs)",
+    "description": "General venting requirements that apply to both Category I draft-hood-equipped and Category I fan-assisted combustion appliances.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.1",
+    "title": "Table application scope",
+    "description": "All requirements contained in this Annex apply to both Category I draft-hood-equipped and Category I fan-assisted combustion appliances. At no time shall a venting system for a certified Category II, III, or IV appliance be sized with these tables. The alternative sizing methods described in this Code may also be used to size the venting system for a draft-hood-equipped appliance. At this time, alternative sizing methods have not been developed for fan-assisted appliances; therefore, until engineering data is developed to allow alternative sizing methods for Category I fan-assisted appliances, these vent tables shall be used.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.2",
+    "title": "Vent table application and limitations",
+    "description": "The vent tables included in this Annex apply to vents and chimneys internal to the structure below the roof line. Exterior chimneys or vents not enclosed by the structure or a chase below the roof line can experience continuous condensation, depending on locality. A chimney with one or more sides exposed to the outside of the structure shall be considered to be an exterior chimney. A Type B vent or a certified chimney lining system passing through an unused masonry chimney flue shall not be considered to be exposed to the outdoors. The DP column shall be used to determine the capacity of a venting system within a building constructed in accordance with Clause 8.2.1.",
+    "annex": "C",
+    "category": "Tables"
+  },
+  {
+    "clause": "C.2.3",
+    "title": "Vent connector size reduction requirements",
+    "description": "If the vent or vent connector size, determined from the tables, is smaller than the appliance draft-hood outlet or flue collar, the smaller size may be used, provided that a) the total vent height (H) is at least 10 ft (3 m); b) vents or vent connectors for appliance draft-hood outlets or flue collars 12 in (305 mm) in diameter or smaller are not reduced more than one table size [e.g., 12 in (305 mm) to 10 in (254 mm) is a one-size reduction]; c) vents or vent connectors for appliance draft-hood outlets or flue collars above 12 in (305 mm) in diameter are not reduced more than two table sizes [e.g., 24 in (610 mm) to 20 in (508 mm) is a two-size reduction]; d) the maximum capacity listed in the tables for a fan-assisted appliance is reduced by 10% (calculated as 0.90 × maximum capacity); and e) the draft-hood outlet is greater than 4 in (102 mm) in diameter. For example, a 3 in (76 mm) diameter vent or vent connector shall not be connected to a 4 in (102 mm) diameter draft-hood outlet. This provision shall not apply to fan-assisted appliances.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.4",
+    "title": "Vent system configuration assumptions",
+    "description": "A single-appliance venting configuration with zero lateral lengths is assumed to have no elbows in the vent system in Tables C.1 and C.2. For all other vent configurations of single or multiple appliances, each vent connector shall be assumed to have two 90° turns. For each additional 90° turn or its equivalent*, the maximum capacity of each individual vent connector listed in the venting table should be reduced by 10% (calculated as 0.90 × maximum listed capacity) for a natural draft appliance and 15% for a fan-assisted appliance. Except for manifolded common vents (see Figure C.9), the final turn into the vertical vent shall be counted as one 90° turn for each vent connector. Note: *Two 45° turns are equivalent to one 90° turn.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.5",
+    "title": "Common vent connector capacity reduction",
+    "description": "If vent connectors are combined prior to entering the common vent, the maximum common vent capacity listed in the common venting tables shall be reduced by 10%, the equivalent of one 90° elbow (0.90 × maximum common vent capacity). See Figure C.9. The horizontal length of the common vent connector manifold (L in Figure C.9) should not exceed 1-1/2 ft (457 mm) for each inch (25.4 mm) of common vent connector manifold diameter.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.6",
+    "title": "Offset common vent capacity reduction",
+    "description": "If the common vertical vent is offset as shown in Figure C.10, the maximum common vent capacity listed in the common venting tables should be reduced by 20%, the equivalent of two 90° elbows (0.80 × maximum common vent capacity). The horizontal length of the offset shall not exceed 1-1/2 ft (457 mm) for each inch (25.4 mm) of common vent diameter.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.7",
+    "title": "High-altitude installation requirements",
+    "description": "Use sea-level input rating when determining maximum capacity for high-altitude installation. Use actual input rating for determining minimum capacity for high-altitude installation.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.8",
+    "title": "Modulating input rate requirements",
+    "description": "For appliances with modulating input rates, the minimum vent or vent connector (FAN Min) capacity (determined from the tables) shall be less than the lowest appliance input rating, and the maximum vent or vent connector (FAN or NAT Max) capacity (determined from the tables) shall be greater than the highest appliance input rating.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.9",
+    "title": "Fan-assisted furnace common venting requirements",
+    "description": "A fan-assisted furnace may be common-vented into an existing masonry chimney, provided that a) the chimney is currently serving at least one draft-hood-equipped appliance; and b) the vent connectors and chimney are sized in accordance with Tables C.7 and C.8.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.10",
+    "title": "Fan-assisted furnace single venting prohibition",
+    "description": "Single-appliance venting of a fan-assisted furnace into a tile-lined masonry chimney shall be prohibited. The chimney shall first be lined with either a Type B vent, sized in accordance with Table C.1 or C.2, or a certified lining system.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.11",
+    "title": "Corrugated metallic chimney liner requirements",
+    "description": "Certified, corrugated metallic chimney liner systems in masonry chimneys shall be sized according to Table C.1 or C.2 for dedicated venting and Table C.3 or C.4 for common venting, with the maximum capacity reduced by 20% (0.80 × maximum capacity) and the minimum capacity as shown in the applicable table. Corrugated metal vent systems installed with bends or offsets require additional reduction of the vent maximum capacity (see Clause C.2.6).",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.12",
+    "title": "Multiple unit height measurement - single floor",
+    "description": "For multiple units of gas-utilization equipment all located on one floor, available total height shall be measured from the highest draft-hood outlet or flue collar up to the level of the cap or terminal. Vent connector rise shall be measured from the draft-hood outlet or flue collar to the level where the vent gas streams come together. (This is not applicable to multi-storey installations.)",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.13",
+    "title": "Multi-storey installation height measurement",
+    "description": "For multi-storey installations, available total height for each segment of the system shall be the vertical distance between the highest draft-hood outlet or flue collar entering that segment and the centreline of the next higher interconnection tee. (See Figure C.11.)",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.14",
+    "title": "Multi-storey system lowest connector sizing",
+    "description": "The size of the lowest vent connector and of the vertical vent leading to the lowest interconnection of a multi-storey system shall be in accordance with Table C.1 or C.2 for available total height up to the lowest interconnection. (See Figure C.12.)",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.15",
+    "title": "Interpolation and extrapolation limitations",
+    "description": "If the desired vent height and vent connector rise and/or lateral are between the table entries, linear interpolation shall be permitted for calculation of the permissible appliance input ratings. Extrapolation beyond the table entries shall not be acceptable.",
+    "annex": "C",
+    "category": "Calculations"
+  },
+  {
+    "clause": "C.2.16",
+    "title": "Vent diameter selection",
+    "description": "When the vent table permits more than one diameter of pipe to be used for a vent connector or vent, the smallest permitted diameter shall be preferred.",
+    "annex": "C",
+    "category": "General"
+  },
+  {
+    "clause": "C.2.16",
+    "title": "Single and Multiple Appliance Venting Applications",
+    "description": "For Single Appliance Venting Applications: Where the vertical vent has a larger diameter than the vent connector, the vertical vent diameter shall be used to determine the minimum vent capacity and the vent connector diameter shall be used to determine the maximum vent capacity. The flow area of the vertical vent shall not exceed 7 times the flow area of the listed appliance categorized vent area, flue collar area, or draft hood outlet area unless designed with approved engineering methods. For Multiple Appliances Venting Applications: Where 2 or more appliances are connected to a vertical vent or chimney the flow area of the largest section of vertical vent or chimney shall not exceed 7 times the flow area of smallest listed appliance categorized vent area, flue collar area, or draft hood outlet area unless designed with approved engineering methods.",
+    "annex": "C",
+    "category": "Calculations"
+  }
+]

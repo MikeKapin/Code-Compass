@@ -1,0 +1,107 @@
+[
+  {
+    "clause": "K.2",
+    "title": "ANSI Z21.80/CSA 6.22 Line pressure regulators",
+    "description": "Standards and requirements for line pressure regulators used with natural gas or propane installations.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.1",
+    "title": "Line pressure regulator application and classification",
+    "description": "ANSI 221.80/CSA 6.22 applies to line pressure regulators for use with either natural gas or propane. These regulators are used where it is necessary to reduce the delivered pressure after the utility service regulator to the required inlet pressure to the appliance. ANSI 221.80/CSA 6.22 only applies to regulators with an inlet pressure of either 2, 5 or 10 psig (13.8, 34.5, or 68.9 kPa), and for outlet pressures of either 2 psig (13.8 kPa), or 0.5 (3.5 kPa) psig or less, and are organized into Class I or Class II regulators as shown in Table K.1.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.1.Table",
+    "title": "Line Pressure Regulator Class Rating Table",
+    "description": "Table K.1 - Line Pressure Regulator Class Rating: Rated inlet pressure 2 psig (13.8 kPa) - Class I maximum outlet pressure 1/2 psig (3.5 kPa), Class II not applicable. Rated inlet pressure 5 psig (34.5 kPa) - Class I maximum outlet pressure 1/2 psig (3.5 kPa), Class II maximum outlet pressure 2 psig (13.8 kPa). Rated inlet pressure 10 psig (68.9 kPa) - Class I maximum outlet pressure 1/2 psig (3.5 kPa), Class II maximum outlet pressure 2 psig (13.8 kPa). Note: Class I regulators may be adjustable to 1/2 psig (3.5 kPa) or less.",
+    "annex": "K",
+    "category": "Tables"
+  },
+  {
+    "clause": "K.2.2.1",
+    "title": "Overpressure protection device types",
+    "description": "ANSI Z21.80/CSA 6.22 includes requirements for overpressure protection devices of the following types: a) overpressure shut-off device; b) overpressure relief device (either a regulator with internal relief, or by use of an external relief device); and c) monitoring regulator.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.2.2",
+    "title": "Overpressure protection device requirements",
+    "description": "ANSI Z21.80/CSA 6.22 only requires a line pressure regulator to be provided with an overpressure protection device under the following conditions: a) The rated inlet pressure to the regulator is greater than 2 psig (13.8 kPa) [i.e., rated to either 5 psig or 10 psig (34.5 or 68.9 kPa)]; b) The outlet pressure is capable of being adjusted to deliver a pressure of 0.5 psig (3.5 kPa) or less; and c) The overpressure protection device is set to limit the downstream pressure to a maximum of 2 psig (13.8 kPa) in the event of a failure of the regulator. If a separate overpressure protection device is used, ANSI 221.80/CSA 6.22 requires that the overprotection pressure device be factory pre-assembled and supplied to the field as a unit. This would apply to overpressure shut-off devices, monitoring regulators (where a separate regulator is used), and a line relief valve.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.2.3",
+    "title": "Overpressure protection testing and pressure limits",
+    "description": "The testing of the overpressure protection device only determines that, once the protection device has activated, the downstream pressure does not exceed 2 psig (13.8 kPa). This means that for an appliance with an inlet pressure of 14 in w.c. or less, in event of a failure of the upstream line pressure regulator, the appliance could be subjected to pressures of up to 2 psig (14 kPa).",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.2.3",
+    "title": "High pressure regulator requirements",
+    "description": "When the operating pressure is required to be greater than 2 psig (13.8 kPa), then a high pressure regulator (uncertified) will need to be used, since there is presently no certified regulator available that can regulate the outlet pressure to more than 2 psig.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3",
+    "title": "Types of overpressure protection devices",
+    "description": "Overview of different types of overpressure protection devices used with line pressure regulators.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.1",
+    "title": "Monitoring regulators",
+    "description": "Monitoring regulators consist of a working regulator and a second regulator which \"monitors\" the downstream pressure of the working regulator. In the event of a failure of the working regulator, the monitoring regulator will then operate to control the downstream pressure and should be set to deliver a safe operating pressure (i.e., in accordance with overpressure setpoint requirements). If a working regulator fails, it is usually because of a failure of the diaphragm, in which case gas will leak into the upper diaphragm chamber and be vented through the bleed vent; the odour should then attract attention to the failed regulator. The monitoring regulator may be constructed either as a) a physically separate regulator, mounted either downstream of the working regulator, or mounted upstream of the working regulator and provided with a regulation sensing line piped downstream of the working regulator; or b) an integrated regulator mounted directly to the working regulator. In either case, the operating principle is the same. In event of a failure of the working regulator, this arrangement will continue to supply pressure to the downstream system, at the pressure to which the monitoring regulator is set.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.2",
+    "title": "Overpressure shut-off device (or cut-off device)",
+    "description": "An overpressure shut-off device is a special diaphragm valve mounted upstream of the working regulator and provided with an external registration line piped to the downstream side of the working regulator. In the event of a failure of the working regulator, when the downstream pressure rises above setpoint, the shut-off device will close the supply of gas to the system. The pressure setpoint, therefore, must be in accordance with overpressure setpoint requirements.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.3",
+    "title": "Regulator with internal relief",
+    "description": "A line pressure regulator with internal relief has a pressure relief valve that is built into the diaphragm of the working regulator that senses downstream pressure. On a pressure rise above its setpoint, the internal relief valve opens, causing downstream gas to pass into the upper diaphragm chamber, to be vented to the outdoors through the regulator vent port. The pressure setpoint, therefore, must be in accordance with overpressure setpoint requirements. The regulator will continue to supply gas to the downstream system. Note: Some regulators are offered with partial internal relief, meaning they have limited relieving capacity and might not control the downstream pressure. This Code requires internal relief valves to fully relieve the capacity of the regulator.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.4",
+    "title": "Line relief valve",
+    "description": "Similar in function to the regulator with internal relief, the line relief valve is mounted on piping network immediately downstream of the pressure regulator. Note: Where a line pressure regulator is certified to ANSI 221.80/CSA 6.22 and a line relief valve is used, the relief valve must be provided with the regulator as a complete set.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.3.5",
+    "title": "Overpressure protection setpoints",
+    "description": "Clause 5.3 specifies the requirements for use of overpressure protection devices and for setting of their control setpoints. Figure K.2 illustrates the logic for determining these requirements.",
+    "annex": "K",
+    "category": "General"
+  },
+  {
+    "clause": "K.4",
+    "title": "Multi-stage regulation for natural gas",
+    "description": "Where the delivery pressure after the service regulator is either than 2, 5, or 10 psig (13.8, 34.5, or 68.9 kPa) and the appliance inlet pressure is 2 psig (13.8 kPa) or less, then two (or more) stages of line pressure regulators will be required. The first-stage regulator will reduce the service delivery pressure to a pressure of 2, 5, or 10 psig (13.8, 34.5, or 68.39 kPa), and then the second-stage pressure regulator (i.e., uncertified regulator since there is presently no certified regulator available that can regulate the outlet pressure to greater than 2 psig (13.8 kPa). See Figure K.3.",
+    "annex": "K",
+    "category": "Calculations"
+  },
+  {
+    "clause": "K.5",
+    "title": "Leak limiters and ventilated spaces",
+    "description": "Line pressure regulators certified to ANSI Z21.80/CSA 6.22 can be provided with a vent limiter (also known informally as a leak-limiting device), which, if there is a small leak in the diaphragm, will limit the leakage rate through the regulator vent connection to a prescribed amount. The Code permits such regulators to be installed inside the building and does not require the regulator to be piped to the outdoors provided the regulator is located in a ventilated space. While high pressure regulators and other uncertified regulators may also be equipped with a vent limiter, this Code does not allow this exemption for such pressure regulators. While the Code provides a definition for a ventilated space, it does not state any performance criteria to demonstrate if the space is suitably ventilated to prevent a hazardous accumulation of gas in the space. However, if such demonstration is required by an authority having jurisdiction, CSA C22.1, rule 18-050, Appendix B, references API RP 505, which states that the concentration of a flammable gas should not exceed 25% of the lower explosion limit (LEL) of a flammable gas for a room to be a \"ventilated room\". This 25% LEL is commonly used in other standards as an upper control limit. Natural gas LEL is 5% by room volume. For a pressure regulator emitting 2.5 CFH natural gas, and for it not to exceed 1.25% by room volume, then the space must have an air change rate of only 200 CFH or 3.33 CFM. This is a very low ventilation rate (it cannot be measured accurately by commercial measuring equipment). For propane, the LEL is 2.1% by room volume. At a release rate of 1 CFH, this has the same ventilation rate for natural gas (i.e., a ventilation rate of 200 CFH or 3.333 CFM). One possible means of meeting this requirement is to provide a mechanical ventilation system that will exhaust 500 ft³ in 1 h (on a continuous or non-continuous basis); this will provide a factor of safety of 2.5:1 to allow for incomplete mixing of the gas in the space. For a continuous ventilation system, 500 CFH is only 8.3 CFM. If the fan only operates 5 min per h, then the required ventilation exhaust rate is 100 CFM. For comparison, a typical residential washroom exhaust fan is 80 to 100 CFM.",
+    "annex": "K",
+    "category": "Calculations"
+  }
+]
