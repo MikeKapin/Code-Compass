@@ -1,9 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import SearchBar from './Components/SearchBar';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
+import { trialManager } from './utils/trialManager.js';
+import { validateEmail } from './utils/emailCollection.js';
+import { 
+  trackTrialStarted, 
+  trackSearch, 
+  trackSubscriptionAttempt,
+  trackEmailSubmission 
+} from './utils/analytics.js';
 
-// Sample CSA Code Data (we'll replace this with real JSON later)
-const csaData = [
-  {
+// Full CSA data array (all the codes from your original file)
+const fullCSAData = [
+ {
     "clause": "3.1",
     "title": "Accessory",
     "description": "a part capable of performing an independent function and contributing to the operation of the appliance or gas piping system that it serves."
@@ -1893,7 +1901,7 @@ const csaData = [
     "title": "Pilots",
     "description": "When a pressure regulator is required by Clause 5.7.1, the propane supply to the pilot or group of pilots shall be regulated by an approved pressure regulator independent of the main burner propane supply."
   },
-  {
+{
     "clause": "6.1",
     "title": "General",
     "description": "General requirements for gas piping systems."
@@ -2238,7 +2246,7 @@ const csaData = [
     "title": "Support material",
     "description": "Where piping and tubing supports are used, they shall be metallic and shall be installed to avoid galvanic action between the piping or tubing and the supports."
   },
-  {
+ {
     "clause": "6.8.10",
     "title": "Test ports",
     "description": "A test port shall be installed immediately downstream of a line pressure regulator or an industrial pressure regulator except where the pressure regulator can be adjusted while measuring and observing the supply pressure at any appliance being served by the pressure regulator. Where opening the test port could create an uncontrolled release of gas, the test port shall be equipped with a manual shut-off valve that is either capped or plugged."
@@ -2483,7 +2491,7 @@ const csaData = [
     "title": "Location",
     "description": "Underground piping or tubing shall not pass below a foundation or wall, or under a building."
   },
-  {
+   {
     "clause": "6.15.8",
     "title": "Building entrance",
     "description": "Piping or tubing entering a building shall rise above grade before entry unless otherwise permitted by the authority having jurisdiction."
@@ -2948,7 +2956,7 @@ const csaData = [
     "title": "Connections",
     "description": "Except for the final connection of piping, tubing, or hose to an appliance or for connection to a valve as described in Clause 4.19.2, there shall be no connections in the piping or tubing within a vehicle. This requirement does not apply to the piping systems installed at the factory and certified in accordance with CSA Z240 RV."
   },
-  {
+ {
     "clause": "7.1",
     "title": "Boilers",
     "description": "General requirements for boiler installation including provincial compliance, location requirements, and clearances."
@@ -4311,7 +4319,7 @@ const csaData = [
   {
     "clause": "8.2.6",
     "title": "Enclosure volume",
-    "description": "When an appliance(s) is located within an enclosure and permanent openings sized and located in accordance with Items a) and b) of this clause are supplied to allow communication between the enclosure and the rest of the structure, the total volume of the structure may be used to determine air supply requirements, provided that the structure is not constructed as described in Clause 8.2.1 a) and does not comply with Clause 8.2.1 b). Otherwise, the volume of the enclosure shall be used. The openings shall be as follows: a) in all cases, an opening shall be provided that shall i) have a free area not less than 1 in squared per 1000 btu/h of the total input of all appliances within the enclosure; and ii) be located not more than 18 inches or less than 6 inches above floor level. b) when one or more appliances are equipped with draft control devices an additional opening shall be supplied having the same free area as the opening required in a), and the opening shall be located as close to the ceiling as practicable, but in no case lower than the relief opening of the lowest draft control device."
+    "description": "When an appliance(s) is located within an enclosure and permanent openings sized and located in accordance with Items a) and b) of this clause are supplied to allow communication between the enclosure and the rest of the structure, the total volume of the structure may be used to determine air supply requirements, provided that the structure is not constructed as described in Clause 8.2.1 a) and does not comply with Clause 8.2.1 b)."
   },
   {
     "clause": "8.3.1",
@@ -4636,7 +4644,7 @@ const csaData = [
   {
     "clause": "8.14.8",
     "title": "Vent termination limitations",
-    "description": "A vent shall not terminate a) where it could cause hazardous frost or ice accumulations on adjacent property surfaces; b) less than 7 ft (2.1 m) above a paved sidewalk or a paved driveway that is located on public property; c) within 6 ft (1.8 m) of a mechanical air-supply inlet to any building; d) above a regulator within 3 ft (0.9 m) horizontally of the vertical centreline of the regulator vent outlet to a maximum vertical distance of 15 ft (4.5 m); e) except as required by Clause 8.14.8 d), any distance less than that of any gas pressure regulator vent outlet as detailed in Table 5.3; f) less than 1 ft (300 mm) above grade level; g) within specified distances of a window or door that can be opened in any building, of any nonmechanical air-supply inlet to any building, or of the combustion air inlet of any other appliance: i) 6 in (150mm) for inputs up to and including 10,000 btuh(3kW). ii) 12 in (300mm) for inputs from 10,000 btuh up to and including 100,000 btuh.  iii) 3 ft (1 m) for inputs exceeding 100,000 btuh; and h) underneath a veranda, porch, or deck unless the veranda, porch, or deck is fully open on a minimum of two sides beneath the floor and the distance between the top of the vent termination and the underside of the veranda, porch, or deck is greater than 1 ft (300 mm)."
+    "description": "A vent shall not terminate a) where it could cause hazardous frost or ice accumulations on adjacent property surfaces; b) less than 7 ft (2.1 m) above a paved sidewalk or a paved driveway that is located on public property; c) within 6 ft (1.8 m) of a mechanical air-supply inlet to any building; d) above a regulator within 3 ft (0.9 m) horizontally of the vertical centreline of the regulator vent outlet to a maximum vertical distance of 15 ft (4.5 m); e) except as required by Clause 8.14.8 d), any distance less than that of any gas pressure regulator vent outlet as detailed in Table 5.3; f) less than 1 ft (300 mm) above grade level; g) within specified distances of a window or door that can be opened in any building, of any nonmechanical air-supply inlet to any building, or of the combustion air inlet of any other appliance; and h) underneath a veranda, porch, or deck unless the veranda, porch, or deck is fully open on a minimum of two sides beneath the floor and the distance between the top of the vent termination and the underside of the veranda, porch, or deck is greater than 1 ft (300 mm)."
   },
   {
     "clause": "8.14.9",
@@ -5053,7 +5061,7 @@ const csaData = [
     "title": "Commercial or industrial requirements",
     "description": "Where over-pressure relief devices that form part of a certified chimney system are used to meet the requirement of Clause 8.32.1 the over-pressure relief device may terminate inside a dedicated service room containing the engine-driven appliance or engine enclosure provided a) they are readily visible for inspection; and b) there is no visual evidence that the relief device is leaking combustion products."
   },
-  {
+   {
     "clause": "9.1.1",
     "title": "Applicability",
     "description": "Manifold applications shall comply with the requirements of Clause 7.2, and cylinder-filling applications shall comply with the requirements of Clause 9."
@@ -5188,7 +5196,7 @@ const csaData = [
     "title": "Connection location",
     "description": "Connection and disconnection of cylinders shall be done in a well-ventilated area with no source of ignition within 10 ft (3 m) from the point of connection."
   },
-  {
+{
     "clause": "10.1.1",
     "title": "Vehicle refuelling appliance (VRA) installation",
     "description": "A VRA that was certified to CSA 12.6 shall be installed in accordance with the manufacturer's installation instructions and local requirements, including fire regulations, building codes, and zoning requirements. Note: This clause is for VRAs that were certified to CSA 12.6-M94 and CSA 12.6-2004."
@@ -5437,7 +5445,7 @@ const csaData = [
     "annex": "C",
     "category": "Calculations"
   },
-  {
+   {
     "clause": "H.1",
     "title": "Purging requirement scope",
     "description": "Purging of piping and tubing systems where a readily accessible burner is not available or where an appliance is not equipped with a continuous pilot shall be undertaken as outlined in Clauses H.2 to H.7.",
@@ -5640,7 +5648,7 @@ const csaData = [
     "annex": "K",
     "category": "Calculations"
   },
-  {
+ {
     "clause": "M.1",
     "title": "Annex M application scope",
     "description": "This Annex applies to appliances that a) are on display at shows, exhibitions, or other similar events; and b) are designed to be used outdoors or vented to the outdoors.",
@@ -5716,33 +5724,713 @@ const csaData = [
     "description": "A certified portable fire extinguisher classified in accordance with ULC Standard CAN/ULC-S508-02 (R2013) \"Standard for the Rating and Fire Testing of Fire Extinguishers\" of not less than 10-B:C rating shall be located at each booth or stall displaying appliances.",
     "annex": "M",
     "category": "Safety"
-  }
+  } 
 ];
+
+// Built-in search function
+const searchCodes = (query) => {
+  if (!query || query.trim() === '') return [];
+  
+  const searchTerm = query.toLowerCase().trim();
+  
+  return fullCSAData.filter(item => {
+    // Check clause number
+    if (item.clause.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check title
+    if (item.title.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check description
+    if (item.description.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check annex letter
+    if (item.annex && item.annex.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check category
+    if (item.category && item.category.toLowerCase().includes(searchTerm)) return true;
+    
+    return false;
+  });
+};
+
+// Optimized SearchBar Component
+const SearchBar = React.memo(({ onSearch, disabled = false }) => {
+  const [query, setQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  
+  const popularTerms = useMemo(() => getPopularSearchTerms(), []);
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    if (query.trim() && !disabled) {
+      onSearch(query.trim());
+      setShowSuggestions(false);
+    }
+  }, [query, disabled, onSearch]);
+
+  const handleInputChange = useCallback((e) => {
+    const value = e.target.value;
+    setQuery(value);
+    
+    if (value.length > 1) {
+      const filtered = popularTerms.filter(term => 
+        term.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filtered);
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  }, [popularTerms]);
+
+  const handleSuggestionClick = useCallback((suggestion) => {
+    setQuery(suggestion);
+    setShowSuggestions(false);
+    onSearch(suggestion);
+  }, [onSearch]);
+
+  return (
+    <div style={{ position: 'relative', width: '100%' }}>
+      <form onSubmit={handleSubmit}>
+        <div style={{ position: 'relative', width: '100%' }}>
+          <input
+            type="text"
+            value={query}
+            onChange={handleInputChange}
+            onFocus={(e) => {
+  if (!disabled) {
+    e.target.style.borderColor = '#3498db';
+    if (query.length > 1) setShowSuggestions(true);
+  }
+}}
+onBlur={(e) => {
+  e.target.style.borderColor = '#e9ecef';
+  setTimeout(() => setShowSuggestions(false), 150);
+}}
+            placeholder="Search for clause numbers, titles, or keywords..."
+            disabled={disabled}
+            style={{
+              width: '100%',
+              padding: '1rem 3.5rem 1rem 1.5rem',
+              border: '2px solid #e9ecef',
+              borderRadius: '12px',
+              fontSize: '1rem',
+              outline: 'none',
+              transition: 'all 0.2s ease',
+              boxSizing: 'border-box',
+              fontFamily: 'inherit',
+              opacity: disabled ? 0.6 : 1,
+              cursor: disabled ? 'not-allowed' : 'text'
+            }}
+          
+          />
+          <button
+            type="submit"
+            disabled={disabled}
+            style={{
+              position: 'absolute',
+              right: '0.5rem',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              background: disabled ? '#bdc3c7' : 'linear-gradient(135deg, #3498db, #2980b9)',
+              color: 'white',
+              border: 'none',
+              borderRadius: '8px',
+              padding: '0.75rem 1rem',
+              cursor: disabled ? 'not-allowed' : 'pointer',
+              fontSize: '0.9rem',
+              fontWeight: '600',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            🔍 Search
+          </button>
+        </div>
+      </form>
+
+      {/* Search Suggestions */}
+      {showSuggestions && suggestions.length > 0 && (
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          backgroundColor: 'white',
+          border: '1px solid #e9ecef',
+          borderRadius: '8px',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+          zIndex: 1000,
+          maxHeight: '200px',
+          overflowY: 'auto'
+        }}>
+          {suggestions.map((suggestion, index) => (
+            <div
+              key={index}
+              onClick={() => handleSuggestionClick(suggestion)}
+              style={{
+                padding: '0.75rem 1rem',
+                cursor: 'pointer',
+                borderBottom: index < suggestions.length - 1 ? '1px solid #f8f9fa' : 'none',
+                transition: 'background-color 0.2s ease'
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = '#f8f9fa'}
+              onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}
+            >
+              {suggestion}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+});
+
+// Email Modal Component
+const EmailModal = React.memo(({ isOpen, onClose, onSubmit, isSubmitting, error }) => {
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+    
+    // Validate email
+    const validation = validateEmail(email);
+    if (!validation.isValid) {
+      setEmailError(validation.errors[0]);
+      return;
+    }
+    
+    setEmailError('');
+    await onSubmit(email);
+  }, [email, onSubmit]);
+
+  const handleEmailChange = useCallback((e) => {
+    setEmail(e.target.value);
+    setEmailError('');
+  }, []);
+
+  // Reset email state when modal closes
+  useEffect(() => {
+    if (!isOpen) {
+      setEmail('');
+      setEmailError('');
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  return (
+    <div style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0, 0, 0, 0.7)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1000,
+      padding: '1rem'
+    }}>
+      <div style={{
+        backgroundColor: 'white',
+        borderRadius: '12px',
+        padding: '2rem',
+        maxWidth: '500px',
+        width: '100%',
+        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
+      }}>
+        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+          <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🎉</span>
+          <h2 style={{ margin: '0 0 0.5rem 0', color: '#2c3e50' }}>
+            Start Your Free 7-Day Trial
+          </h2>
+          <p style={{ color: '#6c757d', margin: 0, lineHeight: '1.5' }}>
+            Get instant access to all CSA B149.1-25 codes. No credit card required.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <div style={{ marginBottom: '1rem' }}>
+            <label style={{
+              display: 'block',
+              marginBottom: '0.5rem',
+              fontWeight: '500',
+              color: '#2c3e50'
+            }}>
+              Email Address
+            </label>
+            <input
+              type="email"
+              value={email}
+              onChange={handleEmailChange}
+              placeholder="your@company.com"
+              required
+              disabled={isSubmitting}
+              autoComplete="email"
+              style={{
+                width: '100%',
+                padding: '0.75rem',
+                border: '2px solid #e9ecef',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                outline: 'none',
+                transition: 'border-color 0.2s ease',
+                boxSizing: 'border-box',
+                backgroundColor: 'white',
+                color: '#333'
+              }}
+              onFocus={(e) => e.target.style.borderColor = '#3498db'}
+              onBlur={(e) => e.target.style.borderColor = '#e9ecef'}
+            />
+            {(emailError || error) && (
+              <p style={{ color: '#e74c3c', fontSize: '0.9rem', margin: '0.5rem 0 0 0' }}>
+                {emailError || error}
+              </p>
+            )}
+          </div>
+
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <button
+              type="button"
+              onClick={onClose}
+              disabled={isSubmitting}
+              style={{
+                flex: '1',
+                minWidth: '120px',
+                padding: '0.75rem 1.5rem',
+                border: '2px solid #e9ecef',
+                borderRadius: '8px',
+                backgroundColor: 'white',
+                color: '#6c757d',
+                fontSize: '1rem',
+                fontWeight: '500',
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              Cancel
+            </button>
+            
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              style={{
+                flex: '2',
+                minWidth: '140px',
+                padding: '0.75rem 1.5rem',
+                border: 'none',
+                borderRadius: '8px',
+                backgroundColor: isSubmitting ? '#bdc3c7' : '#3498db',
+                color: 'white',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              {isSubmitting ? 'Starting Trial...' : 'Start Free Trial'}
+            </button>
+          </div>
+        </form>
+
+        <div style={{
+          fontSize: '0.8rem',
+          color: '#95a5a6',
+          textAlign: 'center',
+          margin: '1rem 0 0 0',
+          lineHeight: '1.4'
+        }}>
+          <p style={{ margin: '0 0 0.5rem 0' }}>
+            ✅ No credit card required • ✅ Cancel anytime • ✅ Full access during trial
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+});
+
+// Result highlighting component
+const HighlightedText = React.memo(({ text, highlight }) => {
+  if (!highlight) return text;
+  
+  const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+  return parts.map((part, index) => 
+    part.toLowerCase() === highlight.toLowerCase() ? (
+      <mark key={index} style={{ backgroundColor: '#fff3cd', padding: '0 2px' }}>
+        {part}
+      </mark>
+    ) : part
+  );
+});
+
+// Main App Component
 function App() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [trialStatus, setTrialStatus] = useState(null);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [emailSubmitting, setEmailSubmitting] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
+  // Load trial status on mount
+  useEffect(() => {
+    const status = trialManager.getTrialStatus();
+    setTrialStatus(status);
+  }, []);
+
+  // Handle search with proper analytics tracking
+  const handleSearch = useCallback((searchQuery) => {
+    const currentStatus = trialManager.getTrialStatus();
+    
+    // If no trial exists, show email modal
+    if (!currentStatus.trialUsed && currentStatus.eligible) {
+      setShowEmailModal(true);
+      localStorage.setItem('pendingQuery', searchQuery);
+      return;
+    }
+    
+    // If trial is active, allow search
+    if (currentStatus.trialActive) {
+      const success = trialManager.recordSearch(searchQuery);
+      if (success) {
+        setQuery(searchQuery);
+        // Update trial status to reflect new search count
+        setTrialStatus(trialManager.getTrialStatus());
+      }
+      return;
+    }
+    
+    // If trial expired, search is blocked by UI
+  }, []);
+
+  // Handle email submission
+  const handleEmailSubmit = useCallback(async (email) => {
+    setEmailSubmitting(true);
+    setEmailError('');
+
+    try {
+      const result = await trialManager.startTrial(email);
+      
+      if (result.success) {
+        // Track successful trial start
+        trackTrialStarted(email);
+        trackEmailSubmission(email);
+        
+        setTrialStatus(result.trialData);
+        setShowEmailModal(false);
+        
+        // Execute pending search if any
+        const pendingQuery = localStorage.getItem('pendingQuery');
+        if (pendingQuery) {
+          setQuery(pendingQuery);
+          localStorage.removeItem('pendingQuery');
+        }
+      } else {
+        setEmailError(result.errors?.[0] || 'Failed to start trial');
+      }
+    } catch (error) {
+      setEmailError('Something went wrong. Please try again.');
+    } finally {
+      setEmailSubmitting(false);
+    }
+  }, []);
+
+  // Handle subscription redirect
+  const handleSubscribe = useCallback(() => {
+    trackSubscriptionAttempt('trial_banner');
+    window.open('https://buy.stripe.com/fZucN6bhHgMcfT81xS7ok00', '_blank');
+  }, []);
+
+  // Search functionality with analytics
   useEffect(() => {
     if (query.trim() === '') {
       setResults([]);
       return;
     }
 
+    // Block search if trial expired
+    if (trialStatus?.trialUsed && !trialStatus?.trialActive) {
+      setResults([]);
+      return;
+    }
+
     setIsLoading(true);
-    // Add small delay to show loading state
     const timeoutId = setTimeout(() => {
-      const filtered = csaData.filter(item =>
-        item.title.toLowerCase().includes(query.toLowerCase()) ||
-        item.description.toLowerCase().includes(query.toLowerCase()) ||
-        item.clause.includes(query)
-      );
-      setResults(filtered);
+      const searchResults = searchCodes(query);
+      setResults(searchResults);
       setIsLoading(false);
+      
+      // Track search analytics
+      trackSearch(query, searchResults.length);
     }, 150);
 
     return () => clearTimeout(timeoutId);
-  }, [query]);
+  }, [query, trialStatus]);
+
+  // Trial banner component
+  const TrialBanner = useMemo(() => {
+    if (!trialStatus?.trialUsed) return null;
+    
+    if (trialStatus.trialActive) {
+      return (
+        <div style={{
+          background: 'linear-gradient(135deg, #4CAF50, #45a049)',
+          color: 'white',
+          padding: '16px 20px',
+          textAlign: 'center',
+          marginBottom: '1rem',
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(76, 175, 80, 0.3)'
+        }}>
+          <div style={{ marginBottom: '8px' }}>
+            <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
+              🎉 Trial active: {trialStatus.daysRemaining} day{trialStatus.daysRemaining !== 1 ? 's' : ''} remaining
+            </span>
+            {trialStatus.searchCount > 0 && (
+              <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
+                {trialStatus.searchCount} searches performed
+              </div>
+            )}
+          </div>
+          <button
+            onClick={handleSubscribe}
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              color: 'white',
+              border: '2px solid white',
+              padding: '8px 16px',
+              borderRadius: '20px',
+              fontSize: '0.9rem',
+              fontWeight: '600',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            Subscribe Now - Save 15%
+          </button>
+        </div>
+      );
+    }
+    
+    if (!trialStatus.trialActive) {
+      return (
+        <div style={{
+          background: 'linear-gradient(135deg, #FF5722, #D84315)',
+          color: 'white',
+          padding: '16px 20px',
+          textAlign: 'center',
+          marginBottom: '1rem',
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(255, 87, 34, 0.3)'
+        }}>
+          <div style={{ marginBottom: '12px' }}>
+            <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
+              🔔 Trial expired - You searched {trialStatus.searchCount} times during your trial
+            </span>
+          </div>
+          <button
+            onClick={handleSubscribe}
+            style={{
+              backgroundColor: 'white',
+              color: '#FF5722',
+              border: 'none',
+              padding: '12px 24px',
+              borderRadius: '25px',
+              fontSize: '1rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+            }}
+          >
+            Upgrade Now - $49.99/year
+          </button>
+        </div>
+      );
+    }
+    
+    return null;
+  }, [trialStatus, handleSubscribe]);
+
+  // Search results component
+  const SearchResults = useMemo(() => {
+    // Show blocked message if trial expired
+    if (trialStatus?.trialUsed && !trialStatus?.trialActive) {
+      return (
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '12px',
+          padding: '2rem',
+          textAlign: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          border: '2px solid #FF5722'
+        }}>
+          <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🔒</span>
+          <h3 style={{ color: '#FF5722', margin: '0 0 0.5rem 0' }}>Trial Expired</h3>
+          <p style={{ color: '#6c757d', margin: '0 0 1rem 0' }}>
+            You performed {trialStatus.searchCount} searches during your 7-day trial.
+          </p>
+          <button
+            onClick={handleSubscribe}
+            style={{
+              backgroundColor: '#FF5722',
+              color: 'white',
+              border: 'none',
+              padding: '12px 24px',
+              borderRadius: '25px',
+              fontSize: '1rem',
+              fontWeight: '700',
+              cursor: 'pointer',
+              transition: 'all 0.2s ease'
+            }}
+          >
+            Upgrade Now - $49.99/year
+          </button>
+        </div>
+      );
+    }
+
+    // Show loading state
+    if (isLoading && trialStatus?.trialActive) {
+      return (
+        <div style={{
+          textAlign: 'center',
+          padding: '2rem',
+          color: '#6c757d'
+        }}>
+          <div style={{
+            display: 'inline-block',
+            width: '20px',
+            height: '20px',
+            border: '2px solid #e9ecef',
+            borderTop: '2px solid #2c3e50',
+            borderRadius: '50%',
+            animation: 'spin 1s linear infinite'
+          }}></div>
+          <p style={{ marginTop: '1rem' }}>Searching codes...</p>
+        </div>
+      );
+    }
+
+    // Show results
+    if (results.length > 0 && trialStatus?.trialActive) {
+      return (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {results.map((item, index) => (
+            <div key={index} style={{
+              backgroundColor: 'white',
+              borderRadius: '12px',
+              padding: '1.5rem',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              border: '1px solid #e9ecef',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-1px)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+            }}>
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                gap: '0.5rem',
+                marginBottom: '0.75rem'
+              }}>
+                <span style={{
+                  backgroundColor: item.annex ? '#9b59b6' : '#3498db',
+                  color: 'white',
+                  padding: '0.25rem 0.75rem',
+                  borderRadius: '20px',
+                  fontSize: '0.8rem',
+                  fontWeight: '600'
+                }}>
+                  {item.clause}
+                </span>
+                {item.annex && (
+                  <span style={{
+                    backgroundColor: '#e74c3c',
+                    color: 'white',
+                    padding: '0.25rem 0.5rem',
+                    borderRadius: '15px',
+                    fontSize: '0.7rem',
+                    fontWeight: '600'
+                  }}>
+                    Annex {item.annex}
+                  </span>
+                )}
+                <h3 style={{
+                  margin: 0,
+                  fontSize: 'clamp(1rem, 3vw, 1.2rem)',
+                  color: '#2c3e50',
+                  fontWeight: '600',
+                  flex: 1,
+                  minWidth: '200px'
+                }}>
+                  <HighlightedText text={item.title} highlight={query} />
+                </h3>
+              </div>
+              <p style={{
+                margin: 0,
+                lineHeight: '1.6',
+                color: '#495057',
+                fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
+              }}>
+                <HighlightedText text={item.description} highlight={query} />
+              </p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // Show no results message
+    if (query && !isLoading && trialStatus?.trialActive) {
+      return (
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '12px',
+          padding: '2rem',
+          textAlign: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+        }}>
+          <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🔍</span>
+          <h3 style={{ color: '#6c757d', margin: '0 0 0.5rem 0' }}>No results found</h3>
+          <p style={{ color: '#6c757d', margin: 0 }}>
+            Try searching for different keywords or clause numbers
+          </p>
+        </div>
+      );
+    }
+
+    // Show welcome message
+    if (!query && trialStatus?.trialActive) {
+      return (
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '12px',
+          padding: '2rem',
+          textAlign: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+        }}>
+          <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🧭</span>
+          <h3 style={{ color: '#2c3e50', margin: '0 0 0.5rem 0' }}>Welcome to Code Compass</h3>
+          <p style={{ color: '#6c757d', margin: 0 }}>
+            Search CSA B149.1-25 codes by clause number, title, or keyword
+          </p>
+        </div>
+      );
+    }
+
+    return null;
+  }, [results, isLoading, trialStatus, query, handleSubscribe]);
 
   return (
     <div style={{
@@ -5750,6 +6438,15 @@ function App() {
       backgroundColor: '#f8f9fa',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
     }}>
+      {/* Email Modal */}
+      <EmailModal
+        isOpen={showEmailModal}
+        onClose={() => setShowEmailModal(false)}
+        onSubmit={handleEmailSubmit}
+        isSubmitting={emailSubmitting}
+        error={emailError}
+      />
+
       {/* Header */}
       <header style={{
         backgroundColor: '#2c3e50',
@@ -5785,6 +6482,9 @@ function App() {
         padding: '1rem',
         paddingBottom: '2rem'
       }}>
+        {/* Trial Banner */}
+        {TrialBanner}
+
         {/* Search Section */}
         <div style={{
           backgroundColor: 'white',
@@ -5801,9 +6501,12 @@ function App() {
           }}>
             Search CSA B149.1-25 Codes
           </h2>
-          <SearchBar onSearch={setQuery} />
+          <SearchBar 
+            onSearch={handleSearch} 
+            disabled={trialStatus?.trialUsed && !trialStatus?.trialActive}
+          />
           
-          {query && (
+          {query && trialStatus?.trialActive && (
             <div style={{
               marginTop: '1rem',
               fontSize: '0.9rem',
@@ -5822,110 +6525,7 @@ function App() {
         </div>
 
         {/* Results Section */}
-        {isLoading ? (
-          <div style={{
-            textAlign: 'center',
-            padding: '2rem',
-            color: '#6c757d'
-          }}>
-            <div style={{
-              display: 'inline-block',
-              width: '20px',
-              height: '20px',
-              border: '2px solid #e9ecef',
-              borderTop: '2px solid #2c3e50',
-              borderRadius: '50%',
-              animation: 'spin 1s linear infinite'
-            }}></div>
-            <p style={{ marginTop: '1rem' }}>Searching codes...</p>
-          </div>
-        ) : results.length > 0 ? (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {results.map((item, index) => (
-              <div key={index} style={{
-                backgroundColor: 'white',
-                borderRadius: '12px',
-                padding: '1.5rem',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e9ecef',
-                transition: 'transform 0.2s ease, box-shadow 0.2s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-1px)';
-                e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
-              }}>
-                <div style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  marginBottom: '0.75rem'
-                }}>
-                  <span style={{
-                    backgroundColor: '#3498db',
-                    color: 'white',
-                    padding: '0.25rem 0.75rem',
-                    borderRadius: '20px',
-                    fontSize: '0.8rem',
-                    fontWeight: '600'
-                  }}>
-                    {item.clause}
-                  </span>
-                  <h3 style={{
-                    margin: 0,
-                    fontSize: 'clamp(1rem, 3vw, 1.2rem)',
-                    color: '#2c3e50',
-                    fontWeight: '600',
-                    flex: 1,
-                    minWidth: '200px'
-                  }}>
-                    {item.title}
-                  </h3>
-                </div>
-                <p style={{
-                  margin: 0,
-                  lineHeight: '1.6',
-                  color: '#495057',
-                  fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
-                }}>
-                  {item.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        ) : query && !isLoading ? (
-          <div style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '2rem',
-            textAlign: 'center',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-          }}>
-            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🔍</span>
-            <h3 style={{ color: '#6c757d', margin: '0 0 0.5rem 0' }}>No results found</h3>
-            <p style={{ color: '#6c757d', margin: 0 }}>
-              Try searching for different keywords or clause numbers
-            </p>
-          </div>
-        ) : (
-          <div style={{
-            backgroundColor: 'white',
-            borderRadius: '12px',
-            padding: '2rem',
-            textAlign: 'center',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-          }}>
-            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🧭</span>
-            <h3 style={{ color: '#2c3e50', margin: '0 0 0.5rem 0' }}>Welcome to Code Compass</h3>
-            <p style={{ color: '#6c757d', margin: 0 }}>
-              Search CSA B149.1-25 codes by clause number, title, or keyword
-            </p>
-          </div>
-        )}
+        {SearchResults}
       </main>
 
       <style>
@@ -5933,30 +6533,6 @@ function App() {
           @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-          }
-          
-          /* Mobile-specific styles */
-          @media (max-width: 768px) {
-            body {
-              margin: 0;
-              padding: 0;
-            }
-          }
-          
-          /* Touch targets for mobile */
-          @media (max-width: 768px) {
-            button, input, select, textarea {
-              min-height: 44px;
-            }
-          }
-          
-          /* Prevent zoom on input focus on iOS */
-          @media screen and (-webkit-min-device-pixel-ratio: 0) {
-            select:focus,
-            textarea:focus,
-            input:focus {
-              font-size: 16px;
-            }
           }
         `}
       </style>

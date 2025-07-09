@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Trial protection API",
+  "main": "api/api/index.js",
+  "scripts": {
+    "start": "node api/api/index.js",
+    "dev": "node api/api/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "express-rate-limit": "^6.7.0"
+  }
+}
