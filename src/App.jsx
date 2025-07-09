@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 // import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
-import { trialManager } from './utils/trialManager.js';
-import { validateEmail } from './utils/emailCollection.js';
+import { trialManager } from './Utils/trialManager.js';
+import { validateEmail } from './Utils/emailCollection.js';
 import { 
   trackTrialStarted, 
   trackSearch, 
   trackSubscriptionAttempt,
   trackEmailSubmission 
-} from './utils/analytics.js';
+} from './Utils/analytics.js';
 
 // Full CSA data array (all the codes from your original file)
 const fullCSAData = [
