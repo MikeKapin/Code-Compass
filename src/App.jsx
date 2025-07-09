@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 // import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
-import { trialManager } from './Utils/trialManager.js';
-import { validateEmail } from './Utils/emailcollection.js';
+import { trialManager } from './utils/trialManager.js';
+import { validateEmail } from './utils/emailcollection.js';
 import { 
   trackTrialStarted, 
   trackSearch, 
   trackSubscriptionAttempt,
   trackEmailSubmission 
-} from './Utils/analytics.js';
+} from './utils/analytics.js';
 
 // Full CSA data array (all the codes from your original file)
 const fullCSAData = [
@@ -5759,7 +5759,7 @@ const SearchBar = React.memo(({ onSearch, disabled = false }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   
-  const popularTerms = useMemo(() => getPopularSearchTerms(), []);
+ const popularTerms = useMemo(() => ['BTU', 'venting', 'clearance', 'CSA'], []);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
