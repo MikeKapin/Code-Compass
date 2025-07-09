@@ -2,7 +2,7 @@
 // Advanced trial management with multiple protection layers
 
 import { trackTrialStarted, trackTrialExpired, trackSuspiciousActivity } from './analytics.js';
-import { validateEmail, submitEmailToService } from './emailCollection.js';
+import { validateEmail, submitEmailToService } from './emailcollection.js';
 
 class TrialManager {
   constructor() {
