@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
+// import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
 import { trialManager } from './utils/trialManager.js';
 import { validateEmail } from './utils/emailCollection.js';
 import { 
