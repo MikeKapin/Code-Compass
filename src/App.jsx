@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 // import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
 import { trialManager } from './Utils/trialManager.js';
-import { validateEmail } from './Utils/emailCollection.js';
+import { validateEmail } from './Utils/emailcollection.js';
 import { 
   trackTrialStarted, 
   trackSearch, 
