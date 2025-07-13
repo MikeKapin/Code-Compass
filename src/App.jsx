@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 // import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
+// import { csaDataB149_2, searchCSADataB149_2, getPopularSearchTermsB149_2 } from './data/csaDataB149_2.js';
+// import { regulationsData, searchRegulations, getPopularRegulationTerms } from './data/regulationsData.js';
 import { trialManager } from './utils/trialManager.js';
 import { validateEmail } from './utils/emailcollection.js';
 import { 
@@ -5753,13 +5755,23 @@ const searchCodes = (query) => {
   });
 };
 
+// Get popular search terms for CSA B149.1-25
+const getPopularSearchTerms = () => {
+  return ['BTU', 'venting', 'clearance', 'CSA', 'accessory', 'appliance', 'gas piping', 'installation', 'safety'];
+};
+
 // Optimized SearchBar Component
-const SearchBar = React.memo(({ onSearch, disabled = false }) => {
+const SearchBar = React.memo(({ onSearch, disabled = false, placeholder = "Search for clause numbers, titles, or keywords...", activeSearchType = 'b149-1' }) => {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   
- const popularTerms = useMemo(() => ['BTU', 'venting', 'clearance', 'CSA'], []);
+  const popularTerms = useMemo(() => {
+    if (activeSearchType === 'b149-1') {
+      return ['BTU', 'venting', 'clearance', 'CSA'];
+    }
+    return []; // No suggestions for coming soon features
+  }, [activeSearchType]);
 
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
@@ -5773,7 +5785,7 @@ const SearchBar = React.memo(({ onSearch, disabled = false }) => {
     const value = e.target.value;
     setQuery(value);
     
-    if (value.length > 1) {
+    if (value.length > 1 && activeSearchType === 'b149-1') {
       const filtered = popularTerms.filter(term => 
         term.toLowerCase().includes(value.toLowerCase())
       );
@@ -5782,7 +5794,7 @@ const SearchBar = React.memo(({ onSearch, disabled = false }) => {
     } else {
       setShowSuggestions(false);
     }
-  }, [popularTerms]);
+  }, [popularTerms, activeSearchType]);
 
   const handleSuggestionClick = useCallback((suggestion) => {
     setQuery(suggestion);
@@ -5799,16 +5811,16 @@ const SearchBar = React.memo(({ onSearch, disabled = false }) => {
             value={query}
             onChange={handleInputChange}
             onFocus={(e) => {
-  if (!disabled) {
-    e.target.style.borderColor = '#3498db';
-    if (query.length > 1) setShowSuggestions(true);
-  }
-}}
-onBlur={(e) => {
-  e.target.style.borderColor = '#e9ecef';
-  setTimeout(() => setShowSuggestions(false), 150);
-}}
-            placeholder="Search for clause numbers, titles, or keywords..."
+              if (!disabled) {
+                e.target.style.borderColor = '#3498db';
+                if (query.length > 1 && activeSearchType === 'b149-1') setShowSuggestions(true);
+              }
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#e9ecef';
+              setTimeout(() => setShowSuggestions(false), 150);
+            }}
+            placeholder={placeholder}
             disabled={disabled}
             style={{
               width: '100%',
@@ -5821,9 +5833,10 @@ onBlur={(e) => {
               boxSizing: 'border-box',
               fontFamily: 'inherit',
               opacity: disabled ? 0.6 : 1,
-              cursor: disabled ? 'not-allowed' : 'text'
+              cursor: disabled ? 'not-allowed' : 'text',
+              backgroundColor: disabled ? '#f8f9fa' : 'white',
+              color: disabled ? '#6c757d' : '#2c3e50'
             }}
-          
           />
           <button
             type="submit"
@@ -5850,7 +5863,7 @@ onBlur={(e) => {
       </form>
 
       {/* Search Suggestions */}
-      {showSuggestions && suggestions.length > 0 && (
+      {showSuggestions && suggestions.length > 0 && activeSearchType === 'b149-1' && (
         <div style={{
           position: 'absolute',
           top: '100%',
@@ -6068,6 +6081,10 @@ const HighlightedText = React.memo(({ text, highlight }) => {
 
 // Main App Component
 function App() {
+  // Search type state
+  const [activeSearchType, setActiveSearchType] = useState('b149-1'); // 'b149-1', 'b149-2', 'regulations'
+  
+  // Original app state
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -6082,8 +6099,19 @@ function App() {
     setTrialStatus(status);
   }, []);
 
+  // Clear search when switching types
+  useEffect(() => {
+    setQuery('');
+    setResults([]);
+  }, [activeSearchType]);
+
   // Handle search with proper analytics tracking
   const handleSearch = useCallback((searchQuery) => {
+    // Don't allow search for coming soon features
+    if (activeSearchType === 'b149-2' || activeSearchType === 'regulations') {
+      return;
+    }
+
     const currentStatus = trialManager.getTrialStatus();
     
     // If no trial exists, show email modal
@@ -6105,7 +6133,12 @@ function App() {
     }
     
     // If trial expired, search is blocked by UI
-  }, []);
+  }, [activeSearchType]);
+
+  // Handle search type switching
+  const handleSearchTypeChange = (type) => {
+    setActiveSearchType(type);
+  };
 
   // Handle email submission
   const handleEmailSubmit = useCallback(async (email) => {
@@ -6145,8 +6178,41 @@ function App() {
     window.open('https://buy.stripe.com/fZucN6bhHgMcfT81xS7ok00', '_blank');
   }, []);
 
-  // Search functionality with analytics
+  // Get search placeholder text
+  const getSearchPlaceholder = () => {
+    switch (activeSearchType) {
+      case 'b149-1':
+        return 'Search for clause numbers, titles, or keywords...';
+      case 'b149-2':
+        return 'CSA B149.2-25 search coming soon...';
+      case 'regulations':
+        return 'Regulations search coming soon...';
+      default:
+        return 'Search...';
+    }
+  };
+
+  // Get current data source title
+  const getDataSourceTitle = () => {
+    switch (activeSearchType) {
+      case 'b149-1':
+        return 'CSA B149.1-25';
+      case 'b149-2':
+        return 'CSA B149.2-25';
+      case 'regulations':
+        return 'Regulations';
+      default:
+        return 'Code Compass';
+    }
+  };
+
+  // Search functionality with analytics - only for B149.1-25
   useEffect(() => {
+    if (activeSearchType !== 'b149-1') {
+      setResults([]);
+      return;
+    }
+
     if (query.trim() === '') {
       setResults([]);
       return;
@@ -6169,7 +6235,7 @@ function App() {
     }, 150);
 
     return () => clearTimeout(timeoutId);
-  }, [query, trialStatus]);
+  }, [query, trialStatus, activeSearchType]);
 
   // Trial banner component
   const TrialBanner = useMemo(() => {
@@ -6258,8 +6324,37 @@ function App() {
 
   // Search results component
   const SearchResults = useMemo(() => {
-    // Show blocked message if trial expired
-    if (trialStatus?.trialUsed && !trialStatus?.trialActive) {
+    // Show coming soon message for new features
+    if (activeSearchType === 'b149-2' || activeSearchType === 'regulations') {
+      return (
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '12px',
+          padding: '2rem',
+          textAlign: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          border: '2px solid #3498db'
+        }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <svg style={{ width: '4rem', height: '4rem', color: '#3498db', marginBottom: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 style={{ color: '#3498db', margin: '0 0 0.5rem 0', fontSize: '1.5rem' }}>Coming Soon</h3>
+          </div>
+          <p style={{ color: '#6c757d', margin: '0 0 1rem 0', fontSize: '1.1rem' }}>
+            {activeSearchType === 'b149-2' 
+              ? 'CSA B149.2-25 code search is currently in development.' 
+              : 'Regulations search is currently in development.'}
+          </p>
+          <p style={{ color: '#95a5a6', margin: 0, fontSize: '0.9rem' }}>
+            We're working hard to bring you this new feature. Stay tuned for updates!
+          </p>
+        </div>
+      );
+    }
+
+    // Show blocked message if trial expired (only for B149.1-25)
+    if (trialStatus?.trialUsed && !trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6294,8 +6389,8 @@ function App() {
       );
     }
 
-    // Show loading state
-    if (isLoading && trialStatus?.trialActive) {
+    // Show loading state (only for B149.1-25)
+    if (isLoading && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           textAlign: 'center',
@@ -6316,8 +6411,8 @@ function App() {
       );
     }
 
-    // Show results
-    if (results.length > 0 && trialStatus?.trialActive) {
+    // Show results (only for B149.1-25)
+    if (results.length > 0 && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {results.map((item, index) => (
@@ -6391,8 +6486,8 @@ function App() {
       );
     }
 
-    // Show no results message
-    if (query && !isLoading && trialStatus?.trialActive) {
+    // Show no results message (only for B149.1-25)
+    if (query && !isLoading && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6410,8 +6505,8 @@ function App() {
       );
     }
 
-    // Show welcome message
-    if (!query && trialStatus?.trialActive) {
+    // Show welcome message (only for B149.1-25 when trial is active)
+    if (!query && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6430,7 +6525,7 @@ function App() {
     }
 
     return null;
-  }, [results, isLoading, trialStatus, query, handleSubscribe]);
+  }, [results, isLoading, trialStatus, query, handleSubscribe, activeSearchType]);
 
   return (
     <div style={{
@@ -6462,16 +6557,21 @@ function App() {
           margin: '0 auto',
           display: 'flex',
           alignItems: 'center',
-          gap: '0.5rem'
+          justifyContent: 'space-between'
         }}>
-          <span style={{ fontSize: '1.5rem' }}>🧭</span>
-          <h1 style={{
-            margin: 0,
-            fontSize: 'clamp(1.2rem, 4vw, 1.8rem)',
-            fontWeight: '600'
-          }}>
-            Code Compass
-          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ fontSize: '1.5rem' }}>🧭</span>
+            <h1 style={{
+              margin: 0,
+              fontSize: 'clamp(1.2rem, 4vw, 1.8rem)',
+              fontWeight: '600'
+            }}>
+              Code Compass
+            </h1>
+            <span style={{ fontSize: '0.9rem', opacity: 0.8, marginLeft: '0.5rem' }}>
+              ({getDataSourceTitle()})
+            </span>
+          </div>
         </div>
       </header>
 
@@ -6484,6 +6584,96 @@ function App() {
       }}>
         {/* Trial Banner */}
         {TrialBanner}
+
+        {/* Search Type Selector */}
+        <div style={{ marginBottom: '1.5rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            gap: '0.5rem',
+            backgroundColor: 'white',
+            padding: '1rem',
+            borderRadius: '12px',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+          }}>
+            <button
+              onClick={() => handleSearchTypeChange('b149-1')}
+              style={{
+                padding: '0.75rem 1.5rem',
+                borderRadius: '8px',
+                border: 'none',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                backgroundColor: activeSearchType === 'b149-1' ? '#3498db' : '#f8f9fa',
+                color: activeSearchType === 'b149-1' ? 'white' : '#6c757d'
+              }}
+            >
+              CSA B149.1-25
+            </button>
+            <button
+              onClick={() => handleSearchTypeChange('b149-2')}
+              style={{
+                padding: '0.75rem 1.5rem',
+                borderRadius: '8px',
+                border: 'none',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                backgroundColor: activeSearchType === 'b149-2' ? '#3498db' : '#f8f9fa',
+                color: activeSearchType === 'b149-2' ? 'white' : '#6c757d',
+                position: 'relative'
+              }}
+            >
+              CSA B149.2-25
+              <span style={{
+                position: 'absolute',
+                top: '-8px',
+                right: '-8px',
+                backgroundColor: '#e74c3c',
+                color: 'white',
+                fontSize: '0.7rem',
+                padding: '2px 6px',
+                borderRadius: '10px',
+                fontWeight: '600'
+              }}>
+                Soon
+              </span>
+            </button>
+            <button
+              onClick={() => handleSearchTypeChange('regulations')}
+              style={{
+                padding: '0.75rem 1.5rem',
+                borderRadius: '8px',
+                border: 'none',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                backgroundColor: activeSearchType === 'regulations' ? '#3498db' : '#f8f9fa',
+                color: activeSearchType === 'regulations' ? 'white' : '#6c757d',
+                position: 'relative'
+              }}
+            >
+              Regulations
+              <span style={{
+                position: 'absolute',
+                top: '-8px',
+                right: '-8px',
+                backgroundColor: '#e74c3c',
+                color: 'white',
+                fontSize: '0.7rem',
+                padding: '2px 6px',
+                borderRadius: '10px',
+                fontWeight: '600'
+              }}>
+                Soon
+              </span>
+            </button>
+          </div>
+        </div>
 
         {/* Search Section */}
         <div style={{
@@ -6499,14 +6689,16 @@ function App() {
             color: '#2c3e50',
             fontWeight: '500'
           }}>
-            Search CSA B149.1-25 Codes
+            Search {getDataSourceTitle()} Codes
           </h2>
           <SearchBar 
             onSearch={handleSearch} 
-            disabled={trialStatus?.trialUsed && !trialStatus?.trialActive}
+            disabled={(trialStatus?.trialUsed && !trialStatus?.trialActive) || activeSearchType === 'b149-2' || activeSearchType === 'regulations'}
+            placeholder={getSearchPlaceholder()}
+            activeSearchType={activeSearchType}
           />
           
-          {query && trialStatus?.trialActive && (
+          {query && trialStatus?.trialActive && activeSearchType === 'b149-1' && (
             <div style={{
               marginTop: '1rem',
               fontSize: '0.9rem',
