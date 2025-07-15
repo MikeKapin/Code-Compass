@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-
-// Import the new search functionality
-import { searchCSACode, createCSASearchIndex, csaB149Data } from '../data/csaDataB149_2.js';
-import { searchRegulations, createRegulationSearchIndex, regulationsData } from '../data/regulationsData.js';
+// import { csaData, searchCSAData, getPopularSearchTerms } from './data/csaData.js';
+// import { csaDataB149_2, searchCSADataB149_2, getPopularSearchTermsB149_2 } from './data/csaDataB149_2.js';
+// import { regulationsData, searchRegulations, getPopularRegulationTerms } from './data/regulationsData.js';
 import { trialManager } from './utils/trialManager.js';
 import { validateEmail } from './utils/emailcollection.js';
 import { 
-  trackTrialStarted,
-  trackSearch,
+  trackTrialStarted, 
+  trackSearch, 
   trackSubscriptionAttempt,
   trackEmailSubmission 
 } from './utils/analytics.js';
@@ -5730,31 +5729,99 @@ const fullCSAData = [
   } 
 ];
 
-// Move SearchBar component outside to prevent re-creation on every render
-const SearchBar = React.memo(({ 
-  query, 
-  onQueryChange, 
-  onSubmit, 
-  onFocus, 
-  onBlur, 
-  placeholder, 
-  isDisabled, 
-  suggestions, 
-  showSuggestions, 
-  onSuggestionClick 
-}) => {
+// Built-in search function
+const searchCodes = (query) => {
+  if (!query || query.trim() === '') return [];
+  
+  const searchTerm = query.toLowerCase().trim();
+  
+  return fullCSAData.filter(item => {
+    // Check clause number
+    if (item.clause.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check title
+    if (item.title.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check description
+    if (item.description.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check annex letter
+    if (item.annex && item.annex.toLowerCase().includes(searchTerm)) return true;
+    
+    // Check category
+    if (item.category && item.category.toLowerCase().includes(searchTerm)) return true;
+    
+    return false;
+  });
+};
+
+// Get popular search terms for CSA B149.1-25
+const getPopularSearchTerms = () => {
+  return ['BTU', 'venting', 'clearance', 'CSA', 'accessory', 'appliance', 'gas piping', 'installation', 'safety'];
+};
+
+// Optimized SearchBar Component
+const SearchBar = React.memo(({ onSearch, disabled = false, placeholder = "Search for clause numbers, titles, or keywords...", activeSearchType = 'b149-1' }) => {
+  const [query, setQuery] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  
+  const popularTerms = useMemo(() => {
+    if (activeSearchType === 'b149-1') {
+      return ['BTU', 'venting', 'clearance', 'CSA'];
+    }
+    return []; // No suggestions for coming soon features
+  }, [activeSearchType]);
+
+  const handleSubmit = useCallback((e) => {
+    e.preventDefault();
+    if (query.trim() && !disabled) {
+      onSearch(query.trim());
+      setShowSuggestions(false);
+    }
+  }, [query, disabled, onSearch]);
+
+  const handleInputChange = useCallback((e) => {
+    const value = e.target.value;
+    setQuery(value);
+    
+    if (value.length > 1 && activeSearchType === 'b149-1') {
+      const filtered = popularTerms.filter(term => 
+        term.toLowerCase().includes(value.toLowerCase())
+      );
+      setSuggestions(filtered);
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  }, [popularTerms, activeSearchType]);
+
+  const handleSuggestionClick = useCallback((suggestion) => {
+    setQuery(suggestion);
+    setShowSuggestions(false);
+    onSearch(suggestion);
+  }, [onSearch]);
+
   return (
     <div style={{ position: 'relative', width: '100%' }}>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={handleSubmit}>
         <div style={{ position: 'relative', width: '100%' }}>
           <input
             type="text"
             value={query}
-            onChange={onQueryChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
+            onChange={handleInputChange}
+            onFocus={(e) => {
+              if (!disabled) {
+                e.target.style.borderColor = '#3498db';
+                if (query.length > 1 && activeSearchType === 'b149-1') setShowSuggestions(true);
+              }
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = '#e9ecef';
+              setTimeout(() => setShowSuggestions(false), 150);
+            }}
             placeholder={placeholder}
-            disabled={isDisabled}
+            disabled={disabled}
             style={{
               width: '100%',
               padding: '1rem 3.5rem 1rem 1.5rem',
@@ -5765,26 +5832,26 @@ const SearchBar = React.memo(({
               transition: 'all 0.2s ease',
               boxSizing: 'border-box',
               fontFamily: 'inherit',
-              opacity: isDisabled ? 0.6 : 1,
-              cursor: isDisabled ? 'not-allowed' : 'text',
-              backgroundColor: isDisabled ? '#f8f9fa' : 'white',
-              color: isDisabled ? '#6c757d' : '#2c3e50'
+              opacity: disabled ? 0.6 : 1,
+              cursor: disabled ? 'not-allowed' : 'text',
+              backgroundColor: disabled ? '#f8f9fa' : 'white',
+              color: disabled ? '#6c757d' : '#2c3e50'
             }}
           />
           <button
             type="submit"
-            disabled={isDisabled}
+            disabled={disabled}
             style={{
               position: 'absolute',
               right: '0.5rem',
               top: '50%',
               transform: 'translateY(-50%)',
-              background: isDisabled ? '#bdc3c7' : 'linear-gradient(135deg, #3498db, #2980b9)',
+              background: disabled ? '#bdc3c7' : 'linear-gradient(135deg, #3498db, #2980b9)',
               color: 'white',
               border: 'none',
               borderRadius: '8px',
               padding: '0.75rem 1rem',
-              cursor: isDisabled ? 'not-allowed' : 'pointer',
+              cursor: disabled ? 'not-allowed' : 'pointer',
               fontSize: '0.9rem',
               fontWeight: '600',
               transition: 'all 0.2s ease'
@@ -5796,7 +5863,7 @@ const SearchBar = React.memo(({
       </form>
 
       {/* Search Suggestions */}
-      {showSuggestions && suggestions.length > 0 && (
+      {showSuggestions && suggestions.length > 0 && activeSearchType === 'b149-1' && (
         <div style={{
           position: 'absolute',
           top: '100%',
@@ -5813,7 +5880,7 @@ const SearchBar = React.memo(({
           {suggestions.map((suggestion, index) => (
             <div
               key={index}
-              onClick={() => onSuggestionClick(suggestion)}
+              onClick={() => handleSuggestionClick(suggestion)}
               style={{
                 padding: '0.75rem 1rem',
                 cursor: 'pointer',
@@ -5832,7 +5899,7 @@ const SearchBar = React.memo(({
   );
 });
 
-// Email Modal Component - also moved outside
+// Email Modal Component
 const EmailModal = React.memo(({ isOpen, onClose, onSubmit, isSubmitting, error }) => {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState('');
@@ -5894,7 +5961,7 @@ const EmailModal = React.memo(({ isOpen, onClose, onSubmit, isSubmitting, error 
             Start Your Free 7-Day Trial
           </h2>
           <p style={{ color: '#6c757d', margin: 0, lineHeight: '1.5' }}>
-            Get instant access to both CSA B149.1-25 and B149.2-25 codes. No credit card required.
+            Get instant access to all CSA B149.1-25 codes. No credit card required.
           </p>
         </div>
 
@@ -6012,13 +6079,10 @@ const HighlightedText = React.memo(({ text, highlight }) => {
   );
 });
 
-const App = () => {
+// Main App Component
+function App() {
   // Search type state
   const [activeSearchType, setActiveSearchType] = useState('b149-1'); // 'b149-1', 'b149-2', 'regulations'
-  
-  // Search indices
-  const [csaSearchIndex, setCsaSearchIndex] = useState(null);
-  const [regulationsSearchIndex, setRegulationsSearchIndex] = useState(null);
   
   // Original app state
   const [query, setQuery] = useState('');
@@ -6028,25 +6092,6 @@ const App = () => {
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [emailSubmitting, setEmailSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
-
-  // Search suggestions state
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
-
-  // Initialize search indices on component mount
-  useEffect(() => {
-    // Initialize CSA B149.2 search index
-    if (csaB149Data?.document) {
-      const csaIndex = createCSASearchIndex();
-      setCsaSearchIndex(csaIndex);
-    }
-    
-    // Initialize regulations search index
-    if (regulationsData && regulationsData.length > 0) {
-      const regIndex = createRegulationSearchIndex(regulationsData);
-      setRegulationsSearchIndex(regIndex);
-    }
-  }, []);
 
   // Load trial status on mount
   useEffect(() => {
@@ -6058,80 +6103,21 @@ const App = () => {
   useEffect(() => {
     setQuery('');
     setResults([]);
-    setSuggestions([]);
-    setShowSuggestions(false);
   }, [activeSearchType]);
-
-  // Built-in search function for B149.1-25
-  const searchCodes = useCallback((query) => {
-    if (!query || query.trim() === '') return [];
-    
-    const searchTerm = query.toLowerCase().trim();
-    
-    return fullCSAData.filter(item => {
-      // Check clause number
-      if (item.clause && item.clause.toLowerCase().includes(searchTerm)) return true;
-      
-      // Check title
-      if (item.title && item.title.toLowerCase().includes(searchTerm)) return true;
-      
-      // Check description
-      if (item.description && item.description.toLowerCase().includes(searchTerm)) return true;
-      
-      // Check annex letter
-      if (item.annex && item.annex.toLowerCase().includes(searchTerm)) return true;
-      
-      // Check category
-      if (item.category && item.category.toLowerCase().includes(searchTerm)) return true;
-      
-      return false;
-    });
-  }, []);
-
-  // Get popular search terms for CSA codes
-  const getPopularSearchTerms = useCallback(() => {
-    return ['BTU', 'venting', 'clearance', 'CSA', 'accessory', 'appliance', 'gas piping', 'installation', 'safety'];
-  }, []);
-
-  // Handle search input change with debounced suggestions
-  const handleInputChange = useCallback((e) => {
-    const value = e.target.value;
-    setQuery(value);
-    
-    if (value.length > 1 && (activeSearchType === 'b149-1' || activeSearchType === 'b149-2')) {
-      const popularTerms = getPopularSearchTerms();
-      const filtered = popularTerms.filter(term => 
-        term.toLowerCase().includes(value.toLowerCase())
-      );
-      setSuggestions(filtered);
-      setShowSuggestions(true);
-    } else {
-      setShowSuggestions(false);
-    }
-  }, [activeSearchType, getPopularSearchTerms]);
 
   // Handle search with proper analytics tracking
   const handleSearch = useCallback((searchQuery) => {
-    // Handle regulations search (free)
-    if (activeSearchType === 'regulations') {
-      if (regulationsSearchIndex) {
-        const searchResults = searchRegulations(searchQuery, regulationsSearchIndex);
-        setResults(searchResults);
-        setQuery(searchQuery);
-        setShowSuggestions(false);
-        trackSearch(searchQuery, searchResults.length);
-      }
+    // Don't allow search for coming soon features
+    if (activeSearchType === 'b149-2' || activeSearchType === 'regulations') {
       return;
     }
 
-    // For both B149.1-25 and B149.2-25, apply trial management
     const currentStatus = trialManager.getTrialStatus();
     
     // If no trial exists, show email modal
     if (!currentStatus.trialUsed && currentStatus.eligible) {
       setShowEmailModal(true);
       localStorage.setItem('pendingQuery', searchQuery);
-      localStorage.setItem('pendingSearchType', activeSearchType);
       return;
     }
     
@@ -6140,23 +6126,6 @@ const App = () => {
       const success = trialManager.recordSearch(searchQuery);
       if (success) {
         setQuery(searchQuery);
-        setShowSuggestions(false);
-        
-        // Perform the appropriate search based on type
-        if (activeSearchType === 'b149-1') {
-          // B149.1-25 search
-          const searchResults = searchCodes(searchQuery);
-          setResults(searchResults);
-          trackSearch(searchQuery, searchResults.length);
-        } else if (activeSearchType === 'b149-2') {
-          // B149.2-25 search
-          if (csaSearchIndex) {
-            const searchResults = searchCSACode(searchQuery, csaSearchIndex);
-            setResults(searchResults);
-            trackSearch(searchQuery, searchResults.length);
-          }
-        }
-        
         // Update trial status to reflect new search count
         setTrialStatus(trialManager.getTrialStatus());
       }
@@ -6164,12 +6133,12 @@ const App = () => {
     }
     
     // If trial expired, search is blocked by UI
-  }, [activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes]);
+  }, [activeSearchType]);
 
   // Handle search type switching
-  const handleSearchTypeChange = useCallback((type) => {
+  const handleSearchTypeChange = (type) => {
     setActiveSearchType(type);
-  }, []);
+  };
 
   // Handle email submission
   const handleEmailSubmit = useCallback(async (email) => {
@@ -6189,14 +6158,9 @@ const App = () => {
         
         // Execute pending search if any
         const pendingQuery = localStorage.getItem('pendingQuery');
-        const pendingSearchType = localStorage.getItem('pendingSearchType');
         if (pendingQuery) {
           setQuery(pendingQuery);
-          if (pendingSearchType) {
-            setActiveSearchType(pendingSearchType);
-          }
           localStorage.removeItem('pendingQuery');
-          localStorage.removeItem('pendingSearchType');
         }
       } else {
         setEmailError(result.errors?.[0] || 'Failed to start trial');
@@ -6215,21 +6179,21 @@ const App = () => {
   }, []);
 
   // Get search placeholder text
-  const getSearchPlaceholder = useCallback(() => {
+  const getSearchPlaceholder = () => {
     switch (activeSearchType) {
       case 'b149-1':
-        return 'Search CSA B149.1-25 for clause numbers, titles, or keywords...';
+        return 'Search for clause numbers, titles, or keywords...';
       case 'b149-2':
-        return 'Search CSA B149.2-25 for clause numbers, titles, or keywords...';
+        return 'CSA B149.2-25 search coming soon...';
       case 'regulations':
-        return 'Search regulations for free...';
+        return 'Regulations search coming soon...';
       default:
         return 'Search...';
     }
-  }, [activeSearchType]);
+  };
 
   // Get current data source title
-  const getDataSourceTitle = useCallback(() => {
+  const getDataSourceTitle = () => {
     switch (activeSearchType) {
       case 'b149-1':
         return 'CSA B149.1-25';
@@ -6240,117 +6204,42 @@ const App = () => {
       default:
         return 'Code Compass';
     }
-  }, [activeSearchType]);
+  };
 
-  // Check if current search type requires trial
-  const requiresTrial = useCallback(() => {
-    return activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
-  }, [activeSearchType]);
-
-  // Handle suggestion click
-  const handleSuggestionClick = useCallback((suggestion) => {
-    setQuery(suggestion);
-    setShowSuggestions(false);
-    handleSearch(suggestion);
-  }, [handleSearch]);
-
-  // Handle form submission
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    const isDisabled = (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial());
-    if (query.trim() && !isDisabled) {
-      handleSearch(query.trim());
-    }
-  }, [query, trialStatus, requiresTrial, handleSearch]);
-
-  // Handle input focus
-  const handleInputFocus = useCallback(() => {
-    const isDisabled = (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial());
-    if (!isDisabled && query.length > 1 && (activeSearchType === 'b149-1' || activeSearchType === 'b149-2')) {
-      setShowSuggestions(true);
-    }
-  }, [query, trialStatus, requiresTrial, activeSearchType]);
-
-  // Handle input blur with longer delay
-  const handleInputBlur = useCallback(() => {
-    // Use a longer timeout to allow clicking on suggestions
-    setTimeout(() => setShowSuggestions(false), 200);
-  }, []);
-
-  // Search functionality with analytics - updated for all search types
+  // Search functionality with analytics - only for B149.1-25
   useEffect(() => {
+    if (activeSearchType !== 'b149-1') {
+      setResults([]);
+      return;
+    }
+
     if (query.trim() === '') {
       setResults([]);
       return;
     }
 
-    // For trial-required searches, check trial status
-    if (requiresTrial()) {
-      if (trialStatus?.trialUsed && !trialStatus?.trialActive) {
-        setResults([]);
-        return;
-      }
+    // Block search if trial expired
+    if (trialStatus?.trialUsed && !trialStatus?.trialActive) {
+      setResults([]);
+      return;
     }
 
     setIsLoading(true);
     const timeoutId = setTimeout(() => {
-      let searchResults = [];
-
-      switch (activeSearchType) {
-        case 'b149-1':
-          if (trialStatus?.trialActive) {
-            searchResults = searchCodes(query);
-          }
-          break;
-        case 'b149-2':
-          if (trialStatus?.trialActive && csaSearchIndex) {
-            searchResults = searchCSACode(query, csaSearchIndex);
-          }
-          break;
-        case 'regulations':
-          if (regulationsSearchIndex) {
-            searchResults = searchRegulations(query, regulationsSearchIndex);
-          }
-          break;
-      }
-
+      const searchResults = searchCodes(query);
       setResults(searchResults);
       setIsLoading(false);
+      
+      // Track search analytics
+      trackSearch(query, searchResults.length);
     }, 150);
 
     return () => clearTimeout(timeoutId);
-  }, [query, trialStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, requiresTrial]);
-
-  // Memoized values to prevent unnecessary re-renders
-  const searchBarProps = useMemo(() => ({
-    query,
-    onQueryChange: handleInputChange,
-    onSubmit: handleSubmit,
-    onFocus: handleInputFocus,
-    onBlur: handleInputBlur,
-    placeholder: getSearchPlaceholder(),
-    isDisabled: (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial()),
-    suggestions,
-    showSuggestions,
-    onSuggestionClick: handleSuggestionClick
-  }), [
-    query, 
-    handleInputChange, 
-    handleSubmit, 
-    handleInputFocus, 
-    handleInputBlur, 
-    getSearchPlaceholder, 
-    trialStatus, 
-    requiresTrial, 
-    suggestions, 
-    showSuggestions, 
-    handleSuggestionClick
-  ]);
+  }, [query, trialStatus, activeSearchType]);
 
   // Trial banner component
   const TrialBanner = useMemo(() => {
-    // Only show trial banner for trial-required searches
-    if (!requiresTrial() || !trialStatus?.trialUsed) return null;
+    if (!trialStatus?.trialUsed) return null;
     
     if (trialStatus.trialActive) {
       return (
@@ -6369,7 +6258,7 @@ const App = () => {
             </span>
             {trialStatus.searchCount > 0 && (
               <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
-                {trialStatus.searchCount} searches performed across B149.1-25 & B149.2-25
+                {trialStatus.searchCount} searches performed
               </div>
             )}
           </div>
@@ -6431,13 +6320,41 @@ const App = () => {
     }
     
     return null;
-  }, [trialStatus, handleSubscribe, requiresTrial]);
+  }, [trialStatus, handleSubscribe]);
 
   // Search results component
   const SearchResults = useMemo(() => {
-    
-    // Show blocked message if trial expired (only for trial-required searches)
-    if (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial()) {
+    // Show coming soon message for new features
+    if (activeSearchType === 'b149-2' || activeSearchType === 'regulations') {
+      return (
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '12px',
+          padding: '2rem',
+          textAlign: 'center',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          border: '2px solid #3498db'
+        }}>
+          <div style={{ marginBottom: '1rem' }}>
+            <svg style={{ width: '4rem', height: '4rem', color: '#3498db', marginBottom: '1rem' }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h3 style={{ color: '#3498db', margin: '0 0 0.5rem 0', fontSize: '1.5rem' }}>Coming Soon</h3>
+          </div>
+          <p style={{ color: '#6c757d', margin: '0 0 1rem 0', fontSize: '1.1rem' }}>
+            {activeSearchType === 'b149-2' 
+              ? 'CSA B149.2-25 code search is currently in development.' 
+              : 'Regulations search is currently in development.'}
+          </p>
+          <p style={{ color: '#95a5a6', margin: 0, fontSize: '0.9rem' }}>
+            We're working hard to bring you this new feature. Stay tuned for updates!
+          </p>
+        </div>
+      );
+    }
+
+    // Show blocked message if trial expired (only for B149.1-25)
+    if (trialStatus?.trialUsed && !trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6472,8 +6389,8 @@ const App = () => {
       );
     }
 
-    // Show loading state
-    if (isLoading) {
+    // Show loading state (only for B149.1-25)
+    if (isLoading && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           textAlign: 'center',
@@ -6494,8 +6411,8 @@ const App = () => {
       );
     }
 
-    // Show results
-    if (results.length > 0) {
+    // Show results (only for B149.1-25)
+    if (results.length > 0 && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {results.map((item, index) => (
@@ -6530,7 +6447,7 @@ const App = () => {
                   fontSize: '0.8rem',
                   fontWeight: '600'
                 }}>
-                  {item.clause || item.section || 'N/A'}
+                  {item.clause}
                 </span>
                 {item.annex && (
                   <span style={{
@@ -6542,30 +6459,6 @@ const App = () => {
                     fontWeight: '600'
                   }}>
                     Annex {item.annex}
-                  </span>
-                )}
-                {item.regulation && (
-                  <span style={{
-                    backgroundColor: '#e67e22',
-                    color: 'white',
-                    padding: '0.25rem 0.5rem',
-                    borderRadius: '15px',
-                    fontSize: '0.7rem',
-                    fontWeight: '600'
-                  }}>
-                    {item.regulation}
-                  </span>
-                )}
-                {activeSearchType === 'regulations' && (
-                  <span style={{
-                    backgroundColor: '#27ae60',
-                    color: 'white',
-                    padding: '0.25rem 0.5rem',
-                    borderRadius: '15px',
-                    fontSize: '0.7rem',
-                    fontWeight: '600'
-                  }}>
-                    FREE
                   </span>
                 )}
                 <h3 style={{
@@ -6587,34 +6480,14 @@ const App = () => {
               }}>
                 <HighlightedText text={item.description} highlight={query} />
               </p>
-              {item.category && (
-                <div style={{
-                  marginTop: '0.75rem',
-                  fontSize: '0.85rem',
-                  color: '#6c757d',
-                  fontStyle: 'italic'
-                }}>
-                  Category: {item.category}
-                </div>
-              )}
-              {item.document_title && (
-                <div style={{
-                  marginTop: '0.5rem',
-                  fontSize: '0.8rem',
-                  color: '#95a5a6',
-                  fontStyle: 'italic'
-                }}>
-                  Source: {item.document_title}
-                </div>
-              )}
             </div>
           ))}
         </div>
       );
     }
 
-    // Show no results message
-    if (query && !isLoading) {
+    // Show no results message (only for B149.1-25)
+    if (query && !isLoading && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6632,9 +6505,8 @@ const App = () => {
       );
     }
 
-    // Show welcome message
-    if (!query) {
-      const isRegulations = activeSearchType === 'regulations';
+    // Show welcome message (only for B149.1-25 when trial is active)
+    if (!query && trialStatus?.trialActive && activeSearchType === 'b149-1') {
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6643,31 +6515,17 @@ const App = () => {
           textAlign: 'center',
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
-          <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>
-            {isRegulations ? '📋' : '🧭'}
-          </span>
-          <h3 style={{ color: '#2c3e50', margin: '0 0 0.5rem 0' }}>
-            Welcome to Code Compass
-          </h3>
+          <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🧭</span>
+          <h3 style={{ color: '#2c3e50', margin: '0 0 0.5rem 0' }}>Welcome to Code Compass</h3>
           <p style={{ color: '#6c757d', margin: 0 }}>
-            Search {getDataSourceTitle()} codes by clause number, title, or keyword
-            {isRegulations && (
-              <span style={{ 
-                display: 'block', 
-                marginTop: '0.5rem',
-                color: '#27ae60',
-                fontWeight: '600'
-              }}>
-                ✨ Regulations search is completely free!
-              </span>
-            )}
+            Search CSA B149.1-25 codes by clause number, title, or keyword
           </p>
         </div>
       );
     }
 
     return null;
-  }, [results, isLoading, trialStatus, query, handleSubscribe, activeSearchType, requiresTrial, getDataSourceTitle]);
+  }, [results, isLoading, trialStatus, query, handleSubscribe, activeSearchType]);
 
   return (
     <div style={{
@@ -6749,24 +6607,10 @@ const App = () => {
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
                 backgroundColor: activeSearchType === 'b149-1' ? '#3498db' : '#f8f9fa',
-                color: activeSearchType === 'b149-1' ? 'white' : '#6c757d',
-                position: 'relative'
+                color: activeSearchType === 'b149-1' ? 'white' : '#6c757d'
               }}
             >
               CSA B149.1-25
-              <span style={{
-                position: 'absolute',
-                top: '-8px',
-                right: '-8px',
-                backgroundColor: '#e74c3c',
-                color: 'white',
-                fontSize: '0.6rem',
-                padding: '2px 6px',
-                borderRadius: '10px',
-                fontWeight: '700'
-              }}>
-                TRIAL
-              </span>
             </button>
             <button
               onClick={() => handleSearchTypeChange('b149-2')}
@@ -6790,12 +6634,12 @@ const App = () => {
                 right: '-8px',
                 backgroundColor: '#e74c3c',
                 color: 'white',
-                fontSize: '0.6rem',
+                fontSize: '0.7rem',
                 padding: '2px 6px',
                 borderRadius: '10px',
-                fontWeight: '700'
+                fontWeight: '600'
               }}>
-                TRIAL
+                Soon
               </span>
             </button>
             <button
@@ -6818,14 +6662,14 @@ const App = () => {
                 position: 'absolute',
                 top: '-8px',
                 right: '-8px',
-                backgroundColor: '#27ae60',
+                backgroundColor: '#e74c3c',
                 color: 'white',
-                fontSize: '0.6rem',
+                fontSize: '0.7rem',
                 padding: '2px 6px',
                 borderRadius: '10px',
-                fontWeight: '700'
+                fontWeight: '600'
               }}>
-                FREE
+                Soon
               </span>
             </button>
           </div>
@@ -6846,20 +6690,15 @@ const App = () => {
             fontWeight: '500'
           }}>
             Search {getDataSourceTitle()} Codes
-            {activeSearchType === 'regulations' && (
-              <span style={{
-                marginLeft: '0.5rem',
-                fontSize: '0.8rem',
-                color: '#27ae60',
-                fontWeight: '600'
-              }}>
-                (Free Access)
-              </span>
-            )}
           </h2>
-          <SearchBar {...searchBarProps} />
+          <SearchBar 
+            onSearch={handleSearch} 
+            disabled={(trialStatus?.trialUsed && !trialStatus?.trialActive) || activeSearchType === 'b149-2' || activeSearchType === 'regulations'}
+            placeholder={getSearchPlaceholder()}
+            activeSearchType={activeSearchType}
+          />
           
-          {query && (
+          {query && trialStatus?.trialActive && activeSearchType === 'b149-1' && (
             <div style={{
               marginTop: '1rem',
               fontSize: '0.9rem',
@@ -6871,9 +6710,6 @@ const App = () => {
                 <span>
                   Found {results.length} result{results.length !== 1 ? 's' : ''} 
                   {query && ` for "${query}"`}
-                  {activeSearchType === 'regulations' && (
-                    <span style={{ color: '#27ae60', fontWeight: '600' }}> (Free)</span>
-                  )}
                 </span>
               )}
             </div>
@@ -6894,6 +6730,6 @@ const App = () => {
       </style>
     </div>
   );
-};
+}
 
 export default App;

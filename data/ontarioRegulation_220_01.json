@@ -1,0 +1,534 @@
+{
+  "document": {
+    "title": "Technical Standards and Safety Act, 2000",
+    "regulation": "ONTARIO REGULATION 220/01",
+    "subject": "BOILERS AND PRESSURE VESSELS",
+    "last_amendment": "420/17",
+    "legislative_history": "420/17",
+    "language_note": "This is the English version of a bilingual regulation.",
+    "clauses": {
+      "clause_1": {
+        "title": "Interpretation",
+        "subsection_1": {
+          "title": "Definitions",
+          "content": "In this Regulation,",
+          "definitions": {
+            "alteration": "means any change in the item described on the original manufacturer's data report that requires a change of design calculations or otherwise affects the pressure-containing capability of a boiler or pressure vessel",
+            "boiler": "means a fired vessel in which gas or vapour may be generated or a gas, vapour or liquid may be put under pressure by heating",
+            "certificate_of_inspection": "means a certificate described in section 5 in respect of a boiler, pressure vessel, fitting or piping",
+            "code_adoption_document": "means the 'Boilers and Pressure Vessels Code Adoption Document' adopted as part of this Regulation under Ontario Regulation 223/01",
+            "design": "in reference to a boiler, pressure vessel or piping, means its plan or pattern and includes, where required, drawings, specifications, calculations and test data, or a model",
+            "fired_vessel": "means a vessel that is directly heated by, (a) a flame or the hot gases of combustion, (b) electricity, or (c) any means other than a thermal liquid",
+            "fitting": "means an appurtenance that is attached to or used in connection with a boiler, a pressure vessel or piping and includes such things as valves, gauges and controlling devices and other pressure-retaining components",
+            "insurer": "means a person licensed under the Insurance Act to undertake boiler and machinery insurance as defined by that Act",
+            "low_pressure_boiler": "means, (a) a boiler that is intended to generate steam or other vapour at a pressure of 15 psi (103 kPa) or less, or (b) a boiler that is intended to be operated at a pressure of 160 psi (1,100 kPa) or less where the water temperature at any boiler outlet is 250°F (121°C) or less",
+            "maximum_allowable_working_pressure": "means the maximum pressure at which a boiler, pressure vessel, fitting or piping is permitted to be operated or used under this Regulation",
+            "operator": "in respect of a boiler, pressure vessel, fitting or piping, means the person who is responsible for aspects of its day-to-day operation",
+            "periodic_inspection": "means an inspection conducted under subsection 10 (1)",
+            "piping": "means a system of pipes that is used to contain a gas, vapour or liquid under pressure and includes any boiler, pressure vessel or fitting connected to such system",
+            "pressure": "means pressure above prevailing atmospheric pressure",
+            "pressure_vessel": "means any enclosed unfired vessel that contains gas, vapour or liquid under pressure",
+            "professional_engineer": "means a person who is licensed under the Professional Engineers Act",
+            "record_of_inspection": "means a record described in clause 10 (5) (b) in respect of a boiler or pressure vessel",
+            "repair": "means any work necessary to restore a boiler or pressure vessel to a safe and satisfactory operating condition that does not result in a deviation from the original design",
+            "third_party_inspection_provider": "means a person who conducts a periodic inspection of a thing on behalf of its insurer, where the person is so authorized by the director in accordance with this Regulation and is retained by the insurer to conduct the inspection",
+            "used_boiler_pressure_vessel_fitting_or_piping": "means a boiler, pressure vessel, fitting or piping that has been in service and that has been moved from its previous site for use elsewhere"
+          }
+        },
+        "subsection_2": {
+          "title": "Conflict Resolution",
+          "content": "In the event of a conflict between a provision of this Regulation and the code adoption document, this Regulation prevails."
+        },
+        "subsection_3": {
+          "title": "Director Reference",
+          "content": "A reference in this Regulation to a director is a reference to the director to whom the subject matter of this Regulation is assigned."
+        }
+      },
+      "clause_2": {
+        "title": "Application",
+        "subsection_1": {
+          "title": "Scope",
+          "content": "This Regulation applies to the design, construction, maintenance, use, operation, repair and service of boilers, pressure vessels and piping."
+        },
+        "subsection_2": {
+          "title": "Exclusions",
+          "content": "This Regulation does not apply to,",
+          "exclusions": [
+            "a boiler that is used in connection with a hot liquid heating system that has no valves or other obstructions to free circulation between the boiler and an expansion tank that is vented freely to the atmosphere",
+            "a low pressure boiler that has either a wetted heating surface of 30 square feet (2.79 square metres) or less, or a power rating of 30 kW or less",
+            "a boiler having a heating surface of 10 square feet (0.93 square metres) or less",
+            "a pressure vessel, fitting or piping that contains a gas, vapour or liquid at a maximum allowable working pressure of 15 psi (103 kPa) or less",
+            "a pressure vessel, fitting or piping that contains liquids not more hazardous than water and that operate at a temperature of 150°F (65°C) or less and at a maximum allowable working pressure of 250 psi (1,717 kPa) or less",
+            "a pressure vessel for domestic use that has an internal diameter of 24 inches (610 mm) or less for the storage of hot water where the temperature does not exceed 212°F (100°C) and the heat input is 120 kW or less",
+            "a pressure vessel that is used exclusively for hydraulic purposes at a temperature no greater than 150°F (65°C)",
+            "a pressure vessel that has an internal diameter of 24 inches (610 mm) or less that is connected in a liquid pumping system at a temperature that does not exceed 150°F (65°C) and that contains air or an inert gas compressed to serve as a cushion",
+            "a refrigeration piping that has a capacity of three tons (11 kW) or less of refrigeration or a capacity of five tons (18 kW) or less of refrigeration in an air conditioning system",
+            "pressure piping that forms part of the heating system in a building that is heated by steam at a pressure not exceeding 15 psi (103kPa), or heated by water at a pressure not exceeding 160 psi (1,100 kPa) and at a temperature that does not exceed 250°F (121°C)",
+            "compressed air piping, up to and including ¾ inch nominal pipe size",
+            "hot oil piping, where the pressure is not greater than 100 psi (687 kPa) and the operating temperature is not less than 50°F (10°C) lower than the flash point of the oil",
+            "pressure containers that form an integral part of or that are a component of rotating or reciprocating mechanical devices",
+            "automatic fire protection systems that are designed and installed in accordance with Ontario Regulation 332/12 (Building Code) and Ontario Regulation 213/07 (Fire Code)",
+            "any component or system related to the subject matter of this Regulation that is regulated under any Act or regulation of the Government of Canada unless specifically requested otherwise by the Government of Canada",
+            "buried water piping that operates at a temperature of 150°F (65°C) or less at a maximum allowable working pressure of 740 psi (5,100 kPa)",
+            "a pressure vessel having a capacity of 1 and one-half (1½) cubic feet (42.5 L) or less, that is not a fitting",
+            "a pressure vessel having an internal diameter of six (6) inches (152mm) or less",
+            "inert-gas filled high voltage switchgear and control gear with an internal pressure that does not exceed 150 psi (1,030 kPa), rated 15 kW and above",
+            "flexible hoses and portable air piping used in mines",
+            "piping, pressure vessels and fittings regulated by specific regulations under the Act"
+          ]
+        }
+      },
+      "clause_3": {
+        "title": "General requirement for compliance",
+        "subsection_1": {
+          "title": "Compliance Obligation",
+          "content": "Every person engaged in an activity, use of equipment, process or procedure to which the Act and this Regulation apply shall comply with the Act and this Regulation."
+        },
+        "subsection_2": {
+          "title": "Activity Definition",
+          "content": "For the purposes of subsection (1), the reference to an activity, use of equipment, process or procedure includes, but is not limited to, design, manufacture, installation, repair, alteration, maintenance, service, use or disposal."
+        },
+        "subsection_3": {
+          "title": "Owner and Operator Responsibility",
+          "content": "Every owner and operator of a boiler, pressure vessel, fitting or piping shall ensure that the boiler, pressure vessel, fitting or piping, as the case may be, is maintained in safe working condition and operated safely."
+        }
+      },
+      "clause_4": {
+        "title": "Design registration requirement",
+        "subsection_1": {
+          "title": "Registration Requirement",
+          "content": "Subject to subsection (2), no person shall manufacture a boiler, pressure vessel, fitting or piping for use in Ontario unless its design is registered with the director."
+        },
+        "subsection_2": {
+          "title": "Construction Before Registration",
+          "content": "A person who submits a design submission for registration may commence construction of the boiler, pressure vessel, fitting or piping before the submission is registered if the person assumes all risks related to the construction, whether for an installation or alteration."
+        },
+        "subsection_3": {
+          "title": "Professional Engineer Requirement",
+          "content": "The design for a boiler or pressure vessel shall bear the signature and seal of a professional engineer who is experienced in the design of boilers, pressure vessels, piping or fittings."
+        },
+        "subsection_4": {
+          "title": "Design Changes",
+          "content": "Where the designer, manufacturer, installer or owner of a boiler, pressure vessel, fitting or piping proposes a change to its registered design, as determined in accordance with the code adoption document, they shall submit the design and specifications of the change to the director and obtain registration before beginning to make the change."
+        },
+        "subsection_5": {
+          "title": "Defective Equipment",
+          "content": "If an inspector finds, after its manufacture or installation, that a boiler, pressure vessel, fitting or piping for which a design registration has been issued is defective, the inspector may, despite the fact that the registration has been issued, permit the boiler, pressure vessel, fitting or piping to be operated or used within such limits of safety as the inspector considers adequate in the circumstances and shall require the manufacturer or installer to correct the defects within such period as the inspector may allow."
+        },
+        "subsection_6": {
+          "title": "Design Registration Cancellation",
+          "content": "If the defects found under subsection (5) are due to the design and specifications of the boiler, pressure vessel, fitting or piping and, in the director's opinion, they cannot be remedied, the director shall cancel the design registration, and no additional boiler, pressure vessel, fitting or piping shall be manufactured or installed based on that design."
+        },
+        "subsection_7": {
+          "title": "Non-conforming Equipment",
+          "content": "Where a boiler, pressure vessel, piping or fitting has not been manufactured or installed in conformity with its registered design but nevertheless may be used safely at a lower pressure than its design pressure, the inspector shall fix its maximum allowable working pressure having regard to its design, condition and installation and the purpose for which it is to be operated or used."
+        },
+        "subsection_8": {
+          "title": "Unused Equipment",
+          "content": "Where an unused boiler or pressure vessel has been manufactured and its design and specifications have not been registered, the director may cause it to be inspected and, if satisfied that it may be operated or used safely, may issue a certificate of inspection for it as a used boiler or pressure vessel."
+        }
+      },
+      "clause_5": {
+        "title": "Requirement for certificate of inspection",
+        "subsection_1": {
+          "title": "Certificate Requirement",
+          "content": "No person shall operate or use or permit a boiler, pressure vessel, fitting or piping to be operated or used unless the director has issued a current certificate of inspection to the owner or operator stating that the boiler, pressure vessel, fitting or piping, as the case may be, has passed an inspection."
+        },
+        "subsection_2": {
+          "title": "Record of Inspection Deemed Certificate",
+          "content": "An owner or operator of a boiler or pressure vessel who holds a record of inspection for it issued before the day section 10.1 comes into force is deemed to hold a certificate of inspection for it until the time that the next periodic inspection is required, in accordance with the intervals set out in the code adoption document."
+        }
+      },
+      "clause_6": {
+        "title": "Operation of boiler, etc.",
+        "subsection_1": {
+          "title": "Pressure Limitations",
+          "content": "No person shall operate or use or permit a boiler, pressure vessel, fitting or piping to be operated or used at a pressure higher than its maximum allowable working pressure as shown in the certificate of inspection."
+        },
+        "subsection_2": {
+          "title": "Safety Precautions",
+          "content": "Where there is any possibility of any gas, vapour or liquid causing injury to a person inspecting, repairing or maintaining a boiler, pressure vessel, fitting or piping, the owner, the operator or any other person responsible for it or in immediate charge of it shall ensure that: (a) a competent person is stationed so as to prevent any gas, vapour or liquid from entering the boiler, pressure vessel, fitting or piping or any part of it; and (b) such other measures are taken to the satisfaction of the person inspecting, repairing or maintaining the boiler, pressure vessel, fitting or piping to ensure his or her safety."
+        },
+        "subsection_3": {
+          "title": "Pressure Relief Devices",
+          "content": "Every boiler, pressure vessel and piping shall have adequate pressure relief devices set to relieve at or below its maximum allowable working pressure in accordance with the code adoption document."
+        },
+        "subsection_4": {
+          "title": "Safety Fittings",
+          "content": "No person shall alter, interfere with or render inoperative any fitting that is attached for safety purposes to a boiler, pressure vessel, fitting or piping while it is in operation or use without the consent of an inspector."
+        },
+        "subsection_5": {
+          "title": "Sealed Equipment",
+          "content": "No person shall operate or use or permit a boiler, pressure vessel, fitting or piping to be operated or used if it has been sealed by an inspector."
+        },
+        "subsection_6": {
+          "title": "Moving Sealed Equipment",
+          "content": "No person shall move a boiler, pressure vessel, fitting or piping that has been sealed to another location for operation or use without the consent of the director."
+        },
+        "subsection_7": {
+          "title": "Owner Responsibility",
+          "content": "Every owner of a boiler, pressure vessel, fitting or piping shall ensure that it is maintained in a safe working condition and operated safely."
+        }
+      },
+      "clause_7": {
+        "title": "Alterations",
+        "subsection_1": {
+          "title": "Alteration Registration",
+          "content": "No person shall alter a boiler, pressure vessel, fitting or piping unless the alteration is registered and is inspected by an inspector."
+        },
+        "subsection_2": {
+          "title": "Operation After Alteration",
+          "content": "No person shall put into operation or use: (a) a boiler or pressure vessel to which an alteration has been made unless a new registration and certificate of inspection have been issued; (b) a piping or fitting to which an alteration has been made unless a new registration has been issued."
+        },
+        "subsection_3": {
+          "title": "Repair Requirements",
+          "content": "No person shall repair a boiler, pressure vessel, fitting or piping without the prior concurrence of and subsequent inspection by an inspector or, where the thing is insured, without the prior concurrence of and subsequent inspection by the insurer, as the case requires."
+        },
+        "subsection_4": {
+          "title": "Inspection After Repair",
+          "content": "A boiler, pressure vessel, fitting or piping that is altered or repaired under this section shall not be operated or used or be permitted to be operated or used unless it is inspected by an inspector or an insurer."
+        },
+        "subsection_5": {
+          "title": "Self-Inspection Programs",
+          "content": "Subsections (3) and (4) do not apply with respect to boilers, pressure vessels, fittings and piping for which a program for repair and self-inspection is in place that satisfies the director that the repair or alteration will be carried out in a safe manner."
+        }
+      },
+      "clause_8": {
+        "title": "Reporting requirements",
+        "subsection_1": {
+          "title": "Removal from Service",
+          "content": "Upon permanently removing a boiler, pressure vessel, fitting or piping from operation or use, the owner, the operator or any other person responsible for it or in immediate charge of it shall forthwith notify the director of the removal in the form published by the Corporation."
+        },
+        "subsection_2": {
+          "title": "Accident Reporting",
+          "content": "Where an explosion or rupture of a boiler, pressure vessel, fitting or piping occurs or where an accident arises out of its operation or use that causes injury or death to a person or property damage, the owner, the operator or any other person responsible for it or in immediate charge of it shall: (a) forthwith notify the director, in person or by telephone, of the occurrence and provide full details of it; and (b) within 48 hours after the explosion, rupture or accident occurs, send the director and insurer, if it is insured, a written report of the circumstances of the occurrence."
+        },
+        "subsection_3": {
+          "title": "Investigation",
+          "content": "The director or any inspector under the director's instruction may investigate any matter reported under subsection (2), or of which he or she becomes aware, to determine its cause."
+        },
+        "subsection_4": {
+          "title": "Scene Preservation",
+          "content": "Where an explosion or rupture of a boiler, pressure vessel, fitting or piping occurs, no person shall, except for the purpose of saving a life or relieving human suffering, interfere with, disturb, destroy, carry away or alter any wreckage, article or thing at the scene of or connected with the occurrence until permission to do so in writing is given by an inspector."
+        }
+      },
+      "clause_9": {
+        "title": "Inspections",
+        "subsection_1": {
+          "title": "Manufacturing Inspection",
+          "content": "The director may require the inspection of a boiler, pressure vessel, fitting or piping in accordance with the code adoption document at any stage of its manufacture."
+        },
+        "subsection_2": {
+          "title": "Pre-Operation Inspection",
+          "content": "An inspector shall inspect every new and used boiler, pressure vessel, fitting or piping before it is put into operation or use."
+        },
+        "subsection_2_1": {
+          "title": "Inspection Fees",
+          "content": "The owner of the thing inspected under subsection (2) shall pay the fee set by the Corporation for the inspection."
+        },
+        "subsection_3": {
+          "title": "Certificate Issuance",
+          "content": "After an inspection is conducted under subsection (1) or (2), if the director is satisfied that the thing inspected may be operated or used safely, he or she shall issue a certificate of inspection in accordance with the code adoption document."
+        },
+        "subsection_4": {
+          "title": "Missed Inspection",
+          "content": "If a required inspection of a boiler, pressure vessel, fitting or piping has not been conducted during its manufacture or its installation, the director, if satisfied that it may be operated or used safely, may issue a certificate of inspection on payment of the fee set by the Corporation."
+        },
+        "subsection_5": {
+          "title": "Subsequent Inspections",
+          "content": "Even if the director has issued a certificate of inspection, the director may order a subsequent inspection of a boiler, pressure vessel, fitting or piping at any time or an inspector may conduct a subsequent inspection at any time, and the owner shall pay the fee set by the Corporation for the inspection."
+        },
+        "subsection_6": {
+          "title": "Third Party Inspections",
+          "content": "The director may employ the services of an insurer or of any person qualified to engage in the business of inspecting boilers and pressure vessels in Ontario to conduct an inspection and to report on it within 14 days after its completion."
+        },
+        "subsection_7": {
+          "title": "Inspector Requirements",
+          "content": "An inspector may require the owner, the operator or any other person responsible for a boiler, pressure vessel, fitting or piping or in immediate charge of it to do all things necessary for a proper inspection, including preparing it for inspection, cutting or drilling holes, putting it under pressure, stopping heat application, and doing any other thing the inspector considers necessary."
+        }
+      },
+      "clause_10": {
+        "title": "Periodic inspections",
+        "subsection_1": {
+          "title": "Inspection Requirement",
+          "content": "Every owner of a boiler or pressure vessel that is in operation or use shall have it inspected: (a) if it is not insured, by an inspector and at the intervals that are set out in the code adoption document; or (b) if it is insured, by its insurer at the intervals that are set out in the code adoption document, unless the director requires an inspector to conduct the inspection."
+        },
+        "subsection_2": {
+          "title": "Inspection Fees",
+          "content": "If an inspector conducts an inspection under subsection (1), the owner shall pay the fee set by the Corporation for the inspection."
+        },
+        "subsection_3": {
+          "title": "Defect Disclosure",
+          "content": "When a boiler or pressure vessel is being inspected, any person who is the owner, the operator or any other person responsible for it or in immediate charge of it shall point out to the person doing the inspection any defect of which the first person has knowledge or that the first person believes to exist in it."
+        },
+        "subsection_4": {
+          "title": "Third Party Provider Reporting",
+          "content": "If a third party inspection provider conducts an inspection under clause (1) (b) on behalf of the insurer, the provider shall notify the insurer upon completion of the inspection and shall provide the insurer with a report on the inspection within 10 days of completing the inspection."
+        },
+        "subsection_5": {
+          "title": "Inspection Reports",
+          "content": "Following an inspection, the inspector, in the case of an inspection under clause (1) (a) or the insurer, in the case of an inspection under clause (1) (b), shall: (a) issue an inspection report on the inspection to the owner and the operator of the boiler or pressure vessel that was inspected; and (b) if satisfied that the boiler or pressure vessel can continue to be operated or used safely, issue a record of inspection to the owner, the operator, the director and the Corporation no later than 30 days after the day on which the inspection is conducted."
+        },
+        "subsection_6": {
+          "title": "Report Requirements",
+          "content": "The inspection report and record of inspection shall: (a) be in writing, subject to subsection (9); (b) be prepared in the form and manner set out in the code adoption document; and (c) disclose the information, if any, set out in the code adoption document."
+        },
+        "subsection_7": {
+          "title": "Record Retention",
+          "content": "The owner and the operator who receive the inspection report and the insurer, if any, who issues it shall retain the inspection report for six years from the date of the inspection to which the report relates."
+        },
+        "subsection_8": {
+          "title": "Record Requests",
+          "content": "The director may request that an owner, operator or insurer who is required to retain an inspection report under subsection (7) provide a copy of it at any time within the retention period specified in that subsection."
+        },
+        "subsection_9": {
+          "title": "Electronic Format",
+          "content": "An inspector or insurer that issues a record of inspection to the director and the Corporation under clause (5) (b) shall do so in a format specified by the director."
+        }
+      },
+      "clause_10_1": {
+        "title": "Application for certificate of inspection",
+        "subsection_1": {
+          "title": "Application Process",
+          "content": "Subject to subsection (3), an owner or operator may obtain a certificate of inspection in respect of a boiler or pressure vessel only by applying to the Corporation for the certificate by: (a) filing with the Corporation the record of inspection that the owner or operator receives for the boiler or pressure vessel, as the case may be; (b) paying the fee set by the Corporation; and (c) submitting a completed application form, if any, published by the Corporation."
+        },
+        "subsection_2": {
+          "title": "Electronic Application",
+          "content": "An owner or operator may make the application in electronic format."
+        },
+        "subsection_3": {
+          "title": "Application Deadline",
+          "content": "An owner or operator who receives a record of inspection on or after the day this section comes into force shall apply for a certificate of inspection no later than 30 days after receiving the record of inspection."
+        },
+        "subsection_4": {
+          "title": "Certificate Issuance",
+          "content": "If an owner or operator has applied to the Corporation for a certificate of inspection in accordance with subsection (1), the director shall issue a certificate of inspection to the applicant."
+        },
+        "subsection_5": {
+          "title": "Certificate Validity",
+          "content": "A certificate of inspection remains valid for the period specified by the director."
+        },
+        "subsection_6": {
+          "title": "Certificate Display",
+          "content": "The owner of every boiler or pressure vessel in respect of which a certificate of inspection has been issued shall keep the certificate in good condition and post it in a conspicuous place near the boiler or pressure vessel, as the case may be, or, if that is impractical, at the place that an inspector or the insurer of it directs in writing."
+        }
+      },
+      "clause_10_2": {
+        "title": "Notice to director of changes",
+        "subsection_1": {
+          "title": "Operation Changes",
+          "content": "If a change occurs with respect to the operation of a boiler, pressure vessel, fitting or piping or the name of the operator of it, the current operator shall notify the director in writing, within 10 days after the change, of the details and the effective date of the change."
+        },
+        "subsection_2": {
+          "title": "Ownership Changes",
+          "content": "If a change occurs in the ownership of a boiler, pressure vessel, fitting or piping, the current owner shall notify the director in writing, within 10 days after the change, of the details and the effective date of the change, including the name of the operator as of the date of the change."
+        },
+        "subsection_3": {
+          "title": "Insurance Changes",
+          "content": "If a boiler, pressure vessel, fitting or piping is insured: (a) the insurer of the boiler, pressure vessel, fitting or piping shall forthwith notify the director in writing if the insurance is cancelled, suspended or not renewed; and (b) the owner or operator of the boiler, pressure vessel, fitting or piping shall forthwith notify the director in writing if there is a change in the insurer or in the insurance."
+        },
+        "subsection_4": {
+          "title": "Notice Format",
+          "content": "The notice mentioned in subsection (1), (2) or (3) shall be prepared in the form and manner set out in the code adoption document and shall include any information required by the code adoption document."
+        },
+        "subsection_5": {
+          "title": "Safety Assessment",
+          "content": "If the director receives a notice under subsection (1), (2) or (3) and is of the opinion that the boiler, pressure vessel, fitting or piping cannot be operated or used safely, the director shall seal the boiler, pressure vessel, fitting or piping or suspend or revoke the certificate of inspection issued for it."
+        },
+        "subsection_6": {
+          "title": "Defect Notification",
+          "content": "If at any time, other than when a boiler or pressure vessel is being inspected under section 10, any person who is the owner, the operator or any other person responsible for a boiler, pressure vessel, fitting or piping or in immediate charge of it learns of any defect that might render it unsafe to operate or use, the person shall forthwith notify the director and insurer, if it is insured, of the circumstances, in person, by telephone or by any other means appropriate to ensure a record of the communication."
+        }
+      },
+      "clause_11": {
+        "title": "Unacceptable condition",
+        "subsection_1": {
+          "title": "Definition",
+          "content": "In this section, 'unacceptable condition' with respect to a boiler, pressure vessel, fitting or piping, means a boiler, pressure vessel, fitting or piping where: (a) it is being used in an unsafe manner, (b) there is any deterioration that is likely to impair its safe operation, (c) an alteration to it has not been registered and inspected in accordance with section 7, or (d) the condition of the relief valves or piping is likely to impair its safe operation."
+        },
+        "subsection_2": {
+          "title": "Inspector Actions",
+          "content": "If, in the opinion of an inspector or an insurer of a boiler, pressure vessel, fitting or piping, or a third party inspection provider acting on behalf of the insurer, it is in an unacceptable condition: (a) the third party inspection provider shall notify the insurer forthwith, if it is the third party inspection provider that forms that opinion; (b) the inspector or insurer shall notify the director forthwith and shall not issue a record of inspection in respect of the boiler or pressure vessel; (c) an inspector shall take those steps that are necessary to remove the danger, including affixing a seal, disconnecting the power or other means; and (d) the director may cancel any certificate of design registration issued for it under section 4 or any certificate of inspection issued for it."
+        }
+      },
+      "clause_11_1": {
+        "title": "Cancellation of certificate of inspection",
+        "content": "If an inspector has inspected a boiler, pressure vessel, fitting or piping and is satisfied that it can no longer be operated or used safely, the inspector shall condemn it, notify the director that it has been condemned, seal it with a seal or label indicating that it is condemned and take possession of the certificate of inspection issued for it."
+      },
+      "clause_12": {
+        "title": "Certificate of competency for periodic inspections",
+        "subsection_1": {
+          "title": "Competency Requirement",
+          "content": "No person shall conduct a periodic inspection of a boiler or pressure vessel unless the person holds a current certificate of competency."
+        },
+        "subsection_2": {
+          "title": "Commercial Interest Prohibition",
+          "content": "No person shall conduct a periodic inspection if the person has any direct commercial interest in boilers or pressure vessels."
+        },
+        "subsection_3": {
+          "title": "Application Process",
+          "content": "An application for a certificate of competency to conduct a periodic inspection on behalf of an insurer shall be in the form published by the Corporation and shall be accompanied by the fee set by the Corporation."
+        },
+        "subsection_4": {
+          "title": "Issuance Criteria",
+          "content": "The director may issue a certificate of competency to any person to conduct a periodic inspection on behalf of an insurer if the person pays the fee set by the Corporation and the person: (a) is employed by an insurer or by a third party inspection provider; (b) is the holder of an Ontario secondary school diploma; (c) has the education and experience required by the code adoption document; (d) passes the examinations or tests required by the code adoption document; or (e) in the opinion of the director, possesses qualifications or experience equivalent to those mentioned in clauses (b), (c) and (d)."
+        },
+        "subsection_5": {
+          "title": "Certificate Restrictions",
+          "content": "A certificate of competency may, in accordance with its terms, be restricted in scope and subject to conditions."
+        },
+        "subsection_6": {
+          "title": "Certificate Form",
+          "content": "A certificate of competency to conduct a periodic inspection on behalf of an insurer shall be in the form published by the Corporation."
+        },
+        "subsection_7": {
+          "title": "Certificate Duration",
+          "content": "A certificate of competency continues in force for the period set out in it or until the holder ceases to be employed as set out in clause (4) (a), whichever occurs first."
+        },
+        "subsection_8": {
+          "title": "Re-employment",
+          "content": "Where a person ceases to be employed as set out in clause (4) (a) but is re-employed in accordance with that clause within five years, the director may issue a certificate of competency to conduct a periodic inspection to the person under this section."
+        },
+        "subsection_9": {
+          "title": "Certificate Renewal",
+          "content": "The holder of a certificate of competency who applies to the director for a renewal of the certificate before the expiry of the certificate shall be issued a renewal if the holder continues to meet the requirements set out in subsection (4)."
+        },
+        "subsection_10": {
+          "title": "Inspection Duties",
+          "content": "On every inspection of a boiler or pressure vessel, a holder of a certificate of competency: (a) shall satisfy himself or herself that the boiler or pressure vessel is being operated or used and maintained in accordance with this Regulation and that the pressure relief devices are properly set and protected against unauthorized adjustment; and (b) shall review the maximum allowable working pressure of the boiler or pressure vessel and make, or require the owner or operator of the boiler or pressure vessel to make, any reduction in it for safe operation or use having regard to the design, manufacture, age, condition and use of the boiler or pressure vessel."
+        }
+      },
+      "clause_12_1": {
+        "title": "Duties of insurers for periodic inspections",
+        "subsection_1": {
+          "title": "Insurer Responsibility",
+          "content": "An insurer shall ensure that every person employed by it to conduct a periodic inspection holds a current certificate of competency issued under section 12."
+        },
+        "subsection_2": {
+          "title": "Third Party Provider Requirements",
+          "content": "If an insurer retains the services of a third party inspection provider to conduct a periodic inspection, the insurer shall ensure that: (a) the provider holds a current certificate of authorization issued under section 12.2; and (b) every person employed by the provider to conduct the inspection holds a current certificate of competency issued under section 12."
+        }
+      },
+      "clause_12_2": {
+        "title": "Authorization of third party inspection providers",
+        "subsection_1": {
+          "title": "Authorization Requirement",
+          "content": "No third party inspection provider shall conduct a periodic inspection unless: (a) the provider holds a current certificate of authorization issued under this section; and (b) the provider has been retained by the insurer of the thing being inspected to conduct the inspection on the insurer's behalf."
+        },
+        "subsection_2": {
+          "title": "Provider Responsibility",
+          "content": "A third party inspection provider shall ensure that every person employed by it to conduct a periodic inspection holds a current certificate of competency issued under section 12."
+        },
+        "subsection_3": {
+          "title": "Application Process",
+          "content": "An application for a certificate of authorization issued under this section or renewal of such a certificate shall be made to the director in the form published by the Corporation and shall be accompanied by the fee set by the Corporation."
+        },
+        "subsection_4": {
+          "title": "Certificate Issuance",
+          "content": "The director shall issue a certificate of authorization or a renewal of a certificate if the applicant pays the fees set by the Corporation and is not in arrears of any such fees owed to the Corporation."
+        },
+        "subsection_5": {
+          "title": "Certificate Expiry",
+          "content": "A certificate of authorization issued under this section or a renewal of the certificate expires on the date specified in it."
+        },
+        "subsection_6": {
+          "title": "Non-transferrable",
+          "content": "A certificate of authorization issued under this section is not transferrable."
+        },
+        "subsection_7": {
+          "title": "Deemed Authorization",
+          "content": "Any person to whom the director has issued an authorization before the day this section comes into force shall be deemed to hold a certificate of authorization issued under this section."
+        },
+        "subsection_8": {
+          "title": "Deemed Certificate Expiry",
+          "content": "The deemed certificate of authorization expires on the date specified in it."
+        }
+      },
+      "clause_13": {
+        "title": "Welding and brazing requirements",
+        "subsection_1": {
+          "title": "Procedure Requirements",
+          "content": "The welding and brazing procedures used in the manufacture, installation, alteration or repair of a boiler, pressure vessel, fitting or piping are established as set out in the code adoption document and shall be submitted to the director."
+        },
+        "subsection_2": {
+          "title": "Testing Requirements",
+          "content": "Every welder, welding operator, brazer or brazing operator shall pass such tests as the director may require and pay the fee set by the Corporation for taking the tests."
+        },
+        "subsection_3": {
+          "title": "Certification Requirement",
+          "content": "No person shall act as a welder, welding operator, brazer or brazing operator unless the person is certified in accordance with the code adoption document."
+        },
+        "subsection_4": {
+          "title": "Certificate Issuance",
+          "content": "The director shall issue a certificate to every welder, welding operator, brazer or brazing operator who passes the required tests and pays the fee set by the Corporation."
+        },
+        "subsection_5": {
+          "title": "Further Testing",
+          "content": "A welder, welding operator, brazer or brazing operator may be required at any time to pass such further tests as may be required in the code adoption document and, on being so required, his or her certificate shall be provisionally suspended, but a new certificate shall be issued to the welder, welding operator, brazer or brazing operator who passes the required tests and pays the fee set by the Corporation."
+        },
+        "subsection_6": {
+          "title": "Certificate Availability",
+          "content": "Every welder, welding operator, brazer or brazing operator shall have his or her certificate readily available and produce it when requested by an inspector."
+        },
+        "subsection_7": {
+          "title": "Employment Testing",
+          "content": "When a welder, welding operator, brazer or brazing operator is first employed or changes employer, he or she shall not begin welding or brazing for his or her employer or for the new employer until he or she has passed such further tests as the director may require."
+        },
+        "subsection_8": {
+          "title": "Work Restrictions",
+          "content": "A welder, welding operator, brazer or brazing operator shall only weld or braze for the employer named on his or her certificate and only with respect to the type of welding or brazing set out in the certificate."
+        },
+        "subsection_9": {
+          "title": "Employer Restrictions",
+          "content": "An employer shall only permit a welder, welding operator, brazer or brazing operator to weld or braze if: (a) the employer is the employer named in the person's certificate; and (b) the person welds or brazes in accordance with his or her certificate."
+        },
+        "subsection_10": {
+          "title": "Welding Prohibitions",
+          "content": "No welder, welding operator, brazer or brazing operator shall weld: (a) except in accordance with a procedure set out in the code adoption document; (b) unless he or she is the holder of a subsisting certificate; (c) in the employ of an employer other than the employer named in his or her certificate; and (d) anything where he or she is not qualified in the appropriate class or position of welding as set out in the code adoption document."
+        },
+        "subsection_11": {
+          "title": "Employer Definition",
+          "content": "In this section, 'employer' includes a trade association of persons or companies whose business includes welding or brazing."
+        }
+      },
+      "clause_14": {
+        "title": "Identification and marking",
+        "subsection_1": {
+          "title": "Marking Preservation",
+          "content": "No person shall permanently cover or obliterate any identification markings on a boiler or pressure vessel."
+        },
+        "subsection_2": {
+          "title": "Alternative Marking",
+          "content": "Where it is impracticable to comply with subsection (1), the marking shall be reproduced on a metal plate permanently attached to the boiler or pressure vessel, so as to be readily accessible."
+        }
+      },
+      "clause_15": {
+        "title": "Requirements for insurers",
+        "subsection_1": {
+          "title": "Audit Definition",
+          "content": "In this section, 'audit' includes a compliance survey."
+        },
+        "subsection_2": {
+          "title": "Information Filing",
+          "content": "Every insurer shall file information with the director in a form published by the Corporation and at the frequency set out in the code adoption document."
+        },
+        "subsection_3": {
+          "title": "Information Attestation",
+          "content": "Every insurer that files a form in accordance with subsection (2) shall attest to the accuracy of the information in the form."
+        },
+        "subsection_4": {
+          "title": "Audit Requirement",
+          "content": "The director may require that an insurer be audited by a person designated by the director for that purpose, which may include an employee of the Corporation or a third party."
+        },
+        "subsection_5": {
+          "title": "Audit Fees",
+          "content": "An insurer shall pay the fee set by the Corporation for an audit under this section."
+        }
+      },
+      "clause_16": {
+        "title": "Confidentiality",
+        "content": "A person who obtains information in the course of exercising a power or carrying out a duty under this Regulation shall preserve secrecy with respect to the information and shall not communicate the information to any person except: (a) as may be required to comply with this Regulation or as otherwise required by law; (b) as authorized under the Regulatory Modernization Act, 2007; (c) to a law enforcement agency; (d) to the counsel of the person communicating the information; or (e) with the consent of the person to whom the information relates."
+      }
+    }
+  }
+}
