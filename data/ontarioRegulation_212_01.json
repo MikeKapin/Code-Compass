@@ -1,0 +1,526 @@
+{
+  "document": {
+    "title": "Technical Standards and Safety Act, 2000 - Ontario Regulation 212/01 - Gaseous Fuels",
+    "consolidation_period": "From May 15, 2015 to the e-Laws currency date",
+    "last_amendment": "117/15",
+    "legislative_history": "117/15",
+    "language": "This Regulation is made in English only",
+    "sections": [
+      {
+        "clause": "1",
+        "title": "Interpretation",
+        "subsections": [
+          {
+            "number": "(1)",
+            "title": "Definitions",
+            "content": "In this Regulation,",
+            "definitions": [
+              {
+                "term": "appliance",
+                "definition": "means a device that consumes or is intended to consume a gas and includes all valves, fittings, controls and components attached or to be attached to it"
+              },
+              {
+                "term": "approved",
+                "definition": "means, (a) with respect to a standard or a laboratory test report, that it is listed in 'Titles of Standards and Laboratory Test Reports Authorized in the Province of Ontario under the Ontario Gas Utilization Code' as published by the designated administrative authority from time to time, (b) with respect to an appliance, equipment, a component or an accessory, that it bears the label or symbol of a designated testing organization or a label or symbol authorized by the director certifying that it complies with an approved standard or a laboratory test report, or (c) with respect to an installation or work, that it complies with this Regulation"
+              },
+              {
+                "term": "certificate",
+                "definition": "means a certificate issued under Ontario Regulation 215/01 (Fuel Industry Certificates)"
+              },
+              {
+                "term": "code adoption document",
+                "definition": "means the 'Gaseous Fuels Code Adoption Document' adopted as part of this Regulation under Ontario Regulation 223/01"
+              },
+              {
+                "term": "contractor",
+                "definition": "means a person who carries on, in whole or in part, the business of installing, removing, repairing, altering or servicing appliances, and includes a person or an agent of the person who agrees to install, remove, repair, alter or service appliances sold or leased by the person"
+              },
+              {
+                "term": "distributor",
+                "definition": "means a person who supplies gas to an end user, and 'distribute' and 'distribution' have corresponding meanings"
+              },
+              {
+                "term": "fuel features",
+                "definition": "means, (a) parts that use or handle gas, govern combustion or vent combustion products, (b) construction and installation features that relate to the safe use and handling of gas"
+              },
+              {
+                "term": "gas",
+                "definition": "means a gas as defined in the code adoption document"
+              },
+              {
+                "term": "handling",
+                "definition": "means the transmission, transportation or distribution of gas, or the storage of gas in a container, and 'handle' and 'handler' have corresponding meanings"
+              },
+              {
+                "term": "install",
+                "definition": "includes placing an appliance in position for permanent or temporary use, venting it and connecting piping to it, and 'installation' has a corresponding meaning"
+              },
+              {
+                "term": "pipeline",
+                "definition": "means a pipe that is used for the transmission or distribution of gas and includes fittings, valves, controls, compressor stations, pump stations, pressure regulating stations and meter stations, but does not include the pipe, fittings, valves or controls of the end user"
+              },
+              {
+                "term": "ROT",
+                "definition": "means a record of training issued under Ontario Regulation 215/01 (Fuel Industry Certificates)"
+              },
+              {
+                "term": "VRA",
+                "definition": "means a vehicle refuelling appliance that consists of a natural gas compressor package not containing storage, that has a flow rate not in excess of 0.3 cubic metre/minute (10 cubic feet/minute) and that is intended for unattended refuelling"
+              },
+              {
+                "term": "work",
+                "definition": "means the facilities used in the handling of gas"
+              }
+            ]
+          },
+          {
+            "number": "(2)",
+            "content": "In the event of a conflict between a provision of this Regulation and the code adoption document, this Regulation prevails."
+          },
+          {
+            "number": "(3)",
+            "content": "A reference in this Regulation to a director is a reference to the director to whom the subject matter of this Regulation is assigned."
+          }
+        ]
+      },
+      {
+        "clause": "2",
+        "title": "Application",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "This Regulation applies to,",
+            "provisions": [
+              "(a) the installation, testing, maintenance, repair, removal, replacement, inspection and use of appliances, equipment, components and accessories where gaseous fuels are to be used for fuel purposes;",
+              "(b) the installation of VRAs, without storage, having a total flow rate below 1.0 cubic metre/minute (35 cubic feet/minute)."
+            ]
+          },
+          {
+            "number": "(2)",
+            "content": "This Regulation does not apply to,",
+            "provisions": [
+              "(a) gas used as a fuel for vehicles;",
+              "(b) pipeline terminals;",
+              "(c) petroleum refineries other than when gas is used as a fuel;",
+              "(d) propane when used as a feedstock in chemical plants;",
+              "(e) utility pipeline distribution and transmission pipelines;",
+              "(f) refrigerated storage or underground reservoirs for gas;",
+              "(g) gas used on boats;",
+              "(h) gas used as propellant in aerosol containers;",
+              "(i) gas used as refrigerant; and",
+              "(j) installations that are the subject of CSA-B149.2-00, 'Propane Storage and Handling Code', as amended from time to time and whether the amendment was made before or after this Regulation was adopted."
+            ]
+          }
+        ]
+      },
+      {
+        "clause": "3",
+        "title": "General requirement for compliance",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "Every person engaged in an activity, use of equipment, process or procedure to which the Act and this Regulation apply shall comply with the Act and this Regulation."
+          },
+          {
+            "number": "(2)",
+            "content": "For the purposes of subsection (1), the reference to an activity, use of equipment, process or procedure includes, but is not limited to, design, installation, alteration, repair, service, removal, purging, activation, storing, handling, modifying and using."
+          }
+        ]
+      },
+      {
+        "clause": "4",
+        "title": "Prohibited activities without approval",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "Where this Regulation requires the approval of an appliance or any equipment or thing, no person shall offer for sale, sell, lease, rent or install an appliance, equipment or thing unless it is approved or will be approved prior to being put into use."
+          },
+          {
+            "number": "(2)",
+            "content": "Despite subsection (1), a person may offer for sale, sell, lease, rent or install any of the following even if they are not approved or will not be approved prior to being put into use:",
+            "provisions": [
+              "1. Manually operated industrial appliances that have an input of not more than 6 kilowatts (20,000 British thermal units per hour).",
+              "2. Bunsen burners.",
+              "3. Stationary gas engines, including turbine engines.",
+              "4. Portable gas equipment used for road construction or repair."
+            ]
+          }
+        ]
+      },
+      {
+        "clause": "5",
+        "title": "No handling of gas without licence",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "No person shall handle gas unless the person is the holder of a licence for the purpose."
+          }
+        ]
+      },
+      {
+        "clause": "6",
+        "title": "Certificates required for various activities",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "No person shall install, alter, purge, activate, repair, service or remove any appliance, equipment or other thing employed or to be employed in the handling or use of gas unless the person is the holder of a certificate for that purpose."
+          },
+          {
+            "number": "(2)",
+            "content": "Subsection (1) does not apply to prevent a person from undertaking duct cleaning if that is the only activity undertaken and the person does not interfere with the appliance, equipment or thing."
+          },
+          {
+            "number": "(3)",
+            "content": "Subsection (1) does not apply to prevent a person without the appropriate certificate from undertaking any of the activities mentioned in that subsection in the presence of the holder of the certificate."
+          }
+        ]
+      },
+      {
+        "clause": "7",
+        "title": "Initial putting into use",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "Where premises are connected to a supply of gas for the first time, no person shall put an appliance in the premises into use for the first time until the distributor has examined the installation of the appliance and is satisfied that the installation and use of the appliance are in compliance with this Regulation."
+          },
+          {
+            "number": "(2)",
+            "content": "An examination under subsection (1) shall include an examination of all appliances intended to be installed at the time of occupation of the premises."
+          }
+        ]
+      },
+      {
+        "clause": "8",
+        "title": "Access by distributor",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "A distributor shall have access, at all reasonable times and upon reasonable notice, to all parts of every premises to which the distributor supplies gas for the purpose of,",
+            "provisions": [
+              "(a) examining any appliance or equipment in or on the premises and disconnecting the appliance or equipment if it, its installation or its use does not conform with this Regulation or a predecessor of this Regulation; and",
+              "(b) placing, protecting, setting, shutting off, removing, repairing or altering any meter or regulator owned by the distributor in or on the premises."
+            ]
+          }
+        ]
+      },
+      {
+        "clause": "9",
+        "title": "No activation of pipeline without examination",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "No person shall activate a pipeline until it has been examined and found to be in compliance with this Regulation."
+          },
+          {
+            "number": "(2)",
+            "content": "The examination under subsection (1) shall be made by a person who holds a certificate for that purpose."
+          }
+        ]
+      },
+      {
+        "clause": "10",
+        "title": "No interference with pipeline",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "No person shall interfere with or damage any pipeline without authority to do so."
+          }
+        ]
+      },
+      {
+        "clause": "11",
+        "title": "Duty of employer",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "Every person who operates, installs, removes, repairs, alters or services appliances or works shall instruct the person's employees to comply with the Act and this Regulation."
+          },
+          {
+            "number": "(2)",
+            "content": "Every person who employs a person to carry out any activity referred to in subsection (1) shall take every precaution that is reasonable in the circumstances to ensure that the person's employees comply with the Act and this Regulation."
+          }
+        ]
+      },
+      {
+        "clause": "12",
+        "title": "Accident or occurrence",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "Where it appears that carbon monoxide poisoning, asphyxiation, explosion or fire has occurred because of the use, storage or handling of gas, a certificate holder, ROT holder, contractor or distributor shall forthwith notify an inspector of the occurrence by telephone, fax or any other form of electronic transmission, and a contractor or distributor shall have in place procedures for such notification."
+          },
+          {
+            "number": "(2)",
+            "content": "No person shall interfere with or disturb any wreckage, article or thing at the scene of an occurrence that is connected with it except in the interest of public safety, saving a life, relieving human suffering, continuity of service or preservation of property."
+          },
+          {
+            "number": "(3)",
+            "content": "Where it is permitted to interfere with or disturb wreckage, an article or a thing under subsection (2), no person shall carry away or destroy any wreckage, article or thing unless an inspector gives permission to do so."
+          }
+        ]
+      },
+      {
+        "clause": "13",
+        "title": "Unacceptable condition - immediate hazard",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "In this section and in section 14, 'unacceptable condition' means,",
+            "provisions": [
+              "(a) with respect to an appliance, container or work, that it is being used for a purpose other than that for which it was approved,",
+              "(b) with respect to an appliance, container or work, that any alteration to it or any deterioration of it, is likely to impair its safe operation, or",
+              "(c) with respect to an appliance or work, that the condition of piping, tubing or hoses, the venting of products of combustion, the supply of air for combustion or the clearance from adjacent combustible matter is likely to impair its safe operation or that the appliance or work does not meet the requirements of this Regulation or, where it was installed before this Regulation came into force, that it does not meet the requirements of the predecessor to this Regulation as it existed when the appliance or work was installed."
+            ]
+          },
+          {
+            "number": "(2)",
+            "content": "Where a distributor finds that an appliance or work is in an unacceptable condition and that it constitutes an immediate hazard, the distributor shall,",
+            "provisions": [
+              "(a) immediately shut off the supply of gas to the appliance or work;",
+              "(b) promptly notify the user in writing of the unacceptable condition, including a direction that the appliance or work not be used until the condition is corrected; and",
+              "(c) affix a notice containing the information referred to in clause (b) to the appliance or work."
+            ]
+          },
+          {
+            "number": "(3)",
+            "content": "Where a holder of a certificate or ROT finds that an appliance or work is in an unacceptable condition and that it constitutes an immediate hazard, the holder shall,",
+            "provisions": [
+              "(a) immediately shut off the supply of gas to the appliance or work;",
+              "(b) promptly give oral notice of the shutting off of the gas to the distributor;",
+              "(c) promptly give a written notice to the user, (i) describing the condition that constitutes the immediate hazard, and (ii) directing that the appliance or work not be used until the condition is corrected;",
+              "(d) within 14 days of finding the condition, give written notice of the condition to the distributor, including notice that the supply of gas has been shut off; and",
+              "(e) affix a notice containing the information required in clause (c) to the appliance or work."
+            ]
+          },
+          {
+            "number": "(4)",
+            "content": "An owner or user of an appliance or work to whom notice is given that there is an unacceptable condition that constitutes an immediate hazard shall not use the appliance or work or cause or permit the appliance or work to be used until the condition is corrected."
+          },
+          {
+            "number": "(5)",
+            "content": "Where the unacceptable condition is corrected, the owner or user shall notify the distributor of the correction within 14 days of the condition being corrected."
+          },
+          {
+            "number": "(6)",
+            "content": "Where a notice is affixed to an appliance or work under clause (2) (c) or (3) (e), no person shall remove the notice unless the person holds a certificate for that purpose and on removing the notice the person shall endorse his or her certificate number, name and address on the notice and send it by prepaid registered mail or deliver it to the distributor."
+          }
+        ]
+      },
+      {
+        "clause": "14",
+        "title": "Unacceptable condition - no immediate hazard",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "Where a distributor finds that an appliance or work is in an unacceptable condition but that it does not constitute an immediate hazard, the distributor shall,",
+            "provisions": [
+              "(a) promptly notify the user, in writing, describing the condition and indicate in the notice that the distributor will shut off the supply of gas to the appliance or work if the contractor does not notify the distributor that the condition has been corrected within the period of time specified in the notice, which shall not be greater than 90 days;",
+              "(b) affix a notice containing the information required under clause (a) to the appliance or work."
+            ]
+          },
+          {
+            "number": "(2)",
+            "content": "A distributor who gives a notice under subsection (1) shall shut off the supply of gas to the appliance or work if the unacceptable condition described in the notice is not corrected within the period of time specified in the notice."
+          },
+          {
+            "number": "(3)",
+            "content": "Where a holder of a certificate or ROT finds that an appliance or work is in an unacceptable condition but that it does not constitute an immediate hazard, he or she shall,",
+            "provisions": [
+              "(a) immediately give oral notice of the condition to the distributor who supplies gas to the appliance or work;",
+              "(b) immediately give written notice to the user of the appliance or work describing the condition and advising that notice of the condition has been given to the distributor;",
+              "(c) give written notice of the condition to the distributor within 14 days of finding it; and",
+              "(d) affix a notice containing the information required in clause (b) to the appliance or work."
+            ]
+          },
+          {
+            "number": "(4)",
+            "content": "An owner or user of an appliance or work to whom notice has been given that there is an unacceptable condition that does not constitute an immediate hazard shall not use the appliance or work, or cause or permit its use, after the expiry of time specified in the notice for correcting the condition until the condition has been corrected."
+          },
+          {
+            "number": "(5)",
+            "content": "Where a notice is affixed to an appliance or work under clause (1) (b) or (3) (d), no person shall remove the notice unless the person holds a certificate for that purpose and on removing the notice the person shall endorse his or her certificate number, name and address on the notice and send it by prepaid registered mail or deliver it to the distributor."
+          }
+        ]
+      },
+      {
+        "clause": "15",
+        "title": "Duty to maintain in safe operating condition",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "An owner or user of an appliance, equipment, a work or any other thing employed in the handling or use of gas shall ensure that the appliance, equipment, work or thing employed in the handling or use of gas is maintained in a safe operating condition."
+          }
+        ]
+      },
+      {
+        "clause": "16",
+        "title": "Supply of gas",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "No distributor shall supply gas to a premises unless the distributor is satisfied that the installation and use of the appliance or work comply with this Regulation and,",
+            "provisions": [
+              "(a) unless the distributor has inspected the appliance or work at least once within the previous 10 years; or",
+              "(b) unless the distributor has inspected the appliance or work in accordance with a quality assurance inspection program."
+            ]
+          }
+        ]
+      },
+      {
+        "clause": "17",
+        "title": "Duties of owner of special building",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "Where a gas appliance or work is installed in an industrial, institutional or assembly building that is defined in the code adoption document, the owner of the building shall ensure that,",
+            "provisions": [
+              "(a) the appliance or work and its fuel features are maintained in accordance with the manufacturer's recommended maintenance procedures;",
+              "(b) in consultation with the manufacturer or, as required by the director, an evaluation of the maintenance procedures referred to in clause (a) is carried out at least once every 10 years and, where indicated by the evaluation, new or upgraded procedures are established; and",
+              "(c) an inspection of the appliance or work and its fuel features is carried out at least once every 10 years to ensure that they are in a safe operating condition and that the installation complies with this Regulation or, where the appliance or work was installed before this Regulation came into force, that it complies with the predecessor to this Regulation as it existed when the appliance or work was installed."
+            ]
+          }
+        ]
+      },
+      {
+        "clause": "18",
+        "title": "Certificate required for inspection",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "An inspection under section 16 or 17 shall be carried out by a person who is the holder of a valid certificate for that purpose."
+          },
+          {
+            "number": "(2)",
+            "content": "The distributor shall prepare a report on each inspection made and shall retain the report until the next inspection and report is completed."
+          }
+        ]
+      },
+      {
+        "clause": "19",
+        "title": "Off-site testing and approval",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "This section applies only to the testing of an appliance, equipment, a component or an accessory where the testing is carried out at a place other than the place where they are installed for their intended use."
+          },
+          {
+            "number": "(2)",
+            "content": "A person may apply to a designated testing organization to have an appliance, equipment, a component or an accessory tested under this section."
+          },
+          {
+            "number": "(3)",
+            "content": "The organizations accredited by the Standards Council of Canada are designated as organizations to test appliances, equipment, components and accessories to the applicable approved standards or laboratory test reports for the purposes of this Regulation."
+          },
+          {
+            "number": "(4)",
+            "content": "A designated testing organization that tests an appliance, equipment, a component or an accessory under this section shall place its label or symbol on it if it conforms to the applicable approved standards or laboratory test reports."
+          }
+        ]
+      },
+      {
+        "clause": "20",
+        "title": "On-site testing and approval",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "This section applies only to the testing of an appliance, equipment, a component or an accessory that is carried out at the place where they are installed for their intended use."
+          },
+          {
+            "number": "(2)",
+            "content": "A person may apply to the director, or an inspector designated by the director, to have an appliance, equipment, a component or an accessory tested under this section."
+          },
+          {
+            "number": "(3)",
+            "content": "The director or inspector may decline to test an appliance, equipment, a component or an accessory if its design is substantially the same as one that has been tested and approved by a designated testing organization."
+          },
+          {
+            "number": "(4)",
+            "content": "The director or inspector may test appliances, equipment, components and accessories to applicable approved standards or laboratory test reports for the purposes of this Regulation."
+          },
+          {
+            "number": "(5)",
+            "content": "If an appliance, equipment, a component or an accessory tested under subsection (4) conforms to the applicable approved standards or laboratory test reports, the director or inspector shall place an approved label or symbol on it."
+          },
+          {
+            "number": "(6)",
+            "content": "If an appliance, equipment, a component or an accessory is tested under this section, the director or inspector shall,",
+            "provisions": [
+              "(a) determine whether its fuel features comply with the approved standards or laboratory test reports of a designated testing organization and this Regulation; and",
+              "(b) affix or cause to be affixed to it a label or symbol authorized by the director, if the director or inspector determines that its fuel features comply with the approved standards or laboratory test reports of a designated testing organization and this Regulation."
+            ]
+          },
+          {
+            "number": "(7)",
+            "content": "The applicant shall provide to the director all information, and shall conduct or cause to be conducted all tests, required to determine that the appliance, equipment, component or accessory complies with clause (6) (a)."
+          },
+          {
+            "number": "(8)",
+            "content": "An applicant who applies to the director to have an appliance, equipment, a component or an accessory tested and approved under this section shall pay the fee set by the designated administrative authority for the time reasonably spent,",
+            "provisions": [
+              "(a) in reviewing information about the thing to be tested;",
+              "(b) in inspecting its fuel features;",
+              "(c) in observing any test of the fuel features to determine their compliance with this Regulation; and",
+              "(d) in use of the thing during testing."
+            ]
+          }
+        ]
+      },
+      {
+        "clause": "21",
+        "title": "Registration of contractors",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "No person shall act as a contractor unless the person is registered for the purpose."
+          },
+          {
+            "number": "(2)",
+            "content": "An application for registration as a contractor shall be made in the form published by the designated administrative authority to the director and shall be accompanied by the fee set by the designated authority."
+          },
+          {
+            "number": "(3)",
+            "content": "A registration as a contractor expires one year after its date of issue."
+          },
+          {
+            "number": "(4)",
+            "content": "An application to renew a registration made after the registration has expired shall be treated as a new application for registration."
+          },
+          {
+            "number": "(5)",
+            "content": "The director shall issue evidence of registration to an applicant who is registered as a contractor or renews a registration as a contractor."
+          },
+          {
+            "number": "(6)",
+            "content": "The director shall issue a registration or a renewal of a registration as a contractor if the applicant pays the fee set by the designated administrative authority and is not in arrears of any such fees owed to the designated administrative authority."
+          },
+          {
+            "number": "(7)",
+            "content": "A registered contractor shall display the evidence of registration in a conspicuous place at the contractor's business premises and shall notify the director within 30 days of any change of business address, and all field vehicles, other than delivery trucks, operated by the contractor, whether leased or owned, shall be clearly marked with the contractor's name and registration number."
+          },
+          {
+            "number": "(8)",
+            "content": "A registration is not transferable."
+          },
+          {
+            "number": "(9)",
+            "content": "If the name on the registration changes, the holder shall promptly apply to the director for a registration containing the new name and pay the fee set by the designated administrative authority."
+          },
+          {
+            "number": "(10)",
+            "content": "If the evidence of registration is lost, stolen or destroyed, the contractor shall promptly apply to the director for a duplicate and pay the fee set by the designated administrative authority, whereupon the director shall issue duplicate evidence of a valid registration."
+          }
+        ]
+      },
+      {
+        "clause": "22",
+        "title": "Exemption",
+        "subsections": [
+          {
+            "number": "(1)",
+            "content": "This section provides for exemptions as specified in the regulation."
+          }
+        ]
+      }
+    ]
+  }
+}

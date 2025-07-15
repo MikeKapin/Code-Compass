@@ -1,0 +1,195 @@
+{
+  "document": {
+    "title": "Technical Standards and Safety Act, 2000",
+    "citation": "S.O. 2000, CHAPTER 16",
+    "consolidation_period": "From July 14, 2020 to the e-Laws currency date",
+    "last_amendment": "2020, c. 14, Sched. 9",
+    "legislative_history": "2001, c. 9, Sched. D, s. 13; 2006, c. 21, Sched. F, s. 136 (1); 2006, c. 34, s. 25; 2007, c. 4, s. 42; 2009, c. 28, s. 1-15; 2009, c. 33, Sched. 10, s. 14; 2010, c. 15, s. 245; 2017, c. 2, Sched. 12, s. 8; 2018, c. 7, s. 12-24; 2019, c. 4, Sched. 7, s. 1-31; 2019, c. 7, Sched. 17, s. 163; 2019, c. 14, Sched. 10, s. 17; 2020, c. 14, Sched. 9",
+    "parts": {
+      "part_i": {
+        "title": "PURPOSE, APPLICATION, DEFINITIONS",
+        "sections": {
+          "section_1": {
+            "title": "Purpose",
+            "content": "The purpose of this Act is to enhance public safety in Ontario by providing for the efficient and flexible administration of technical standards with respect to the matters referred to in section 2.",
+            "amendments": ["2000, c. 16, s. 1"]
+          },
+          "section_2": {
+            "title": "Application",
+            "content": "This Act applies to amusement devices, boilers and pressure vessels, elevating devices, fuels, and operating engineers.",
+            "amendments": ["2019, c. 4, Sched. 7, s. 1"]
+          },
+          "section_3": {
+            "title": "Definitions",
+            "content": "In this Act,",
+            "definitions": {
+              "administrative_penalty": "means an administrative penalty imposed under section 32.1",
+              "alternate_rules": "mean the rules made by a director and approved by an order of the Minister made under section 36.1",
+              "assessor": "means a person appointed as an assessor under this Act",
+              "authorization": "means any form of authorization under this Act and includes, (a) with respect to a person, a certificate, identification, licence or registration, and (b) with respect to a thing, an approval, certificate, licence, permit or registration",
+              "Corporation": "means the corporation continued by subsection 3.1(1)",
+              "director": "means a person appointed as a director under this Act or a predecessor Act",
+              "dwelling": "means any premises or any part of a premises occupied exclusively as living accommodation",
+              "inspector": "means a person appointed as an inspector under this Act or a predecessor Act",
+              "Minister": "means the Minister responsible for the administration of this Act",
+              "Minister_order": "means an order made by the Minister under section 33 unless the context requires otherwise",
+              "person": "means an individual, an association, a partnership or a corporation",
+              "predecessor_Act": "means any of the following: 1. Amusement Devices Act. 2. Boilers and Pressure Vessels Act. 3. Elevating Devices Act. 4. Energy Act. 5. Gasoline Handling Act. 6. Operating Engineers Act. 7. REPEALED: 2019, c. 4, Sched. 7, s. 2 (2)",
+              "prescribed": "means prescribed by the regulations",
+              "regulations": "means the regulations made under this Act",
+              "seal": "means to mark, tag, seal or label, and its noun has a corresponding meaning"
+            },
+            "amendments": ["2000, c. 16, s. 3; 2009, c. 28, s. 1; 2019, c. 4, Sched. 7, s. 2"]
+          }
+        }
+      },
+      "part_ii": {
+        "title": "ADMINISTRATION",
+        "subsections": {
+          "corporation": {
+            "title": "CORPORATION",
+            "sections": {
+              "section_3_1": {
+                "title": "Corporation continued",
+                "subsections": {
+                  "1": "The Technical Standards and Safety Authority is continued as a corporation without share capital under the name Technical Standards and Safety Authority in English and Office des normes techniques et de la securite in French.",
+                  "2": "The letters patent and supplementary letters patent of the Technical Standards and Safety Authority are revoked."
+                },
+                "amendments": ["2009, c. 28, s. 2"]
+              },
+              "section_3_2": {
+                "title": "Composition",
+                "subsections": {
+                  "1": "The Corporation is composed of the members of its board of directors.",
+                  "2": "A person ceases to be a member of the Corporation when he or she ceases to be a director."
+                },
+                "amendments": ["2009, c. 28, s. 2"]
+              },
+              "section_31": {
+                "title": "Director's order, public safety",
+                "content": "In cases where there is or may be a demonstrable threat to public safety, a director may make an order with respect to the following matters if they have not otherwise been provided for in this Act, the regulations, a Minister's order or an alternate rule: 1. Requiring and establishing the form and location of notices, markings or other forms of identification to be used in conjunction with equipment or other things that are prescribed. 2. Regulating, governing and providing for the authorization of the design, fabrication, processing, handling, installation, operation, access, use, repair, maintenance, inspection, location, construction, removing, alteration, service, testing, filling, replacement, blocking, dismantling, destruction, removal from service and transportation of any thing, whether new or used, or a part of a thing and any equipment or attachment used in connection with it.",
+                "amendments": ["2000, c. 16, s. 31; 2019, c. 4, Sched. 7, s. 22"]
+              }
+            }
+          },
+          "directors_and_inspectors": {
+            "title": "DIRECTORS AND INSPECTORS",
+            "sections": {
+              "section_4": {
+                "title": "Appointments of directors, inspectors and investigators",
+                "subsections": {
+                  "1": "The Corporation may appoint directors, inspectors and investigators for the purposes of this Act, the regulations, a Minister's order or an alternate rule, including for the purpose of determining whether authorization holders continue to meet the requirements for authorization and the requirements of this Act, the regulations, Minister's orders and alternate rules.",
+                  "2": "REPEALED: 2009, c. 28, s. 3 (2).",
+                  "3": "An appointment is subject to the restrictions, limitations and conditions set out in it."
+                },
+                "amendments": ["2006, c. 34, s. 25; 2009, c. 28, s. 3; 2018, c. 7, s. 16; 2019, c. 4, Sched. 7, s. 11"]
+              },
+              "section_5": {
+                "title": "Powers",
+                "subsections": {
+                  "1": "A director has general supervisory and administrative responsibility in respect of all or any part of this Act, the regulations, a Minister's order or an alternate rule with respect to which he or she is appointed.",
+                  "2": "Unless otherwise stated in his or her appointment, a director, (a) may supervise and direct inspectors, investigators and other persons responsible for administering or enforcing this Act, the regulations, a Minister's order or an alternate rule; and (b) is an inspector and an investigator and may exercise any of their powers and perform any of their duties.",
+                  "3": "A director may delegate in writing any of his or her powers or duties to any person subject to the restrictions, limitations and conditions set out in the delegation.",
+                  "4": "A director, inspector or investigator shall produce, on request, evidence of his or her appointment."
+                },
+                "amendments": ["2000, c. 16, s. 5; 2006, c. 34, s. 25; 2018, c. 7, s. 16; 2019, c. 4, Sched. 7, s. 12"]
+              }
+            }
+          }
+        }
+      },
+      "part_iii": {
+        "title": "AUTHORIZATIONS AND SAFETY AND COMPLIANCE ORDERS",
+        "subsections": {
+          "authorizations": {
+            "title": "AUTHORIZATIONS",
+            "sections": {
+              "section_6": {
+                "title": "Requirement for authorization",
+                "subsections": {
+                  "1": "Except as provided in the regulations, a Minister's order or an alternate rule, a person is required to obtain an authorization in accordance with this Act, the regulations, a Minister's order or an alternate rule before carrying out the activities referred to in the regulations, a Minister's order or an alternate rule as requiring an authorization or before operating or otherwise dealing with any thing referred to in the regulations, a Minister's order or an alternate rule as requiring an authorization.",
+                  "2": "An applicant who applies to a director for an authorization to carry out an activity referred to in the regulations, a Minister's order or an alternate rule is entitled to the authorization if all the requirements for it are met.",
+                  "3": "The director may refuse to grant an authorization to an applicant who does not meet the requirements for it.",
+                  "4": "An applicant who applies to a director for an authorization required for a thing is entitled to the authorization if all the requirements for it are met.",
+                  "5": "The director may refuse to grant an authorization for a thing if the applicant or thing does not meet the requirements for it.",
+                  "6": "An authorization is subject to such restrictions, limitations and conditions as are prescribed and to the restrictions, limitations and conditions, if any, imposed on it by a director.",
+                  "7": "A director may refuse to grant, suspend, revoke or refuse to renew an authorization where he or she has reason to believe that the applicant or authorization holder, (a) will not carry out the activities permitted by the authorization in accordance with law; (b) will not carry out the activities permitted by the authorization safely; (c) lacks the basic resources necessary for carrying out the activities permitted by the authorization; (d) lacks honesty and integrity; (e) is not competent or lacks reasonable skill; (f) has failed to comply with this Act, the regulations, a Minister's order, an alternate rule, the order of a director or an inspector, or a restriction, limitation or condition of an authorization; (g) obtained the authorization through misrepresentation or fraud; (h) permitted an unauthorized person to carry out the activities permitted under the authorization."
+                },
+                "amendments": ["2000, c. 16, s. 6; 2009, c. 28, s. 4; 2019, c. 4, Sched. 7, s. 13"]
+              }
+            }
+          },
+          "safety_and_compliance_orders": {
+            "title": "SAFETY AND COMPLIANCE ORDERS",
+            "sections": {
+              "section_14": {
+                "title": "Safety orders",
+                "subsections": {
+                  "1": "A director may give a safety order to any person or class of persons with respect to any matter governed by this Act that pertains to safety.",
+                  "2": "The safety order may require that any thing or part of a thing, or class of things, be dealt with as set out in the order, including, (a) being shut down; (b) being used only in accordance with the order; and (c) not being used."
+                },
+                "amendments": ["2000, c. 16, s. 14; 2009, c. 28, s. 6"]
+              }
+            }
+          }
+        }
+      },
+      "part_iv": {
+        "title": "INSPECTIONS AND ENFORCEMENT",
+        "subsections": {
+          "inspections_and_investigations": {
+            "title": "INSPECTIONS AND INVESTIGATIONS",
+            "sections": {
+              "section_17": {
+                "title": "Inspection",
+                "subsections": {
+                  "1": "An inspector may conduct an inspection and may, as part of that inspection, enter and inspect at any reasonable time the lands and premises where any of the things, parts of things or classes of things to which this Act, the regulations, a Minister's order or an alternate rule apply are used, operated, installed, made, manufactured, repaired, renovated or offered for sale for the purpose of, (a) ensuring compliance with this Act, the regulations, a Minister's order or an alternate rule; (b) ensuring that an authorization holder remains entitled to the authorization; or (c) determining whether a hazardous condition exists.",
+                  "2": "An inspector shall not, (a) use force to enter and inspect lands or premises under this section; or (b) enter any part of premises that are being used as a dwelling, except with the consent of the owner or occupier."
+                },
+                "amendments": ["2006, c. 34, s. 25; 2019, c. 4, Sched. 7, s. 17; 2019, c. 14, Sched. 10, s. 17"]
+              }
+            }
+          },
+          "additional_powers_and_duties_of_directors": {
+            "title": "ADDITIONAL POWERS AND DUTIES OF DIRECTORS",
+            "sections": {
+              "section_23": {
+                "title": "Director's confirmation",
+                "subsections": {
+                  "1": "A director may issue a written confirmation with respect to, (a) any authorization or non-authorization; (b) the revocation or suspension of an authorization; (c) the restrictions or conditions to which an authorization is subject; (d) the filing or non-filing of any document or material required or permitted to be filed with the director; or (e) any other matter that may be prescribed or set out in a Minister's order or an alternate rule.",
+                  "2": "A confirmation is proof, in the absence of evidence to the contrary, of the facts stated in it, without any proof of appointment or signature."
+                },
+                "amendments": ["2000, c. 16, s. 23; 2019, c. 4, Sched. 7, s. 21"]
+              }
+            }
+          }
+        }
+      },
+      "part_v": {
+        "title": "ADMINISTRATIVE PENALTIES AND OFFENCES",
+        "sections": {
+          "section_32_1": {
+            "title": "Administrative penalties",
+            "content": "A director may impose an administrative penalty on a person who contravenes this Act, the regulations, a Minister's order or an alternate rule.",
+            "amendments": ["2018, c. 7, s. 19"]
+          }
+        }
+      },
+      "part_vi": {
+        "title": "REGULATIONS AND MINISTER'S ORDERS",
+        "sections": {
+          "section_35": {
+            "title": "Regulations by Lieutenant Governor in Council",
+            "content": "The Lieutenant Governor in Council may make regulations prescribing anything that is referred to in this Act as being prescribed.",
+            "amendments": ["2000, c. 16, s. 35"]
+          },
+          "section_36": {
+            "title": "Minister's regulations",
+            "content": "The Minister may make regulations for carrying out the purposes of this Act.",
+            "amendments": ["2000, c. 16, s. 36"]
+          }
+        }
+      }
+    }
+  }
+}

@@ -5730,292 +5730,9 @@ const fullCSAData = [
   } 
 ];
 
-// Move SearchBar component outside to prevent re-creation on every render
-const SearchBar = React.memo(({ 
-  query, 
-  onQueryChange, 
-  onSubmit, 
-  onFocus, 
-  onBlur, 
-  placeholder, 
-  isDisabled, 
-  suggestions, 
-  showSuggestions, 
-  onSuggestionClick 
-}) => {
-  return (
-    <div style={{ position: 'relative', width: '100%' }}>
-      <form onSubmit={onSubmit}>
-        <div style={{ position: 'relative', width: '100%' }}>
-          <input
-            type="text"
-            value={query}
-            onChange={onQueryChange}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            placeholder={placeholder}
-            disabled={isDisabled}
-            style={{
-              width: '100%',
-              padding: '1rem 3.5rem 1rem 1.5rem',
-              border: '2px solid #e9ecef',
-              borderRadius: '12px',
-              fontSize: '1rem',
-              outline: 'none',
-              transition: 'all 0.2s ease',
-              boxSizing: 'border-box',
-              fontFamily: 'inherit',
-              opacity: isDisabled ? 0.6 : 1,
-              cursor: isDisabled ? 'not-allowed' : 'text',
-              backgroundColor: isDisabled ? '#f8f9fa' : 'white',
-              color: isDisabled ? '#6c757d' : '#2c3e50'
-            }}
-          />
-          <button
-            type="submit"
-            disabled={isDisabled}
-            style={{
-              position: 'absolute',
-              right: '0.5rem',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: isDisabled ? '#bdc3c7' : 'linear-gradient(135deg, #3498db, #2980b9)',
-              color: 'white',
-              border: 'none',
-              borderRadius: '8px',
-              padding: '0.75rem 1rem',
-              cursor: isDisabled ? 'not-allowed' : 'pointer',
-              fontSize: '0.9rem',
-              fontWeight: '600',
-              transition: 'all 0.2s ease'
-            }}
-          >
-            🔍 Search
-          </button>
-        </div>
-      </form>
-
-      {/* Search Suggestions */}
-      {showSuggestions && suggestions.length > 0 && (
-        <div style={{
-          position: 'absolute',
-          top: '100%',
-          left: 0,
-          right: 0,
-          backgroundColor: 'white',
-          border: '1px solid #e9ecef',
-          borderRadius: '8px',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          zIndex: 1000,
-          maxHeight: '200px',
-          overflowY: 'auto'
-        }}>
-          {suggestions.map((suggestion, index) => (
-            <div
-              key={index}
-              onClick={() => onSuggestionClick(suggestion)}
-              style={{
-                padding: '0.75rem 1rem',
-                cursor: 'pointer',
-                borderBottom: index < suggestions.length - 1 ? '1px solid #f8f9fa' : 'none',
-                transition: 'background-color 0.2s ease'
-              }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = '#f8f9fa'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}
-            >
-              {suggestion}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-});
-
-// Email Modal Component - also moved outside
-const EmailModal = React.memo(({ isOpen, onClose, onSubmit, isSubmitting, error }) => {
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
-
-  const handleSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    
-    // Validate email
-    const validation = validateEmail(email);
-    if (!validation.isValid) {
-      setEmailError(validation.errors[0]);
-      return;
-    }
-    
-    setEmailError('');
-    await onSubmit(email);
-  }, [email, onSubmit]);
-
-  const handleEmailChange = useCallback((e) => {
-    setEmail(e.target.value);
-    setEmailError('');
-  }, []);
-
-  // Reset email state when modal closes
-  useEffect(() => {
-    if (!isOpen) {
-      setEmail('');
-      setEmailError('');
-    }
-  }, [isOpen]);
-
-  if (!isOpen) return null;
-
-  return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.7)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 1000,
-      padding: '1rem'
-    }}>
-      <div style={{
-        backgroundColor: 'white',
-        borderRadius: '12px',
-        padding: '2rem',
-        maxWidth: '500px',
-        width: '100%',
-        boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
-      }}>
-        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-          <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🎉</span>
-          <h2 style={{ margin: '0 0 0.5rem 0', color: '#2c3e50' }}>
-            Start Your Free 7-Day Trial
-          </h2>
-          <p style={{ color: '#6c757d', margin: 0, lineHeight: '1.5' }}>
-            Get instant access to both CSA B149.1-25 and B149.2-25 codes. No credit card required.
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit}>
-          <div style={{ marginBottom: '1rem' }}>
-            <label style={{
-              display: 'block',
-              marginBottom: '0.5rem',
-              fontWeight: '500',
-              color: '#2c3e50'
-            }}>
-              Email Address
-            </label>
-            <input
-              type="email"
-              value={email}
-              onChange={handleEmailChange}
-              placeholder="your@company.com"
-              required
-              disabled={isSubmitting}
-              autoComplete="email"
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                border: '2px solid #e9ecef',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                outline: 'none',
-                transition: 'border-color 0.2s ease',
-                boxSizing: 'border-box',
-                backgroundColor: 'white',
-                color: '#333'
-              }}
-              onFocus={(e) => e.target.style.borderColor = '#3498db'}
-              onBlur={(e) => e.target.style.borderColor = '#e9ecef'}
-            />
-            {(emailError || error) && (
-              <p style={{ color: '#e74c3c', fontSize: '0.9rem', margin: '0.5rem 0 0 0' }}>
-                {emailError || error}
-              </p>
-            )}
-          </div>
-
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <button
-              type="button"
-              onClick={onClose}
-              disabled={isSubmitting}
-              style={{
-                flex: '1',
-                minWidth: '120px',
-                padding: '0.75rem 1.5rem',
-                border: '2px solid #e9ecef',
-                borderRadius: '8px',
-                backgroundColor: 'white',
-                color: '#6c757d',
-                fontSize: '1rem',
-                fontWeight: '500',
-                cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              Cancel
-            </button>
-            
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              style={{
-                flex: '2',
-                minWidth: '140px',
-                padding: '0.75rem 1.5rem',
-                border: 'none',
-                borderRadius: '8px',
-                backgroundColor: isSubmitting ? '#bdc3c7' : '#3498db',
-                color: 'white',
-                fontSize: '1rem',
-                fontWeight: '600',
-                cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                transition: 'all 0.2s ease'
-              }}
-            >
-              {isSubmitting ? 'Starting Trial...' : 'Start Free Trial'}
-            </button>
-          </div>
-        </form>
-
-        <div style={{
-          fontSize: '0.8rem',
-          color: '#95a5a6',
-          textAlign: 'center',
-          margin: '1rem 0 0 0',
-          lineHeight: '1.4'
-        }}>
-          <p style={{ margin: '0 0 0.5rem 0' }}>
-            ✅ No credit card required • ✅ Cancel anytime • ✅ Full access during trial
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-});
-
-// Result highlighting component
-const HighlightedText = React.memo(({ text, highlight }) => {
-  if (!highlight) return text;
-  
-  const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
-  return parts.map((part, index) => 
-    part.toLowerCase() === highlight.toLowerCase() ? (
-      <mark key={index} style={{ backgroundColor: '#fff3cd', padding: '0 2px' }}>
-        {part}
-      </mark>
-    ) : part
-  );
-});
-
 const App = () => {
   // Search type state
   const [activeSearchType, setActiveSearchType] = useState('b149-1'); // 'b149-1', 'b149-2', 'regulations'
-  
   // Search indices
   const [csaSearchIndex, setCsaSearchIndex] = useState(null);
   const [regulationsSearchIndex, setRegulationsSearchIndex] = useState(null);
@@ -6028,10 +5745,6 @@ const App = () => {
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [emailSubmitting, setEmailSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
-
-  // Search suggestions state
-  const [suggestions, setSuggestions] = useState([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
 
   // Initialize search indices on component mount
   useEffect(() => {
@@ -6058,8 +5771,6 @@ const App = () => {
   useEffect(() => {
     setQuery('');
     setResults([]);
-    setSuggestions([]);
-    setShowSuggestions(false);
   }, [activeSearchType]);
 
   // Built-in search function for B149.1-25
@@ -6093,23 +5804,6 @@ const App = () => {
     return ['BTU', 'venting', 'clearance', 'CSA', 'accessory', 'appliance', 'gas piping', 'installation', 'safety'];
   }, []);
 
-  // Handle search input change with debounced suggestions
-  const handleInputChange = useCallback((e) => {
-    const value = e.target.value;
-    setQuery(value);
-    
-    if (value.length > 1 && (activeSearchType === 'b149-1' || activeSearchType === 'b149-2')) {
-      const popularTerms = getPopularSearchTerms();
-      const filtered = popularTerms.filter(term => 
-        term.toLowerCase().includes(value.toLowerCase())
-      );
-      setSuggestions(filtered);
-      setShowSuggestions(true);
-    } else {
-      setShowSuggestions(false);
-    }
-  }, [activeSearchType, getPopularSearchTerms]);
-
   // Handle search with proper analytics tracking
   const handleSearch = useCallback((searchQuery) => {
     // Handle regulations search (free)
@@ -6118,7 +5812,6 @@ const App = () => {
         const searchResults = searchRegulations(searchQuery, regulationsSearchIndex);
         setResults(searchResults);
         setQuery(searchQuery);
-        setShowSuggestions(false);
         trackSearch(searchQuery, searchResults.length);
       }
       return;
@@ -6140,36 +5833,34 @@ const App = () => {
       const success = trialManager.recordSearch(searchQuery);
       if (success) {
         setQuery(searchQuery);
-        setShowSuggestions(false);
         
         // Perform the appropriate search based on type
         if (activeSearchType === 'b149-1') {
           // B149.1-25 search
           const searchResults = searchCodes(searchQuery);
           setResults(searchResults);
-          trackSearch(searchQuery, searchResults.length);
         } else if (activeSearchType === 'b149-2') {
           // B149.2-25 search
           if (csaSearchIndex) {
             const searchResults = searchCSACode(searchQuery, csaSearchIndex);
             setResults(searchResults);
-            trackSearch(searchQuery, searchResults.length);
           }
         }
         
         // Update trial status to reflect new search count
         setTrialStatus(trialManager.getTrialStatus());
+        trackSearch(searchQuery, results.length);
       }
       return;
     }
     
     // If trial expired, search is blocked by UI
-  }, [activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes]);
+  }, [activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, results.length]);
 
   // Handle search type switching
-  const handleSearchTypeChange = useCallback((type) => {
+  const handleSearchTypeChange = (type) => {
     setActiveSearchType(type);
-  }, []);
+  };
 
   // Handle email submission
   const handleEmailSubmit = useCallback(async (email) => {
@@ -6215,7 +5906,7 @@ const App = () => {
   }, []);
 
   // Get search placeholder text
-  const getSearchPlaceholder = useCallback(() => {
+  const getSearchPlaceholder = () => {
     switch (activeSearchType) {
       case 'b149-1':
         return 'Search CSA B149.1-25 for clause numbers, titles, or keywords...';
@@ -6226,10 +5917,10 @@ const App = () => {
       default:
         return 'Search...';
     }
-  }, [activeSearchType]);
+  };
 
   // Get current data source title
-  const getDataSourceTitle = useCallback(() => {
+  const getDataSourceTitle = () => {
     switch (activeSearchType) {
       case 'b149-1':
         return 'CSA B149.1-25';
@@ -6240,42 +5931,12 @@ const App = () => {
       default:
         return 'Code Compass';
     }
-  }, [activeSearchType]);
+  };
 
   // Check if current search type requires trial
-  const requiresTrial = useCallback(() => {
+  const requiresTrial = () => {
     return activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
-  }, [activeSearchType]);
-
-  // Handle suggestion click
-  const handleSuggestionClick = useCallback((suggestion) => {
-    setQuery(suggestion);
-    setShowSuggestions(false);
-    handleSearch(suggestion);
-  }, [handleSearch]);
-
-  // Handle form submission
-  const handleSubmit = useCallback((e) => {
-    e.preventDefault();
-    const isDisabled = (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial());
-    if (query.trim() && !isDisabled) {
-      handleSearch(query.trim());
-    }
-  }, [query, trialStatus, requiresTrial, handleSearch]);
-
-  // Handle input focus
-  const handleInputFocus = useCallback(() => {
-    const isDisabled = (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial());
-    if (!isDisabled && query.length > 1 && (activeSearchType === 'b149-1' || activeSearchType === 'b149-2')) {
-      setShowSuggestions(true);
-    }
-  }, [query, trialStatus, requiresTrial, activeSearchType]);
-
-  // Handle input blur with longer delay
-  const handleInputBlur = useCallback(() => {
-    // Use a longer timeout to allow clicking on suggestions
-    setTimeout(() => setShowSuggestions(false), 200);
-  }, []);
+  };
 
   // Search functionality with analytics - updated for all search types
   useEffect(() => {
@@ -6316,36 +5977,334 @@ const App = () => {
 
       setResults(searchResults);
       setIsLoading(false);
+      
+      // Track search analytics only if we actually performed a search
+      if (searchResults.length >= 0) {
+        trackSearch(query, searchResults.length);
+      }
     }, 150);
 
     return () => clearTimeout(timeoutId);
   }, [query, trialStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, requiresTrial]);
 
-  // Memoized values to prevent unnecessary re-renders
-  const searchBarProps = useMemo(() => ({
-    query,
-    onQueryChange: handleInputChange,
-    onSubmit: handleSubmit,
-    onFocus: handleInputFocus,
-    onBlur: handleInputBlur,
-    placeholder: getSearchPlaceholder(),
-    isDisabled: (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial()),
-    suggestions,
-    showSuggestions,
-    onSuggestionClick: handleSuggestionClick
-  }), [
-    query, 
-    handleInputChange, 
-    handleSubmit, 
-    handleInputFocus, 
-    handleInputBlur, 
-    getSearchPlaceholder, 
-    trialStatus, 
-    requiresTrial, 
-    suggestions, 
-    showSuggestions, 
-    handleSuggestionClick
-  ]);
+  // Optimized SearchBar Component
+  const SearchBar = React.memo(({ onSearch, disabled = false, placeholder = "Search for clause numbers, titles, or keywords...", activeSearchType = 'b149-1' }) => {
+    const [query, setQuery] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+    const [showSuggestions, setShowSuggestions] = useState(false);
+    
+    const popularTerms = useMemo(() => {
+      if (activeSearchType === 'b149-1' || activeSearchType === 'b149-2') {
+        return getPopularSearchTerms();
+      }
+      return []; // You can add suggestions for regulations here if needed
+    }, [activeSearchType]);
+
+    const handleSubmit = useCallback((e) => {
+      e.preventDefault();
+      if (query.trim() && !disabled) {
+        onSearch(query.trim());
+        setShowSuggestions(false);
+      }
+    }, [query, disabled, onSearch]);
+
+    const handleInputChange = useCallback((e) => {
+      const value = e.target.value;
+      setQuery(value);
+      
+      if (value.length > 1 && popularTerms.length > 0) {
+        const filtered = popularTerms.filter(term => 
+          term.toLowerCase().includes(value.toLowerCase())
+        );
+        setSuggestions(filtered);
+        setShowSuggestions(true);
+      } else {
+        setShowSuggestions(false);
+      }
+    }, [popularTerms]);
+
+    const handleSuggestionClick = useCallback((suggestion) => {
+      setQuery(suggestion);
+      setShowSuggestions(false);
+      onSearch(suggestion);
+    }, [onSearch]);
+
+    return (
+      <div style={{ position: 'relative', width: '100%' }}>
+        <form onSubmit={handleSubmit}>
+          <div style={{ position: 'relative', width: '100%' }}>
+            <input
+              type="text"
+              value={query}
+              onChange={handleInputChange}
+              onFocus={(e) => {
+                if (!disabled) {
+                  e.target.style.borderColor = '#3498db';
+                  if (query.length > 1 && popularTerms.length > 0) setShowSuggestions(true);
+                }
+              }}
+              onBlur={(e) => {
+                e.target.style.borderColor = '#e9ecef';
+                setTimeout(() => setShowSuggestions(false), 150);
+              }}
+              placeholder={placeholder}
+              disabled={disabled}
+              style={{
+                width: '100%',
+                padding: '1rem 3.5rem 1rem 1.5rem',
+                border: '2px solid #e9ecef',
+                borderRadius: '12px',
+                fontSize: '1rem',
+                outline: 'none',
+                transition: 'all 0.2s ease',
+                boxSizing: 'border-box',
+                fontFamily: 'inherit',
+                opacity: disabled ? 0.6 : 1,
+                cursor: disabled ? 'not-allowed' : 'text',
+                backgroundColor: disabled ? '#f8f9fa' : 'white',
+                color: disabled ? '#6c757d' : '#2c3e50'
+              }}
+            />
+            <button
+              type="submit"
+              disabled={disabled}
+              style={{
+                position: 'absolute',
+                right: '0.5rem',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: disabled ? '#bdc3c7' : 'linear-gradient(135deg, #3498db, #2980b9)',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '0.75rem 1rem',
+                cursor: disabled ? 'not-allowed' : 'pointer',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              🔍 Search
+            </button>
+          </div>
+        </form>
+
+        {/* Search Suggestions */}
+        {showSuggestions && suggestions.length > 0 && (
+          <div style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            backgroundColor: 'white',
+            border: '1px solid #e9ecef',
+            borderRadius: '8px',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+            zIndex: 1000,
+            maxHeight: '200px',
+            overflowY: 'auto'
+          }}>
+            {suggestions.map((suggestion, index) => (
+              <div
+                key={index}
+                onClick={() => handleSuggestionClick(suggestion)}
+                style={{
+                  padding: '0.75rem 1rem',
+                  cursor: 'pointer',
+                  borderBottom: index < suggestions.length - 1 ? '1px solid #f8f9fa' : 'none',
+                  transition: 'background-color 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.target.style.backgroundColor = '#f8f9fa'}
+                onMouseLeave={(e) => e.target.style.backgroundColor = 'white'}
+              >
+                {suggestion}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  });
+
+  // Email Modal Component
+  const EmailModal = React.memo(({ isOpen, onClose, onSubmit, isSubmitting, error }) => {
+    const [email, setEmail] = useState('');
+    const [emailError, setEmailError] = useState('');
+
+    const handleSubmit = useCallback(async (e) => {
+      e.preventDefault();
+      
+      // Validate email
+      const validation = validateEmail(email);
+      if (!validation.isValid) {
+        setEmailError(validation.errors[0]);
+        return;
+      }
+      
+      setEmailError('');
+      await onSubmit(email);
+    }, [email, onSubmit]);
+
+    const handleEmailChange = useCallback((e) => {
+      setEmail(e.target.value);
+      setEmailError('');
+    }, []);
+
+    // Reset email state when modal closes
+    useEffect(() => {
+      if (!isOpen) {
+        setEmail('');
+        setEmailError('');
+      }
+    }, [isOpen]);
+
+    if (!isOpen) return null;
+
+    return (
+      <div style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1000,
+        padding: '1rem'
+      }}>
+        <div style={{
+          backgroundColor: 'white',
+          borderRadius: '12px',
+          padding: '2rem',
+          maxWidth: '500px',
+          width: '100%',
+          boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)'
+        }}>
+          <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
+            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🎉</span>
+            <h2 style={{ margin: '0 0 0.5rem 0', color: '#2c3e50' }}>
+              Start Your Free 7-Day Trial
+            </h2>
+            <p style={{ color: '#6c757d', margin: 0, lineHeight: '1.5' }}>
+              Get instant access to both CSA B149.1-25 and B149.2-25 codes. No credit card required.
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit}>
+            <div style={{ marginBottom: '1rem' }}>
+              <label style={{
+                display: 'block',
+                marginBottom: '0.5rem',
+                fontWeight: '500',
+                color: '#2c3e50'
+              }}>
+                Email Address
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={handleEmailChange}
+                placeholder="your@company.com"
+                required
+                disabled={isSubmitting}
+                autoComplete="email"
+                style={{
+                  width: '100%',
+                  padding: '0.75rem',
+                  border: '2px solid #e9ecef',
+                  borderRadius: '8px',
+                  fontSize: '1rem',
+                  outline: 'none',
+                  transition: 'border-color 0.2s ease',
+                  boxSizing: 'border-box',
+                  backgroundColor: 'white',
+                  color: '#333'
+                }}
+                onFocus={(e) => e.target.style.borderColor = '#3498db'}
+                onBlur={(e) => e.target.style.borderColor = '#e9ecef'}
+              />
+              {(emailError || error) && (
+                <p style={{ color: '#e74c3c', fontSize: '0.9rem', margin: '0.5rem 0 0 0' }}>
+                  {emailError || error}
+                </p>
+              )}
+            </div>
+
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <button
+                type="button"
+                onClick={onClose}
+                disabled={isSubmitting}
+                style={{
+                  flex: '1',
+                  minWidth: '120px',
+                  padding: '0.75rem 1.5rem',
+                  border: '2px solid #e9ecef',
+                  borderRadius: '8px',
+                  backgroundColor: 'white',
+                  color: '#6c757d',
+                  fontSize: '1rem',
+                  fontWeight: '500',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                Cancel
+              </button>
+              
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                style={{
+                  flex: '2',
+                  minWidth: '140px',
+                  padding: '0.75rem 1.5rem',
+                  border: 'none',
+                  borderRadius: '8px',
+                  backgroundColor: isSubmitting ? '#bdc3c7' : '#3498db',
+                  color: 'white',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                {isSubmitting ? 'Starting Trial...' : 'Start Free Trial'}
+              </button>
+            </div>
+          </form>
+
+          <div style={{
+            fontSize: '0.8rem',
+            color: '#95a5a6',
+            textAlign: 'center',
+            margin: '1rem 0 0 0',
+            lineHeight: '1.4'
+          }}>
+            <p style={{ margin: '0 0 0.5rem 0' }}>
+              ✅ No credit card required • ✅ Cancel anytime • ✅ Full access during trial
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  });
+
+  // Result highlighting component
+  const HighlightedText = React.memo(({ text, highlight }) => {
+    if (!highlight) return text;
+    
+    const parts = text.split(new RegExp(`(${highlight})`, 'gi'));
+    return parts.map((part, index) => 
+      part.toLowerCase() === highlight.toLowerCase() ? (
+        <mark key={index} style={{ backgroundColor: '#fff3cd', padding: '0 2px' }}>
+          {part}
+        </mark>
+      ) : part
+    );
+  });
 
   // Trial banner component
   const TrialBanner = useMemo(() => {
@@ -6857,7 +6816,12 @@ const App = () => {
               </span>
             )}
           </h2>
-          <SearchBar {...searchBarProps} />
+          <SearchBar 
+            onSearch={handleSearch} 
+            disabled={(trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial())}
+            placeholder={getSearchPlaceholder()}
+            activeSearchType={activeSearchType}
+          />
           
           {query && (
             <div style={{
