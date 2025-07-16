@@ -1,54 +1,33 @@
 {
-  "name": "Code Compass - CSA B149.1-25 Search",
+  "name": "Code Compass - CSA Gas Codes Search",
   "short_name": "Code Compass",
-  "description": "Search CSA B149.1-25 gas codes quickly and efficiently on any device",
+  "description": "Search CSA B149.1-25, B149.2-25 gas codes and regulations instantly. Perfect for gas technicians, HVAC students, and contractors.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#2c3e50",
-  "theme_color": "#2c3e50",
+  "theme_color": "#2d3748",
+  "background_color": "#1a1a1a",
   "orientation": "portrait-primary",
-  "categories": ["utilities", "reference", "productivity"],
-  "lang": "en-CA",
+  "scope": "/",
+  "categories": ["utilities", "productivity", "education"],
   "icons": [
     {
-      "src": "/icons/icon-72x72.png",
-      "sizes": "72x72",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/icons/icon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     },
     {
-      "src": "/icons/icon-96x96.png",
-      "sizes": "96x96",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/icons/icon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
     },
     {
-      "src": "/icons/icon-128x128.png",
-      "sizes": "128x128",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icons/icon-144x144.png",
-      "sizes": "144x144",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icons/icon-152x152.png",
-      "sizes": "152x152",
-      "type": "image/png",
-      "purpose": "maskable any"
+      "src": "/icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     },
     {
       "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icons/icon-384x384.png",
-      "sizes": "384x384",
       "type": "image/png",
       "purpose": "maskable any"
     },
@@ -61,44 +40,25 @@
   ],
   "shortcuts": [
     {
-      "name": "Search Appliances",
-      "short_name": "Appliances",
-      "description": "Search appliance-related codes",
-      "url": "/?search=appliance",
-      "icons": [
-        {
-          "src": "/icons/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
+      "name": "Search B149.1-25",
+      "short_name": "B149.1-25",
+      "description": "Search CSA B149.1-25 natural gas codes",
+      "url": "/?search=b149-1",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
     },
     {
-      "name": "Search Pressure",
-      "short_name": "Pressure",
-      "description": "Search pressure-related codes",
-      "url": "/?search=pressure",
-      "icons": [
-        {
-          "src": "/icons/icon-96x96.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshots/mobile-screenshot.png",
-      "sizes": "390x844",
-      "type": "image/png",
-      "form_factor": "narrow",
-      "label": "Code Compass mobile interface"
+      "name": "Search B149.2-25",
+      "short_name": "B149.2-25",
+      "description": "Search CSA B149.2-25 propane codes",
+      "url": "/?search=b149-2",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
     },
     {
-      "src": "/screenshots/desktop-screenshot.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide",
-      "label": "Code Compass desktop interface"
+      "name": "Search Regulations",
+      "short_name": "Regulations",
+      "description": "Search gas regulations database",
+      "url": "/?search=regulations",
+      "icons": [{ "src": "/icons/icon-192x192.png", "sizes": "192x192" }]
     }
   ]
 }
