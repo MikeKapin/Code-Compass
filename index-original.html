@@ -5,40 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
     
     <!-- PWA Meta Tags -->
-    <meta name="description" content="Search CSA B149.1-25, B149.2-25 gas codes and regulations quickly and efficiently. Perfect for contractors, inspectors, and gas technicians." />
-    <meta name="keywords" content="CSA, B149.1-25, B149.2-25, gas codes, appliance, pressure, safety, Canadian Standards, propane, regulations" />
+    <meta name="description" content="Search CSA B149.1-25 gas codes quickly and efficiently. Perfect for contractors, inspectors, and gas technicians." />
+    <meta name="keywords" content="CSA, B149.1-25, gas codes, appliance, pressure, safety, Canadian Standards" />
     <meta name="author" content="Code Compass" />
     
-    <!-- Theme Colors (Dark Mode) -->
-    <meta name="theme-color" content="#2d3748" />
-    <meta name="msapplication-navbutton-color" content="#2d3748" />
+    <!-- Theme Colors -->
+    <meta name="theme-color" content="#2c3e50" />
+    <meta name="msapplication-navbutton-color" content="#2c3e50" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
     <!-- PWA Manifest -->
     <link rel="manifest" href="/manifest.json" />
     
-    <!-- Apple Touch Icons (Using your custom icons) -->
-    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png" />
-    <link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png" />
     
-    <!-- Standard Favicon (Using your custom icons) -->
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/icons/icon-180x180.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/icons/icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/icon-114x114.png" />
+    
+    <!-- Standard Favicon -->
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
-    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     
     <!-- iOS Specific -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Code Compass" />
     
-    <!-- Microsoft Tiles (Using your custom icons) -->
-    <meta name="msapplication-TileImage" content="/icons/icon-192x192.png" />
-    <meta name="msapplication-TileColor" content="#2d3748" />
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileImage" content="/icons/icon-144x144.png" />
+    <meta name="msapplication-TileColor" content="#2c3e50" />
     
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     
-    <title>Code Compass - CSA Gas Codes Search</title>
+    <title>Code Compass</title>
     
     <style>
       /* Critical CSS for faster loading */
@@ -46,7 +49,7 @@
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        background-color: #1a1a1a;
+        background-color: #f8f9fa;
         overflow-x: hidden;
       }
       
@@ -57,7 +60,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(135deg, #2d3748, #3498db);
+        background: linear-gradient(135deg, #2c3e50, #3498db);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -98,18 +101,16 @@
         100% { transform: rotate(360deg); }
       }
       
-      /* Install prompt styles (Dark Mode) */
+      /* Install prompt styles */
       .install-prompt {
         position: fixed;
         bottom: 20px;
         left: 20px;
         right: 20px;
-        background: #2d3748;
-        color: #e2e8f0;
-        border: 1px solid #4a5568;
+        background: white;
         border-radius: 12px;
         padding: 1rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
         display: none;
         z-index: 1000;
         animation: slideUp 0.3s ease;
@@ -150,8 +151,8 @@
       <div style="display: flex; align-items: center; gap: 1rem;">
         <span style="font-size: 2rem;">🧭</span>
         <div style="flex: 1;">
-          <h3 style="margin: 0 0 0.25rem 0; font-size: 1rem; color: #e2e8f0;">Install Code Compass</h3>
-          <p style="margin: 0; font-size: 0.85rem; color: #a0aec0;">Add to your home screen for quick access</p>
+          <h3 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Install Code Compass</h3>
+          <p style="margin: 0; font-size: 0.85rem; color: #666;">Add to your home screen for quick access</p>
         </div>
         <div style="display: flex; gap: 0.5rem;">
           <button id="install-button" style="
@@ -165,8 +166,8 @@
           ">Install</button>
           <button id="install-dismiss" style="
             background: transparent;
-            color: #a0aec0;
-            border: 1px solid #4a5568;
+            color: #666;
+            border: 1px solid #ddd;
             padding: 0.5rem 1rem;
             border-radius: 6px;
             font-size: 0.9rem;
@@ -181,6 +182,19 @@
     <script type="module" src="/src/main.jsx"></script>
     
     <script>
+      // Service Worker Registration
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+
       // PWA Install Prompt
       let deferredPrompt;
       const installPrompt = document.getElementById('install-prompt');
@@ -259,27 +273,25 @@
                 bottom: 20px;
                 left: 20px;
                 right: 20px;
-                background: #2d3748;
-                color: #e2e8f0;
-                border: 1px solid #4a5568;
+                background: white;
                 border-radius: 12px;
                 padding: 1rem;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+                box-shadow: 0 4px 20px rgba(0,0,0,0.15);
                 z-index: 1000;
               ">
                 <div style="display: flex; align-items: center; gap: 1rem;">
                   <span style="font-size: 2rem;">🧭</span>
                   <div style="flex: 1;">
-                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1rem; color: #e2e8f0;">Install Code Compass</h3>
-                    <p style="margin: 0; font-size: 0.85rem; color: #a0aec0;">
+                    <h3 style="margin: 0 0 0.25rem 0; font-size: 1rem;">Install Code Compass</h3>
+                    <p style="margin: 0; font-size: 0.85rem; color: #666;">
                       Tap <span style="font-weight: bold;">Share</span> then 
                       <span style="font-weight: bold;">Add to Home Screen</span>
                     </p>
                   </div>
                   <button onclick="this.parentElement.parentElement.parentElement.remove(); localStorage.setItem('iosInstallShown', 'true');" style="
                     background: transparent;
-                    color: #a0aec0;
-                    border: 1px solid #4a5568;
+                    color: #666;
+                    border: 1px solid #ddd;
                     padding: 0.5rem 1rem;
                     border-radius: 6px;
                     font-size: 0.9rem;
