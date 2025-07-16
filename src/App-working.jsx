@@ -6500,20 +6500,20 @@ const App = () => {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {results.map((item, index) => (
             <div key={index} style={{
-              backgroundColor: '#2d3748',
+              backgroundColor: 'white',
               borderRadius: '12px',
               padding: '1.5rem',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
-              border: '1px solid #4a5568',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+              border: '1px solid #e9ecef',
               transition: 'transform 0.2s ease, box-shadow 0.2s ease'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-1px)';
-              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.4)';
+              e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.3)';
+              e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
             }}>
               <div style={{
                 display: 'flex',
@@ -6571,7 +6571,7 @@ const App = () => {
                 <h3 style={{
                   margin: 0,
                   fontSize: 'clamp(1rem, 3vw, 1.2rem)',
-                  color: '#e2e8f0',
+                  color: '#2c3e50',
                   fontWeight: '600',
                   flex: 1,
                   minWidth: '200px'
@@ -6582,7 +6582,7 @@ const App = () => {
               <p style={{
                 margin: 0,
                 lineHeight: '1.6',
-                color: '#a0aec0',
+                color: '#495057',
                 fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
               }}>
                 <HighlightedText text={item.description} highlight={query} />
@@ -6591,7 +6591,7 @@ const App = () => {
                 <div style={{
                   marginTop: '0.75rem',
                   fontSize: '0.85rem',
-                  color: '#a0aec0',
+                  color: '#6c757d',
                   fontStyle: 'italic'
                 }}>
                   Category: {item.category}
@@ -6601,7 +6601,7 @@ const App = () => {
                 <div style={{
                   marginTop: '0.5rem',
                   fontSize: '0.8rem',
-                  color: '#718096',
+                  color: '#95a5a6',
                   fontStyle: 'italic'
                 }}>
                   Source: {item.document_title}
@@ -6617,15 +6617,15 @@ const App = () => {
     if (query && !isLoading) {
       return (
         <div style={{
-          backgroundColor: '#2d3748',
+          backgroundColor: 'white',
           borderRadius: '12px',
           padding: '2rem',
           textAlign: 'center',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
           <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🔍</span>
-          <h3 style={{ color: '#a0aec0', margin: '0 0 0.5rem 0' }}>No results found</h3>
-          <p style={{ color: '#a0aec0', margin: 0 }}>
+          <h3 style={{ color: '#6c757d', margin: '0 0 0.5rem 0' }}>No results found</h3>
+          <p style={{ color: '#6c757d', margin: 0 }}>
             Try searching for different keywords or clause numbers
           </p>
         </div>
@@ -6637,19 +6637,19 @@ const App = () => {
       const isRegulations = activeSearchType === 'regulations';
       return (
         <div style={{
-          backgroundColor: '#2d3748',
+          backgroundColor: 'white',
           borderRadius: '12px',
           padding: '2rem',
           textAlign: 'center',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
           <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>
             {isRegulations ? '📋' : '🧭'}
           </span>
-          <h3 style={{ color: '#e2e8f0', margin: '0 0 0.5rem 0' }}>
+          <h3 style={{ color: '#2c3e50', margin: '0 0 0.5rem 0' }}>
             Welcome to Code Compass
           </h3>
-          <p style={{ color: '#a0aec0', margin: 0 }}>
+          <p style={{ color: '#6c757d', margin: 0 }}>
             Search {getDataSourceTitle()} codes by clause number, title, or keyword
             {isRegulations && (
               <span style={{ 
@@ -6672,7 +6672,7 @@ const App = () => {
   return (
     <div style={{
       minHeight: '100vh',
-      backgroundColor: '#1a1a1a',
+      backgroundColor: '#f8f9fa',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
     }}>
       {/* Email Modal */}
@@ -6686,13 +6686,13 @@ const App = () => {
 
       {/* Header */}
       <header style={{
-        backgroundColor: '#2d3748',
+        backgroundColor: '#2c3e50',
         color: 'white',
         padding: '1rem',
         position: 'sticky',
         top: 0,
         zIndex: 100,
-        boxShadow: '0 2px 4px rgba(0,0,0,0.3)'
+        boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
       }}>
         <div style={{
           maxWidth: '1200px',
@@ -6733,10 +6733,10 @@ const App = () => {
             display: 'flex', 
             flexWrap: 'wrap', 
             gap: '0.5rem',
-            backgroundColor: '#2d3748',
+            backgroundColor: 'white',
             padding: '1rem',
             borderRadius: '12px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
           }}>
             <button
               onClick={() => handleSearchTypeChange('b149-1')}
@@ -6748,8 +6748,8 @@ const App = () => {
                 fontWeight: '600',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                backgroundColor: activeSearchType === 'b149-1' ? '#3498db' : '#4a5568',
-                color: activeSearchType === 'b149-1' ? 'white' : '#e2e8f0',
+                backgroundColor: activeSearchType === 'b149-1' ? '#3498db' : '#f8f9fa',
+                color: activeSearchType === 'b149-1' ? 'white' : '#6c757d',
                 position: 'relative'
               }}
             >
@@ -6778,8 +6778,8 @@ const App = () => {
                 fontWeight: '600',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                backgroundColor: activeSearchType === 'b149-2' ? '#3498db' : '#4a5568',
-                color: activeSearchType === 'b149-2' ? 'white' : '#e2e8f0',
+                backgroundColor: activeSearchType === 'b149-2' ? '#3498db' : '#f8f9fa',
+                color: activeSearchType === 'b149-2' ? 'white' : '#6c757d',
                 position: 'relative'
               }}
             >
@@ -6808,8 +6808,8 @@ const App = () => {
                 fontWeight: '600',
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                backgroundColor: activeSearchType === 'regulations' ? '#3498db' : '#4a5568',
-                color: activeSearchType === 'regulations' ? 'white' : '#e2e8f0',
+                backgroundColor: activeSearchType === 'regulations' ? '#3498db' : '#f8f9fa',
+                color: activeSearchType === 'regulations' ? 'white' : '#6c757d',
                 position: 'relative'
               }}
             >
@@ -6833,16 +6833,16 @@ const App = () => {
 
         {/* Search Section */}
         <div style={{
-          backgroundColor: '#2d3748',
+          backgroundColor: 'white',
           borderRadius: '12px',
           padding: '1.5rem',
           marginBottom: '1.5rem',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.3)'
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
         }}>
           <h2 style={{
             margin: '0 0 1rem 0',
             fontSize: '1.1rem',
-            color: '#e2e8f0',
+            color: '#2c3e50',
             fontWeight: '500'
           }}>
             Search {getDataSourceTitle()} Codes
@@ -6863,7 +6863,7 @@ const App = () => {
             <div style={{
               marginTop: '1rem',
               fontSize: '0.9rem',
-              color: '#a0aec0'
+              color: '#6c757d'
             }}>
               {isLoading ? (
                 <span>🔍 Searching...</span>
