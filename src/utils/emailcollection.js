@@ -1,179 +1,260 @@
-// utils/emailCollection.js
-// Simple email collection and validation system
+// utils/emailcollection.js
+// Email validation and collection utilities
 
-// Email validation with enhanced checks
+// Email validation function
 export const validateEmail = (email) => {
   const errors = [];
   
-  // Basic format check
+  // Basic format validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     errors.push('Please enter a valid email address');
-    return { isValid: false, errors };
   }
   
-  // Check for common disposable email providers
-  const disposableDomains = [
-    '10minutemail.com', 'tempmail.org', 'guerrillamail.com', 
-    'mailinator.com', 'throwaway.email', 'temp-mail.org',
-    '10minmail.com', 'fakeinbox.com', 'tempail.com'
+  // Length validation
+  if (email.length > 254) {
+    errors.push('Email address is too long');
+  }
+  
+  // Check for common typos
+  const commonDomainTypos = {
+    'gmail.co': 'gmail.com',
+    'gmail.cm': 'gmail.com',
+    'gmial.com': 'gmail.com',
+    'yahoo.co': 'yahoo.com',
+    'yahoo.cm': 'yahoo.com',
+    'hotmail.co': 'hotmail.com',
+    'hotmail.cm': 'hotmail.com',
+    'outlook.co': 'outlook.com',
+    'outlook.cm': 'outlook.com'
+  };
+  
+  const domain = email.split('@')[1];
+  if (domain && commonDomainTypos[domain]) {
+    errors.push(`Did you mean ${email.split('@')[0]}@${commonDomainTypos[domain]}?`);
+  }
+  
+  // Disposable email detection (basic list)
+  const disposableEmails = [
+    '10minutemail.com',
+    'tempmail.org',
+    'guerrillamail.com',
+    'mailinator.com',
+    'throwaway.email',
+    'temp-mail.org'
   ];
   
-  const domain = email.split('@')[1].toLowerCase();
-  if (disposableDomains.includes(domain)) {
-    errors.push('Please use a permanent work email address');
-    return { isValid: false, errors };
+  if (domain && disposableEmails.includes(domain.toLowerCase())) {
+    errors.push('Please use a permanent email address');
   }
   
-  // Check for common personal email domains (optional warning)
-  const personalDomains = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com'];
-  const isPersonalEmail = personalDomains.includes(domain);
-  
-  return { 
-    isValid: true, 
-    errors: [], 
-    isPersonalEmail,
-    domain 
+  return {
+    isValid: errors.length === 0,
+    errors,
+    email: email.toLowerCase().trim()
   };
 };
 
-// Store email data locally (for simple tracking)
-export const storeEmailData = (email, source = 'trial_gate') => {
+// Submit email to your service
+export const submitEmailToService = async (email, source = 'trial_signup') => {
+  const validatedEmail = validateEmail(email);
+  
+  if (!validatedEmail.isValid) {
+    throw new Error(validatedEmail.errors[0]);
+  }
+
+  // Prepare data to send
   const emailData = {
-    email,
+    email: validatedEmail.email,
     source,
     timestamp: new Date().toISOString(),
-    domain: email.split('@')[1],
     userAgent: navigator.userAgent,
-    referrer: document.referrer || 'direct'
+    referrer: document.referrer,
+    url: window.location.href
   };
-  
-  // Store in localStorage for simple tracking
-  const existingEmails = JSON.parse(localStorage.getItem('collectedEmails') || '[]');
-  existingEmails.push(emailData);
-  localStorage.setItem('collectedEmails', JSON.stringify(existingEmails));
-  
-  return emailData;
-};
 
-// Send email to external service (example integration)
-export const submitEmailToService = async (email, source = 'trial_gate') => {
-  // Example: Send to your backend, Mailchimp, ConvertKit, etc.
-  
   try {
-    // Option 1: Send to your own backend
-    /*
-    const response = await fetch('/api/collect-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, source, timestamp: new Date().toISOString() })
-    });
-    */
-    
-    // Option 2: Send to Mailchimp (requires API key)
-    /*
-    const response = await fetch('https://your-region.api.mailchimp.com/3.0/lists/YOUR_LIST_ID/members', {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer YOUR_API_KEY',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email_address: email,
-        status: 'subscribed',
-        tags: [source, 'codecompass_trial']
-      })
-    });
-    */
-    
-    // Option 3: Send to a webhook service like Zapier
-    /*
-    const response = await fetch('https://hooks.zapier.com/hooks/catch/YOUR_WEBHOOK/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        email,
-        source,
-        timestamp: new Date().toISOString(),
-        product: 'codecompass'
-      })
-    });
-    */
-    
-    // For now, just store locally and simulate success
-    storeEmailData(email, source);
-    
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    return { success: true, message: 'Email collected successfully' };
-    
+    // Option 1: Send to your own API
+    if (shouldUseAPI()) {
+      const response = await fetch('/api/emails', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData)
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit email');
+      }
+
+      return await response.json();
+    }
+
+    // Option 2: Send to email marketing service (Mailchimp, ConvertKit, etc.)
+    return await submitToEmailService(emailData);
+
   } catch (error) {
-    console.error('Email submission failed:', error);
+    console.error('Email submission error:', error);
     
-    // Still store locally as backup
-    storeEmailData(email, source);
+    // Store locally as backup
+    storeEmailLocally(emailData);
     
-    return { success: false, error: error.message };
+    // Don't throw error to user - let trial proceed
+    return { success: true, stored_locally: true };
   }
 };
 
-// Get email statistics (for admin/analytics)
-export const getEmailStats = () => {
-  const emails = JSON.parse(localStorage.getItem('collectedEmails') || '[]');
-  
-  const stats = {
-    total: emails.length,
-    today: emails.filter(e => {
-      const today = new Date().toDateString();
-      const emailDate = new Date(e.timestamp).toDateString();
-      return emailDate === today;
-    }).length,
-    domains: {},
-    sources: {}
-  };
-  
-  emails.forEach(email => {
-    // Count domains
-    stats.domains[email.domain] = (stats.domains[email.domain] || 0) + 1;
-    
-    // Count sources
-    stats.sources[email.source] = (stats.sources[email.source] || 0) + 1;
-  });
-  
-  return stats;
+// Check if we should use API (not on localhost)
+const shouldUseAPI = () => {
+  return window.location.hostname !== 'localhost' && 
+         window.location.hostname !== '127.0.0.1';
 };
 
-// Email templates for follow-up (if you implement email sending)
-export const emailTemplates = {
-  trialWelcome: (email) => ({
-    subject: "Welcome to your Code Compass trial! 🧭",
-    html: `
-      <h2>Welcome to Code Compass!</h2>
-      <p>Hi there,</p>
-      <p>Your 7-day free trial is now active! You can now search through all CSA B149.1-25 gas codes instantly.</p>
-      <h3>What you can do during your trial:</h3>
-      <ul>
-        <li>✅ Unlimited code searches</li>
-        <li>✅ Mobile and desktop access</li>
-        <li>✅ Always up-to-date regulations</li>
-        <li>✅ Fast, intelligent search</li>
-      </ul>
-      <p><a href="https://codecompass.ninja" style="background: #3498db; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px;">Start Searching Codes</a></p>
-      <p>Your trial ends in 7 days. We'll send you a reminder before it expires.</p>
-      <p>Happy searching!<br>The Code Compass Team</p>
-    `
-  }),
+// Submit to email marketing service
+const submitToEmailService = async (emailData) => {
+  // Example for Mailchimp
+  if (window.MAILCHIMP_API_KEY && window.MAILCHIMP_LIST_ID) {
+    return await submitToMailchimp(emailData);
+  }
+
+  // Example for ConvertKit
+  if (window.CONVERTKIT_API_KEY && window.CONVERTKIT_FORM_ID) {
+    return await submitToConvertKit(emailData);
+  }
+
+  // Example for a webhook service like Zapier
+  if (window.WEBHOOK_URL) {
+    return await submitToWebhook(emailData);
+  }
+
+  // If no service configured, just store locally
+  storeEmailLocally(emailData);
+  return { success: true, stored_locally: true };
+};
+
+// Mailchimp integration example
+const submitToMailchimp = async (emailData) => {
+  const response = await fetch(`https://us1.api.mailchimp.com/3.0/lists/${window.MAILCHIMP_LIST_ID}/members`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `apikey ${window.MAILCHIMP_API_KEY}`
+    },
+    body: JSON.stringify({
+      email_address: emailData.email,
+      status: 'subscribed',
+      tags: [emailData.source],
+      merge_fields: {
+        SOURCE: emailData.source,
+        SIGNUP_URL: emailData.url
+      }
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error('Mailchimp submission failed');
+  }
+
+  return await response.json();
+};
+
+// ConvertKit integration example
+const submitToConvertKit = async (emailData) => {
+  const response = await fetch(`https://api.convertkit.com/v3/forms/${window.CONVERTKIT_FORM_ID}/subscribe`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      api_key: window.CONVERTKIT_API_KEY,
+      email: emailData.email,
+      tags: [emailData.source]
+    })
+  });
+
+  if (!response.ok) {
+    throw new Error('ConvertKit submission failed');
+  }
+
+  return await response.json();
+};
+
+// Webhook integration example (Zapier, Make.com, etc.)
+const submitToWebhook = async (emailData) => {
+  const response = await fetch(window.WEBHOOK_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(emailData)
+  });
+
+  if (!response.ok) {
+    throw new Error('Webhook submission failed');
+  }
+
+  return { success: true };
+};
+
+// Store email locally as backup
+const storeEmailLocally = (emailData) => {
+  try {
+    const emails = JSON.parse(localStorage.getItem('codecompass_emails') || '[]');
+    emails.push(emailData);
+    
+    // Keep only last 50 emails
+    if (emails.length > 50) {
+      emails.splice(0, emails.length - 50);
+    }
+    
+    localStorage.setItem('codecompass_emails', JSON.stringify(emails));
+    console.log('Email stored locally as backup:', emailData.email);
+  } catch (error) {
+    console.warn('Failed to store email locally:', error);
+  }
+};
+
+// Get locally stored emails (for debugging/backup)
+export const getStoredEmails = () => {
+  try {
+    return JSON.parse(localStorage.getItem('codecompass_emails') || '[]');
+  } catch (error) {
+    console.warn('Failed to retrieve stored emails:', error);
+    return [];
+  }
+};
+
+// Clear locally stored emails
+export const clearStoredEmails = () => {
+  localStorage.removeItem('codecompass_emails');
+};
+
+// Email domain analysis
+export const analyzeEmailDomain = (email) => {
+  const domain = email.split('@')[1];
   
-  trialReminder: (email, daysLeft) => ({
-    subject: `${daysLeft} days left in your Code Compass trial`,
-    html: `
-      <h2>Your trial expires soon!</h2>
-      <p>Hi there,</p>
-      <p>Just a friendly reminder that your Code Compass trial expires in ${daysLeft} days.</p>
-      <p>Don't lose access to instant CSA code searches!</p>
-      <p><a href="https://buy.stripe.com/fZucN6bhHgMcfT81xS7ok00" style="background: #e74c3c; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px;">Subscribe Now - $49.99/year</a></p>
-      <p>Questions? Just reply to this email.</p>
-    `
-  })
+  const businessDomains = [
+    'company.com', 'corp.com', 'inc.com', 'ltd.com',
+    // Add more business domain patterns
+  ];
+  
+  const personalDomains = [
+    'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
+    'icloud.com', 'aol.com', 'live.com'
+  ];
+  
+  const isPersonal = personalDomains.includes(domain.toLowerCase());
+  const isBusiness = !isPersonal && (
+    businessDomains.includes(domain.toLowerCase()) ||
+    !personalDomains.includes(domain.toLowerCase())
+  );
+  
+  return {
+    domain,
+    isPersonal,
+    isBusiness,
+    isEducational: domain.endsWith('.edu'),
+    isGovernment: domain.endsWith('.gov')
+  };
 };

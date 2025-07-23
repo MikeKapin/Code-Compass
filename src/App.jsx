@@ -4,6 +4,8 @@ import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { searchCSACode, createCSASearchIndex, csaB149Data } from '../data/csaDataB149_2.js';
 import { searchRegulations, createRegulationSearchIndex, regulationsData } from '../data/regulationsData.js';
 import { trialManager } from './utils/trialManager.js';
+// Add this import at the top
+import { paymentHandler } from './utils/paymentHandler.js';
 import { validateEmail } from './utils/emailcollection.js';
 import { 
   trackTrialStarted,
@@ -6024,7 +6026,7 @@ const App = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [trialStatus, setTrialStatus] = useState(null);
+  const [accessStatus, setAccessStatus] = useState(null);
   const [showEmailModal, setShowEmailModal] = useState(false);
   const [emailSubmitting, setEmailSubmitting] = useState(false);
   const [emailError, setEmailError] = useState('');
@@ -6048,10 +6050,47 @@ const App = () => {
     }
   }, []);
 
-  // Load trial status on mount
+  // Replace your testPaymentSuccess function
+  const testPaymentSuccess = useCallback(() => {
+    paymentHandler.testPaymentSuccess();
+  }, []);
+
+  // Update your useEffect (replace the existing one)
   useEffect(() => {
-    const status = trialManager.getTrialStatus();
-    setTrialStatus(status);
+    console.log('App: Initializing...');
+    
+    // Initialize payment handler first
+    paymentHandler.init();
+    
+    // Get comprehensive access status (includes both trial and subscription)
+    const status = trialManager.getAccessStatus();
+    console.log('App: Initial access status:', status);
+    setAccessStatus(status);
+    
+    // Listen for storage changes (in case subscription is activated in another tab)
+    const handleStorageChange = (event) => {
+      console.log('App: Storage change detected:', event);
+      const updatedStatus = trialManager.getAccessStatus();
+      console.log('App: Updated access status from storage:', updatedStatus);
+      setAccessStatus(updatedStatus);
+    };
+    
+    // Listen for payment success events
+    const handlePaymentSuccess = (event) => {
+      console.log('App: Payment success event received:', event);
+      // Refresh access status after successful payment
+      const updatedStatus = trialManager.getAccessStatus();
+      console.log('App: Updated access status after payment:', updatedStatus);
+      setAccessStatus(updatedStatus);
+    };
+    
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('paymentSuccess', handlePaymentSuccess);
+    
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('paymentSuccess', handlePaymentSuccess);
+    };
   }, []);
 
   // Clear search when switching types
@@ -6124,46 +6163,49 @@ const App = () => {
       return;
     }
 
-    // For both B149.1-25 and B149.2-25, apply trial management
-    const currentStatus = trialManager.getTrialStatus();
+    // For both B149.1-25 and B149.2-25, check access status
+    const currentStatus = trialManager.getAccessStatus();
     
-    // If no trial exists, show email modal
-    if (!currentStatus.trialUsed && currentStatus.eligible) {
+    // If user has subscription access, allow search
+    if (currentStatus.hasAccess) {
+      if (currentStatus.type === 'trial') {
+        // User is on trial - record search
+        const success = trialManager.recordSearch(searchQuery);
+        if (!success) return; // Daily limit reached
+      }
+      
+      setQuery(searchQuery);
+      setShowSuggestions(false);
+      
+      // Perform the appropriate search based on type
+      if (activeSearchType === 'b149-1') {
+        // B149.1-25 search
+        const searchResults = searchCodes(searchQuery);
+        setResults(searchResults);
+        trackSearch(searchQuery, searchResults.length);
+      } else if (activeSearchType === 'b149-2') {
+        // B149.2-25 search
+        if (csaSearchIndex) {
+          const searchResults = searchCSACode(searchQuery, csaSearchIndex);
+          setResults(searchResults);
+          trackSearch(searchQuery, searchResults.length);
+        }
+      }
+      
+      // Update access status to reflect new search count
+      setAccessStatus(trialManager.getAccessStatus());
+      return;
+    }
+    
+    // If no access and trial hasn't been used, show email modal
+    if (!currentStatus.hasAccess && currentStatus.type === 'trial' && currentStatus.eligible) {
       setShowEmailModal(true);
       localStorage.setItem('pendingQuery', searchQuery);
       localStorage.setItem('pendingSearchType', activeSearchType);
       return;
     }
     
-    // If trial is active, allow search
-    if (currentStatus.trialActive) {
-      const success = trialManager.recordSearch(searchQuery);
-      if (success) {
-        setQuery(searchQuery);
-        setShowSuggestions(false);
-        
-        // Perform the appropriate search based on type
-        if (activeSearchType === 'b149-1') {
-          // B149.1-25 search
-          const searchResults = searchCodes(searchQuery);
-          setResults(searchResults);
-          trackSearch(searchQuery, searchResults.length);
-        } else if (activeSearchType === 'b149-2') {
-          // B149.2-25 search
-          if (csaSearchIndex) {
-            const searchResults = searchCSACode(searchQuery, csaSearchIndex);
-            setResults(searchResults);
-            trackSearch(searchQuery, searchResults.length);
-          }
-        }
-        
-        // Update trial status to reflect new search count
-        setTrialStatus(trialManager.getTrialStatus());
-      }
-      return;
-    }
-    
-    // If trial expired, search is blocked by UI
+    // If no access (trial expired), search is blocked by UI
   }, [activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes]);
 
   // Handle search type switching
@@ -6184,7 +6226,7 @@ const App = () => {
         trackTrialStarted(email);
         trackEmailSubmission(email);
         
-        setTrialStatus(result.trialData);
+        setAccessStatus(result.trialData);
         setShowEmailModal(false);
         
         // Execute pending search if any
@@ -6210,9 +6252,8 @@ const App = () => {
 
   // Handle subscription redirect
   const handleSubscribe = useCallback(() => {
-    trackSubscriptionAttempt('trial_banner');
-    window.open('https://buy.stripe.com/fZucN6bhHgMcfT81xS7ok00', '_blank');
-  }, []);
+    trackSubscriptionAttempt('access_banner');
+window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01', '_blank');  }, []);
 
   // Get search placeholder text
   const getSearchPlaceholder = useCallback(() => {
@@ -6242,8 +6283,8 @@ const App = () => {
     }
   }, [activeSearchType]);
 
-  // Check if current search type requires trial
-  const requiresTrial = useCallback(() => {
+  // Check if current search type requires premium access
+  const requiresPremiumAccess = useCallback(() => {
     return activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
   }, [activeSearchType]);
 
@@ -6257,19 +6298,19 @@ const App = () => {
   // Handle form submission
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    const isDisabled = (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial());
+    const isDisabled = (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess());
     if (query.trim() && !isDisabled) {
       handleSearch(query.trim());
     }
-  }, [query, trialStatus, requiresTrial, handleSearch]);
+  }, [query, requiresPremiumAccess, handleSearch]);
 
   // Handle input focus
   const handleInputFocus = useCallback(() => {
-    const isDisabled = (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial());
+    const isDisabled = (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess());
     if (!isDisabled && query.length > 1 && (activeSearchType === 'b149-1' || activeSearchType === 'b149-2')) {
       setShowSuggestions(true);
     }
-  }, [query, trialStatus, requiresTrial, activeSearchType]);
+  }, [query, requiresPremiumAccess, activeSearchType]);
 
   // Handle input blur with longer delay
   const handleInputBlur = useCallback(() => {
@@ -6284,9 +6325,9 @@ const App = () => {
       return;
     }
 
-    // For trial-required searches, check trial status
-    if (requiresTrial()) {
-      if (trialStatus?.trialUsed && !trialStatus?.trialActive) {
+    // For premium-required searches, check access status
+    if (requiresPremiumAccess()) {
+      if (!trialManager.canAccessPremiumFeatures()) {
         setResults([]);
         return;
       }
@@ -6298,12 +6339,12 @@ const App = () => {
 
       switch (activeSearchType) {
         case 'b149-1':
-          if (trialStatus?.trialActive) {
+          if (trialManager.canAccessPremiumFeatures()) {
             searchResults = searchCodes(query);
           }
           break;
         case 'b149-2':
-          if (trialStatus?.trialActive && csaSearchIndex) {
+          if (trialManager.canAccessPremiumFeatures() && csaSearchIndex) {
             searchResults = searchCSACode(query, csaSearchIndex);
           }
           break;
@@ -6319,7 +6360,7 @@ const App = () => {
     }, 150);
 
     return () => clearTimeout(timeoutId);
-  }, [query, trialStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, requiresTrial]);
+  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, requiresPremiumAccess]);
 
   // Memoized values to prevent unnecessary re-renders
   const searchBarProps = useMemo(() => ({
@@ -6329,7 +6370,7 @@ const App = () => {
     onFocus: handleInputFocus,
     onBlur: handleInputBlur,
     placeholder: getSearchPlaceholder(),
-    isDisabled: (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial()),
+    isDisabled: (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess()),
     suggestions,
     showSuggestions,
     onSuggestionClick: handleSuggestionClick
@@ -6340,19 +6381,43 @@ const App = () => {
     handleInputFocus, 
     handleInputBlur, 
     getSearchPlaceholder, 
-    trialStatus, 
-    requiresTrial, 
+    requiresPremiumAccess, 
     suggestions, 
     showSuggestions, 
     handleSuggestionClick
   ]);
 
-  // Trial banner component
-  const TrialBanner = useMemo(() => {
-    // Only show trial banner for trial-required searches
-    if (!requiresTrial() || !trialStatus?.trialUsed) return null;
+  // Access banner component
+  const AccessBanner = useMemo(() => {
+    // Only show banner for premium-required searches
+    if (!requiresPremiumAccess() || !accessStatus) return null;
     
-    if (trialStatus.trialActive) {
+    // Active subscription
+    if (accessStatus.type === 'subscription' && accessStatus.hasAccess) {
+      return (
+        <div style={{
+          background: 'linear-gradient(135deg, #9b59b6, #8e44ad)',
+          color: 'white',
+          padding: '16px 20px',
+          textAlign: 'center',
+          marginBottom: '1rem',
+          borderRadius: '8px',
+          boxShadow: '0 2px 8px rgba(155, 89, 182, 0.3)'
+        }}>
+          <div style={{ marginBottom: '8px' }}>
+            <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
+              ✨ Subscription Active - Full Access to B149.1-25 & B149.2-25
+            </span>
+            <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
+              Expires: {new Date(accessStatus.expiresAt).toLocaleDateString()}
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    // Active trial
+    if (accessStatus.type === 'trial' && accessStatus.hasAccess) {
       return (
         <div style={{
           background: 'linear-gradient(135deg, #4CAF50, #45a049)',
@@ -6365,11 +6430,11 @@ const App = () => {
         }}>
           <div style={{ marginBottom: '8px' }}>
             <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
-              🎉 Trial active: {trialStatus.daysRemaining} day{trialStatus.daysRemaining !== 1 ? 's' : ''} remaining
+              🎉 Trial active: {accessStatus.daysRemaining} day{accessStatus.daysRemaining !== 1 ? 's' : ''} remaining
             </span>
-            {trialStatus.searchCount > 0 && (
+            {accessStatus.searchCount > 0 && (
               <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
-                {trialStatus.searchCount} searches performed across B149.1-25 & B149.2-25
+                {accessStatus.searchCount} searches performed across B149.1-25 & B149.2-25
               </div>
             )}
           </div>
@@ -6393,7 +6458,8 @@ const App = () => {
       );
     }
     
-    if (!trialStatus.trialActive) {
+    // Expired trial/no access
+    if (!accessStatus.hasAccess) {
       return (
         <div style={{
           background: 'linear-gradient(135deg, #FF5722, #D84315)',
@@ -6406,7 +6472,7 @@ const App = () => {
         }}>
           <div style={{ marginBottom: '12px' }}>
             <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
-              🔔 Trial expired - You searched {trialStatus.searchCount} times during your trial
+              🔔 {accessStatus.type === 'trial' ? 'Trial expired' : 'Premium access required'}
             </span>
           </div>
           <button
@@ -6431,13 +6497,13 @@ const App = () => {
     }
     
     return null;
-  }, [trialStatus, handleSubscribe, requiresTrial]);
+  }, [accessStatus, handleSubscribe, requiresPremiumAccess]);
 
   // Search results component
   const SearchResults = useMemo(() => {
     
-    // Show blocked message if trial expired (only for trial-required searches)
-    if (trialStatus?.trialUsed && !trialStatus?.trialActive && requiresTrial()) {
+    // Show blocked message if no premium access (only for premium-required searches)
+    if (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess()) {
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6448,9 +6514,12 @@ const App = () => {
           border: '2px solid #FF5722'
         }}>
           <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🔒</span>
-          <h3 style={{ color: '#FF5722', margin: '0 0 0.5rem 0' }}>Trial Expired</h3>
+          <h3 style={{ color: '#FF5722', margin: '0 0 0.5rem 0' }}>Premium Access Required</h3>
           <p style={{ color: '#6c757d', margin: '0 0 1rem 0' }}>
-            You performed {trialStatus.searchCount} searches during your 7-day trial.
+            {accessStatus?.type === 'trial' ? 
+              `You performed ${accessStatus.searchCount || 0} searches during your 7-day trial.` :
+              'Start your free trial to access CSA B149.1-25 and B149.2-25.'
+            }
           </p>
           <button
             onClick={handleSubscribe}
@@ -6667,7 +6736,7 @@ const App = () => {
     }
 
     return null;
-  }, [results, isLoading, trialStatus, query, handleSubscribe, activeSearchType, requiresTrial, getDataSourceTitle]);
+  }, [results, isLoading, accessStatus, query, handleSubscribe, activeSearchType, requiresPremiumAccess, getDataSourceTitle]);
 
   return (
     <div style={{
@@ -6724,8 +6793,8 @@ const App = () => {
         padding: '1rem',
         paddingBottom: '2rem'
       }}>
-        {/* Trial Banner */}
-        {TrialBanner}
+        {/* Access Banner */}
+        {AccessBanner}
 
         {/* Search Type Selector */}
         <div style={{ marginBottom: '1.5rem' }}>
@@ -6758,14 +6827,14 @@ const App = () => {
                 position: 'absolute',
                 top: '-8px',
                 right: '-8px',
-                backgroundColor: '#e74c3c',
+                backgroundColor: accessStatus?.type === 'subscription' && accessStatus?.hasAccess ? '#27ae60' : '#e74c3c',
                 color: 'white',
                 fontSize: '0.6rem',
                 padding: '2px 6px',
                 borderRadius: '10px',
                 fontWeight: '700'
               }}>
-                TRIAL
+                {accessStatus?.type === 'subscription' && accessStatus?.hasAccess ? 'ACTIVE' : 'TRIAL'}
               </span>
             </button>
             <button
@@ -6788,14 +6857,14 @@ const App = () => {
                 position: 'absolute',
                 top: '-8px',
                 right: '-8px',
-                backgroundColor: '#e74c3c',
+                backgroundColor: accessStatus?.type === 'subscription' && accessStatus?.hasAccess ? '#27ae60' : '#e74c3c',
                 color: 'white',
                 fontSize: '0.6rem',
                 padding: '2px 6px',
                 borderRadius: '10px',
                 fontWeight: '700'
               }}>
-                TRIAL
+                {accessStatus?.type === 'subscription' && accessStatus?.hasAccess ? 'ACTIVE' : 'TRIAL'}
               </span>
             </button>
             <button

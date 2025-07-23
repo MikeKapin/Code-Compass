@@ -1,5 +1,5 @@
 // utils/trialManager.js
-// Enhanced trial management with subscription support
+// Advanced trial management with multiple protection layers
 
 import { trackTrialStarted, trackTrialExpired, trackSuspiciousActivity } from './analytics.js';
 import { validateEmail, submitEmailToService } from './emailcollection.js';
@@ -7,11 +7,9 @@ import { validateEmail, submitEmailToService } from './emailcollection.js';
 class TrialManager {
   constructor() {
     this.TRIAL_DURATION_DAYS = 7;
-    this.MAX_SEARCHES_PER_DAY = 50;
+    this.MAX_SEARCHES_PER_DAY = 50; // Reasonable limit
     this.STORAGE_KEYS = {
       TRIAL_DATA: 'codecompass_trial_data',
-      SUBSCRIPTION_DATA: 'codecompass_subscription_data',
-      SUBSCRIPTION_STATUS: 'subscriptionStatus', // For payment success
       DEVICE_ID: 'codecompass_device_id',
       SEARCH_LOG: 'codecompass_search_log'
     };
@@ -66,89 +64,12 @@ class TrialManager {
     return deviceId;
   }
 
-  // Helper to get date one year from now
-  getYearFromNow() {
-    const date = new Date();
-    date.setFullYear(date.getFullYear() + 1);
-    return date.toISOString();
-  }
-
-  // Activate paid subscription
-  activateSubscription(subscriptionData) {
-    const subscription = {
-      isActive: true,
-      plan: subscriptionData.plan || 'annual',
-      subscriptionId: subscriptionData.subscriptionId,
-      customerId: subscriptionData.customerId,
-      email: subscriptionData.email,
-      activatedAt: new Date().toISOString(),
-      expiresAt: subscriptionData.expiresAt || this.getYearFromNow(),
-      deviceId: this.getDeviceId(),
-      status: 'active'
-    };
-
-    localStorage.setItem(this.STORAGE_KEYS.SUBSCRIPTION_DATA, JSON.stringify(subscription));
-    
-    // Track subscription activation
-    console.log('Subscription activated:', subscription);
-    
-    return subscription;
-  }
-
-  // Get subscription status
-  getSubscriptionStatus() {
-    // First check the payment success format (subscriptionStatus)
-    const paymentSubscriptionStr = localStorage.getItem(this.STORAGE_KEYS.SUBSCRIPTION_STATUS);
-    if (paymentSubscriptionStr) {
-      try {
-        const subscription = JSON.parse(paymentSubscriptionStr);
-        const now = new Date().getTime();
-        const expiresAt = new Date(subscription.expiresAt).getTime();
-        
-        if (subscription.isActive && expiresAt > now) {
-          return {
-            ...subscription,
-            isActive: true,
-            daysUntilExpiry: Math.max(0, Math.ceil((expiresAt - now) / (1000 * 60 * 60 * 24)))
-          };
-        }
-      } catch (error) {
-        console.error('Error parsing payment subscription data:', error);
-      }
-    }
-
-    // Then check the main subscription data format
-    const subscriptionDataStr = localStorage.getItem(this.STORAGE_KEYS.SUBSCRIPTION_DATA);
-    if (subscriptionDataStr) {
-      try {
-        const subscription = JSON.parse(subscriptionDataStr);
-        const now = new Date().getTime();
-        const expiresAt = new Date(subscription.expiresAt).getTime();
-        
-        const isActive = subscription.isActive && expiresAt > now;
-        
-        return {
-          ...subscription,
-          isActive,
-          daysUntilExpiry: Math.max(0, Math.ceil((expiresAt - now) / (1000 * 60 * 60 * 24)))
-        };
-      } catch (error) {
-        console.error('Error parsing subscription data:', error);
-      }
-    }
-    
-    return {
-      isActive: false,
-      plan: null,
-      expiresAt: null
-    };
-  }
-
   // Validate trial integrity
   validateTrialIntegrity(trialData) {
     const currentFingerprint = this.generateDeviceFingerprint();
     const deviceId = this.getDeviceId();
     
+    // Check if device fingerprint matches
     if (trialData.deviceId && trialData.deviceId !== deviceId) {
       trackSuspiciousActivity('device_mismatch', {
         stored: trialData.deviceId,
@@ -157,6 +78,7 @@ class TrialManager {
       return false;
     }
     
+    // Check for time manipulation
     const now = Date.now();
     const trialStart = new Date(trialData.trialStart).getTime();
     if (trialStart > now) {
@@ -172,6 +94,7 @@ class TrialManager {
 
   // Start trial with email
   async startTrial(email) {
+    // Validate email
     const emailValidation = validateEmail(email);
     if (!emailValidation.isValid) {
       return {
@@ -180,6 +103,7 @@ class TrialManager {
       };
     }
 
+    // Check if trial already exists
     const existingTrial = this.getTrialStatus();
     if (existingTrial.trialUsed) {
       return {
@@ -189,8 +113,10 @@ class TrialManager {
     }
 
     try {
+      // Submit email to collection service
       await submitEmailToService(email, 'trial_start');
 
+      // Create trial data
       const trialStart = new Date();
       const trialEnd = new Date();
       trialEnd.setDate(trialStart.getDate() + this.TRIAL_DURATION_DAYS);
@@ -207,14 +133,18 @@ class TrialManager {
         version: '1.0'
       };
 
+      // Store trial data
       localStorage.setItem(this.STORAGE_KEYS.TRIAL_DATA, JSON.stringify(trialData));
+      
+      // Initialize search log
       localStorage.setItem(this.STORAGE_KEYS.SEARCH_LOG, JSON.stringify([]));
 
+      // Track trial start
       trackTrialStarted(email);
 
       return {
         success: true,
-        trialData: this.getAccessStatus()
+        trialData: this.getTrialStatus()
       };
 
     } catch (error) {
@@ -242,6 +172,7 @@ class TrialManager {
     try {
       const trialData = JSON.parse(trialDataStr);
       
+      // Validate trial integrity
       if (!this.validateTrialIntegrity(trialData)) {
         return {
           trialActive: false,
@@ -259,6 +190,7 @@ class TrialManager {
       const daysRemaining = Math.max(0, Math.ceil((trialEnd - now) / (1000 * 60 * 60 * 24)));
       const isActive = daysRemaining > 0;
 
+      // Track trial expiration
       if (trialData.searchCount > 0 && !isActive && !trialData.expirationTracked) {
         trackTrialExpired(trialData.searchCount);
         trialData.expirationTracked = true;
@@ -278,6 +210,7 @@ class TrialManager {
       };
 
     } catch (error) {
+      // Corrupted data - treat as used trial
       return {
         trialActive: false,
         trialUsed: true,
@@ -288,74 +221,27 @@ class TrialManager {
     }
   }
 
-  // Enhanced access control
-  canAccessPremiumFeatures() {
-    // First check subscription status
-    const subscriptionStatus = this.getSubscriptionStatus();
-    if (subscriptionStatus.isActive) {
-      return true;
-    }
-
-    // Fall back to trial status
-    const trialStatus = this.getTrialStatus();
-    return trialStatus.trialActive;
-  }
-
-  // Get comprehensive access status - MAIN METHOD
-  getAccessStatus() {
-    const subscriptionStatus = this.getSubscriptionStatus();
-    const trialStatus = this.getTrialStatus();
-
-    // If user has active subscription, that takes precedence
-    if (subscriptionStatus.isActive) {
-      return {
-        hasAccess: true,
-        type: 'subscription',
-        plan: subscriptionStatus.plan,
-        expiresAt: subscriptionStatus.expiresAt,
-        daysUntilExpiry: subscriptionStatus.daysUntilExpiry,
-        isActive: true,
-        trialUsed: trialStatus.trialUsed,
-        subscriptionId: subscriptionStatus.subscriptionId
-      };
-    }
-
-    // Otherwise return trial status
-    return {
-      hasAccess: trialStatus.trialActive,
-      type: 'trial',
-      trialActive: trialStatus.trialActive,
-      trialUsed: trialStatus.trialUsed,
-      eligible: trialStatus.eligible,
-      daysRemaining: trialStatus.daysRemaining,
-      searchCount: trialStatus.searchCount,
-      email: trialStatus.email
-    };
-  }
-
-  // Record a search (works for both trial and subscription)
+  // Record a search
   recordSearch(query, resultCount = 0) {
-    const accessStatus = this.getAccessStatus();
+    const trialStatus = this.getTrialStatus();
     
-    if (!accessStatus.hasAccess) {
+    if (!trialStatus.trialActive) {
       return false;
     }
 
-    // Check daily search limit (only for trial users)
-    if (accessStatus.type === 'trial') {
-      const today = new Date().toDateString();
-      const searchLog = JSON.parse(localStorage.getItem(this.STORAGE_KEYS.SEARCH_LOG) || '[]');
-      const todaySearches = searchLog.filter(log => 
-        new Date(log.timestamp).toDateString() === today
-      );
+    // Check daily search limit
+    const today = new Date().toDateString();
+    const searchLog = JSON.parse(localStorage.getItem(this.STORAGE_KEYS.SEARCH_LOG) || '[]');
+    const todaySearches = searchLog.filter(log => 
+      new Date(log.timestamp).toDateString() === today
+    );
 
-      if (todaySearches.length >= this.MAX_SEARCHES_PER_DAY) {
-        trackSuspiciousActivity('daily_limit_exceeded', {
-          searchCount: todaySearches.length,
-          limit: this.MAX_SEARCHES_PER_DAY
-        });
-        return false;
-      }
+    if (todaySearches.length >= this.MAX_SEARCHES_PER_DAY) {
+      trackSuspiciousActivity('daily_limit_exceeded', {
+        searchCount: todaySearches.length,
+        limit: this.MAX_SEARCHES_PER_DAY
+      });
+      return false;
     }
 
     // Record the search
@@ -363,21 +249,17 @@ class TrialManager {
       query: query.toLowerCase().trim(),
       resultCount,
       timestamp: new Date().toISOString(),
-      deviceId: this.getDeviceId(),
-      accessType: accessStatus.type
+      deviceId: this.getDeviceId()
     };
 
-    const searchLog = JSON.parse(localStorage.getItem(this.STORAGE_KEYS.SEARCH_LOG) || '[]');
     searchLog.push(searchRecord);
     localStorage.setItem(this.STORAGE_KEYS.SEARCH_LOG, JSON.stringify(searchLog));
 
-    // Update trial data if user is on trial
-    if (accessStatus.type === 'trial') {
-      const trialData = JSON.parse(localStorage.getItem(this.STORAGE_KEYS.TRIAL_DATA));
-      trialData.searchCount = (trialData.searchCount || 0) + 1;
-      trialData.lastSearchDate = new Date().toISOString();
-      localStorage.setItem(this.STORAGE_KEYS.TRIAL_DATA, JSON.stringify(trialData));
-    }
+    // Update trial data
+    const trialData = JSON.parse(localStorage.getItem(this.STORAGE_KEYS.TRIAL_DATA));
+    trialData.searchCount = (trialData.searchCount || 0) + 1;
+    trialData.lastSearchDate = new Date().toISOString();
+    localStorage.setItem(this.STORAGE_KEYS.TRIAL_DATA, JSON.stringify(trialData));
 
     return true;
   }
@@ -411,40 +293,36 @@ class TrialManager {
       .map(([query, count]) => ({ query, count }));
   }
 
-  // Handle successful payment - called from payment success
-  handlePaymentSuccess(paymentData = {}) {
-    const subscriptionData = {
-      type: 'subscription',
-      isActive: true,
-      hasAccess: true,
-      plan: paymentData.plan || 'annual',
-      subscriptionId: paymentData.subscription_id || `sub_${Date.now()}`,
-      customerId: paymentData.customer_id || `cus_${Date.now()}`,
-      email: paymentData.customer_email || 'unknown@example.com',
-      amount: paymentData.amount || 4999, // $49.99 in cents
-      activatedAt: new Date().toISOString(),
-      expiresAt: paymentData.expiresAt || this.getYearFromNow(),
-      deviceId: this.getDeviceId()
-    };
-
-    // Store in the payment success format
-    localStorage.setItem(this.STORAGE_KEYS.SUBSCRIPTION_STATUS, JSON.stringify(subscriptionData));
-    
-    // Also store in main subscription format for consistency
-    localStorage.setItem(this.STORAGE_KEYS.SUBSCRIPTION_DATA, JSON.stringify(subscriptionData));
-    
-    console.log('Payment success handled:', subscriptionData);
-    
-    return subscriptionData;
-  }
-
-  // Reset trial (for testing)
+  // Reset trial (for testing - remove in production)
   resetTrial() {
     localStorage.removeItem(this.STORAGE_KEYS.TRIAL_DATA);
     localStorage.removeItem(this.STORAGE_KEYS.SEARCH_LOG);
     localStorage.removeItem(this.STORAGE_KEYS.DEVICE_ID);
-    localStorage.removeItem(this.STORAGE_KEYS.SUBSCRIPTION_DATA);
-    localStorage.removeItem(this.STORAGE_KEYS.SUBSCRIPTION_STATUS);
+  }
+
+  // Check if user can access premium features
+  canAccessPremiumFeatures() {
+    const trialStatus = this.getTrialStatus();
+    
+    // Allow access if trial is active
+    if (trialStatus.trialActive) {
+      return true;
+    }
+
+    // Check for subscription status (implement based on your payment system)
+    const subscriptionStatus = this.getSubscriptionStatus();
+    return subscriptionStatus.isActive;
+  }
+
+  // Get subscription status (placeholder - implement based on your payment system)
+  getSubscriptionStatus() {
+    // This would typically check with Stripe or your payment processor
+    // For now, return default status
+    return {
+      isActive: false,
+      plan: null,
+      expiresAt: null
+    };
   }
 }
 
@@ -455,12 +333,8 @@ export const trialManager = new TrialManager();
 export const {
   startTrial,
   getTrialStatus,
-  getSubscriptionStatus,
-  getAccessStatus,
   recordSearch,
   getSearchStats,
   canAccessPremiumFeatures,
-  activateSubscription,
-  handlePaymentSuccess,
   resetTrial
 } = trialManager;
