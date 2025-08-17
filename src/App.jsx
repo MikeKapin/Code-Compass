@@ -13,6 +13,8 @@ import {
   trackSubscriptionAttempt,
   trackEmailSubmission 
 } from './utils/analytics.js';
+// AI Interpretation imports
+import AIInterpretation from './components/AIInterpretation.jsx';
 
 // Full CSA data array (all the codes from your original file)
 const fullCSAData = [
@@ -6035,6 +6037,10 @@ const App = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
 
+  // AI Interpretation state
+  const [showAIInterpretation, setShowAIInterpretation] = useState(false);
+  const [selectedCodeForAI, setSelectedCodeForAI] = useState(null);
+
   // Initialize search indices on component mount
   useEffect(() => {
     // Initialize CSA B149.2 search index
@@ -6253,7 +6259,7 @@ const App = () => {
   // Handle subscription redirect
   const handleSubscribe = useCallback(() => {
     trackSubscriptionAttempt('access_banner');
-window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01', '_blank');  }, []);
+window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01','_blank');  }, []);
 
   // Get search placeholder text
   const getSearchPlaceholder = useCallback(() => {
@@ -6287,6 +6293,17 @@ window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01', '_blank');  }, [])
   const requiresPremiumAccess = useCallback(() => {
     return activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
   }, [activeSearchType]);
+
+  // AI Interpretation handlers
+  const handleAIInterpretation = useCallback((codeData) => {
+    setSelectedCodeForAI(codeData);
+    setShowAIInterpretation(true);
+  }, []);
+
+  const handleCloseAIInterpretation = useCallback(() => {
+    setShowAIInterpretation(false);
+    setSelectedCodeForAI(null);
+  }, []);
 
   // Handle suggestion click
   const handleSuggestionClick = useCallback((suggestion) => {
@@ -6676,6 +6693,42 @@ window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01', '_blank');  }, [])
                   Source: {item.document_title}
                 </div>
               )}
+              
+              {/* AI Interpretation Button */}
+              <div style={{
+                marginTop: '1rem',
+                paddingTop: '1rem',
+                borderTop: '1px solid #4a5568',
+                display: 'flex',
+                justifyContent: 'flex-end'
+              }}>
+                <button
+                  onClick={() => handleAIInterpretation(item)}
+                  style={{
+                    backgroundColor: '#9b59b6',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '8px',
+                    padding: '0.5rem 1rem',
+                    fontSize: '0.85rem',
+                    fontWeight: '600',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = '#8e44ad';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = '#9b59b6';
+                  }}
+                >
+                  <span>🤖</span>
+                  AI Interpretation
+                </button>
+              </div>
             </div>
           ))}
         </div>
@@ -6952,6 +7005,13 @@ window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01', '_blank');  }, [])
         {/* Results Section */}
         {SearchResults}
       </main>
+
+      {/* AI Interpretation Modal */}
+      <AIInterpretation
+        codeData={selectedCodeForAI}
+        isVisible={showAIInterpretation}
+        onClose={handleCloseAIInterpretation}
+      />
 
       <style>
         {`

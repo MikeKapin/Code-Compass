@@ -4,12 +4,20 @@
     {
       "src": "api/api/index.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "api/ai-interpreter.js",
+      "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/api/(.*)",
       "dest": "/api/api/index.js"
+    },
+    {
+      "src": "/api/ai-interpreter",
+      "dest": "/api/ai-interpreter.js"
     }
   ]
 }
