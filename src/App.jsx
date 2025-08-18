@@ -6259,7 +6259,7 @@ const App = () => {
   // Handle subscription redirect
   const handleSubscribe = useCallback(() => {
     trackSubscriptionAttempt('access_banner');
-window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01','_blank');  }, []);
+window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
 
   // Get search placeholder text
   const getSearchPlaceholder = useCallback(() => {
@@ -6507,7 +6507,7 @@ window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01','_blank');  }, []);
               boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
             }}
           >
-            Upgrade Now - $49.99/year
+            Upgrade Now - $79/year
           </button>
         </div>
       );
@@ -6552,7 +6552,7 @@ window.open('https://buy.stripe.com/6oUbJ24Tj53u4aq90k7ok01','_blank');  }, []);
               transition: 'all 0.2s ease'
             }}
           >
-            Upgrade Now - $49.99/year
+            Upgrade Now - $79/year
           </button>
         </div>
       );

@@ -421,7 +421,7 @@ class TrialManager {
       subscriptionId: paymentData.subscription_id || `sub_${Date.now()}`,
       customerId: paymentData.customer_id || `cus_${Date.now()}`,
       email: paymentData.customer_email || 'unknown@example.com',
-      amount: paymentData.amount || 4999, // $49.99 in cents
+      amount: paymentData.amount || 7900, // $79.00 in cents
       activatedAt: new Date().toISOString(),
       expiresAt: paymentData.expiresAt || this.getYearFromNow(),
       deviceId: this.getDeviceId()

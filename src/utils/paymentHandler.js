@@ -141,7 +141,7 @@ class PaymentHandler {
         customerId: paymentData.customer_id || `cus_${Date.now()}`,
         email: email,
         plan: 'annual',
-        amount: 4999,
+        amount: 7900,
         paymentSource: paymentData.source || 'manual',
         startDate: new Date().toISOString(),
         activatedAt: new Date().toISOString(),
@@ -165,7 +165,7 @@ class PaymentHandler {
           subscription_id: subscription.subscriptionId,
           customer_email: email,
           plan: 'annual',
-          amount: 49.99,
+          amount: 79.00,
           source: paymentData.source || 'manual',
           converted_from_trial: trialStatus.trialUsed
         });
