@@ -6330,19 +6330,33 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
 
   // Check if user has access to premium features (requires authentication + subscription)
   const hasAccessToPremiumFeatures = useCallback(() => {
+    const isPremiumRequired = requiresPremiumAccess();
+    console.log('hasAccessToPremiumFeatures: isPremiumRequired:', isPremiumRequired);
+    console.log('hasAccessToPremiumFeatures: currentUser:', currentUser);
+    console.log('hasAccessToPremiumFeatures: currentUser.hasAccess:', currentUser?.hasAccess);
+    
     // For premium features, user must be signed in AND have access
-    if (requiresPremiumAccess()) {
+    if (isPremiumRequired) {
       // Must be authenticated to access premium features
-      if (!currentUser) return false;
+      if (!currentUser) {
+        console.log('hasAccessToPremiumFeatures: No current user, returning false');
+        return false;
+      }
       
       // If user is signed in, check their access level
-      if (currentUser.hasAccess) return true;
+      if (currentUser.hasAccess) {
+        console.log('hasAccessToPremiumFeatures: User has access, returning true');
+        return true;
+      }
       
       // Fallback to trial manager for authenticated users without subscription
-      return trialManager.canAccessPremiumFeatures();
+      const trialAccess = trialManager.canAccessPremiumFeatures();
+      console.log('hasAccessToPremiumFeatures: Falling back to trial manager:', trialAccess);
+      return trialAccess;
     }
     
     // For free features (regulations), no authentication required
+    console.log('hasAccessToPremiumFeatures: Not premium required, returning true');
     return true;
   }, [currentUser, requiresPremiumAccess]);
 
@@ -6372,16 +6386,25 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
 
   // Authentication handlers
   const handleAuthSuccess = useCallback(async (authData) => {
+    console.log('App: handleAuthSuccess called with:', authData);
+    console.log('App: authData.user:', authData.user);
+    console.log('App: authData.user.hasAccess:', authData.user?.hasAccess);
+    
     // Update current user and access status
     setCurrentUser(authData.user);
     
     // Refresh access status from the authenticated user
     if (authData.user?.hasAccess) {
-      setAccessStatus({
+      const premiumStatus = {
         hasAccess: true,
         type: 'subscription',
         user: authData.user
-      });
+      };
+      console.log('App: Setting premium access status:', premiumStatus);
+      setAccessStatus(premiumStatus);
+    } else {
+      console.log('App: User has no access, falling back to trial manager');
+      setAccessStatus(trialManager.getAccessStatus());
     }
     
     // Close auth modal
