@@ -170,7 +170,9 @@ export const setUserProperties = (properties) => {
   analytics.setUserProperties(properties);
 };
 
-// Auto-track page views
+// Auto-track page views (disabled to prevent initialization issues)
+// TODO: Re-enable after fixing circular dependency issues
+/*
 if (typeof window !== 'undefined') {
   // Track initial page view
   analytics.trackPageView();
@@ -189,5 +191,6 @@ if (typeof window !== 'undefined') {
     subtree: true
   });
 }
+*/
 
 export default analytics;

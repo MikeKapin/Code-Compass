@@ -6020,6 +6020,27 @@ const HighlightedText = React.memo(({ text, highlight }) => {
 const App = () => {
   console.log('🚀 App: Component rendering...');
   
+  // Early return test - minimal component to see if it renders
+  if (window.location.search.includes('debug=minimal')) {
+    console.log('🧪 App: Rendering minimal debug version');
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        backgroundColor: '#1a1a1a', 
+        color: 'white', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        <h1>🧭 Code Compass - Debug Mode</h1>
+        <p>If you can see this, React is working!</p>
+        <button onClick={() => window.location.reload()}>Reload</button>
+      </div>
+    );
+  }
+  
   // Search type state
   const [activeSearchType, setActiveSearchType] = useState('b149-1'); // 'b149-1', 'b149-2', 'regulations'
   
