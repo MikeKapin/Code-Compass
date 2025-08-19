@@ -6074,11 +6074,9 @@ const App = () => {
     console.log('=== DEBUG ACCESS STATUS ===');
     console.log('currentUser:', currentUser);
     console.log('activeSearchType:', activeSearchType);
-    console.log('requiresPremiumAccess():', requiresPremiumAccess());
-    console.log('hasAccessToPremiumFeatures():', hasAccessToPremiumFeatures());
     console.log('accessStatus:', accessStatus);
     console.log('========================');
-  }, [currentUser, activeSearchType, requiresPremiumAccess, hasAccessToPremiumFeatures, accessStatus]);
+  }, [currentUser, activeSearchType, accessStatus]);
 
   // Initialize authentication (simplified to prevent blocking)
   useEffect(() => {
@@ -6095,9 +6093,17 @@ const App = () => {
 
     initAuth();
     
-    // Expose debug function to window for testing
-    window.debugAccessStatus = debugAccessStatus;
-  }, [debugAccessStatus]);
+    // Expose debug function to window for testing (but avoid circular reference)
+    if (typeof window !== 'undefined') {
+      window.debugAccessStatus = () => {
+        console.log('=== DEBUG ACCESS STATUS ===');
+        console.log('currentUser:', currentUser);
+        console.log('activeSearchType:', activeSearchType);
+        console.log('accessStatus:', accessStatus);
+        console.log('========================');
+      };
+    }
+  }, [currentUser, activeSearchType, accessStatus]);
 
   // Update your useEffect (replace the existing one)
   useEffect(() => {
@@ -6346,37 +6352,17 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
   const hasAccessToPremiumFeatures = useCallback(() => {
     const isPremiumRequired = requiresPremiumAccess();
     const hasAccess = currentUser?.hasAccess;
-    const timestamp = new Date().toISOString();
-    
-    console.log(`[${timestamp}] hasAccessToPremiumFeatures: isPremiumRequired:`, isPremiumRequired);
-    console.log(`[${timestamp}] hasAccessToPremiumFeatures: currentUser:`, currentUser);
-    console.log(`[${timestamp}] hasAccessToPremiumFeatures: currentUser.hasAccess:`, hasAccess);
-    console.log(`[${timestamp}] hasAccessToPremiumFeatures: activeSearchType:`, activeSearchType);
     
     // For premium features, user must be signed in AND have access
     if (isPremiumRequired) {
-      // Must be authenticated to access premium features
-      if (!currentUser) {
-        console.log(`[${timestamp}] hasAccessToPremiumFeatures: No current user, returning false`);
-        return false;
-      }
-      
-      // If user is signed in, check their access level
-      if (hasAccess) {
-        console.log(`[${timestamp}] hasAccessToPremiumFeatures: User has access, returning true`);
-        return true;
-      }
-      
-      // Fallback to trial manager for authenticated users without subscription
-      const trialAccess = trialManager.canAccessPremiumFeatures();
-      console.log(`[${timestamp}] hasAccessToPremiumFeatures: Falling back to trial manager:`, trialAccess);
-      return trialAccess;
+      if (!currentUser) return false;
+      if (hasAccess) return true;
+      return trialManager.canAccessPremiumFeatures();
     }
     
     // For free features (regulations), no authentication required
-    console.log(`[${timestamp}] hasAccessToPremiumFeatures: Not premium required, returning true`);
     return true;
-  }, [currentUser, requiresPremiumAccess, activeSearchType]);
+  }, [currentUser, requiresPremiumAccess]);
 
   // AI Interpretation handlers
   const handleAIInterpretation = useCallback((codeData) => {
@@ -6674,12 +6660,6 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
   const SearchResults = useMemo(() => {
     const hasAccess = hasAccessToPremiumFeatures();
     const isPremiumRequired = requiresPremiumAccess();
-    const timestamp = new Date().toISOString();
-    
-    console.log(`[${timestamp}] SearchResults: hasAccess:`, hasAccess);
-    console.log(`[${timestamp}] SearchResults: isPremiumRequired:`, isPremiumRequired);
-    console.log(`[${timestamp}] SearchResults: currentUser:`, currentUser);
-    console.log(`[${timestamp}] SearchResults: showing blocked message:`, !hasAccess && isPremiumRequired);
     
     // Show blocked message if no premium access (only for premium-required searches)
     if (!hasAccess && isPremiumRequired) {
