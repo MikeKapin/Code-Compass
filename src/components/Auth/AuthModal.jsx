@@ -80,6 +80,10 @@ const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
       }
 
       if (result.success) {
+        console.log('AuthModal: Sign in successful, result:', result);
+        console.log('AuthModal: result.user:', result.user);
+        console.log('AuthModal: result.user.hasAccess:', result.user?.hasAccess);
+        
         setMessage(result.message);
         
         if (mode === 'reset') {
@@ -88,6 +92,7 @@ const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
         } else {
           // Close modal and notify parent component
           setTimeout(() => {
+            console.log('AuthModal: Calling onAuthSuccess with:', result.user);
             onAuthSuccess(result.user);
             onClose();
           }, 1000);

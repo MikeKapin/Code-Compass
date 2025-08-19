@@ -116,6 +116,9 @@ class VercelAuthService {
       });
 
       const data = await response.json();
+      console.log('VercelAuth signIn: Raw API response:', data);
+      console.log('VercelAuth signIn: data.user:', data.user);
+      console.log('VercelAuth signIn: data.user.hasAccess:', data.user?.hasAccess);
 
       if (data.success) {
         // Store auth token and user info
@@ -125,6 +128,7 @@ class VercelAuthService {
         }
         
         this.currentUser = data.user;
+        console.log('VercelAuth signIn: Set currentUser to:', this.currentUser);
         
         return {
           success: true,
