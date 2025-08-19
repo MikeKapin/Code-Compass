@@ -92,8 +92,8 @@ const AuthModal = ({ isOpen, onClose, onAuthSuccess }) => {
         } else {
           // Close modal and notify parent component
           setTimeout(() => {
-            console.log('AuthModal: Calling onAuthSuccess with:', result.user);
-            onAuthSuccess(result.user);
+            console.log('AuthModal: Calling onAuthSuccess with result object:', result);
+            onAuthSuccess(result);
             onClose();
           }, 1000);
         }
