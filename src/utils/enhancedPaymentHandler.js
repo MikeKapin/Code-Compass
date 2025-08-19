@@ -1,4 +1,4 @@
-// Enhanced payment handler with Firebase integration
+// Enhanced payment handler with VercelAuth integration
 // This extends the existing paymentHandler to work with user accounts
 
 import { trialManager } from './trialManager.js';
@@ -100,10 +100,10 @@ class EnhancedPaymentHandler {
       console.log('EnhancedPaymentHandler: Processing payment success...', paymentData);
       
       // Import auth service dynamically
-      const { authService } = await import('../services/auth.js');
+      const { vercelAuth } = await import('../services/vercelAuth.js');
       
       // Check if user is authenticated
-      const currentUser = authService.currentUser;
+      const currentUser = vercelAuth.currentUser;
       
       if (currentUser) {
         // User is logged in - update their Firebase subscription
@@ -124,7 +124,7 @@ class EnhancedPaymentHandler {
     console.log('EnhancedPaymentHandler: Processing authenticated payment...');
     
     try {
-      const { authService } = await import('../services/auth.js');
+      const { vercelAuth } = await import('../services/vercelAuth.js');
       
       // Get email from current user or URL
       const email = user.email || this.extractEmailFromURL() || 'unknown@example.com';
@@ -141,7 +141,7 @@ class EnhancedPaymentHandler {
       };
 
       // Update subscription in Firebase
-      const result = await authService.updateSubscription(subscriptionData);
+      const result = await vercelAuth.updateSubscription(subscriptionData);
       
       if (result.success) {
         console.log('EnhancedPaymentHandler: Firebase subscription updated successfully');
@@ -286,8 +286,8 @@ class EnhancedPaymentHandler {
       }
 
       // Migrate to Firebase
-      const { authService } = await import('../services/auth.js');
-      const result = await authService.updateSubscription({
+      const { vercelAuth } = await import('../services/vercelAuth.js');
+      const result = await vercelAuth.updateSubscription({
         plan: subscriptionData.plan || 'annual',
         expiresAt: subscriptionData.expiresAt,
         customerId: subscriptionData.customerId,
@@ -321,16 +321,16 @@ class EnhancedPaymentHandler {
   async linkSubscriptionToAccount(email, subscriptionData) {
     try {
       // Import auth service
-      const { authService } = await import('../services/auth.js');
+      const { vercelAuth } = await import('../services/vercelAuth.js');
       
       // Check if user exists
-      const currentUser = authService.currentUser;
+      const currentUser = vercelAuth.currentUser;
       if (!currentUser || currentUser.email !== email) {
         throw new Error('User must be logged in with the correct email');
       }
 
       // Update Firebase with subscription
-      const result = await authService.updateSubscription({
+      const result = await vercelAuth.updateSubscription({
         plan: subscriptionData.plan || 'annual',
         expiresAt: subscriptionData.expiresAt,
         customerId: subscriptionData.customerId,
@@ -461,11 +461,11 @@ class EnhancedPaymentHandler {
   async getSubscriptionStatus() {
     try {
       // Try Firebase first
-      const { authService } = await import('../services/auth.js');
-      if (authService.currentUser) {
-        const hasAccess = await authService.hasValidAccess();
+      const { vercelAuth } = await import('../services/vercelAuth.js');
+      if (vercelAuth.currentUser) {
+        const hasAccess = await vercelAuth.hasValidAccess();
         if (hasAccess) {
-          return { type: 'subscription', hasAccess: true, source: 'firebase' };
+          return { type: 'subscription', hasAccess: true, source: 'vercel' };
         }
       }
     } catch (error) {
@@ -515,8 +515,8 @@ if (typeof window !== 'undefined') {
   window.codecompass_testPayment = () => enhancedPaymentHandler.testPaymentSuccess();
   window.codecompass_migrateSubscription = async () => {
     const { authService } = await import('../services/auth.js');
-    if (authService.currentUser) {
-      return enhancedPaymentHandler.migrateExistingSubscription(authService.currentUser);
+    if (vercelAuth.currentUser) {
+      return enhancedPaymentHandler.migrateExistingSubscription(vercelAuth.currentUser);
     } else {
       console.log('No user logged in');
     }

@@ -1,5 +1,5 @@
 // User migration utility for existing subscribers
-// This helps migrate existing users to the new Firebase auth system
+// This helps migrate existing users to the new VercelAuth system
 
 class UserMigration {
   constructor() {
@@ -84,10 +84,10 @@ class UserMigration {
       }
 
       // Import auth service
-      const { authService } = await import('../services/auth.js');
+      const { vercelAuth } = await import('../services/vercelAuth.js');
       
       // Create new account
-      const signUpResult = await authService.signUp(email, password);
+      const signUpResult = await vercelAuth.signUp(email, password);
       
       if (!signUpResult.success) {
         return signUpResult;
@@ -128,10 +128,10 @@ class UserMigration {
   async signInAndMigrate(email, password) {
     try {
       // Import auth service
-      const { authService } = await import('../services/auth.js');
+      const { vercelAuth } = await import('../services/vercelAuth.js');
       
       // Sign in user
-      const signInResult = await authService.signIn(email, password);
+      const signInResult = await vercelAuth.signIn(email, password);
       
       if (!signInResult.success) {
         return signInResult;
@@ -173,10 +173,10 @@ class UserMigration {
   // Migrate subscription data to Firebase account
   async migrateSubscriptionToAccount(user, subscriptionData) {
     try {
-      const { authService } = await import('../services/auth.js');
+      const { vercelAuth } = await import('../services/vercelAuth.js');
       
-      // Update subscription in Firebase
-      const result = await authService.updateSubscription({
+      // Update subscription in VercelAuth
+      const result = await vercelAuth.updateSubscription({
         plan: subscriptionData.plan,
         expiresAt: subscriptionData.expiresAt,
         customerId: subscriptionData.customerId,
@@ -268,10 +268,10 @@ class UserMigration {
       console.log(`UserMigration: Starting manual migration for ${email}, subscription ${subscriptionId}`);
       
       // Import auth service
-      const { authService } = await import('../services/auth.js');
+      const { vercelAuth } = await import('../services/vercelAuth.js');
       
       // Check if user is signed in
-      const currentUser = authService.currentUser;
+      const currentUser = vercelAuth.currentUser;
       if (!currentUser || currentUser.email !== email) {
         return {
           success: false,

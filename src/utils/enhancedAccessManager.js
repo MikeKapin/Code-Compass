@@ -1,4 +1,4 @@
-// Enhanced access manager that works with Firebase + legacy local storage
+// Enhanced access manager that works with VercelAuth + legacy local storage
 // This provides unified access control across authentication methods
 
 import { trialManager } from './trialManager.js';
@@ -16,10 +16,10 @@ class EnhancedAccessManager {
 
     try {
       // Import auth service
-      const authModule = await import('../services/auth.js');
-      this.authService = authModule.authService;
+      const authModule = await import('../services/vercelAuth.js');
+      this.authService = authModule.vercelAuth;
       
-      // Initialize Firebase auth
+      // Initialize VercelAuth
       await this.authService.init();
       this.currentUser = this.authService.currentUser;
       
@@ -48,14 +48,14 @@ class EnhancedAccessManager {
     };
 
     try {
-      // Check Firebase authentication first
+      // Check VercelAuth authentication first
       if (this.authService && this.authService.currentUser) {
-        const firebaseAccess = await this.checkFirebaseAccess();
-        if (firebaseAccess.hasAccess) {
+        const vercelAccess = await this.checkVercelAccess();
+        if (vercelAccess.hasAccess) {
           return {
             ...result,
-            ...firebaseAccess,
-            source: 'firebase'
+            ...vercelAccess,
+            source: 'vercel'
           };
         }
       }
@@ -84,8 +84,8 @@ class EnhancedAccessManager {
     }
   }
 
-  // Check Firebase-based access
-  async checkFirebaseAccess() {
+  // Check VercelAuth-based access
+  async checkVercelAccess() {
     try {
       if (!this.authService || !this.authService.currentUser) {
         return { hasAccess: false };
@@ -102,23 +102,23 @@ class EnhancedAccessManager {
           hasAccess: true,
           type: 'subscription',
           user: {
-            uid: user.uid,
+            id: user.id,
             email: user.email,
             isAuthenticated: true
           },
           subscription: {
-            isActive: true,
-            plan: 'annual', // You might want to fetch this from Firebase
-            source: 'firebase'
+            isActive: user.hasAccess,
+            plan: user.subscription?.plan || 'annual',
+            source: 'vercel'
           },
           devices: devices
         };
       }
 
-      return { hasAccess: false, user: { uid: user.uid, email: user.email, isAuthenticated: true } };
+      return { hasAccess: false, user: { id: user.id, email: user.email, isAuthenticated: true } };
 
     } catch (error) {
-      console.error('EnhancedAccessManager: Firebase access check failed:', error);
+      console.error('EnhancedAccessManager: VercelAuth access check failed:', error);
       return { hasAccess: false };
     }
   }
@@ -175,9 +175,10 @@ class EnhancedAccessManager {
     }
 
     try {
-      // For Firebase users, you might want to record searches in Firestore
-      if (accessStatus.source === 'firebase' && this.authService?.currentUser) {
-        await this.recordSearchInFirebase(query, resultCount);
+      // For VercelAuth users, search recording is handled by the backend
+      if (accessStatus.source === 'vercel' && this.authService?.currentUser) {
+        // Search recording is handled by the VercelAuth backend
+        console.log('Search recorded for VercelAuth user:', query);
       }
 
       // Also record in trial manager for backwards compatibility
@@ -198,70 +199,30 @@ class EnhancedAccessManager {
     }
   }
 
-  // Record search in Firebase (for authenticated users)
-  async recordSearchInFirebase(query, resultCount) {
-    try {
-      if (!this.authService?.currentUser) return;
-
-      // Import Firestore functions
-      const { doc, updateDoc, increment, serverTimestamp } = await import('firebase/firestore');
-      const { db } = await import('../services/firebase.js');
-      
-      const userRef = doc(db, 'users', this.authService.currentUser.uid);
-      
-      // Update search stats
-      await updateDoc(userRef, {
-        'stats.totalSearches': increment(1),
-        'stats.lastSearchAt': serverTimestamp(),
-        'stats.lastSearchQuery': query.toLowerCase().trim(),
-        'stats.lastActiveAt': serverTimestamp()
-      });
-
-    } catch (error) {
-      console.error('EnhancedAccessManager: Failed to record search in Firebase:', error);
-      // Don't throw - search recording is not critical
-    }
-  }
 
   // Get search statistics
   async getSearchStats() {
     const accessStatus = await this.getAccessStatus();
     
-    if (accessStatus.source === 'firebase' && this.authService?.currentUser) {
-      return await this.getFirebaseSearchStats();
+    if (accessStatus.source === 'vercel' && this.authService?.currentUser) {
+      return await this.getVercelSearchStats();
     }
     
     // Fall back to trial manager stats
     return trialManager.getSearchStats();
   }
 
-  // Get search stats from Firebase
-  async getFirebaseSearchStats() {
+  // Get search stats from VercelAuth
+  async getVercelSearchStats() {
     try {
-      const { doc, getDoc } = await import('firebase/firestore');
-      const { db } = await import('../services/firebase.js');
-      
-      const userRef = doc(db, 'users', this.authService.currentUser.uid);
-      const userDoc = await getDoc(userRef);
-      
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        const stats = userData.stats || {};
-        
-        return {
-          totalSearches: stats.totalSearches || 0,
-          lastSearchAt: stats.lastSearchAt,
-          lastSearchQuery: stats.lastSearchQuery,
-          // Note: Daily search limits don't apply to paid subscribers
-          dailyLimit: null,
-          unlimited: true
-        };
-      }
-      
-      return { totalSearches: 0, unlimited: true };
-
+      // For now, return unlimited stats for authenticated users
+      // This could be enhanced to fetch actual stats from the backend
+      return {
+        totalSearches: 0, // Backend would track this
+        unlimited: true
+      };
     } catch (error) {
-      console.error('EnhancedAccessManager: Failed to get Firebase search stats:', error);
+      console.error('EnhancedAccessManager: Failed to get VercelAuth search stats:', error);
       return { totalSearches: 0, unlimited: true };
     }
   }
@@ -272,11 +233,11 @@ class EnhancedAccessManager {
     
     // Show migration prompt if:
     // 1. User has local access (subscription or trial)
-    // 2. User is not authenticated with Firebase
+    // 2. User is not authenticated with VercelAuth
     // 3. Migration hasn't been completed yet
     return (
       accessStatus.migrationNeeded && 
-      accessStatus.source !== 'firebase' &&
+      accessStatus.source !== 'vercel' &&
       !this.isMigrationCompleted()
     );
   }
@@ -300,21 +261,15 @@ class EnhancedAccessManager {
 
     if (this.authService && this.authService.currentUser) {
       try {
-        const { doc, getDoc } = await import('firebase/firestore');
-        const { db } = await import('../services/firebase.js');
-        
-        const userRef = doc(db, 'users', this.authService.currentUser.uid);
-        const userDoc = await getDoc(userRef);
-        
-        if (userDoc.exists()) {
-          const userData = userDoc.data();
+        const user = await this.authService.getCurrentUser();
+        if (user) {
           return {
-            uid: this.authService.currentUser.uid,
-            email: this.authService.currentUser.email,
-            subscription: userData.subscription,
-            devices: userData.devices || [],
-            stats: userData.stats || {},
-            createdAt: userData.createdAt
+            id: user.id,
+            email: user.email,
+            subscription: user.subscription,
+            devices: user.devices || [],
+            hasAccess: user.hasAccess,
+            createdAt: user.createdAt
           };
         }
       } catch (error) {
@@ -362,7 +317,7 @@ class EnhancedAccessManager {
       isInitialized: this.isInitialized,
       hasAuthService: !!this.authService,
       currentUser: this.currentUser ? {
-        uid: this.currentUser.uid,
+        id: this.currentUser.id,
         email: this.currentUser.email
       } : null,
       localStorage: {

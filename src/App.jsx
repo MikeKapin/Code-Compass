@@ -6051,17 +6051,25 @@ const App = () => {
 
   // Initialize search indices on component mount
   useEffect(() => {
-    // Initialize CSA B149.2 search index
-    if (csaB149Data?.document) {
-      const csaIndex = createCSASearchIndex();
-      setCsaSearchIndex(csaIndex);
-    }
+    const initializeSearchIndices = async () => {
+      try {
+        // Initialize CSA B149.2 search index
+        if (csaB149Data?.document) {
+          const csaIndex = createCSASearchIndex();
+          setCsaSearchIndex(csaIndex);
+        }
+        
+        // Initialize regulations search index  
+        if (regulationsData && regulationsData.length > 0) {
+          const regIndex = createRegulationSearchIndex(regulationsData);
+          setRegulationsSearchIndex(regIndex);
+        }
+      } catch (error) {
+        console.error('Failed to initialize search indices:', error);
+      }
+    };
     
-    // Initialize regulations search index
-    if (regulationsData && regulationsData.length > 0) {
-      const regIndex = createRegulationSearchIndex(regulationsData);
-      setRegulationsSearchIndex(regIndex);
-    }
+    initializeSearchIndices();
   }, []);
 
   // Replace your testPaymentSuccess function
@@ -6101,8 +6109,19 @@ const App = () => {
           setAccessStatus(trialManager.getAccessStatus());
         }
       } catch (error) {
-        console.error('App initialization failed:', error);
-        setAccessStatus(trialManager.getAccessStatus());
+        console.error('App authentication initialization failed:', error);
+        // Fallback to trial manager if auth fails
+        try {
+          setAccessStatus(trialManager.getAccessStatus());
+        } catch (trialError) {
+          console.error('Trial manager fallback also failed:', trialError);
+          // Final fallback - allow basic functionality
+          setAccessStatus({
+            hasAccess: false,
+            type: 'none',
+            message: 'Authentication system unavailable'
+          });
+        }
       }
     };
 
