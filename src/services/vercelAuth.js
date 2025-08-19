@@ -4,7 +4,7 @@
 class VercelAuthService {
   constructor() {
     this.baseURL = process.env.NODE_ENV === 'production' 
-      ? 'https://codecompass-772skvv6z-mike-kapins-projects.vercel.app'  // Your actual Vercel domain
+      ? 'https://codecompass-api.vercel.app'  // Your actual Vercel domain
       : 'http://localhost:5173'; // Development URL
     
     this.currentUser = null;

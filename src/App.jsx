@@ -6411,7 +6411,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     setShowAuthModal(false);
     
     // Show success message briefly (optional)
-    console.log('Authentication successful:', authData.user.email);
+    console.log('Authentication successful:', authData.user?.email || 'unknown user');
   }, []);
 
   const handleDeviceRemoved = useCallback(async (deviceInfo) => {
@@ -7007,7 +7007,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
             {currentUser ? (
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                 <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>
-                  {currentUser.email}
+                  {currentUser?.email || 'User'}
                 </span>
                 <button
                   onClick={() => setShowDeviceManager(true)}
