@@ -6430,6 +6430,13 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     
     // Show success message briefly (optional)
     console.log('Authentication successful:', authData.user?.email || 'unknown user');
+    
+    // Force a small delay to ensure state updates have propagated
+    setTimeout(() => {
+      console.log('App: Auth success complete, forcing access check...');
+      console.log('App: currentUser after auth:', authData.user);
+      console.log('App: currentUser.hasAccess:', authData.user?.hasAccess);
+    }, 100);
   }, []);
 
   const handleDeviceRemoved = useCallback(async (deviceInfo) => {
@@ -6547,7 +6554,8 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     hasAccessToPremiumFeatures, 
     suggestions, 
     showSuggestions, 
-    handleSuggestionClick
+    handleSuggestionClick,
+    currentUser // Add currentUser to force re-render when auth state changes
   ]);
 
   // Access banner component
@@ -7222,7 +7230,10 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
               </span>
             )}
           </h2>
-          <SearchBar {...searchBarProps} />
+          <SearchBar 
+            key={currentUser ? `authenticated-${currentUser.id || currentUser.email}` : 'unauthenticated'} 
+            {...searchBarProps} 
+          />
           
           {query && (
             <div style={{
