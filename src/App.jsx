@@ -6069,6 +6069,17 @@ const App = () => {
     paymentHandler.testPaymentSuccess();
   }, []);
 
+  // Debug function for access testing
+  const debugAccessStatus = useCallback(() => {
+    console.log('=== DEBUG ACCESS STATUS ===');
+    console.log('currentUser:', currentUser);
+    console.log('activeSearchType:', activeSearchType);
+    console.log('requiresPremiumAccess():', requiresPremiumAccess());
+    console.log('hasAccessToPremiumFeatures():', hasAccessToPremiumFeatures());
+    console.log('accessStatus:', accessStatus);
+    console.log('========================');
+  }, [currentUser, activeSearchType, requiresPremiumAccess, hasAccessToPremiumFeatures, accessStatus]);
+
   // Initialize authentication (simplified to prevent blocking)
   useEffect(() => {
     const initAuth = async () => {
@@ -6083,7 +6094,10 @@ const App = () => {
     };
 
     initAuth();
-  }, []);
+    
+    // Expose debug function to window for testing
+    window.debugAccessStatus = debugAccessStatus;
+  }, [debugAccessStatus]);
 
   // Update your useEffect (replace the existing one)
   useEffect(() => {
