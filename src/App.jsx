@@ -6331,34 +6331,38 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
   // Check if user has access to premium features (requires authentication + subscription)
   const hasAccessToPremiumFeatures = useCallback(() => {
     const isPremiumRequired = requiresPremiumAccess();
-    console.log('hasAccessToPremiumFeatures: isPremiumRequired:', isPremiumRequired);
-    console.log('hasAccessToPremiumFeatures: currentUser:', currentUser);
-    console.log('hasAccessToPremiumFeatures: currentUser.hasAccess:', currentUser?.hasAccess);
+    const hasAccess = currentUser?.hasAccess;
+    const timestamp = new Date().toISOString();
+    
+    console.log(`[${timestamp}] hasAccessToPremiumFeatures: isPremiumRequired:`, isPremiumRequired);
+    console.log(`[${timestamp}] hasAccessToPremiumFeatures: currentUser:`, currentUser);
+    console.log(`[${timestamp}] hasAccessToPremiumFeatures: currentUser.hasAccess:`, hasAccess);
+    console.log(`[${timestamp}] hasAccessToPremiumFeatures: activeSearchType:`, activeSearchType);
     
     // For premium features, user must be signed in AND have access
     if (isPremiumRequired) {
       // Must be authenticated to access premium features
       if (!currentUser) {
-        console.log('hasAccessToPremiumFeatures: No current user, returning false');
+        console.log(`[${timestamp}] hasAccessToPremiumFeatures: No current user, returning false`);
         return false;
       }
       
       // If user is signed in, check their access level
-      if (currentUser.hasAccess) {
-        console.log('hasAccessToPremiumFeatures: User has access, returning true');
+      if (hasAccess) {
+        console.log(`[${timestamp}] hasAccessToPremiumFeatures: User has access, returning true`);
         return true;
       }
       
       // Fallback to trial manager for authenticated users without subscription
       const trialAccess = trialManager.canAccessPremiumFeatures();
-      console.log('hasAccessToPremiumFeatures: Falling back to trial manager:', trialAccess);
+      console.log(`[${timestamp}] hasAccessToPremiumFeatures: Falling back to trial manager:`, trialAccess);
       return trialAccess;
     }
     
     // For free features (regulations), no authentication required
-    console.log('hasAccessToPremiumFeatures: Not premium required, returning true');
+    console.log(`[${timestamp}] hasAccessToPremiumFeatures: Not premium required, returning true`);
     return true;
-  }, [currentUser, requiresPremiumAccess]);
+  }, [currentUser, requiresPremiumAccess, activeSearchType]);
 
   // AI Interpretation handlers
   const handleAIInterpretation = useCallback((codeData) => {
