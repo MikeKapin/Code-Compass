@@ -6672,9 +6672,17 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
 
   // Search results component
   const SearchResults = useMemo(() => {
+    const hasAccess = hasAccessToPremiumFeatures();
+    const isPremiumRequired = requiresPremiumAccess();
+    const timestamp = new Date().toISOString();
+    
+    console.log(`[${timestamp}] SearchResults: hasAccess:`, hasAccess);
+    console.log(`[${timestamp}] SearchResults: isPremiumRequired:`, isPremiumRequired);
+    console.log(`[${timestamp}] SearchResults: currentUser:`, currentUser);
+    console.log(`[${timestamp}] SearchResults: showing blocked message:`, !hasAccess && isPremiumRequired);
     
     // Show blocked message if no premium access (only for premium-required searches)
-    if (!hasAccessToPremiumFeatures() && requiresPremiumAccess()) {
+    if (!hasAccess && isPremiumRequired) {
       // If user is not signed in, require sign-in first
       if (!currentUser) {
         return (
@@ -7257,7 +7265,9 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
         </div>
 
         {/* Results Section */}
-        {SearchResults}
+        <div key={currentUser ? `search-results-auth-${currentUser.id || currentUser.email}` : 'search-results-unauth'}>
+          {SearchResults}
+        </div>
       </main>
 
       {/* AI Interpretation Modal */}
