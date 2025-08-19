@@ -4,7 +4,7 @@
 class VercelAuthService {
   constructor() {
     this.baseURL = process.env.NODE_ENV === 'production' 
-      ? 'https://codecompass-api.vercel.app'  // Your actual Vercel domain
+      ? 'https://codecompassapp.netlify.app'  // Your Netlify domain
       : 'http://localhost:5173'; // Development URL
     
     this.currentUser = null;
