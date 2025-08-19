@@ -49,7 +49,7 @@ class VercelAuthService {
       // Generate device fingerprint if not provided
       const deviceData = deviceInfo || this.generateDeviceInfo();
 
-      const response = await fetch(`${this.baseURL}/api/simple-auth`, {
+      const response = await fetch(`${this.baseURL}/api/auth/simple-auth`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -103,7 +103,7 @@ class VercelAuthService {
       // Generate device fingerprint if not provided
       const deviceData = deviceInfo || this.generateDeviceInfo();
 
-      const response = await fetch(`${this.baseURL}/api/simple-login`, {
+      const response = await fetch(`${this.baseURL}/api/auth/simple-login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
