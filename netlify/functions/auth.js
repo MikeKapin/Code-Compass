@@ -223,10 +223,47 @@ async function handleSimpleLogin(event, headers) {
     let hasAccess = subscriptionResult.rows.length > 0;
     const subscription = subscriptionResult.rows[0] || null;
     
-    // Temporary: Give access to specific test accounts
+    // Developer account access - unlimited lifetime subscriptions
     if (email.toLowerCase() === 'm_kapin@outlook.com' || email.toLowerCase() === 'b_sharp@fanshawec.ca') {
       hasAccess = true;
-      console.log('Granting temporary access to test account:', email);
+      console.log('Granting unlimited developer access to:', email);
+      
+      // Create/update unlimited subscription for developer accounts
+      if (!subscription) {
+        const currentDate = new Date();
+        const unlimitedDate = new Date('2099-12-31T23:59:59Z'); // Far future date
+        
+        await client.query(`
+          INSERT INTO subscriptions 
+          (user_id, status, plan, stripe_customer_id, stripe_subscription_id, 
+           current_period_start, current_period_end, amount, currency, created_at, updated_at)
+          VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW(), NOW())
+          ON CONFLICT (user_id) DO UPDATE SET
+            status = EXCLUDED.status,
+            plan = EXCLUDED.plan,
+            current_period_end = EXCLUDED.current_period_end,
+            updated_at = NOW()
+        `, [
+          user.id,
+          'active',
+          'lifetime',
+          `dev_cus_${user.id}`,
+          `dev_sub_${user.id}`,
+          currentDate,
+          unlimitedDate,
+          0, // Free for developers
+          'usd'
+        ]);
+        
+        // Re-fetch subscription data
+        const updatedSubscriptionResult = await client.query(
+          'SELECT * FROM subscriptions WHERE user_id = $1 AND status = $2',
+          [user.id, 'active']
+        );
+        subscription = updatedSubscriptionResult.rows[0];
+        
+        console.log('Created lifetime developer subscription for', email, 'with expiry:', unlimitedDate);
+      }
     }
 
     const jwt = await import('jsonwebtoken');

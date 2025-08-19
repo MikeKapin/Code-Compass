@@ -6615,7 +6615,10 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
               ✨ Subscription Active - Full Access to B149.1-25 & B149.2-25
             </span>
             <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
-              Expires: {new Date(accessStatus.expiresAt).toLocaleDateString()}
+              {accessStatus.user?.subscription?.plan === 'lifetime' ? 
+                '🚀 Lifetime Developer Access' : 
+                `Expires: ${new Date(accessStatus.expiresAt).toLocaleDateString()}`
+              }
             </div>
           </div>
         </div>
