@@ -15,6 +15,9 @@ import {
 } from './utils/analytics.js';
 // AI Interpretation imports
 import AIInterpretation from './components/AIInterpretation.jsx';
+// Authentication imports
+import AuthModal from './components/Auth/AuthModal.jsx';
+import DeviceManager from './components/Auth/DeviceManager.jsx';
 
 // Full CSA data array (all the codes from your original file)
 const fullCSAData = [
@@ -6041,6 +6044,11 @@ const App = () => {
   const [showAIInterpretation, setShowAIInterpretation] = useState(false);
   const [selectedCodeForAI, setSelectedCodeForAI] = useState(null);
 
+  // Authentication state
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showDeviceManager, setShowDeviceManager] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
   // Initialize search indices on component mount
   useEffect(() => {
     // Initialize CSA B149.2 search index
@@ -6059,6 +6067,22 @@ const App = () => {
   // Replace your testPaymentSuccess function
   const testPaymentSuccess = useCallback(() => {
     paymentHandler.testPaymentSuccess();
+  }, []);
+
+  // Initialize authentication (simplified to prevent blocking)
+  useEffect(() => {
+    const initAuth = async () => {
+      try {
+        // Just use trial manager for now to ensure app loads
+        setAccessStatus(trialManager.getAccessStatus());
+        console.log('App initialized with trial manager');
+      } catch (error) {
+        console.error('App initialization failed:', error);
+        setAccessStatus(trialManager.getAccessStatus());
+      }
+    };
+
+    initAuth();
   }, []);
 
   // Update your useEffect (replace the existing one)
@@ -6084,10 +6108,20 @@ const App = () => {
     // Listen for payment success events
     const handlePaymentSuccess = (event) => {
       console.log('App: Payment success event received:', event);
+      
       // Refresh access status after successful payment
       const updatedStatus = trialManager.getAccessStatus();
       console.log('App: Updated access status after payment:', updatedStatus);
       setAccessStatus(updatedStatus);
+      
+      // Check if user is already signed in
+      if (!currentUser) {
+        // Show sign-up modal for post-payment account creation
+        console.log('App: Payment successful, showing auth modal for account creation');
+        setTimeout(() => {
+          setShowAuthModal(true);
+        }, 2000); // Delay to let payment success message show
+      }
     };
     
     window.addEventListener('storage', handleStorageChange);
@@ -6294,15 +6328,86 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     return activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
   }, [activeSearchType]);
 
+  // Check if user has access to premium features (requires authentication + subscription)
+  const hasAccessToPremiumFeatures = useCallback(() => {
+    // For premium features, user must be signed in AND have access
+    if (requiresPremiumAccess()) {
+      // Must be authenticated to access premium features
+      if (!currentUser) return false;
+      
+      // If user is signed in, check their access level
+      if (currentUser.hasAccess) return true;
+      
+      // Fallback to trial manager for authenticated users without subscription
+      return trialManager.canAccessPremiumFeatures();
+    }
+    
+    // For free features (regulations), no authentication required
+    return true;
+  }, [currentUser, requiresPremiumAccess]);
+
   // AI Interpretation handlers
   const handleAIInterpretation = useCallback((codeData) => {
-    setSelectedCodeForAI(codeData);
-    setShowAIInterpretation(true);
-  }, []);
+    // AI interpretation requires authentication for premium features
+    if (requiresPremiumAccess() && !currentUser) {
+      // Show sign-in modal instead
+      setShowAuthModal(true);
+      return;
+    }
+    
+    // If user has access, proceed with AI interpretation
+    if (hasAccessToPremiumFeatures()) {
+      setSelectedCodeForAI(codeData);
+      setShowAIInterpretation(true);
+    } else {
+      // Show upgrade message - could trigger payment flow
+      setShowAuthModal(true);
+    }
+  }, [requiresPremiumAccess, currentUser, hasAccessToPremiumFeatures]);
 
   const handleCloseAIInterpretation = useCallback(() => {
     setShowAIInterpretation(false);
     setSelectedCodeForAI(null);
+  }, []);
+
+  // Authentication handlers
+  const handleAuthSuccess = useCallback(async (authData) => {
+    // Update current user and access status
+    setCurrentUser(authData.user);
+    
+    // Refresh access status from the authenticated user
+    if (authData.user?.hasAccess) {
+      setAccessStatus({
+        hasAccess: true,
+        type: 'subscription',
+        user: authData.user
+      });
+    }
+    
+    // Close auth modal
+    setShowAuthModal(false);
+    
+    // Show success message briefly (optional)
+    console.log('Authentication successful:', authData.user.email);
+  }, []);
+
+  const handleDeviceRemoved = useCallback(async (deviceInfo) => {
+    // If user removed current device, they'll be signed out automatically
+    if (deviceInfo.wasCurrentDevice) {
+      setCurrentUser(null);
+      setAccessStatus(trialManager.getAccessStatus());
+      setShowDeviceManager(false);
+    } else {
+      // Just refresh the current user to update device list
+      try {
+        const refreshedUser = await vercelAuth.getCurrentUser();
+        if (refreshedUser) {
+          setCurrentUser(refreshedUser);
+        }
+      } catch (error) {
+        console.error('Failed to refresh user after device removal:', error);
+      }
+    }
   }, []);
 
   // Handle suggestion click
@@ -6315,19 +6420,19 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
   // Handle form submission
   const handleSubmit = useCallback((e) => {
     e.preventDefault();
-    const isDisabled = (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess());
-    if (query.trim() && !isDisabled) {
+    const hasAccess = hasAccessToPremiumFeatures();
+    if (query.trim() && hasAccess) {
       handleSearch(query.trim());
     }
-  }, [query, requiresPremiumAccess, handleSearch]);
+  }, [query, hasAccessToPremiumFeatures, handleSearch]);
 
   // Handle input focus
   const handleInputFocus = useCallback(() => {
-    const isDisabled = (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess());
-    if (!isDisabled && query.length > 1 && (activeSearchType === 'b149-1' || activeSearchType === 'b149-2')) {
+    const hasAccess = hasAccessToPremiumFeatures();
+    if (hasAccess && query.length > 1 && (activeSearchType === 'b149-1' || activeSearchType === 'b149-2')) {
       setShowSuggestions(true);
     }
-  }, [query, requiresPremiumAccess, activeSearchType]);
+  }, [query, hasAccessToPremiumFeatures, activeSearchType]);
 
   // Handle input blur with longer delay
   const handleInputBlur = useCallback(() => {
@@ -6344,7 +6449,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
 
     // For premium-required searches, check access status
     if (requiresPremiumAccess()) {
-      if (!trialManager.canAccessPremiumFeatures()) {
+      if (!hasAccessToPremiumFeatures()) {
         setResults([]);
         return;
       }
@@ -6377,7 +6482,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     }, 150);
 
     return () => clearTimeout(timeoutId);
-  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, requiresPremiumAccess]);
+  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, requiresPremiumAccess, hasAccessToPremiumFeatures]);
 
   // Memoized values to prevent unnecessary re-renders
   const searchBarProps = useMemo(() => ({
@@ -6387,7 +6492,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     onFocus: handleInputFocus,
     onBlur: handleInputBlur,
     placeholder: getSearchPlaceholder(),
-    isDisabled: (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess()),
+    isDisabled: !hasAccessToPremiumFeatures(),
     suggestions,
     showSuggestions,
     onSuggestionClick: handleSuggestionClick
@@ -6398,7 +6503,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     handleInputFocus, 
     handleInputBlur, 
     getSearchPlaceholder, 
-    requiresPremiumAccess, 
+    hasAccessToPremiumFeatures, 
     suggestions, 
     showSuggestions, 
     handleSuggestionClick
@@ -6520,7 +6625,44 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
   const SearchResults = useMemo(() => {
     
     // Show blocked message if no premium access (only for premium-required searches)
-    if (!trialManager.canAccessPremiumFeatures() && requiresPremiumAccess()) {
+    if (!hasAccessToPremiumFeatures() && requiresPremiumAccess()) {
+      // If user is not signed in, require sign-in first
+      if (!currentUser) {
+        return (
+          <div style={{
+            backgroundColor: 'white',
+            borderRadius: '12px',
+            padding: '2rem',
+            textAlign: 'center',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+            border: '2px solid #3b82f6'
+          }}>
+            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '1rem' }}>🔐</span>
+            <h3 style={{ color: '#3b82f6', margin: '0 0 0.5rem 0' }}>Sign In Required</h3>
+            <p style={{ color: '#6c757d', margin: '0 0 1rem 0' }}>
+              Please sign in to access premium CSA B149.1-25 and B149.2-25 code searches.
+            </p>
+            <button
+              onClick={() => setShowAuthModal(true)}
+              style={{
+                backgroundColor: '#3b82f6',
+                color: 'white',
+                border: 'none',
+                padding: '12px 24px',
+                borderRadius: '25px',
+                fontSize: '1rem',
+                fontWeight: '700',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease'
+              }}
+            >
+              🔐 Sign In / Sign Up
+            </button>
+          </div>
+        );
+      }
+      
+      // If user is signed in but doesn't have access, show upgrade message
       return (
         <div style={{
           backgroundColor: 'white',
@@ -6789,7 +6931,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     }
 
     return null;
-  }, [results, isLoading, accessStatus, query, handleSubscribe, activeSearchType, requiresPremiumAccess, getDataSourceTitle]);
+  }, [results, isLoading, accessStatus, query, handleSubscribe, activeSearchType, requiresPremiumAccess, getDataSourceTitle, hasAccessToPremiumFeatures, currentUser, setShowAuthModal]);
 
   return (
     <div style={{
@@ -6835,6 +6977,66 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
             <span style={{ fontSize: '0.9rem', opacity: 0.8, marginLeft: '0.5rem' }}>
               ({getDataSourceTitle()})
             </span>
+          </div>
+          
+          {/* User menu */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            {currentUser ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>
+                  {currentUser.email}
+                </span>
+                <button
+                  onClick={() => setShowDeviceManager(true)}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'white',
+                    padding: '0.5rem 0.75rem',
+                    borderRadius: '6px',
+                    fontSize: '0.8rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  📱 Devices
+                </button>
+                <button
+                  onClick={async () => {
+                    const { vercelAuth } = await import('./services/vercelAuth.js');
+                    await vercelAuth.signOut();
+                    setCurrentUser(null);
+                  }}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    color: 'white',
+                    padding: '0.5rem 0.75rem',
+                    borderRadius: '6px',
+                    fontSize: '0.8rem',
+                    cursor: 'pointer'
+                  }}
+                >
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => setShowAuthModal(true)}
+                style={{
+                  background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+                  border: 'none',
+                  color: 'white',
+                  padding: '0.75rem 1rem',
+                  borderRadius: '8px',
+                  fontSize: '0.9rem',
+                  fontWeight: '500',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease'
+                }}
+              >
+                🔐 Sign In / Sign Up
+              </button>
+            )}
           </div>
         </div>
       </header>
@@ -7012,6 +7214,25 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
         isVisible={showAIInterpretation}
         onClose={handleCloseAIInterpretation}
       />
+
+      {/* Authentication Modal */}
+      {showAuthModal && (
+        <AuthModal
+          isOpen={showAuthModal}
+          onClose={() => setShowAuthModal(false)}
+          onAuthSuccess={handleAuthSuccess}
+        />
+      )}
+
+      {/* Device Manager Modal - Temporarily disabled */}
+      {false && showDeviceManager && currentUser && (
+        <DeviceManager
+          user={currentUser}
+          isOpen={showDeviceManager}
+          onClose={() => setShowDeviceManager(false)}
+          onDeviceRemoved={handleDeviceRemoved}
+        />
+      )}
 
       <style>
         {`

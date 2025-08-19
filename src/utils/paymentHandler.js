@@ -121,7 +121,7 @@ class PaymentHandler {
   }
 
   // Handle successful payment - MAIN METHOD
-  handlePaymentSuccess(paymentData = {}) {
+  async handlePaymentSuccess(paymentData = {}) {
     try {
       console.log('PaymentHandler: 🎉 Processing payment success...', paymentData);
       
@@ -149,6 +149,34 @@ class PaymentHandler {
       };
 
       console.log('PaymentHandler: Created subscription data:', subscriptionData);
+
+      // Call payment webhook to update database
+      console.log('PaymentHandler: Calling payment webhook...');
+      try {
+        const baseURL = window.location.origin;
+        const response = await fetch(`${baseURL}/api/payment-webhook`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: email,
+            sessionId: subscriptionData.subscriptionId,
+            customerId: subscriptionData.customerId,
+            subscriptionType: subscriptionData.plan
+          })
+        });
+
+        const webhookResult = await response.json();
+        console.log('PaymentHandler: Webhook response:', webhookResult);
+
+        if (!webhookResult.success) {
+          console.error('PaymentHandler: Webhook failed:', webhookResult);
+        }
+      } catch (webhookError) {
+        console.error('PaymentHandler: Webhook call failed:', webhookError);
+        // Continue with local storage activation even if webhook fails
+      }
 
       // Store subscription in localStorage (using the format App.jsx expects)
       localStorage.setItem('subscriptionStatus', JSON.stringify(subscriptionData));
@@ -199,7 +227,7 @@ class PaymentHandler {
   }
 
   // Test payment success (for development)
-  testPaymentSuccess() {
+  async testPaymentSuccess() {
     console.log('PaymentHandler: 🧪 Testing payment success...');
     
     const testPaymentData = {
@@ -211,11 +239,11 @@ class PaymentHandler {
     };
     
     console.log('PaymentHandler: Test payment data:', testPaymentData);
-    return this.handlePaymentSuccess(testPaymentData);
+    return await this.handlePaymentSuccess(testPaymentData);
   }
 
   // Activate with manual code (for customer service)
-  activateWithCode(code) {
+  async activateWithCode(code) {
     console.log('PaymentHandler: Activating with code:', code);
     
     // Simple code validation - replace with your own logic
@@ -230,7 +258,7 @@ class PaymentHandler {
         timestamp: new Date().toISOString()
       };
 
-      const subscription = this.handlePaymentSuccess(subscriptionData);
+      const subscription = await this.handlePaymentSuccess(subscriptionData);
       this.showSuccessMessage(subscription, 'Manual activation successful!');
       
       return subscription;
@@ -367,9 +395,9 @@ class PaymentHandler {
   }
 
   // Manual subscription activation (for testing)
-  manualActivate(email = 'test@example.com') {
+  async manualActivate(email = 'test@example.com') {
     console.log('PaymentHandler: Manual activation for email:', email);
-    return this.handlePaymentSuccess({
+    return await this.handlePaymentSuccess({
       source: 'manual',
       customer_email: email,
       session_id: `manual_${Date.now()}`,
