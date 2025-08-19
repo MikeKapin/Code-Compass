@@ -6018,6 +6018,8 @@ const HighlightedText = React.memo(({ text, highlight }) => {
 });
 
 const App = () => {
+  console.log('🚀 App: Component rendering...');
+  
   // Search type state
   const [activeSearchType, setActiveSearchType] = useState('b149-1'); // 'b149-1', 'b149-2', 'regulations'
   
@@ -6051,25 +6053,35 @@ const App = () => {
   useEffect(() => {
     const initializeSearchIndices = async () => {
       try {
-        console.log('Initializing search indices...');
+        console.log('🔍 App: Starting search indices initialization...');
         
         // Dynamically import CSA data and create search index
+        console.log('📊 App: Loading CSA B149.2 data...');
         const { searchCSACode, createCSASearchIndex, csaB149Data } = await import('../data/csaDataB149_2.js');
         if (csaB149Data?.document) {
+          console.log('🏗️ App: Creating CSA search index...');
           const csaIndex = createCSASearchIndex();
           setCsaSearchIndex(csaIndex);
-          console.log('CSA search index initialized');
+          console.log('✅ App: CSA search index initialized successfully');
+        } else {
+          console.warn('⚠️ App: CSA data not available');
         }
         
         // Dynamically import regulations data and create search index
+        console.log('📊 App: Loading regulations data...');
         const { searchRegulations, createRegulationSearchIndex, regulationsData } = await import('../data/regulationsData.js');
         if (regulationsData && regulationsData.length > 0) {
+          console.log('🏗️ App: Creating regulations search index...');
           const regIndex = createRegulationSearchIndex(regulationsData);
           setRegulationsSearchIndex(regIndex);
-          console.log('Regulations search index initialized');
+          console.log('✅ App: Regulations search index initialized successfully');
+        } else {
+          console.warn('⚠️ App: Regulations data not available');
         }
+        
+        console.log('🎉 App: All search indices initialization complete');
       } catch (error) {
-        console.error('Failed to initialize search indices:', error);
+        console.error('❌ App: Failed to initialize search indices:', error);
       }
     };
     
@@ -6094,37 +6106,51 @@ const App = () => {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        console.log('App: Initializing authentication...');
+        console.log('🔐 App: Starting authentication initialization...');
         
         // Try to restore existing authentication session
+        console.log('🔐 App: Importing VercelAuth service...');
         const { default: vercelAuth } = await import('./services/vercelAuth.js');
+        console.log('🔐 App: VercelAuth imported, calling init...');
         const restoredUser = await vercelAuth.init();
+        console.log('🔐 App: VercelAuth init result:', restoredUser);
         
         if (restoredUser && restoredUser.hasAccess) {
-          console.log('App: Restored authenticated user:', restoredUser.email);
+          console.log('✅ App: Restored authenticated user:', restoredUser.email);
           setCurrentUser(restoredUser);
           setAccessStatus({
             hasAccess: true,
             type: 'subscription',
             user: restoredUser
           });
+          console.log('✅ App: User state and access status set');
         } else {
-          console.log('App: No authenticated session, using trial manager');
-          setAccessStatus(trialManager.getAccessStatus());
+          console.log('🔄 App: No authenticated session, using trial manager');
+          const trialStatus = trialManager.getAccessStatus();
+          console.log('🔄 App: Trial manager status:', trialStatus);
+          setAccessStatus(trialStatus);
+          console.log('✅ App: Trial access status set');
         }
       } catch (error) {
-        console.error('App authentication initialization failed:', error);
+        console.error('❌ App: Authentication initialization failed:', error);
         // Fallback to trial manager if auth fails
         try {
-          setAccessStatus(trialManager.getAccessStatus());
+          console.log('🔄 App: Attempting trial manager fallback...');
+          const fallbackStatus = trialManager.getAccessStatus();
+          console.log('🔄 App: Fallback trial status:', fallbackStatus);
+          setAccessStatus(fallbackStatus);
+          console.log('✅ App: Fallback access status set');
         } catch (trialError) {
-          console.error('Trial manager fallback also failed:', trialError);
+          console.error('❌ App: Trial manager fallback also failed:', trialError);
           // Final fallback - allow basic functionality
-          setAccessStatus({
+          const emergencyStatus = {
             hasAccess: false,
             type: 'none',
             message: 'Authentication system unavailable'
-          });
+          };
+          console.log('🆘 App: Using emergency status:', emergencyStatus);
+          setAccessStatus(emergencyStatus);
+          console.log('✅ App: Emergency status set');
         }
       }
     };
@@ -7065,6 +7091,15 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     return null;
   }, [results, isLoading, accessStatus, query, handleSubscribe, activeSearchType, requiresPremiumAccess, getDataSourceTitle, hasAccessToPremiumFeatures, currentUser, setShowAuthModal]);
 
+  console.log('🎨 App: About to render JSX, states:', { 
+    activeSearchType, 
+    accessStatus: accessStatus?.type, 
+    currentUser: currentUser?.email, 
+    resultsCount: results?.length,
+    csaSearchIndex: !!csaSearchIndex,
+    regulationsSearchIndex: !!regulationsSearchIndex
+  });
+  
   return (
     <div style={{
       minHeight: '100vh',
