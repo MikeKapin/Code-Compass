@@ -30,6 +30,10 @@ export default async function handler(req, res) {
         return await handleLogout(req, res);
       case 'me':
         return await handleMe(req, res);
+      case 'simple-auth':
+        return await handleSimpleAuth(req, res);
+      case 'simple-login':
+        return await handleSimpleLogin(req, res);
       default:
         return res.status(404).json({ error: 'Endpoint not found' });
     }
@@ -407,5 +411,201 @@ async function handleMe(req, res) {
   } catch (error) {
     console.error('Get user profile error:', error);
     return res.status(500).json(errors.serverError('Failed to get user profile'));
+  }
+}
+
+// Simple authentication handlers (consolidated from separate files)
+async function handleSimpleAuth(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const pkg = await import('pg');
+  const { Client } = pkg;
+  let client;
+
+  try {
+    const { email, password, deviceInfo } = req.body;
+    
+    if (!email || !password) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'validation_error',
+        message: 'Email and password are required' 
+      });
+    }
+
+    client = new Client({
+      connectionString: process.env.POSTGRES_URL,
+      ssl: process.env.POSTGRES_URL.includes('sslmode=require') ? { rejectUnauthorized: false } : false
+    });
+
+    await client.connect();
+
+    // Check if user exists
+    const existingUserResult = await client.query(
+      'SELECT id, email FROM users WHERE email = $1',
+      [email.toLowerCase()]
+    );
+
+    if (existingUserResult.rows.length > 0) {
+      return res.status(409).json({
+        success: false,
+        error: 'user_exists',
+        message: 'An account with this email already exists. Please sign in instead.'
+      });
+    }
+
+    const bcrypt = await import('bcryptjs');
+    const hashedPassword = await bcrypt.default.hash(password, 12);
+
+    const createUserResult = await client.query(
+      'INSERT INTO users (email, password_hash, created_at) VALUES ($1, $2, NOW()) RETURNING id, email, created_at',
+      [email.toLowerCase(), hashedPassword]
+    );
+
+    const newUser = createUserResult.rows[0];
+
+    const jwt = await import('jsonwebtoken');
+    const token = jwt.default.sign(
+      { userId: newUser.id, email: newUser.email },
+      process.env.JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    return res.status(201).json({
+      success: true,
+      message: 'Registration successful',
+      user: {
+        id: newUser.id,
+        email: newUser.email,
+        hasAccess: false
+      },
+      token: token
+    });
+
+  } catch (error) {
+    console.error('Simple auth error:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'server_error',
+      message: 'Registration failed: ' + error.message
+    });
+  } finally {
+    if (client) {
+      try {
+        await client.end();
+      } catch (closeError) {
+        console.error('Error closing database connection:', closeError);
+      }
+    }
+  }
+}
+
+async function handleSimpleLogin(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  const pkg = await import('pg');
+  const { Client } = pkg;
+  let client;
+
+  try {
+    const { email, password, deviceInfo } = req.body;
+    
+    if (!email || !password) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'validation_error',
+        message: 'Email and password are required' 
+      });
+    }
+
+    client = new Client({
+      connectionString: process.env.POSTGRES_URL,
+      ssl: process.env.POSTGRES_URL.includes('sslmode=require') ? { rejectUnauthorized: false } : false
+    });
+
+    await client.connect();
+
+    const userResult = await client.query(
+      'SELECT id, email, password_hash FROM users WHERE email = $1',
+      [email.toLowerCase()]
+    );
+
+    if (userResult.rows.length === 0) {
+      return res.status(401).json({
+        success: false,
+        error: 'invalid_credentials',
+        message: 'Invalid email or password'
+      });
+    }
+
+    const user = userResult.rows[0];
+
+    const bcrypt = await import('bcryptjs');
+    const isValidPassword = await bcrypt.default.compare(password, user.password_hash);
+
+    if (!isValidPassword) {
+      return res.status(401).json({
+        success: false,
+        error: 'invalid_credentials',
+        message: 'Invalid email or password'
+      });
+    }
+
+    const subscriptionResult = await client.query(
+      'SELECT * FROM subscriptions WHERE user_id = $1 AND status = $2',
+      [user.id, 'active']
+    );
+
+    let hasAccess = subscriptionResult.rows.length > 0;
+    const subscription = subscriptionResult.rows[0] || null;
+    
+    // Temporary: Give access to specific test accounts
+    if (email.toLowerCase() === 'm_kapin@outlook.com' || email.toLowerCase() === 'b_sharp@fanshawec.ca') {
+      hasAccess = true;
+      console.log('Granting temporary access to test account:', email);
+    }
+
+    const jwt = await import('jsonwebtoken');
+    const token = jwt.default.sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    return res.status(200).json({
+      success: true,
+      message: 'Login successful',
+      user: {
+        id: user.id,
+        email: user.email,
+        hasAccess: hasAccess,
+        subscription: subscription ? {
+          plan: subscription.plan,
+          status: subscription.status,
+          expiresAt: subscription.current_period_end
+        } : null
+      },
+      token: token
+    });
+
+  } catch (error) {
+    console.error('Simple login error:', error);
+    return res.status(500).json({
+      success: false,
+      error: 'server_error',
+      message: 'Login failed: ' + error.message
+    });
+  } finally {
+    if (client) {
+      try {
+        await client.end();
+      } catch (closeError) {
+        console.error('Error closing database connection:', closeError);
+      }
+    }
   }
 }
