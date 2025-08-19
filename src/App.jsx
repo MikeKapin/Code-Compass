@@ -1,8 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
-// Import the new search functionality
-import { searchCSACode, createCSASearchIndex, csaB149Data } from '../data/csaDataB149_2.js';
-import { searchRegulations, createRegulationSearchIndex, regulationsData } from '../data/regulationsData.js';
+// Import search functions only - data will be loaded dynamically
 import { trialManager } from './utils/trialManager.js';
 // Add this import at the top
 import { paymentHandler } from './utils/paymentHandler.js';
@@ -6049,20 +6047,26 @@ const App = () => {
   const [showDeviceManager, setShowDeviceManager] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  // Initialize search indices on component mount
+  // Initialize search indices on component mount with dynamic imports
   useEffect(() => {
     const initializeSearchIndices = async () => {
       try {
-        // Initialize CSA B149.2 search index
+        console.log('Initializing search indices...');
+        
+        // Dynamically import CSA data and create search index
+        const { searchCSACode, createCSASearchIndex, csaB149Data } = await import('../data/csaDataB149_2.js');
         if (csaB149Data?.document) {
           const csaIndex = createCSASearchIndex();
           setCsaSearchIndex(csaIndex);
+          console.log('CSA search index initialized');
         }
         
-        // Initialize regulations search index  
+        // Dynamically import regulations data and create search index
+        const { searchRegulations, createRegulationSearchIndex, regulationsData } = await import('../data/regulationsData.js');
         if (regulationsData && regulationsData.length > 0) {
           const regIndex = createRegulationSearchIndex(regulationsData);
           setRegulationsSearchIndex(regIndex);
+          console.log('Regulations search index initialized');
         }
       } catch (error) {
         console.error('Failed to initialize search indices:', error);
@@ -6244,15 +6248,20 @@ const App = () => {
   }, [activeSearchType, getPopularSearchTerms]);
 
   // Handle search with proper analytics tracking
-  const handleSearch = useCallback((searchQuery) => {
+  const handleSearch = useCallback(async (searchQuery) => {
     // Handle regulations search (free)
     if (activeSearchType === 'regulations') {
       if (regulationsSearchIndex) {
-        const searchResults = searchRegulations(searchQuery, regulationsSearchIndex);
-        setResults(searchResults);
-        setQuery(searchQuery);
-        setShowSuggestions(false);
-        trackSearch(searchQuery, searchResults.length);
+        try {
+          const { searchRegulations } = await import('../data/regulationsData.js');
+          const searchResults = searchRegulations(searchQuery, regulationsSearchIndex);
+          setResults(searchResults);
+          setQuery(searchQuery);
+          setShowSuggestions(false);
+          trackSearch(searchQuery, searchResults.length);
+        } catch (error) {
+          console.error('Error searching regulations:', error);
+        }
       }
       return;
     }
@@ -6286,9 +6295,14 @@ const App = () => {
       } else if (activeSearchType === 'b149-2') {
         // B149.2-25 search
         if (csaSearchIndex) {
-          const searchResults = searchCSACode(searchQuery, csaSearchIndex);
-          setResults(searchResults);
-          trackSearch(searchQuery, searchResults.length);
+          try {
+            const { searchCSACode } = await import('../data/csaDataB149_2.js');
+            const searchResults = searchCSACode(searchQuery, csaSearchIndex);
+            setResults(searchResults);
+            trackSearch(searchQuery, searchResults.length);
+          } catch (error) {
+            console.error('Error searching B149.2:', error);
+          }
         }
       }
       
@@ -6558,7 +6572,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     }
 
     setIsLoading(true);
-    const timeoutId = setTimeout(() => {
+    const timeoutId = setTimeout(async () => {
       let searchResults = [];
 
       switch (activeSearchType) {
@@ -6569,12 +6583,22 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
           break;
         case 'b149-2':
           if (trialManager.canAccessPremiumFeatures() && csaSearchIndex) {
-            searchResults = searchCSACode(query, csaSearchIndex);
+            try {
+              const { searchCSACode } = await import('../data/csaDataB149_2.js');
+              searchResults = searchCSACode(query, csaSearchIndex);
+            } catch (error) {
+              console.error('Error importing B149.2 search:', error);
+            }
           }
           break;
         case 'regulations':
           if (regulationsSearchIndex) {
-            searchResults = searchRegulations(query, regulationsSearchIndex);
+            try {
+              const { searchRegulations } = await import('../data/regulationsData.js');
+              searchResults = searchRegulations(query, regulationsSearchIndex);
+            } catch (error) {
+              console.error('Error importing regulations search:', error);
+            }
           }
           break;
       }
