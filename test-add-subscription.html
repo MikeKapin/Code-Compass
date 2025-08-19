@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Subscription Test</title>
+</head>
+<body>
+    <h1>Add Subscription Test</h1>
+    <button onclick="addSubscription()">Add Subscription to m_kapin@outlook.com</button>
+    <div id="result"></div>
+
+    <script>
+        async function addSubscription() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = 'Adding subscription...';
+            
+            try {
+                const response = await fetch('https://codecompass-api.vercel.app/api/payment-webhook', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: 'm_kapin@outlook.com',
+                        sessionId: 'manual_test_' + Date.now(),
+                        customerId: 'manual_cus_' + Date.now(),
+                        subscriptionType: 'annual'
+                    })
+                });
+                
+                const result = await response.json();
+                console.log('Payment webhook result:', result);
+                
+                if (result.success) {
+                    resultDiv.innerHTML = '<div style="color: green;">✅ Subscription added successfully!</div>';
+                    resultDiv.innerHTML += '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+                } else {
+                    resultDiv.innerHTML = '<div style="color: red;">❌ Failed to add subscription</div>';
+                    resultDiv.innerHTML += '<pre>' + JSON.stringify(result, null, 2) + '</pre>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                resultDiv.innerHTML = '<div style="color: red;">❌ Network error: ' + error.message + '</div>';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -72,8 +72,14 @@ export default async function handler(req, res) {
       [user.id, 'active']
     );
 
-    const hasAccess = subscriptionResult.rows.length > 0;
+    let hasAccess = subscriptionResult.rows.length > 0;
     const subscription = subscriptionResult.rows[0] || null;
+    
+    // Temporary: Give access to specific test accounts
+    if (email.toLowerCase() === 'm_kapin@outlook.com' || email.toLowerCase() === 'b_sharp@fanshawec.ca') {
+      hasAccess = true;
+      console.log('Granting temporary access to test account:', email);
+    }
 
     // Generate JWT token
     const jwt = await import('jsonwebtoken');
