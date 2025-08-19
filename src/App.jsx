@@ -6078,13 +6078,28 @@ const App = () => {
     console.log('========================');
   }, [currentUser, activeSearchType, accessStatus]);
 
-  // Initialize authentication (simplified to prevent blocking)
+  // Initialize authentication and check for existing session
   useEffect(() => {
     const initAuth = async () => {
       try {
-        // Just use trial manager for now to ensure app loads
-        setAccessStatus(trialManager.getAccessStatus());
-        console.log('App initialized with trial manager');
+        console.log('App: Initializing authentication...');
+        
+        // Try to restore existing authentication session
+        const { default: vercelAuth } = await import('./services/vercelAuth.js');
+        const restoredUser = await vercelAuth.init();
+        
+        if (restoredUser && restoredUser.hasAccess) {
+          console.log('App: Restored authenticated user:', restoredUser.email);
+          setCurrentUser(restoredUser);
+          setAccessStatus({
+            hasAccess: true,
+            type: 'subscription',
+            user: restoredUser
+          });
+        } else {
+          console.log('App: No authenticated session, using trial manager');
+          setAccessStatus(trialManager.getAccessStatus());
+        }
       } catch (error) {
         console.error('App initialization failed:', error);
         setAccessStatus(trialManager.getAccessStatus());
@@ -6351,13 +6366,28 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
   // Check if user has access to premium features (requires authentication + subscription)
   const hasAccessToPremiumFeatures = useCallback(() => {
     const isPremiumRequired = requiresPremiumAccess();
-    const hasAccess = currentUser?.hasAccess;
     
-    // For premium features, user must be signed in AND have access
+    // For premium features, prioritize authenticated access
     if (isPremiumRequired) {
-      if (!currentUser) return false;
-      if (hasAccess) return true;
-      return trialManager.canAccessPremiumFeatures();
+      // If user is authenticated and has access, grant access
+      if (currentUser?.hasAccess === true) {
+        console.log('hasAccessToPremiumFeatures: Authenticated user has access');
+        return true;
+      }
+      
+      // If user is authenticated but no access, deny
+      if (currentUser && currentUser.hasAccess === false) {
+        console.log('hasAccessToPremiumFeatures: Authenticated user has no access');
+        return false;
+      }
+      
+      // If no user, fall back to trial manager
+      if (!currentUser) {
+        console.log('hasAccessToPremiumFeatures: No user, checking trial');
+        return trialManager.canAccessPremiumFeatures();
+      }
+      
+      return false;
     }
     
     // For free features (regulations), no authentication required
