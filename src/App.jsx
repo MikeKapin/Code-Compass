@@ -6238,15 +6238,21 @@ const App = () => {
       return;
     }
 
-    // For both B149.1-25 and B149.2-25, check access status
-    const currentStatus = trialManager.getAccessStatus();
+    // For both B149.1-25 and B149.2-25, check premium access using the new logic
+    const hasAccess = hasAccessToPremiumFeatures();
+    console.log('handleSearch: hasAccessToPremiumFeatures returns:', hasAccess);
+    console.log('handleSearch: currentUser:', currentUser);
+    console.log('handleSearch: currentUser?.hasAccess:', currentUser?.hasAccess);
     
-    // If user has subscription access, allow search
-    if (currentStatus.hasAccess) {
-      if (currentStatus.type === 'trial') {
-        // User is on trial - record search
-        const success = trialManager.recordSearch(searchQuery);
-        if (!success) return; // Daily limit reached
+    // If user has access (authenticated with subscription OR trial), perform search
+    if (hasAccess) {
+      // If it's a trial user (not authenticated), record search
+      if (!currentUser) {
+        const currentStatus = trialManager.getAccessStatus();
+        if (currentStatus.type === 'trial') {
+          const success = trialManager.recordSearch(searchQuery);
+          if (!success) return; // Daily limit reached
+        }
       }
       
       setQuery(searchQuery);
@@ -6267,21 +6273,34 @@ const App = () => {
         }
       }
       
-      // Update access status to reflect new search count
-      setAccessStatus(trialManager.getAccessStatus());
+      // Only update trial manager status if user is not authenticated
+      if (!currentUser) {
+        setAccessStatus(trialManager.getAccessStatus());
+      }
       return;
     }
     
-    // If no access and trial hasn't been used, show email modal
-    if (!currentStatus.hasAccess && currentStatus.type === 'trial' && currentStatus.eligible) {
-      setShowEmailModal(true);
-      localStorage.setItem('pendingQuery', searchQuery);
-      localStorage.setItem('pendingSearchType', activeSearchType);
+    // If authenticated user has no access, don't show trial popup
+    if (currentUser && !currentUser.hasAccess) {
+      console.log('handleSearch: Authenticated user has no access');
       return;
+    }
+    
+    // Only show trial popup for non-authenticated users
+    if (!currentUser) {
+      const currentStatus = trialManager.getAccessStatus();
+      
+      // If no access and trial hasn't been used, show email modal
+      if (!currentStatus.hasAccess && currentStatus.type === 'trial' && currentStatus.eligible) {
+        setShowEmailModal(true);
+        localStorage.setItem('pendingQuery', searchQuery);
+        localStorage.setItem('pendingSearchType', activeSearchType);
+        return;
+      }
     }
     
     // If no access (trial expired), search is blocked by UI
-  }, [activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes]);
+  }, [activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, hasAccessToPremiumFeatures, currentUser]);
 
   // Handle search type switching
   const handleSearchTypeChange = useCallback((type) => {
