@@ -204,7 +204,7 @@ export const searchFreeCSAData = (query) => {
     results.push({
       clause: "UPGRADE",
       title: "🔓 Unlock Complete CSA B149.1-25 Code Book",
-      description: "Get access to all 1,118+ clauses including Gas Piping Systems (Section 5), Installation Requirements (Section 6), Venting Systems (Section 8), and Technical Annexes A-H. Plus AI explanations for every code section.",
+      description: "Get access to Pressure Controls, Piping Systems, Specific Appliances, Venting Systems and more! The entire code and annexes. Plus AI explanations for every code section.",
       category: "Premium Feature",
       isPremiumUpgrade: true
     });
@@ -285,7 +285,7 @@ export const searchFreeCSAB149_2_Data = (query) => {
     results.push({
       clause: "UPGRADE",
       title: "🔓 Unlock Complete CSA B149.2-25 Propane Code Book", 
-      description: "Get access to the complete propane storage and handling code including container requirements, safety procedures, installation standards, and technical specifications. Plus AI explanations for every code section.",
+      description: "Get access to Container Requirements, Safety Procedures, Installation Standards, Technical Specifications and more! The entire propane code and annexes. Plus AI explanations for every code section.",
       category: "Premium Feature",
       isPremiumUpgrade: true
     });
