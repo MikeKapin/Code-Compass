@@ -1,25 +1,40 @@
-// api/ai-interpreter.js
+// netlify/functions/ai-interpreter.js
 // AI-powered CSA code interpretation and explanation system
 
-export default async function handler(req, res) {
+exports.handler = async (event, context) => {
     // CORS headers
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    const headers = {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type',
+        'Content-Type': 'application/json'
+    };
 
-    if (req.method === 'OPTIONS') {
-        return res.status(200).end();
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers,
+            body: ''
+        };
     }
 
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+    if (event.httpMethod !== 'POST') {
+        return {
+            statusCode: 405,
+            headers,
+            body: JSON.stringify({ error: 'Method not allowed' })
+        };
     }
 
     try {
-        const { codeText, question, mode = 'explain', context = '' } = req.body;
+        const { codeText, question, mode = 'explain', context = '' } = JSON.parse(event.body);
 
         if (!codeText) {
-            return res.status(400).json({ error: 'Code text is required' });
+            return {
+                statusCode: 400,
+                headers,
+                body: JSON.stringify({ error: 'Code text is required' })
+            };
         }
 
         // Initialize Claude API
@@ -30,18 +45,26 @@ export default async function handler(req, res) {
 
         const interpretation = await interpretCode(codeText, question, mode, context, apiKey);
 
-        return res.status(200).json({
-            success: true,
-            interpretation: interpretation,
-            timestamp: new Date().toISOString()
-        });
+        return {
+            statusCode: 200,
+            headers,
+            body: JSON.stringify({
+                success: true,
+                interpretation: interpretation,
+                timestamp: new Date().toISOString()
+            })
+        };
 
     } catch (error) {
         console.error('AI interpretation error:', error);
-        return res.status(500).json({
-            success: false,
-            error: error.message
-        });
+        return {
+            statusCode: 500,
+            headers,
+            body: JSON.stringify({
+                success: false,
+                error: error.message
+            })
+        };
     }
 }
 
