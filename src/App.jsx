@@ -11,11 +11,11 @@ import {
   trackSubscriptionAttempt,
   trackEmailSubmission 
 } from './utils/analytics.js';
-// AI Interpretation imports - temporarily disabled for debugging
-// import AIInterpretation from './components/AIInterpretation.jsx';
-// Authentication imports - temporarily disabled for debugging
-// import AuthModal from './components/Auth/AuthModal.jsx';
-// import DeviceManager from './components/Auth/DeviceManager.jsx';
+// AI Interpretation imports
+import AIInterpretation from './components/AIInterpretation.jsx';
+// Authentication imports
+import AuthModal from './components/Auth/AuthModal.jsx';
+import DeviceManager from './components/Auth/DeviceManager.jsx';
 
 // Full CSA data array (all the codes from your original file)
 const fullCSAData = [
@@ -6543,7 +6543,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
 
   // Check if user has access to premium features (requires authentication + subscription)
   const hasAccessToPremiumFeatures = useCallback(() => {
-    const isPremiumRequired = requiresPremiumAccess();
+    const isPremiumRequired = activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
     
     // For premium features, prioritize authenticated access
     if (isPremiumRequired) {
@@ -6570,12 +6570,13 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     
     // For free features (regulations), no authentication required
     return true;
-  }, [currentUser, requiresPremiumAccess]);
+  }, [currentUser, activeSearchType]);
 
   // AI Interpretation handlers
   const handleAIInterpretation = useCallback((codeData) => {
     // AI interpretation requires authentication for premium features
-    if (requiresPremiumAccess() && !currentUser) {
+    const isPremiumRequired = activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
+    if (isPremiumRequired && !currentUser) {
       // Show sign-in modal instead
       setShowAuthModal(true);
       return;
@@ -6589,7 +6590,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
       // Show upgrade message - could trigger payment flow
       setShowAuthModal(true);
     }
-  }, [requiresPremiumAccess, currentUser, hasAccessToPremiumFeatures]);
+  }, [activeSearchType, currentUser, hasAccessToPremiumFeatures]);
 
   const handleCloseAIInterpretation = useCallback(() => {
     setShowAIInterpretation(false);
@@ -6690,7 +6691,8 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     }
 
     // For premium-required searches, check access status
-    if (requiresPremiumAccess()) {
+    const isPremiumRequired = activeSearchType === 'b149-1' || activeSearchType === 'b149-2';
+    if (isPremiumRequired) {
       if (!hasAccessToPremiumFeatures()) {
         setResults([]);
         return;
@@ -6734,7 +6736,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
     }, 150);
 
     return () => clearTimeout(timeoutId);
-  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, requiresPremiumAccess, hasAccessToPremiumFeatures]);
+  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes, hasAccessToPremiumFeatures]);
 
   // Memoized values to prevent unnecessary re-renders
   const searchBarProps = useMemo(() => ({
@@ -7480,17 +7482,14 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
         </div>
       </main>
 
-      {/* AI Interpretation Modal - temporarily disabled for debugging */}
-      {/*
+      {/* AI Interpretation Modal */}
       <AIInterpretation
         codeData={selectedCodeForAI}
         isVisible={showAIInterpretation}
         onClose={handleCloseAIInterpretation}
       />
-      */}
 
-      {/* Authentication Modal - temporarily disabled for debugging */}
-      {/*
+      {/* Authentication Modal */}
       {showAuthModal && (
         <AuthModal
           isOpen={showAuthModal}
@@ -7498,10 +7497,8 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
           onAuthSuccess={handleAuthSuccess}
         />
       )}
-      */}
 
-      {/* Device Manager Modal - temporarily disabled for debugging */}
-      {/*
+      {/* Device Manager Modal - Temporarily disabled */}
       {false && showDeviceManager && currentUser && (
         <DeviceManager
           user={currentUser}
@@ -7510,7 +7507,6 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
           onDeviceRemoved={handleDeviceRemoved}
         />
       )}
-      */}
 
       <style>
         {`
