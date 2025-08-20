@@ -470,18 +470,21 @@ const App = () => {
     setResults([]);
     setSuggestions([]);
     setShowSuggestions(false);
+    setIsLoading(false); // Reset loading state when switching search types
   }, [activeSearchType]);
 
   // Search functionality with analytics - updated for all search types
   useEffect(() => {
     if (query.trim() === '') {
       setResults([]);
+      setIsLoading(false);
       return;
     }
 
     // For premium-required searches, check access status
     if ((activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && !trialManager.canAccessPremiumFeatures()) {
       setResults([]);
+      setIsLoading(false);
       return;
     }
 
