@@ -14,64 +14,122 @@ import {
   trackEmailSubmission 
 } from './utils/analytics.js';
 
-// Full CSA data array (all the codes from your original file)
-const fullCSAData = [
- {
-    "clause": "3.1",
-    "title": "Accessory",
-    "description": "a part capable of performing an independent function and contributing to the operation of the appliance or gas piping system that it serves."
+// CSA Data Structure - organized by sections and annexes
+const csaB149_1_25 = {
+  sections: {
+    section1: {
+      title: "Scope and Application",
+      clauses: []
+    },
+    section2: {
+      title: "Reference Publications", 
+      clauses: []
+    },
+    section3: {
+      title: "Definitions",
+      clauses: [
+        {
+          "clause": "3.1",
+          "title": "Accessory",
+          "description": "a part capable of performing an independent function and contributing to the operation of the appliance or gas piping system that it serves."
+        },
+        {
+          "clause": "3.2",
+          "title": "Air supply (with respect to the installation of an appliance)",
+          "description": "combustion air, flue gas dilution air, and ventilation air."
+        },
+        {
+          "clause": "3.3",
+          "title": "Combustion air",
+          "description": "the air required for satisfactory combustion of gas, including excess air."
+        },
+        {
+          "clause": "3.4",
+          "title": "Excess air",
+          "description": "that portion of the combustion air that is supplied to the combustion zone in excess of that which is theoretically required for complete combustion."
+        },
+        {
+          "clause": "3.5",
+          "title": "Flue gas dilution air",
+          "description": "the ambient air that is admitted to a venting system at the draft hood, draft diverter, or draft regulator."
+        },
+        {
+          "clause": "3.6",
+          "title": "Ventilation air",
+          "description": "air that is admitted to a space containing an appliance to replace air exhausted through a ventilation opening or by means of exfiltration."
+        },
+        {
+          "clause": "3.7",
+          "title": "Appliance",
+          "description": "a device designed to utilize gas as a fuel or raw material to produce light, heat, power, refrigeration, or air conditioning."
+        },
+        {
+          "clause": "3.8",
+          "title": "Appliance, commercial",
+          "description": "an appliance used in a commercial establishment."
+        },
+        {
+          "clause": "3.9",
+          "title": "Appliance, domestic",
+          "description": "an appliance used in a dwelling unit, including a mobile home."
+        },
+        {
+          "clause": "3.10",
+          "title": "Appliance, industrial",
+          "description": "an appliance used in an industrial establishment."
+        },
+        {
+          "clause": "3.11",
+          "title": "Appliance, outdoor",
+          "description": "an appliance designed to be located outdoors that will operate safely when exposed to outdoor temperature and weather conditions without the need for protection from the elements."
+        }
+      ]
+    },
+    section4: {
+      title: "General Requirements",
+      clauses: []
+    },
+    section5: {
+      title: "Gas Piping Systems",
+      clauses: []
+    },
+    section6: {
+      title: "Appliance Installation", 
+      clauses: []
+    },
+    section7: {
+      title: "Venting Systems",
+      clauses: []
+    },
+    section8: {
+      title: "Air Supply",
+      clauses: []
+    }
   },
-  {
-    "clause": "3.2",
-    "title": "Air supply (with respect to the installation of an appliance)",
-    "description": "combustion air, flue gas dilution air, and ventilation air."
-  },
-  {
-    "clause": "3.3",
-    "title": "Combustion air",
-    "description": "the air required for satisfactory combustion of gas, including excess air."
-  },
-  {
-    "clause": "3.4",
-    "title": "Excess air",
-    "description": "that portion of the combustion air that is supplied to the combustion zone in excess of that which is theoretically required for complete combustion."
-  },
-  {
-    "clause": "3.5",
-    "title": "Flue gas dilution air",
-    "description": "the ambient air that is admitted to a venting system at the draft hood, draft diverter, or draft regulator."
-  },
-  {
-    "clause": "3.6",
-    "title": "Ventilation air",
-    "description": "air that is admitted to a space containing an appliance to replace air exhausted through a ventilation opening or by means of exfiltration."
-  },
-  {
-    "clause": "3.7",
-    "title": "Appliance",
-    "description": "a device designed to utilize gas as a fuel or raw material to produce light, heat, power, refrigeration, or air conditioning."
-  },
-  {
-    "clause": "3.8",
-    "title": "Appliance, commercial",
-    "description": "an appliance used in a commercial establishment."
-  },
-  {
-    "clause": "3.9",
-    "title": "Appliance, domestic",
-    "description": "an appliance used in a dwelling unit, including a mobile home."
-  },
-  {
-    "clause": "3.10",
-    "title": "Appliance, industrial",
-    "description": "an appliance used in an industrial establishment."
-  },
-  {
-    "clause": "3.11",
-    "title": "Appliance, outdoor",
-    "description": "an appliance designed to be located outdoors that will operate safely when exposed to outdoor temperature and weather conditions without the need for protection from the elements."
+  annexes: {
+    annexA: {
+      title: "Conversion Factors",
+      clauses: []
+    },
+    annexB: {
+      title: "Capacity Tables",
+      clauses: []
+    },
+    annexC: {
+      title: "Installation Examples",
+      clauses: []
+    }
   }
-];
+};
+
+// Flatten data for backward compatibility
+const fullCSAData = [];
+Object.values(csaB149_1_25.sections).forEach(section => {
+  fullCSAData.push(...section.clauses);
+});
+Object.values(csaB149_1_25.annexes).forEach(annex => {
+  fullCSAData.push(...annex.clauses);
+});
 
 // Move SearchBar component outside to prevent re-creation on every render
 const SearchBar = React.memo(({ 
@@ -92,8 +150,6 @@ const SearchBar = React.memo(({
           type="text"
           value={query}
           onChange={onQueryChange}
-          onFocus={onFocus}
-          onBlur={onBlur}
           placeholder={placeholder}
           style={{
             width: '100%',
@@ -354,17 +410,6 @@ const App = () => {
     }
   }, []);
 
-  // Replace your testPaymentSuccess function
-  const testPaymentSuccess = useCallback(() => {
-    paymentHandler.testPaymentSuccess();
-  }, []);
-
-  // Debug function for access testing
-  const testAccess = useCallback(() => {
-    const status = trialManager.getAccessStatus();
-    console.log('Access Status:', status);
-    alert(`Access Status: ${JSON.stringify(status, null, 2)}`);
-  }, []);
 
   // Initialize payment handler and check access status on mount
   useEffect(() => {
@@ -649,27 +694,11 @@ const App = () => {
     }
   }, [email, query, handleSearch]);
 
-  // Handle subscription
+  // Handle subscription - redirect to payment
   const handleSubscribe = useCallback(() => {
     trackSubscriptionAttempt('upgrade_button');
-    
-    // Instead of redirecting, let's show a success message for now
-    const subscriptionData = {
-      isActive: true,
-      expiresAt: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(), // 1 year from now
-      plan: 'annual',
-      email: 'test@example.com',
-      subscriptionId: 'test_subscription_' + Date.now(),
-      customerId: 'test_customer_' + Date.now(),
-      amount: 7900, // $79.00 in cents
-      paymentSource: 'test'
-    };
-    
-    localStorage.setItem('subscriptionStatus', JSON.stringify(subscriptionData));
-    const newStatus = trialManager.getAccessStatus();
-    setAccessStatus(newStatus);
-    
-    alert('Subscription activated! (This is a test - no payment processed)');
+    // TODO: Replace with actual payment URL
+    window.open('https://buy.stripe.com/your-payment-link', '_blank');
   }, []);
 
   // Get search placeholder text
@@ -842,7 +871,7 @@ const App = () => {
       );
     }
 
-    if (results.length === 0) {
+    if (results.length > 0) {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {results.map((item, index) => (
@@ -975,36 +1004,6 @@ const App = () => {
             </div>
           </div>
           
-          <div style={{ display: 'flex', gap: '12px' }}>
-            <button
-              onClick={testAccess}
-              style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: 'white',
-                padding: '0.5rem 0.75rem',
-                borderRadius: '6px',
-                fontSize: '0.8rem',
-                cursor: 'pointer'
-              }}
-            >
-              🔍 Check Access
-            </button>
-            <button
-              onClick={testPaymentSuccess}
-              style={{
-                background: 'rgba(255, 255, 255, 0.1)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-                color: 'white',
-                padding: '0.5rem 0.75rem',
-                borderRadius: '6px',
-                fontSize: '0.8rem',
-                cursor: 'pointer'
-              }}
-            >
-              💳 Test Payment
-            </button>
-          </div>
         </div>
       </header>
 
