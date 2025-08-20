@@ -10,6 +10,7 @@ import { searchRegulations, createRegulationSearchIndex, regulationsData } from 
 import { paymentHandler } from './utils/paymentHandler.js';
 import { trackSearch, trackSubscriptionAttempt } from './utils/analytics.js';
 import AIInterpretation from './components/AIInterpretation.jsx';
+import PremiumPage from './components/PremiumPage.jsx';
 
 // The complete CSA B149.1-25 data is imported from the data file
 
@@ -152,6 +153,9 @@ const App = () => {
   // AI interpretation state
   const [showAIInterpretation, setShowAIInterpretation] = useState(false);
   const [selectedCodeForAI, setSelectedCodeForAI] = useState(null);
+  
+  // Premium page state
+  const [showPremiumPage, setShowPremiumPage] = useState(false);
 
   // Initialize search indices and check premium status on component mount
   useEffect(() => {
@@ -333,9 +337,15 @@ const App = () => {
 
   // AI interpretation handlers
   const handleAIInterpretation = useCallback((codeData) => {
-    setSelectedCodeForAI(codeData);
-    setShowAIInterpretation(true);
-  }, []);
+    if (isPremiumUser) {
+      setSelectedCodeForAI(codeData);
+      setShowAIInterpretation(true);
+    } else {
+      // Show premium page for non-premium users
+      setShowPremiumPage(true);
+      trackSubscriptionAttempt('ai_button');
+    }
+  }, [isPremiumUser]);
 
   const closeAIInterpretation = useCallback(() => {
     setShowAIInterpretation(false);
@@ -427,17 +437,21 @@ const App = () => {
     handleSuggestionClick
   ]);
 
-  // Handle premium upgrade (direct purchase)
+  // Handle premium upgrade (show premium page)
   const handleUpgrade = useCallback(() => {
-    trackSubscriptionAttempt();
-    paymentHandler.startPayment();
+    setShowPremiumPage(true);
+    trackSubscriptionAttempt('upgrade_button');
   }, []);
 
   // Handle subscription - redirect to payment
   const handleSubscribe = useCallback(() => {
+    setShowPremiumPage(true);
     trackSubscriptionAttempt('upgrade_button');
-    // TODO: Replace with actual payment URL
-    window.open('https://buy.stripe.com/your-payment-link', '_blank');
+  }, []);
+
+  // Close premium page
+  const closePremiumPage = useCallback(() => {
+    setShowPremiumPage(false);
   }, []);
 
   // Get search placeholder text
@@ -903,6 +917,12 @@ const App = () => {
         codeData={selectedCodeForAI}
         isVisible={showAIInterpretation}
         onClose={closeAIInterpretation}
+      />
+
+      {/* Premium Page Modal */}
+      <PremiumPage
+        isVisible={showPremiumPage}
+        onClose={closePremiumPage}
       />
 
       <style>
