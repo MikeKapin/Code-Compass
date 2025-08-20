@@ -11,11 +11,11 @@ import {
   trackSubscriptionAttempt,
   trackEmailSubmission 
 } from './utils/analytics.js';
-// AI Interpretation imports
-import AIInterpretation from './components/AIInterpretation.jsx';
-// Authentication imports
-import AuthModal from './components/Auth/AuthModal.jsx';
-import DeviceManager from './components/Auth/DeviceManager.jsx';
+// AI Interpretation imports - temporarily disabled for debugging
+// import AIInterpretation from './components/AIInterpretation.jsx';
+// Authentication imports - temporarily disabled for debugging
+// import AuthModal from './components/Auth/AuthModal.jsx';
+// import DeviceManager from './components/Auth/DeviceManager.jsx';
 
 // Full CSA data array (all the codes from your original file)
 const fullCSAData = [
@@ -6020,8 +6020,11 @@ const HighlightedText = React.memo(({ text, highlight }) => {
 const App = () => {
   console.log('🚀 App: Component rendering...');
   
-  // Early return test - minimal component to see if it renders
-  if (window.location.search.includes('debug=minimal')) {
+  // Progressive debug modes to isolate the issue
+  const urlParams = new URLSearchParams(window.location.search);
+  const debugMode = urlParams.get('debug');
+  
+  if (debugMode === 'minimal') {
     console.log('🧪 App: Rendering minimal debug version');
     return (
       <div style={{ 
@@ -6035,8 +6038,84 @@ const App = () => {
         gap: '20px'
       }}>
         <h1>🧭 Code Compass - Debug Mode</h1>
-        <p>If you can see this, React is working!</p>
-        <button onClick={() => window.location.reload()}>Reload</button>
+        <p>✅ React is working!</p>
+        <button onClick={() => window.location.href = '?debug=imports'}>Test Imports</button>
+      </div>
+    );
+  }
+  
+  if (debugMode === 'imports') {
+    console.log('🧪 App: Testing imports...');
+    
+    // Test each import one by one
+    try {
+      console.log('✅ trialManager import OK');
+      const trialStatus = trialManager.getAccessStatus();
+      console.log('✅ trialManager.getAccessStatus() OK:', trialStatus);
+    } catch (error) {
+      console.error('❌ trialManager failed:', error);
+    }
+    
+    try {
+      console.log('✅ paymentHandler import OK');
+    } catch (error) {
+      console.error('❌ paymentHandler failed:', error);
+    }
+    
+    try {
+      console.log('✅ validateEmail import OK');
+    } catch (error) {
+      console.error('❌ validateEmail failed:', error);
+    }
+    
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        backgroundColor: '#1a1a1a', 
+        color: 'white', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        <h1>🧭 Import Test Mode</h1>
+        <p>Check console for import test results</p>
+        <button onClick={() => window.location.href = '?debug=state'}>Test State</button>
+        <button onClick={() => window.location.href = '?debug=minimal'}>Back to Minimal</button>
+      </div>
+    );
+  }
+  
+  if (debugMode === 'state') {
+    console.log('🧪 App: Testing state initialization...');
+    
+    // Test state initialization
+    const [testState, setTestState] = useState('initial');
+    const [testAccessStatus, setTestAccessStatus] = useState(null);
+    
+    useEffect(() => {
+      console.log('🧪 useEffect running...');
+      setTestState('updated');
+      setTestAccessStatus({ hasAccess: false, type: 'test' });
+    }, []);
+    
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        backgroundColor: '#1a1a1a', 
+        color: 'white', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        <h1>🧭 State Test Mode</h1>
+        <p>Test State: {testState}</p>
+        <p>Access Status: {JSON.stringify(testAccessStatus)}</p>
+        <button onClick={() => window.location.href = '?'}>Try Normal Mode</button>
+        <button onClick={() => window.location.href = '?debug=imports'}>Back to Imports</button>
       </div>
     );
   }
@@ -7401,14 +7480,17 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
         </div>
       </main>
 
-      {/* AI Interpretation Modal */}
+      {/* AI Interpretation Modal - temporarily disabled for debugging */}
+      {/*
       <AIInterpretation
         codeData={selectedCodeForAI}
         isVisible={showAIInterpretation}
         onClose={handleCloseAIInterpretation}
       />
+      */}
 
-      {/* Authentication Modal */}
+      {/* Authentication Modal - temporarily disabled for debugging */}
+      {/*
       {showAuthModal && (
         <AuthModal
           isOpen={showAuthModal}
@@ -7416,8 +7498,10 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
           onAuthSuccess={handleAuthSuccess}
         />
       )}
+      */}
 
-      {/* Device Manager Modal - Temporarily disabled */}
+      {/* Device Manager Modal - temporarily disabled for debugging */}
+      {/*
       {false && showDeviceManager && currentUser && (
         <DeviceManager
           user={currentUser}
@@ -7426,6 +7510,7 @@ window.open('https://buy.stripe.com/8x24gAadDgMceP40tO7ok04','_blank');  }, []);
           onDeviceRemoved={handleDeviceRemoved}
         />
       )}
+      */}
 
       <style>
         {`
