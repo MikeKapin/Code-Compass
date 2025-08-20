@@ -193,6 +193,16 @@ const App = () => {
         if (subscription.isActive && expiresAt > now) {
           setIsPremiumUser(true);
           return;
+        } else if (subscription.isActive && expiresAt <= now && subscription.trialCode) {
+          // Trial has expired - revert to free
+          console.log('Trial code expired, reverting to free version');
+          localStorage.removeItem('codecompass_subscription_data');
+          localStorage.removeItem('subscriptionStatus');
+          setIsPremiumUser(false);
+          
+          // Show trial expired message
+          showTrialExpiredMessage();
+          return;
         }
       } catch (error) {
         console.error('Error checking subscription:', error);
@@ -200,6 +210,35 @@ const App = () => {
     }
     
     setIsPremiumUser(false);
+  };
+
+  // Show trial expired message
+  const showTrialExpiredMessage = () => {
+    const banner = document.createElement('div');
+    banner.style.cssText = `
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #f39c12, #e67e22);
+      color: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+      z-index: 10000;
+      max-width: 500px;
+      text-align: center;
+      font-weight: 600;
+    `;
+    banner.textContent = '⏰ Your 7-day trial has expired. Purchase Code Compass for $79 to continue with full access!';
+    
+    document.body.appendChild(banner);
+    
+    setTimeout(() => {
+      if (banner.parentNode) {
+        banner.parentNode.removeChild(banner);
+      }
+    }, 8000);
   };
 
 
@@ -492,24 +531,90 @@ const App = () => {
     if (activeSearchType === 'regulations') return null;
     
     if (isPremiumUser) {
-      return (
-        <div style={{
-          background: 'linear-gradient(135deg, #4CAF50, #45a049)',
-          color: 'white',
-          padding: '16px 20px',
-          textAlign: 'center',
-          marginBottom: '1rem',
-          borderRadius: '8px',
-          boxShadow: '0 2px 8px rgba(76, 175, 80, 0.3)'
-        }}>
-          <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
-            ✨ Premium Access Active
-          </span>
-          <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
-            Unlimited searches across all CSA codes + AI explanations
+      // Check if this is a trial user
+      const subscriptionData = localStorage.getItem('codecompass_subscription_data') || localStorage.getItem('subscriptionStatus');
+      let isTrialUser = false;
+      let daysRemaining = 0;
+      
+      if (subscriptionData) {
+        try {
+          const subscription = JSON.parse(subscriptionData);
+          if (subscription.trialCode) {
+            isTrialUser = true;
+            const now = new Date().getTime();
+            const expiresAt = new Date(subscription.expiresAt).getTime();
+            daysRemaining = Math.max(0, Math.ceil((expiresAt - now) / (1000 * 60 * 60 * 24)));
+          }
+        } catch (error) {
+          console.error('Error parsing subscription data:', error);
+        }
+      }
+      
+      if (isTrialUser) {
+        return (
+          <div style={{
+            background: 'linear-gradient(135deg, #f39c12, #e67e22)',
+            color: 'white',
+            padding: '16px 20px',
+            textAlign: 'center',
+            marginBottom: '1rem',
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px rgba(243, 156, 18, 0.3)'
+          }}>
+            <div style={{ marginBottom: '8px' }}>
+              <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
+                🕐 Trial Mode: {daysRemaining} day{daysRemaining !== 1 ? 's' : ''} remaining
+              </span>
+              <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
+                Full access to all features. After trial expires, reverts to free version.
+              </div>
+            </div>
+            <button
+              onClick={handleUpgrade}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                color: 'white',
+                border: '2px solid white',
+                padding: '8px 16px',
+                borderRadius: '20px',
+                fontSize: '0.9rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = 'white';
+                e.target.style.color = '#f39c12';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+                e.target.style.color = 'white';
+              }}
+            >
+              Upgrade Now - Keep Full Access
+            </button>
           </div>
-        </div>
-      );
+        );
+      } else {
+        return (
+          <div style={{
+            background: 'linear-gradient(135deg, #4CAF50, #45a049)',
+            color: 'white',
+            padding: '16px 20px',
+            textAlign: 'center',
+            marginBottom: '1rem',
+            borderRadius: '8px',
+            boxShadow: '0 2px 8px rgba(76, 175, 80, 0.3)'
+          }}>
+            <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
+              ✨ Premium Access Active
+            </span>
+            <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
+              Unlimited searches across all CSA codes + AI explanations
+            </div>
+          </div>
+        );
+      }
     } else {
       return (
         <div style={{

@@ -53,20 +53,33 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
           expiresAt: result.expiresAt,
           activationCode: activationCode.toUpperCase(),
           deviceId: deviceId,
-          remainingActivations: result.remainingActivations
+          remainingActivations: result.remainingActivations,
+          // Mark trial codes differently
+          isTrialActivation: result.isTrialActivation || false,
+          trialCode: result.trialCode || false,
+          masterCode: result.masterCode || false
         };
 
         localStorage.setItem('codecompass_subscription_data', JSON.stringify(premiumData));
         localStorage.setItem('subscriptionStatus', JSON.stringify(premiumData));
 
-        setSuccessMessage(result.message || 'Activation successful!');
+        // Different success messages for different code types
+        let displayMessage = result.message || 'Activation successful!';
+        if (result.trialCode) {
+          displayMessage = `🎉 7-Day Trial Activated! Full access until ${new Date(result.expiresAt).toLocaleDateString()}. After trial expires, app reverts to free version.`;
+        } else if (result.masterCode) {
+          displayMessage = '🎉 Developer Access Activated! Unlimited premium features unlocked.';
+        }
         
-        // Close modal and refresh app after 2 seconds
+        setSuccessMessage(displayMessage);
+        
+        // Close modal and refresh app after 3 seconds for trial codes (longer message)
+        const delay = result.trialCode ? 3000 : 2000;
         setTimeout(() => {
           onActivationSuccess(premiumData);
           onClose();
           window.location.reload();
-        }, 2000);
+        }, delay);
 
       } else {
         setError(result.error || 'Activation failed');

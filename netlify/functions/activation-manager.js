@@ -92,6 +92,14 @@ async function useActivationCode(activationCode, deviceId, headers) {
         'DEVUNLTD'  // Developer unlimited backup
     ];
     
+    // 7-day trial codes for trade shows (can be used by multiple people)
+    const trialCodes = [
+        'SHOW2024', // Trade show demo code
+        'TRIAL7DY', // 7-day trial code
+        'EXPO2024', // Exhibition code
+        'DEMO7DAY'  // Demo code
+    ];
+    
     if (masterCodes.includes(activationCode.toUpperCase())) {
         console.log('Master developer code used:', activationCode);
         
@@ -106,6 +114,30 @@ async function useActivationCode(activationCode, deviceId, headers) {
                 usedActivations: 0,
                 remainingActivations: 999,
                 expiresAt: '2030-12-31T23:59:59.000Z' // Long expiration for testing
+            })
+        };
+    }
+    
+    if (trialCodes.includes(activationCode.toUpperCase())) {
+        console.log('Trade show trial code used:', activationCode);
+        
+        // Calculate 7 days from now
+        const expirationDate = new Date();
+        expirationDate.setDate(expirationDate.getDate() + 7);
+        
+        return {
+            statusCode: 200,
+            headers,
+            body: JSON.stringify({
+                success: true,
+                activated: true,
+                trialCode: true,
+                message: 'Trade show trial activated! Full access for 7 days, then reverts to free version.',
+                usedActivations: 0,
+                remainingActivations: 1, // Single use per device
+                expiresAt: expirationDate.toISOString(),
+                trialDays: 7,
+                isTrialActivation: true
             })
         };
     }
