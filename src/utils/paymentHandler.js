@@ -146,6 +146,38 @@ class PaymentHandler {
 
       console.log('PaymentHandler: Created subscription data:', subscriptionData);
 
+      // Generate activation code for multi-device use
+      console.log('PaymentHandler: Generating activation code...');
+      let activationCode = null;
+      try {
+        const activationResponse = await fetch('/.netlify/functions/activation-manager', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            action: 'create_activation_code',
+            email: email,
+            sessionId: subscriptionData.subscriptionId
+          })
+        });
+
+        const activationResult = await activationResponse.json();
+        if (activationResult.success) {
+          activationCode = activationResult.activationCode;
+          console.log('PaymentHandler: Generated activation code:', activationCode);
+        }
+      } catch (error) {
+        console.error('PaymentHandler: Failed to generate activation code:', error);
+      }
+
+      // Add activation code to subscription data
+      if (activationCode) {
+        subscriptionData.activationCode = activationCode;
+        subscriptionData.maxActivations = 4;
+        subscriptionData.usedActivations = 1; // This device counts as first activation
+      }
+
       // Call payment webhook to update database
       console.log('PaymentHandler: Calling payment webhook...');
       try {
@@ -208,8 +240,8 @@ class PaymentHandler {
         newValue: JSON.stringify(subscriptionData)
       }));
 
-      // Show success message
-      this.showSuccessMessage(subscription);
+      // Show success message with activation code
+      this.showSuccessMessage(subscription, activationCode);
 
       console.log('PaymentHandler: ✅ Payment success processing complete!');
       console.log('PaymentHandler: Final subscription:', subscription);
@@ -307,11 +339,15 @@ class PaymentHandler {
   }
 
   // Show success message to user
-  showSuccessMessage(subscription, customMessage = null) {
+  showSuccessMessage(subscription, activationCode = null) {
     console.log('PaymentHandler: Showing success message...');
     
-    const message = customMessage || 
-      `🎉 Welcome to Code Compass! Your subscription is now active until ${new Date(subscription.expiresAt).toLocaleDateString()}.`;
+    let message;
+    if (activationCode) {
+      message = `🎉 Welcome to Code Compass! Your activation code is: ${activationCode}. Save this code - you can use it on up to 4 devices (Phone + Tablet + Computer + 1 Spare).`;
+    } else {
+      message = `🎉 Welcome to Code Compass! Your subscription is now active until ${new Date(subscription.expiresAt).toLocaleDateString()}.`;
+    }
     
     console.log('PaymentHandler: Success message:', message);
     

@@ -11,6 +11,7 @@ import { paymentHandler } from './utils/paymentHandler.js';
 import { trackSearch, trackSubscriptionAttempt } from './utils/analytics.js';
 import AIInterpretation from './components/AIInterpretation.jsx';
 import PremiumPage from './components/PremiumPage.jsx';
+import ActivationModal from './components/ActivationModal.jsx';
 
 // The complete CSA B149.1-25 data is imported from the data file
 
@@ -156,6 +157,9 @@ const App = () => {
   
   // Premium page state
   const [showPremiumPage, setShowPremiumPage] = useState(false);
+  
+  // Activation modal state
+  const [showActivationModal, setShowActivationModal] = useState(false);
 
   // Initialize search indices and check premium status on component mount
   useEffect(() => {
@@ -452,6 +456,20 @@ const App = () => {
   // Close premium page
   const closePremiumPage = useCallback(() => {
     setShowPremiumPage(false);
+  }, []);
+
+  // Activation handlers
+  const showActivation = useCallback(() => {
+    setShowActivationModal(true);
+  }, []);
+
+  const closeActivationModal = useCallback(() => {
+    setShowActivationModal(false);
+  }, []);
+
+  const handleActivationSuccess = useCallback((premiumData) => {
+    setIsPremiumUser(true);
+    console.log('Activation successful:', premiumData);
   }, []);
 
   // Get search placeholder text
@@ -814,6 +832,34 @@ const App = () => {
             </div>
           </div>
           
+          {/* Already purchased button for non-premium users */}
+          {!isPremiumUser && (
+            <button
+              onClick={showActivation}
+              style={{
+                background: 'transparent',
+                color: 'white',
+                border: '2px solid rgba(255, 255, 255, 0.3)',
+                padding: '8px 16px',
+                borderRadius: '20px',
+                fontSize: '0.9rem',
+                fontWeight: '500',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                e.target.style.borderColor = 'rgba(255, 255, 255, 0.6)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = 'transparent';
+                e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              }}
+            >
+              🔑 Already Purchased?
+            </button>
+          )}
+
         </div>
       </header>
 
@@ -923,6 +969,13 @@ const App = () => {
       <PremiumPage
         isVisible={showPremiumPage}
         onClose={closePremiumPage}
+      />
+
+      {/* Activation Modal */}
+      <ActivationModal
+        isVisible={showActivationModal}
+        onClose={closeActivationModal}
+        onActivationSuccess={handleActivationSuccess}
       />
 
       <style>
