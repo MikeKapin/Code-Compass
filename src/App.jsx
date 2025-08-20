@@ -1,19 +1,14 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
-// Import the complete CSA and regulations data
+// Import the complete CSA data (for premium users)
 import { searchCSAData, fullCSAData, getPopularSearchTerms as getB149_1_PopularTerms, getAnnexInfo } from '../data/csaData.js';
 import { searchCSACode, createCSASearchIndex, csaB149Data, getPopularSearchTerms as getB149_2_PopularTerms } from '../data/csaDataB149_2.js';
+// Import the free CSA data (for all users)
+import { searchFreeCSAData, searchFreeCSAB149_2_Data, getFreeCSAInfo } from '../data/csaDataFree.js';
 import { searchRegulations, createRegulationSearchIndex, regulationsData } from '../data/regulationsData.js';
-import { trialManager } from './utils/trialManager.js';
-// Add this import at the top
+// Payment and analytics imports
 import { paymentHandler } from './utils/paymentHandler.js';
-import { validateEmail } from './utils/emailcollection.js';
-import { 
-  trackTrialStarted,
-  trackSearch,
-  trackSubscriptionAttempt,
-  trackEmailSubmission 
-} from './utils/analytics.js';
+import { trackSearch, trackSubscriptionAttempt } from './utils/analytics.js';
 import AIInterpretation from './components/AIInterpretation.jsx';
 
 // The complete CSA B149.1-25 data is imported from the data file
@@ -133,17 +128,10 @@ const SearchBar = React.memo(({
   </div>
 ));
 
-// Email Modal Component
-const EmailModal = React.memo(({ 
-  isOpen, 
-  onClose, 
-  email, 
-  setEmail, 
-  onSubmit, 
-  isSubmitting, 
-  error 
-}) => {
-  if (!isOpen) return null;
+// Freemium model - no email collection needed
+
+const App = () => {
+  // Search type state
 
   return (
     <div style={{
@@ -270,13 +258,8 @@ const App = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [accessStatus, setAccessStatus] = useState(null);
-  const [showEmailModal, setShowEmailModal] = useState(false);
-  const [emailSubmitting, setEmailSubmitting] = useState(false);
-  const [emailError, setEmailError] = useState('');
-  
-  // Email collection state
-  const [email, setEmail] = useState('');
+  const [isPremiumUser, setIsPremiumUser] = useState(false);
+  const [showPaywallModal, setShowPaywallModal] = useState(false);
   
   // Search suggestions
   const [suggestions, setSuggestions] = useState([]);
@@ -286,51 +269,70 @@ const App = () => {
   const [showAIInterpretation, setShowAIInterpretation] = useState(false);
   const [selectedCodeForAI, setSelectedCodeForAI] = useState(null);
 
-  // Initialize search indices on component mount
+  // Initialize search indices and check premium status on component mount
   useEffect(() => {
-    // Initialize CSA B149.2 search index
+    // Initialize CSA B149.2 search index (for premium users)
     if (csaB149Data?.document) {
       const csaIndex = createCSASearchIndex();
       setCsaSearchIndex(csaIndex);
     }
     
-    // Initialize regulations search index
+    // Initialize regulations search index (always available)
     if (regulationsData && regulationsData.length > 0) {
       const regIndex = createRegulationSearchIndex(regulationsData);
       setRegulationsSearchIndex(regIndex);
     }
+
+    // Check for existing premium subscription
+    checkPremiumStatus();
   }, []);
 
+  // Check if user has premium subscription
+  const checkPremiumStatus = () => {
+    const subscriptionData = localStorage.getItem('codecompass_subscription_data');
+    const subscriptionStatus = localStorage.getItem('subscriptionStatus');
+    
+    if (subscriptionData || subscriptionStatus) {
+      try {
+        const subscription = JSON.parse(subscriptionData || subscriptionStatus);
+        const now = new Date().getTime();
+        const expiresAt = new Date(subscription.expiresAt).getTime();
+        
+        if (subscription.isActive && expiresAt > now) {
+          setIsPremiumUser(true);
+          return;
+        }
+      } catch (error) {
+        console.error('Error checking subscription:', error);
+      }
+    }
+    
+    setIsPremiumUser(false);
+  };
 
-  // Initialize payment handler and check access status on mount
+
+  // Initialize payment handler and listen for payment success
   useEffect(() => {
     // Initialize payment handler
     paymentHandler.init();
-    
-    // Get initial access status
-    const status = trialManager.getAccessStatus();
-    setAccessStatus(status);
-    console.log('Initial access status:', status);
   }, []);
 
   // Listen for payment success events
   useEffect(() => {
     const handlePaymentSuccess = () => {
-      // Refresh access status when payment succeeds
-      const status = trialManager.getAccessStatus();
-      setAccessStatus(status);
-      console.log('Payment success - updated access status:', status);
+      // Refresh premium status when payment succeeds
+      checkPremiumStatus();
+      console.log('Payment success - checking premium status');
     };
 
     // Listen for custom payment success event
     window.addEventListener('paymentSuccess', handlePaymentSuccess);
     
-    // Listen for storage changes (when payment status updates)
+    // Listen for storage changes (when subscription status updates)
     const handleStorageChange = (e) => {
-      if (e.key === 'subscriptionStatus' || e.key === 'codecompass_trial_data') {
-        const status = trialManager.getAccessStatus();
-        setAccessStatus(status);
-        console.log('Storage change - updated access status:', status);
+      if (e.key === 'subscriptionStatus' || e.key === 'codecompass_subscription_data') {
+        checkPremiumStatus();
+        console.log('Storage change - checking premium status');
       }
     };
     
@@ -342,14 +344,22 @@ const App = () => {
     };
   }, []);
 
-  // Search functions for both code books
+  // Search functions for both code books (freemium model)
   const searchB149_1 = useCallback((query) => {
-    return searchCSAData(query);
-  }, []);
+    if (isPremiumUser) {
+      return searchCSAData(query); // Full access for premium users
+    } else {
+      return searchFreeCSAData(query); // Free preview for all users
+    }
+  }, [isPremiumUser]);
 
   const searchB149_2 = useCallback((query, searchIndex) => {
-    return searchCSACode(query, searchIndex);
-  }, []);
+    if (isPremiumUser && searchIndex) {
+      return searchCSACode(query, searchIndex); // Full access for premium users
+    } else {
+      return searchFreeCSAB149_2_Data(query); // Free preview for all users
+    }
+  }, [isPremiumUser]);
 
   // Get popular search terms based on active search type
   const getPopularSearchTerms = useCallback(() => {
@@ -380,44 +390,28 @@ const App = () => {
 
   // Handle search with proper analytics tracking
   const handleSearch = useCallback((searchQuery) => {
-    // Handle regulations search (free)
+    // Set query and hide suggestions for all searches
+    setQuery(searchQuery);
+    setShowSuggestions(false);
+
+    let searchResults = [];
+
+    // Handle search based on type (freemium model)
     if (activeSearchType === 'regulations') {
+      // Regulations are always free
       if (regulationsSearchIndex) {
-        const searchResults = searchRegulations(searchQuery, regulationsSearchIndex);
-        setResults(searchResults);
-        setQuery(searchQuery);
-        setShowSuggestions(false);
-        trackSearch(searchQuery, searchResults.length);
+        searchResults = searchRegulations(searchQuery, regulationsSearchIndex);
       }
-      return;
+    } else if (activeSearchType === 'b149-1') {
+      // B149.1-25: Free preview or full access
+      searchResults = searchB149_1(searchQuery);
+    } else if (activeSearchType === 'b149-2') {
+      // B149.2-25: Free preview or full access
+      searchResults = searchB149_2(searchQuery, csaSearchIndex);
     }
 
-    // For both B149.1-25 and B149.2-25, check trial access
-    if (trialManager.canAccessPremiumFeatures()) {
-      setQuery(searchQuery);
-      setShowSuggestions(false);
-      
-      if (activeSearchType === 'b149-1') {
-        // B149.1-25 search
-        const searchResults = searchB149_1(searchQuery);
-        setResults(searchResults);
-        trackSearch(searchQuery, searchResults.length);
-      } else if (activeSearchType === 'b149-2') {
-        // B149.2-25 search
-        if (csaSearchIndex) {
-          const searchResults = searchB149_2(searchQuery, csaSearchIndex);
-          setResults(searchResults);
-          trackSearch(searchQuery, searchResults.length);
-        }
-      }
-      
-      // Update access status after search
-      setAccessStatus(trialManager.getAccessStatus());
-      return;
-    }
-
-    // If no access, show email modal for trial
-    setShowEmailModal(true);
+    setResults(searchResults);
+    trackSearch(searchQuery, searchResults.length);
   }, [activeSearchType, regulationsSearchIndex, csaSearchIndex, searchB149_1, searchB149_2]);
 
   // Handle form submission
@@ -489,29 +483,21 @@ const App = () => {
       return;
     }
 
-    // For premium-required searches, check access status
-    if ((activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && !trialManager.canAccessPremiumFeatures()) {
-      setResults([]);
-      setIsLoading(false);
-      return;
-    }
-
     setIsLoading(true);
     const timeoutId = setTimeout(() => {
       let searchResults = [];
 
       switch (activeSearchType) {
         case 'b149-1':
-          if (trialManager.canAccessPremiumFeatures()) {
-            searchResults = searchB149_1(query);
-          }
+          // B149.1-25: Free preview or full access based on premium status
+          searchResults = searchB149_1(query);
           break;
         case 'b149-2':
-          if (trialManager.canAccessPremiumFeatures() && csaSearchIndex) {
-            searchResults = searchB149_2(query, csaSearchIndex);
-          }
+          // B149.2-25: Free preview or full access based on premium status
+          searchResults = searchB149_2(query, csaSearchIndex);
           break;
         case 'regulations':
+          // Regulations: Always free
           if (regulationsSearchIndex) {
             searchResults = searchRegulations(query, regulationsSearchIndex);
           }
@@ -530,7 +516,7 @@ const App = () => {
       clearTimeout(timeoutId);
       setIsLoading(false);
     };
-  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchB149_1, searchB149_2]);
+  }, [query, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchB149_1, searchB149_2, isPremiumUser]);
 
   // Memoized values to prevent unnecessary re-renders
   const searchBarProps = useMemo(() => ({
@@ -557,56 +543,11 @@ const App = () => {
     handleSuggestionClick
   ]);
 
-  // Get access status display for current search type
-  const getAccessStatusForType = useCallback((searchType) => {
-    if (searchType === 'regulations') {
-      return { hasAccess: true, type: 'free' };
-    }
-    
-    const status = accessStatus || trialManager.getAccessStatus();
-    return status;
-  }, [accessStatus]);
-
-  // Handle email submission for trial
-  const handleEmailSubmit = useCallback(async (e) => {
-    e.preventDefault();
-    setEmailSubmitting(true);
-    setEmailError('');
-
-    try {
-      if (!validateEmail(email)) {
-        throw new Error('Please enter a valid email address');
-      }
-
-      // Start trial
-      const result = trialManager.startTrial(email);
-      
-      if (result.success) {
-        // Track trial start
-        trackTrialStarted(email);
-        
-        // Update access status
-        const newStatus = trialManager.getAccessStatus();
-        setAccessStatus(newStatus);
-        
-        // Close modal and show success
-        setShowEmailModal(false);
-        setEmail('');
-        
-        // Perform the search that was requested
-        if (query.trim()) {
-          handleSearch(query.trim());
-        }
-      } else {
-        throw new Error(result.message || 'Failed to start trial');
-      }
-    } catch (error) {
-      console.error('Trial start error:', error);
-      setEmailError(error.message);
-    } finally {
-      setEmailSubmitting(false);
-    }
-  }, [email, query, handleSearch]);
+  // Handle premium upgrade (direct purchase)
+  const handleUpgrade = useCallback(() => {
+    trackSubscriptionAttempt();
+    paymentHandler.startPayment();
+  }, []);
 
   // Handle subscription - redirect to payment
   const handleSubscribe = useCallback(() => {
@@ -841,8 +782,8 @@ const App = () => {
                   </div>
                 )}
                 
-                {/* AI Explanation Button - only for premium content */}
-                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && trialManager.canAccessPremiumFeatures() && (
+                {/* AI Explanation Button - only for premium users and CSA codes */}
+                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && isPremiumUser && !item.isPremiumUpgrade && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -873,6 +814,78 @@ const App = () => {
                     }}
                   >
                     🤖 AI Explain
+                  </button>
+                )}
+                
+                {/* Upgrade Button for Premium Upgrade prompts */}
+                {item.isPremiumUpgrade && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleUpgrade();
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #f39c12 0%, #e67e22 100%)',
+                      border: 'none',
+                      color: 'white',
+                      padding: '0.75rem 1.5rem',
+                      borderRadius: '8px',
+                      fontSize: '0.9rem',
+                      fontWeight: '600',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 2px 8px rgba(243, 156, 18, 0.3)',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'translateY(-2px)';
+                      e.target.style.boxShadow = '0 4px 12px rgba(243, 156, 18, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'translateY(0)';
+                      e.target.style.boxShadow = '0 2px 8px rgba(243, 156, 18, 0.3)';
+                    }}
+                  >
+                    💎 Upgrade Now
+                  </button>
+                )}
+
+                {/* AI Upgrade Button for non-premium users */}
+                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && !isPremiumUser && !item.isPremiumUpgrade && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleUpgrade();
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)',
+                      border: 'none',
+                      color: 'white',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '8px',
+                      fontSize: '0.85rem',
+                      fontWeight: '500',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 2px 8px rgba(155, 89, 182, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'translateY(-2px)';
+                      e.target.style.boxShadow = '0 4px 12px rgba(155, 89, 182, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'translateY(0)';
+                      e.target.style.boxShadow = '0 2px 8px rgba(155, 89, 182, 0.3)';
+                    }}
+                  >
+                    🤖 Get AI + Full Codes
                   </button>
                 )}
               </div>
