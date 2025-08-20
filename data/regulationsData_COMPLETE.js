@@ -1240,7 +1240,7 @@ export const regulationsData = [
     type: "clause",
     keywords: "unacceptable condition immediate hazard appliance container work used purpose approved alteration deterioration impair safe operation piping tubing hoses venting combustion products supply air clearance combustible matter requirements Regulation distributor finds immediate hazard shut off supply gas notify user writing direction not use corrected affix notice certificate ROT holders notification shutdown obligations",
     amendments: []
-  },
+  }
 
   // =====================================
   // ONTARIO REGULATION 215/01 - FUEL INDUSTRY CERTIFICATES - COMPLETE  
