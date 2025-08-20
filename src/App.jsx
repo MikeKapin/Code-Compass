@@ -132,122 +132,6 @@ const SearchBar = React.memo(({
 
 const App = () => {
   // Search type state
-
-  return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0, 0, 0, 0.8)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 1000,
-      padding: '20px'
-    }}>
-      <div style={{
-        backgroundColor: '#2d2d2d',
-        padding: '2rem',
-        borderRadius: '12px',
-        maxWidth: '500px',
-        width: '100%',
-        color: 'white'
-      }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-          <h2 style={{ margin: 0 }}>Start Your Trial</h2>
-          <button 
-            onClick={onClose}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: 'white',
-              fontSize: '24px',
-              cursor: 'pointer'
-            }}
-          >
-            ×
-          </button>
-        </div>
-        
-        <p style={{ marginBottom: '1.5rem', lineHeight: 1.5 }}>
-          Enter your email to start a 7-day trial with access to CSA B149.1-25 and B149.2-25 codes.
-        </p>
-        
-        <form onSubmit={onSubmit}>
-          <div style={{ marginBottom: '1rem' }}>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email address"
-              required
-              style={{
-                width: '100%',
-                padding: '12px',
-                fontSize: '16px',
-                borderRadius: '8px',
-                border: '1px solid #333',
-                backgroundColor: '#1a1a1a',
-                color: 'white',
-                outline: 'none',
-                boxSizing: 'border-box'
-              }}
-              disabled={isSubmitting}
-            />
-          </div>
-          
-          {error && (
-            <div style={{ 
-              color: '#ff4444', 
-              fontSize: '14px', 
-              marginBottom: '1rem' 
-            }}>
-              {error}
-            </div>
-          )}
-          
-          <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
-            <button
-              type="button"
-              onClick={onClose}
-              style={{
-                background: 'none',
-                border: '1px solid #666',
-                color: 'white',
-                padding: '12px 24px',
-                borderRadius: '8px',
-                cursor: 'pointer'
-              }}
-              disabled={isSubmitting}
-            >
-              Cancel
-            </button>
-            <button
-              type="submit"
-              style={{
-                background: '#4CAF50',
-                border: 'none',
-                color: 'white',
-                padding: '12px 24px',
-                borderRadius: '8px',
-                cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                opacity: isSubmitting ? 0.7 : 1
-              }}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? 'Starting Trial...' : 'Start Trial'}
-            </button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
-});
-
-const App = () => {
-  // Search type state
   const [activeSearchType, setActiveSearchType] = useState('b149-1'); // 'b149-1', 'b149-2', 'regulations'
   
   // Search indices
@@ -570,61 +454,12 @@ const App = () => {
     }
   }, [activeSearchType]);
 
-  // Access banner component
+  // Access banner component (freemium model)
   const AccessBanner = useMemo(() => {
-    // Only show banner for premium-required searches
+    // Only show banner for CSA codes (not regulations)
     if (activeSearchType === 'regulations') return null;
     
-    const currentAccessStatus = getAccessStatusForType(activeSearchType);
-    
-    if (currentAccessStatus.hasAccess && currentAccessStatus.type === 'trial') {
-      return (
-        <div style={{
-          background: 'linear-gradient(135deg, #4CAF50, #45a049)',
-          color: 'white',
-          padding: '16px 20px',
-          textAlign: 'center',
-          marginBottom: '1rem',
-          borderRadius: '8px',
-          boxShadow: '0 2px 8px rgba(76, 175, 80, 0.3)'
-        }}>
-          <div style={{ marginBottom: '8px' }}>
-            <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
-              🎉 Trial active: {currentAccessStatus.daysRemaining} day{currentAccessStatus.daysRemaining !== 1 ? 's' : ''} remaining
-            </span>
-            {currentAccessStatus.searchCount > 0 && (
-              <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
-                {currentAccessStatus.searchCount} searches performed across B149.1-25 & B149.2-25
-              </div>
-            )}
-          </div>
-          <button
-            onClick={handleSubscribe}
-            style={{
-              backgroundColor: 'rgba(255, 255, 255, 0.2)',
-              color: 'white',
-              border: '2px solid white',
-              padding: '8px 16px',
-              borderRadius: '20px',
-              fontSize: '0.9rem',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.backgroundColor = 'white';
-              e.target.style.color = '#4CAF50';
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-              e.target.style.color = 'white';
-            }}
-          >
-            Upgrade to Annual - $79
-          </button>
-        </div>
-      );
-    } else if (currentAccessStatus.hasAccess && currentAccessStatus.type === 'subscription') {
+    if (isPremiumUser) {
       return (
         <div style={{
           background: 'linear-gradient(135deg, #4CAF50, #45a049)',
@@ -639,36 +474,36 @@ const App = () => {
             ✨ Premium Access Active
           </span>
           <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
-            Unlimited searches across all CSA codes
+            Unlimited searches across all CSA codes + AI explanations
           </div>
         </div>
       );
-    } else if (!currentAccessStatus.hasAccess && currentAccessStatus.type === 'expired_trial') {
+    } else {
       return (
         <div style={{
-          background: 'linear-gradient(135deg, #FF5722, #D84315)',
+          background: 'linear-gradient(135deg, #667eea, #764ba2)',
           color: 'white',
           padding: '16px 20px',
           textAlign: 'center',
           marginBottom: '1rem',
           borderRadius: '8px',
-          boxShadow: '0 2px 8px rgba(255, 87, 34, 0.3)'
+          boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)'
         }}>
           <div style={{ marginBottom: '8px' }}>
             <span style={{ fontSize: '1.1rem', fontWeight: '600' }}>
-              ⏰ Trial Expired
+              📖 Free Preview Mode
             </span>
             <div style={{ fontSize: '0.9rem', opacity: 0.9, marginTop: '4px' }}>
-              You performed {currentAccessStatus.searchCount || 0} searches during your trial
+              Viewing Scope, Definitions & General sections. Upgrade for complete codes + AI explanations
             </div>
           </div>
           <button
-            onClick={handleSubscribe}
+            onClick={handleUpgrade}
             style={{
-              backgroundColor: 'white',
-              color: '#FF5722',
-              border: 'none',
-              padding: '10px 20px',
+              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              color: 'white',
+              border: '2px solid white',
+              padding: '8px 16px',
               borderRadius: '20px',
               fontSize: '0.9rem',
               fontWeight: '600',
@@ -676,20 +511,20 @@ const App = () => {
               transition: 'all 0.3s ease'
             }}
             onMouseEnter={(e) => {
-              e.target.style.backgroundColor = '#f5f5f5';
+              e.target.style.backgroundColor = 'white';
+              e.target.style.color = '#667eea';
             }}
             onMouseLeave={(e) => {
-              e.target.style.backgroundColor = 'white';
+              e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
+              e.target.style.color = 'white';
             }}
           >
-            Subscribe for $79/year
+            Upgrade Now - $79/year
           </button>
         </div>
       );
     }
-
-    return null;
-  }, [activeSearchType, accessStatus, getAccessStatusForType, handleSubscribe]);
+  }, [activeSearchType, isPremiumUser, handleUpgrade]);
 
   // Search results component
   const SearchResults = useMemo(() => {
@@ -922,16 +757,7 @@ const App = () => {
       backgroundColor: '#1a1a1a',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif'
     }}>
-      {/* Email Modal */}
-      <EmailModal
-        isOpen={showEmailModal}
-        onClose={() => setShowEmailModal(false)}
-        email={email}
-        setEmail={setEmail}
-        onSubmit={handleEmailSubmit}
-        isSubmitting={emailSubmitting}
-        error={emailError}
-      />
+      {/* Freemium model - no email collection modal needed */}
 
       {/* Header */}
       <header style={{

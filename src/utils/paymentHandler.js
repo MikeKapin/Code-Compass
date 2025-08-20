@@ -1,7 +1,6 @@
-// utils/paymentHandler.js - DEBUG VERSION
-// Handle payment success and subscription activation
+// utils/paymentHandler.js - Freemium Model
+// Handle payment success and subscription activation (no trial system)
 
-import { trialManager } from './trialManager.js';
 import { trackEvent } from './analytics.js';
 
 class PaymentHandler {
@@ -125,11 +124,8 @@ class PaymentHandler {
     try {
       console.log('PaymentHandler: 🎉 Processing payment success...', paymentData);
       
-      // Get trial data to preserve email
-      const trialStatus = trialManager.getTrialStatus();
-      console.log('PaymentHandler: Current trial status:', trialStatus);
-      
-      const email = trialStatus.email || this.extractEmailFromURL() || 'unknown@example.com';
+      // Extract email from payment data or URL
+      const email = paymentData.customer_email || this.extractEmailFromURL() || 'unknown@example.com';
       console.log('PaymentHandler: Using email:', email);
 
       // Create subscription data
@@ -180,11 +176,11 @@ class PaymentHandler {
 
       // Store subscription in localStorage (using the format App.jsx expects)
       localStorage.setItem('subscriptionStatus', JSON.stringify(subscriptionData));
+      localStorage.setItem('codecompass_subscription_data', JSON.stringify(subscriptionData));
       console.log('PaymentHandler: Stored in localStorage');
       
-      // Also activate through trial manager for consistency
-      const subscription = trialManager.activateSubscription(subscriptionData);
-      console.log('PaymentHandler: Trial manager activation result:', subscription);
+      const subscription = subscriptionData;
+      console.log('PaymentHandler: Subscription data:', subscription);
 
       // Track successful conversion
       if (typeof trackEvent === 'function') {
@@ -195,7 +191,7 @@ class PaymentHandler {
           plan: 'annual',
           amount: 79.00,
           source: paymentData.source || 'manual',
-          converted_from_trial: trialStatus.trialUsed
+          freemium_conversion: true
         });
       }
 
@@ -381,8 +377,19 @@ class PaymentHandler {
 
   // Check if user has paid subscription
   hasActiveSubscription() {
-    const accessStatus = trialManager.getAccessStatus();
-    return accessStatus.type === 'subscription' && accessStatus.hasAccess;
+    const subscriptionData = localStorage.getItem('codecompass_subscription_data') || localStorage.getItem('subscriptionStatus');
+    
+    if (!subscriptionData) return false;
+    
+    try {
+      const subscription = JSON.parse(subscriptionData);
+      const now = new Date().getTime();
+      const expiresAt = new Date(subscription.expiresAt).getTime();
+      
+      return subscription.isActive && expiresAt > now;
+    } catch (error) {
+      return false;
+    }
   }
 
   // Get subscription details
@@ -391,7 +398,12 @@ class PaymentHandler {
       return null;
     }
     
-    return trialManager.getSubscriptionStatus();
+    const subscriptionData = localStorage.getItem('codecompass_subscription_data') || localStorage.getItem('subscriptionStatus');
+    try {
+      return JSON.parse(subscriptionData);
+    } catch (error) {
+      return null;
+    }
   }
 
   // Manual subscription activation (for testing)
@@ -419,6 +431,17 @@ export const {
   manualActivate
 } = paymentHandler;
 
+// Start payment process (freemium upgrade)
+PaymentHandler.prototype.startPayment = function() {
+  console.log('PaymentHandler: Starting payment process...');
+  
+  // Replace with your actual payment URL
+  const paymentURL = 'https://buy.stripe.com/your-payment-link';
+  
+  // Open payment in new window
+  window.open(paymentURL, '_blank');
+};
+
 // Export for manual testing in console
 if (typeof window !== 'undefined') {
   window.codecompass_activateSubscription = (email) => {
@@ -430,9 +453,10 @@ if (typeof window !== 'undefined') {
     console.log('=== PAYMENT DEBUG INFO ===');
     console.log('Current URL:', window.location.href);
     console.log('URL Params:', new URLSearchParams(window.location.search));
-    console.log('Trial Status:', trialManager.getTrialStatus());
-    console.log('Access Status:', trialManager.getAccessStatus());
+    console.log('Has Active Subscription:', paymentHandler.hasActiveSubscription());
+    console.log('Subscription Details:', paymentHandler.getSubscriptionDetails());
     console.log('LocalStorage subscriptionStatus:', localStorage.getItem('subscriptionStatus'));
+    console.log('LocalStorage codecompass_subscription_data:', localStorage.getItem('codecompass_subscription_data'));
     console.log('=========================');
   };
 }

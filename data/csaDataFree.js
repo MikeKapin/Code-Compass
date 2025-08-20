@@ -195,11 +195,12 @@ export const searchFreeCSAData = (query) => {
     return 0;
   });
 
-  // Add upgrade prompt if search looks like it might need premium content
-  const premiumKeywords = ['piping', 'installation', 'venting', 'clearance', 'pressure', 'sizing'];
+  // Add upgrade prompt for searches that might need premium content or when results are limited
+  const premiumKeywords = ['piping', 'installation', 'venting', 'clearance', 'pressure', 'sizing', 'section 5', 'section 6', 'section 7', 'section 8', 'annex'];
   const needsPremium = premiumKeywords.some(keyword => searchTerm.includes(keyword));
   
-  if (needsPremium && results.length < 3) {
+  // Show upgrade prompt if: premium keywords found OR limited results OR after any search (to promote upgrade)
+  if (needsPremium || results.length < 5 || searchTerm.length > 2) {
     results.push({
       clause: "UPGRADE",
       title: "🔓 Unlock Complete CSA B149.1-25 Code Book",
@@ -279,13 +280,13 @@ export const searchFreeCSAB149_2_Data = (query) => {
     return false;
   });
 
-  // Add upgrade prompt for B149.2 searches
-  if (results.length < 3) {
+  // Add upgrade prompt for B149.2 searches (show for most searches to promote upgrade)
+  if (results.length < 5 || searchTerm.length > 2) {
     results.push({
       clause: "UPGRADE",
-      title: "🔓 Unlock Complete CSA B149.2-25 Propane Code Book",
+      title: "🔓 Unlock Complete CSA B149.2-25 Propane Code Book", 
       description: "Get access to the complete propane storage and handling code including container requirements, safety procedures, installation standards, and technical specifications. Plus AI explanations for every code section.",
-      category: "Premium Feature", 
+      category: "Premium Feature",
       isPremiumUpgrade: true
     });
   }
