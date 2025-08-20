@@ -471,10 +471,18 @@ const App = () => {
     setSuggestions([]);
     setShowSuggestions(false);
     setIsLoading(false); // Reset loading state when switching search types
+    
+    // Force a brief delay to ensure loading state is properly reset
+    const resetTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 100);
+    
+    return () => clearTimeout(resetTimeout);
   }, [activeSearchType]);
 
   // Search functionality with analytics - updated for all search types
   useEffect(() => {
+    // Always ensure loading is false when there's no query
     if (query.trim() === '') {
       setResults([]);
       setIsLoading(false);
@@ -508,13 +516,20 @@ const App = () => {
             searchResults = searchRegulations(query, regulationsSearchIndex);
           }
           break;
+        default:
+          // Handle any unknown search type
+          break;
       }
 
       setResults(searchResults);
       setIsLoading(false);
     }, 150);
 
-    return () => clearTimeout(timeoutId);
+    // Cleanup function to ensure loading state is cleared
+    return () => {
+      clearTimeout(timeoutId);
+      setIsLoading(false);
+    };
   }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchB149_1, searchB149_2]);
 
   // Memoized values to prevent unnecessary re-renders
