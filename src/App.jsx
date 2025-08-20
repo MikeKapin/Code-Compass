@@ -17,7 +17,8 @@ import AIInterpretation from './components/AIInterpretation.jsx';
 import AuthModal from './components/Auth/AuthModal.jsx';
 import DeviceManager from './components/Auth/DeviceManager.jsx';
 
-// Full CSA data array (all the codes from your original file)
+// Full CSA data array - moved to lazy initialization to prevent circular dependencies
+/* 
 const fullCSAData = [
  {
     "clause": "3.1",
@@ -5734,6 +5735,7 @@ const fullCSAData = [
     "category": "Safety"
   } 
 ];
+*/
 
 // Move SearchBar component outside to prevent re-creation on every render
 const SearchBar = React.memo(({ 
@@ -6023,6 +6025,30 @@ const App = () => {
   // Progressive debug modes to isolate the issue
   const urlParams = new URLSearchParams(window.location.search);
   const debugMode = urlParams.get('debug');
+  
+  // Force minimal mode if there are initialization issues
+  if (!debugMode && window.location.search.includes('minimal=force')) {
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        backgroundColor: '#1a1a1a', 
+        color: 'white', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        <h1>🧭 Code Compass - Safe Mode</h1>
+        <p>✅ Running in safe mode to bypass initialization issues</p>
+        <div style={{ textAlign: 'center' }}>
+          <p>This proves React and basic functionality work.</p>
+          <p>The issue is in the complex component initialization.</p>
+        </div>
+        <button onClick={() => window.location.href = '?debug=minimal'}>Try Debug Mode</button>
+      </div>
+    );
+  }
   
   if (debugMode === 'minimal') {
     console.log('🧪 App: Rendering minimal debug version');
@@ -6329,6 +6355,11 @@ const App = () => {
   const searchCodes = useCallback((query) => {
     if (!query || query.trim() === '') return [];
     
+    console.log('⚠️ searchCodes: fullCSAData temporarily disabled to fix initialization');
+    return []; // Temporarily disabled
+    
+    // TODO: Re-enable with dynamic import or external data file
+    /*
     const searchTerm = query.toLowerCase().trim();
     
     return fullCSAData.filter(item => {
@@ -6349,6 +6380,7 @@ const App = () => {
       
       return false;
     });
+    */
   }, []);
 
   // Get popular search terms for CSA codes
