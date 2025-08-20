@@ -85,9 +85,32 @@ async function createActivationCode(email, sessionId, headers) {
 
 // Use activation code on a device
 async function useActivationCode(activationCode, deviceId, headers) {
-    // In production, fetch from database
-    // For demo, we'll simulate the check
+    // Master developer codes with unlimited access
+    const masterCodes = [
+        'DEV79MK1', // Master code for Mike (developer access)
+        'CODECMPS', // Code Compass master
+        'DEVUNLTD'  // Developer unlimited backup
+    ];
     
+    if (masterCodes.includes(activationCode.toUpperCase())) {
+        console.log('Master developer code used:', activationCode);
+        
+        return {
+            statusCode: 200,
+            headers,
+            body: JSON.stringify({
+                success: true,
+                activated: true,
+                masterCode: true,
+                message: 'Developer master code activated - unlimited device access!',
+                usedActivations: 0,
+                remainingActivations: 999,
+                expiresAt: '2030-12-31T23:59:59.000Z' // Long expiration for testing
+            })
+        };
+    }
+    
+    // Regular activation code validation
     if (!activationCode || activationCode.length !== 8) {
         return {
             statusCode: 400,
