@@ -5726,7 +5726,7 @@ export const searchCSAData = (query) => {
   
   const searchTerm = query.toLowerCase().trim();
   
-  return csaData.filter(item => {
+  return fullCSAData.filter(item => {
     // Check clause number (exact match gets priority)
     if (item.clause.toLowerCase().includes(searchTerm)) return true;
     
@@ -5771,3 +5771,6 @@ export const getAnnexInfo = () => ({
   'M': 'Operation at Shows and Exhibitions', 
   'H': 'Purging Procedures'
 });
+
+// Export the complete CSA data array
+export { fullCSAData };

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 
-// Import the new search functionality
-import { searchCSACode, createCSASearchIndex, csaB149Data } from '../data/csaDataB149_2.js';
+// Import the complete CSA and regulations data
+import { searchCSAData, fullCSAData, getPopularSearchTerms as getB149_1_PopularTerms, getAnnexInfo } from '../data/csaData.js';
+import { searchCSACode, createCSASearchIndex, csaB149Data, getPopularSearchTerms as getB149_2_PopularTerms } from '../data/csaDataB149_2.js';
 import { searchRegulations, createRegulationSearchIndex, regulationsData } from '../data/regulationsData.js';
 import { trialManager } from './utils/trialManager.js';
 // Add this import at the top
@@ -13,123 +14,9 @@ import {
   trackSubscriptionAttempt,
   trackEmailSubmission 
 } from './utils/analytics.js';
+import AIInterpretation from './components/AIInterpretation.jsx';
 
-// CSA Data Structure - organized by sections and annexes
-const csaB149_1_25 = {
-  sections: {
-    section1: {
-      title: "Scope and Application",
-      clauses: []
-    },
-    section2: {
-      title: "Reference Publications", 
-      clauses: []
-    },
-    section3: {
-      title: "Definitions",
-      clauses: [
-        {
-          "clause": "3.1",
-          "title": "Accessory",
-          "description": "a part capable of performing an independent function and contributing to the operation of the appliance or gas piping system that it serves."
-        },
-        {
-          "clause": "3.2",
-          "title": "Air supply (with respect to the installation of an appliance)",
-          "description": "combustion air, flue gas dilution air, and ventilation air."
-        },
-        {
-          "clause": "3.3",
-          "title": "Combustion air",
-          "description": "the air required for satisfactory combustion of gas, including excess air."
-        },
-        {
-          "clause": "3.4",
-          "title": "Excess air",
-          "description": "that portion of the combustion air that is supplied to the combustion zone in excess of that which is theoretically required for complete combustion."
-        },
-        {
-          "clause": "3.5",
-          "title": "Flue gas dilution air",
-          "description": "the ambient air that is admitted to a venting system at the draft hood, draft diverter, or draft regulator."
-        },
-        {
-          "clause": "3.6",
-          "title": "Ventilation air",
-          "description": "air that is admitted to a space containing an appliance to replace air exhausted through a ventilation opening or by means of exfiltration."
-        },
-        {
-          "clause": "3.7",
-          "title": "Appliance",
-          "description": "a device designed to utilize gas as a fuel or raw material to produce light, heat, power, refrigeration, or air conditioning."
-        },
-        {
-          "clause": "3.8",
-          "title": "Appliance, commercial",
-          "description": "an appliance used in a commercial establishment."
-        },
-        {
-          "clause": "3.9",
-          "title": "Appliance, domestic",
-          "description": "an appliance used in a dwelling unit, including a mobile home."
-        },
-        {
-          "clause": "3.10",
-          "title": "Appliance, industrial",
-          "description": "an appliance used in an industrial establishment."
-        },
-        {
-          "clause": "3.11",
-          "title": "Appliance, outdoor",
-          "description": "an appliance designed to be located outdoors that will operate safely when exposed to outdoor temperature and weather conditions without the need for protection from the elements."
-        }
-      ]
-    },
-    section4: {
-      title: "General Requirements",
-      clauses: []
-    },
-    section5: {
-      title: "Gas Piping Systems",
-      clauses: []
-    },
-    section6: {
-      title: "Appliance Installation", 
-      clauses: []
-    },
-    section7: {
-      title: "Venting Systems",
-      clauses: []
-    },
-    section8: {
-      title: "Air Supply",
-      clauses: []
-    }
-  },
-  annexes: {
-    annexA: {
-      title: "Conversion Factors",
-      clauses: []
-    },
-    annexB: {
-      title: "Capacity Tables",
-      clauses: []
-    },
-    annexC: {
-      title: "Installation Examples",
-      clauses: []
-    }
-  }
-};
-
-// Flatten data for backward compatibility
-const fullCSAData = [];
-Object.values(csaB149_1_25.sections).forEach(section => {
-  fullCSAData.push(...section.clauses);
-});
-Object.values(csaB149_1_25.annexes).forEach(annex => {
-  fullCSAData.push(...annex.clauses);
-});
+// The complete CSA B149.1-25 data is imported from the data file
 
 // Move SearchBar component outside to prevent re-creation on every render
 const SearchBar = React.memo(({ 
@@ -394,6 +281,10 @@ const App = () => {
   // Search suggestions
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  
+  // AI interpretation state
+  const [showAIInterpretation, setShowAIInterpretation] = useState(false);
+  const [selectedCodeForAI, setSelectedCodeForAI] = useState(null);
 
   // Initialize search indices on component mount
   useEffect(() => {
@@ -451,30 +342,24 @@ const App = () => {
     };
   }, []);
 
-  // Built-in search function for B149.1-25
-  const searchCodes = useCallback((query) => {
-    if (!query || query.trim() === '') return [];
-    
-    const searchTerm = query.toLowerCase().trim();
-    
-    return fullCSAData.filter(item => {
-      // Check clause number
-      if (item.clause && item.clause.toLowerCase().includes(searchTerm)) return true;
-      
-      // Check title
-      if (item.title && item.title.toLowerCase().includes(searchTerm)) return true;
-      
-      // Check description
-      if (item.description && item.description.toLowerCase().includes(searchTerm)) return true;
-      
-      return false;
-    });
+  // Search functions for both code books
+  const searchB149_1 = useCallback((query) => {
+    return searchCSAData(query);
   }, []);
 
-  // Get popular search terms for CSA codes
-  const getPopularSearchTerms = useCallback(() => {
-    return ['BTU', 'venting', 'clearance', 'CSA', 'accessory', 'appliance', 'gas piping', 'installation', 'safety'];
+  const searchB149_2 = useCallback((query, searchIndex) => {
+    return searchCSACode(query, searchIndex);
   }, []);
+
+  // Get popular search terms based on active search type
+  const getPopularSearchTerms = useCallback(() => {
+    if (activeSearchType === 'b149-1') {
+      return getB149_1_PopularTerms();
+    } else if (activeSearchType === 'b149-2') {
+      return getB149_2_PopularTerms();
+    }
+    return [];
+  }, [activeSearchType]);
 
   // Handle search input change with debounced suggestions
   const handleInputChange = useCallback((e) => {
@@ -514,13 +399,13 @@ const App = () => {
       
       if (activeSearchType === 'b149-1') {
         // B149.1-25 search
-        const searchResults = searchCodes(searchQuery);
+        const searchResults = searchB149_1(searchQuery);
         setResults(searchResults);
         trackSearch(searchQuery, searchResults.length);
       } else if (activeSearchType === 'b149-2') {
         // B149.2-25 search
         if (csaSearchIndex) {
-          const searchResults = searchCSACode(searchQuery, csaSearchIndex);
+          const searchResults = searchB149_2(searchQuery, csaSearchIndex);
           setResults(searchResults);
           trackSearch(searchQuery, searchResults.length);
         }
@@ -533,7 +418,7 @@ const App = () => {
 
     // If no access, show email modal for trial
     setShowEmailModal(true);
-  }, [activeSearchType, regulationsSearchIndex, csaSearchIndex, searchCodes]);
+  }, [activeSearchType, regulationsSearchIndex, csaSearchIndex, searchB149_1, searchB149_2]);
 
   // Handle form submission
   const handleSubmit = useCallback((e) => {
@@ -568,6 +453,17 @@ const App = () => {
     setTimeout(() => setShowSuggestions(false), 200);
   }, []);
 
+  // AI interpretation handlers
+  const handleAIInterpretation = useCallback((codeData) => {
+    setSelectedCodeForAI(codeData);
+    setShowAIInterpretation(true);
+  }, []);
+
+  const closeAIInterpretation = useCallback(() => {
+    setShowAIInterpretation(false);
+    setSelectedCodeForAI(null);
+  }, []);
+
   // Clear search and suggestions when switching search types
   useEffect(() => {
     setQuery('');
@@ -596,12 +492,12 @@ const App = () => {
       switch (activeSearchType) {
         case 'b149-1':
           if (trialManager.canAccessPremiumFeatures()) {
-            searchResults = searchCodes(query);
+            searchResults = searchB149_1(query);
           }
           break;
         case 'b149-2':
           if (trialManager.canAccessPremiumFeatures() && csaSearchIndex) {
-            searchResults = searchCSACode(query, csaSearchIndex);
+            searchResults = searchB149_2(query, csaSearchIndex);
           }
           break;
         case 'regulations':
@@ -616,7 +512,7 @@ const App = () => {
     }, 150);
 
     return () => clearTimeout(timeoutId);
-  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchCodes]);
+  }, [query, accessStatus, activeSearchType, csaSearchIndex, regulationsSearchIndex, searchB149_1, searchB149_2]);
 
   // Memoized values to prevent unnecessary re-renders
   const searchBarProps = useMemo(() => ({
@@ -906,19 +802,62 @@ const App = () => {
               }}>
                 {item.description}
               </div>
-              {item.category && (
-                <div style={{
-                  display: 'inline-block',
-                  backgroundColor: '#4CAF50',
-                  color: 'white',
-                  padding: '0.25rem 0.75rem',
-                  borderRadius: '9999px',
-                  fontSize: '0.75rem',
-                  fontWeight: '500'
-                }}>
-                  {item.category}
-                </div>
-              )}
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                flexWrap: 'wrap',
+                gap: '0.75rem'
+              }}>
+                {item.category && (
+                  <div style={{
+                    display: 'inline-block',
+                    backgroundColor: '#4CAF50',
+                    color: 'white',
+                    padding: '0.25rem 0.75rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.75rem',
+                    fontWeight: '500'
+                  }}>
+                    {item.category}
+                  </div>
+                )}
+                
+                {/* AI Explanation Button - only for premium content */}
+                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && trialManager.canAccessPremiumFeatures() && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAIInterpretation(item);
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                      border: 'none',
+                      color: 'white',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '8px',
+                      fontSize: '0.85rem',
+                      fontWeight: '500',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 2px 8px rgba(102, 126, 234, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'translateY(-2px)';
+                      e.target.style.boxShadow = '0 4px 12px rgba(102, 126, 234, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'translateY(0)';
+                      e.target.style.boxShadow = '0 2px 8px rgba(102, 126, 234, 0.3)';
+                    }}
+                  >
+                    🤖 AI Explain
+                  </button>
+                )}
+              </div>
             </div>
           ))}
         </div>
@@ -1101,6 +1040,13 @@ const App = () => {
           {SearchResults}
         </div>
       </main>
+
+      {/* AI Interpretation Modal */}
+      <AIInterpretation
+        codeData={selectedCodeForAI}
+        isVisible={showAIInterpretation}
+        onClose={closeAIInterpretation}
+      />
 
       <style>
         {`
