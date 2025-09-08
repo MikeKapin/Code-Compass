@@ -146,29 +146,58 @@ class PaymentHandler {
 
       console.log('PaymentHandler: Created subscription data:', subscriptionData);
 
-      // Generate activation code for multi-device use
-      console.log('PaymentHandler: Generating activation code...');
+      // Generate annual subscription activation code for multi-device use
+      console.log('PaymentHandler: Generating annual subscription activation code...');
       let activationCode = null;
+      let subscriptionYear = new Date().getFullYear();
       try {
-        const activationResponse = await fetch('/.netlify/functions/activation-manager', {
+        // Determine API endpoint based on environment (same logic as ActivationModal)
+        const isAndroidOrLocal = window.location.protocol === 'capacitor:' || 
+                               window.location.hostname === 'localhost' ||
+                               window.location.hostname === '127.0.0.1';
+        
+        const apiEndpoint = isAndroidOrLocal 
+          ? 'https://codecompassapp.netlify.app/.netlify/functions/activation-manager'
+          : '/.netlify/functions/activation-manager';
+
+        const activationResponse = await fetch(apiEndpoint, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            action: 'create_activation_code',
+            action: 'create_paid_user_code',
             email: email,
-            sessionId: subscriptionData.subscriptionId
+            paymentData: {
+              session_id: subscriptionData.subscriptionId,
+              customer_id: subscriptionData.customerId,
+              paymentId: paymentData.session_id || paymentData.payment_intent
+            }
           })
         });
 
         const activationResult = await activationResponse.json();
         if (activationResult.success) {
           activationCode = activationResult.activationCode;
-          console.log('PaymentHandler: Generated activation code:', activationCode);
+          subscriptionYear = activationResult.subscriptionYear;
+          console.log('PaymentHandler: Generated annual activation code:', activationCode, 'for year:', subscriptionYear);
+          
+          // Update subscription data with annual info
+          subscriptionData.subscriptionYear = subscriptionYear;
+          subscriptionData.renewalDate = activationResult.renewalDate;
+          subscriptionData.codeType = 'annual_subscription';
         }
       } catch (error) {
         console.error('PaymentHandler: Failed to generate activation code:', error);
+        // Fallback: generate local annual code format
+        const yearSuffix = (subscriptionYear % 100).toString().padStart(2, '0');
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        let code = '';
+        for (let i = 0; i < 6; i++) {
+          code += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        activationCode = code + yearSuffix;
+        console.log('PaymentHandler: Generated fallback activation code:', activationCode);
       }
 
       // Add activation code to subscription data
@@ -344,7 +373,9 @@ class PaymentHandler {
     
     let message;
     if (activationCode) {
-      message = `🎉 Welcome to Code Compass! Your activation code is: ${activationCode}. Save this code - you can use it on up to 4 devices (Phone + Tablet + Computer + 1 Spare).`;
+      const subscriptionYear = subscription.subscriptionYear || new Date().getFullYear();
+      const expiryDate = new Date(subscription.expiresAt).toLocaleDateString();
+      message = `🎉 Welcome to Code Compass! Your ${subscriptionYear} activation code is: ${activationCode}. This code is valid for 12 months until ${expiryDate} and can be used on up to 4 devices (Phone + Tablet + Computer + 1 Spare). A new code will be automatically generated when this one expires.`;
     } else {
       message = `🎉 Welcome to Code Compass! Your subscription is now active until ${new Date(subscription.expiresAt).toLocaleDateString()}.`;
     }

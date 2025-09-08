@@ -11,6 +11,101 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
 
   if (!isVisible) return null;
 
+  // Offline activation code validation for Android APK and network failures
+  const validateOfflineCodes = (code) => {
+    const upperCode = code.toUpperCase();
+    
+    // Master developer codes with unlimited access
+    const masterCodes = [
+      'DEV79MK1', // Master code for Mike (developer access)
+      'CODECMPS', // Code Compass master
+      'DEVUNLTD'  // Developer unlimited backup
+    ];
+    
+    // 7-day trial codes for trade shows (can be used by multiple people)
+    const trialCodes = [
+      'SHOW2024', // Trade show demo code
+      'TRIAL7DY', // 7-day trial code
+      'EXPO2024', // Exhibition code
+      'DEMO7DAY'  // Demo code
+    ];
+    
+    if (masterCodes.includes(upperCode)) {
+      return {
+        success: true,
+        activated: true,
+        masterCode: true,
+        message: 'Developer master code activated - unlimited device access!',
+        usedActivations: 0,
+        remainingActivations: 999,
+        expiresAt: '2030-12-31T23:59:59.000Z' // Long expiration for testing
+      };
+    }
+    
+    if (trialCodes.includes(upperCode)) {
+      // Calculate 7 days from now
+      const expirationDate = new Date();
+      expirationDate.setDate(expirationDate.getDate() + 7);
+      
+      return {
+        success: true,
+        activated: true,
+        trialCode: true,
+        message: 'Trade show trial activated! Full access for 7 days, then reverts to free version.',
+        usedActivations: 0,
+        remainingActivations: 1, // Single use per device
+        expiresAt: expirationDate.toISOString(),
+        trialDays: 7,
+        isTrialActivation: true
+      };
+    }
+    
+    // Check if it's a paid user code format (XXXXXXXX with year suffix)
+    if (/^[A-Z0-9]{6}\d{2}$/.test(upperCode)) {
+      // Extract year from last 2 digits
+      const yearSuffix = parseInt(upperCode.slice(-2));
+      const currentYear = new Date().getFullYear() % 100;
+      
+      // Allow codes for current year, previous year, and next year (for flexibility)
+      if (yearSuffix >= (currentYear - 1) && yearSuffix <= (currentYear + 1)) {
+        const expirationDate = new Date();
+        expirationDate.setFullYear(expirationDate.getFullYear() + 1); // 12 months from activation
+        
+        return {
+          success: true,
+          activated: true,
+          paidCode: true,
+          message: `Annual subscription activated! Valid until ${expirationDate.toLocaleDateString()}.`,
+          usedActivations: 1,
+          remainingActivations: 3, // 4 devices total - 1 used
+          expiresAt: expirationDate.toISOString(),
+          subscriptionYear: 2000 + yearSuffix
+        };
+      }
+    }
+    
+    return {
+      success: false,
+      error: 'Invalid activation code. Please check your code and try again.'
+    };
+  };
+
+  // Determine API endpoint based on environment
+  const getApiEndpoint = () => {
+    // Check if we're in Android APK (Capacitor) or localhost
+    const isAndroidOrLocal = window.location.protocol === 'capacitor:' || 
+                           window.location.hostname === 'localhost' ||
+                           window.location.hostname === '127.0.0.1';
+    
+    if (isAndroidOrLocal) {
+      // Use live web app URL for Android APK and localhost
+      return 'https://codecompassapp.netlify.app/.netlify/functions/activation-manager';
+    } else {
+      // Use relative path for web deployment
+      return '/.netlify/functions/activation-manager';
+    }
+  };
+
   const handleActivation = async () => {
     if (!activationCode.trim()) {
       setError('Please enter an activation code');
@@ -29,21 +124,34 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
     try {
       // Generate device ID
       const deviceId = getDeviceId();
+      let result;
       
-      // Call activation API
-      const response = await fetch('/.netlify/functions/activation-manager', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          action: 'use_activation_code',
-          activationCode: activationCode.toUpperCase(),
-          deviceId: deviceId
-        })
-      });
+      try {
+        // Try online validation first
+        const apiEndpoint = getApiEndpoint();
+        const response = await fetch(apiEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            action: 'use_activation_code',
+            activationCode: activationCode.toUpperCase(),
+            deviceId: deviceId
+          })
+        });
 
-      const result = await response.json();
+        if (!response.ok) {
+          throw new Error('Network request failed');
+        }
+        
+        result = await response.json();
+      } catch (networkError) {
+        console.log('Network validation failed, trying offline validation:', networkError.message);
+        
+        // Fall back to offline validation
+        result = validateOfflineCodes(activationCode);
+      }
 
       if (result.success) {
         // Store premium status locally
@@ -54,10 +162,12 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
           activationCode: activationCode.toUpperCase(),
           deviceId: deviceId,
           remainingActivations: result.remainingActivations,
-          // Mark trial codes differently
+          // Mark different code types
           isTrialActivation: result.isTrialActivation || false,
           trialCode: result.trialCode || false,
-          masterCode: result.masterCode || false
+          masterCode: result.masterCode || false,
+          paidCode: result.paidCode || false,
+          subscriptionYear: result.subscriptionYear || null
         };
 
         localStorage.setItem('codecompass_subscription_data', JSON.stringify(premiumData));
@@ -69,11 +179,13 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
           displayMessage = `🎉 7-Day Trial Activated! Full access until ${new Date(result.expiresAt).toLocaleDateString()}. After trial expires, app reverts to free version.`;
         } else if (result.masterCode) {
           displayMessage = '🎉 Developer Access Activated! Unlimited premium features unlocked.';
+        } else if (result.paidCode) {
+          displayMessage = `🎉 Annual Subscription Activated! Premium access until ${new Date(result.expiresAt).toLocaleDateString()}.`;
         }
         
         setSuccessMessage(displayMessage);
         
-        // Close modal and refresh app after 3 seconds for trial codes (longer message)
+        // Close modal and refresh app after delay
         const delay = result.trialCode ? 3000 : 2000;
         setTimeout(() => {
           onActivationSuccess(premiumData);
@@ -87,7 +199,36 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
 
     } catch (error) {
       console.error('Activation error:', error);
-      setError('Network error. Please try again.');
+      // Try offline validation as final fallback
+      const offlineResult = validateOfflineCodes(activationCode);
+      if (offlineResult.success) {
+        // Handle offline success
+        const premiumData = {
+          isActive: true,
+          activatedAt: new Date().toISOString(),
+          expiresAt: offlineResult.expiresAt,
+          activationCode: activationCode.toUpperCase(),
+          deviceId: getDeviceId(),
+          remainingActivations: offlineResult.remainingActivations,
+          isTrialActivation: offlineResult.isTrialActivation || false,
+          trialCode: offlineResult.trialCode || false,
+          masterCode: offlineResult.masterCode || false,
+          paidCode: offlineResult.paidCode || false,
+          offlineActivation: true // Mark as offline activation
+        };
+
+        localStorage.setItem('codecompass_subscription_data', JSON.stringify(premiumData));
+        localStorage.setItem('subscriptionStatus', JSON.stringify(premiumData));
+        
+        setSuccessMessage(offlineResult.message);
+        setTimeout(() => {
+          onActivationSuccess(premiumData);
+          onClose();
+          window.location.reload();
+        }, 2000);
+      } else {
+        setError('Unable to validate activation code. Please check your internet connection and try again.');
+      }
     } finally {
       setIsLoading(false);
     }

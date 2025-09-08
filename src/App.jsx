@@ -9,6 +9,7 @@ import { searchRegulations, createRegulationSearchIndex, regulationsData } from 
 // Payment and analytics imports
 import { paymentHandler } from './utils/paymentHandler.js';
 import { trackSearch, trackSubscriptionAttempt } from './utils/analytics.js';
+import { renewalManager } from './utils/renewalManager.js';
 import AIInterpretation from './components/AIInterpretation.jsx';
 import PremiumPage from './components/PremiumPage.jsx';
 import ActivationModal from './components/ActivationModal.jsx';
@@ -242,10 +243,13 @@ const App = () => {
   };
 
 
-  // Initialize payment handler and listen for payment success
+  // Initialize payment handler and renewal manager
   useEffect(() => {
     // Initialize payment handler
     paymentHandler.init();
+    
+    // Initialize renewal manager for automatic code renewals
+    renewalManager.init();
   }, []);
 
   // Listen for payment success events
@@ -343,6 +347,9 @@ const App = () => {
 
     setResults(searchResults);
     trackSearch(searchQuery, searchResults.length);
+    
+    // Track user activity for renewal manager
+    renewalManager.trackActivity();
   }, [activeSearchType, regulationsSearchIndex, csaSearchIndex, searchB149_1, searchB149_2]);
 
   // Handle form submission
