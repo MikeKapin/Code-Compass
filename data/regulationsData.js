@@ -476,6 +476,366 @@ export const regulationsData = [
     amendments: ["2000, c. 16, s. 36"]
   },
 
+  // AUTHORIZATIONS - Sections 7-13 (Previously Missing)
+  {
+    id: "TSSA-7-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "7(1)",
+    title: "Notice of proposal",
+    description: "Subject to subsection (2), if a director proposes to refuse to grant an authorization, or to suspend, revoke or refuse to renew an authorization, the director shall serve notice of the proposal to that effect, together with written reasons, on the applicant or authorization holder.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Authorizations",
+    type: "subsection",
+    keywords: "notice proposal director refuse grant authorization suspend revoke refuse renew serve written reasons applicant holder",
+    amendments: ["2000, c. 16, s. 7 (1)"]
+  },
+  {
+    id: "TSSA-8-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "8(1)",
+    title: "Right to hearing",
+    description: "A notice of proposal shall inform the applicant or authorization holder of the right to a hearing before the director if the applicant or holder applies for the hearing within 15 days after being served with the notice.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Authorizations",
+    type: "subsection",
+    keywords: "right hearing notice proposal inform applicant authorization holder director applies 15 days served",
+    amendments: ["2000, c. 16, s. 8 (1)"]
+  },
+  {
+    id: "TSSA-9-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "9(1)",
+    title: "Provisional suspension or refusal to renew where safety involved",
+    description: "A director may, by notice to an authorization holder and without a hearing, provisionally suspend or refuse to renew an authorization where the carrying on of the operations under the authorization is, in the director's opinion, an immediate threat to public safety or the safety of any person.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Authorizations",
+    type: "subsection",
+    keywords: "provisional suspension refusal renew safety director notice authorization holder hearing operations immediate threat public safety person",
+    amendments: ["2000, c. 16, s. 9 (1)"]
+  },
+  {
+    id: "TSSA-10-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "10(1)",
+    title: "Opportunity to achieve compliance",
+    description: "Notice of a hearing shall afford to the applicant or authorization holder a reasonable opportunity to show or to achieve compliance with all lawful requirements for the granting, retention or renewal of the authorization before the hearing.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Authorizations",
+    type: "subsection",
+    keywords: "opportunity achieve compliance notice hearing afford applicant authorization holder reasonable show lawful requirements granting retention renewal",
+    amendments: ["2000, c. 16, s. 10 (1)"]
+  },
+  {
+    id: "TSSA-11-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "11(1)",
+    title: "Appeals",
+    description: "An applicant or authorization holder may appeal to the Divisional Court if, after a hearing, the director, (a) refuses to grant or to renew an authorization; (b) grants or renews an authorization subject to conditions or restrictions; or (c) revokes or suspends an authorization.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Authorizations",
+    type: "subsection",
+    keywords: "appeals applicant authorization holder appeal Divisional Court hearing director refuses grant renew conditions restrictions revokes suspends",
+    amendments: ["2000, c. 16, s. 11 (1)"]
+  },
+  {
+    id: "TSSA-12-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "12(1)",
+    title: "Appeal from decision of director",
+    description: "Any person who deems himself or herself aggrieved by a decision of a director under this Act, the regulations or a Minister's order may, within 10 days after the decision comes to the person's attention, appeal to the Divisional Court by notice in writing sent by registered mail to the director and the court.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Authorizations",
+    type: "subsection",
+    keywords: "appeal decision director person aggrieved Act regulations Minister order 10 days attention Divisional Court notice writing registered mail",
+    amendments: ["2000, c. 16, s. 12 (1)"]
+  },
+  {
+    id: "TSSA-13-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "13(1)",
+    title: "Suspension of authorization for default in payment",
+    description: "If an authorization holder is in default of the payment of a fee, an administrative penalty, a cost or other charge owing to the designated administrative authority, of a fine imposed on conviction for an offence under this Act or an order made under clause 69 (2) (a) or (b) of the Provincial Offences Act, a director may, (a) suspend the holder's authorization; or (b) refuse to grant an authorization to the holder or to renew the holder's authorization.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Authorizations",
+    type: "subsection",
+    keywords: "suspension authorization default payment fee administrative penalty cost charge owing designated administrative authority fine imposed conviction offence Provincial Offences Act director suspend refuse grant renew",
+    amendments: ["2000, c. 16, s. 13 (1)"]
+  },
+
+  // SAFETY AND COMPLIANCE ORDERS - Sections 15-16 (Previously Missing)
+  {
+    id: "TSSA-15-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "15(1)",
+    title: "Suspension for failure to comply with safety order",
+    description: "The director may, without prior notice or the holding of a hearing, suspend any authorization granted to a person who fails to comply with a safety order.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Safety and Compliance Orders",
+    type: "subsection",
+    keywords: "suspension failure comply safety order director without prior notice hearing suspend authorization granted person fails",
+    amendments: ["2000, c. 16, s. 15 (1)"]
+  },
+  {
+    id: "TSSA-16-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "16(1)",
+    title: "Compliance order",
+    description: "If it appears to a director that a person is not complying with any provision of this Act, the regulations or a Minister's order, the director may apply to a judge of the Superior Court of Ontario for an order directing compliance.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Safety and Compliance Orders",
+    type: "subsection",
+    keywords: "compliance order director person not complying provision Act regulations Minister order apply judge Superior Court Ontario directing",
+    amendments: ["2000, c. 16, s. 16 (1)"]
+  },
+
+  // INSPECTIONS - Sections 18-22 (Previously Missing)
+  {
+    id: "TSSA-18-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "18(1)",
+    title: "Powers of inspector",
+    description: "In carrying out an inspection, an inspector may, (a) exercise such powers and act in such manner as is set out in this Act and the regulations; and (b) on notice to the appropriate person, remove any thing for the purpose of making any examination, test or inquiry as may be necessary to determine whether this Act, the regulations or a Minister's order are being complied with.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Inspections",
+    type: "subsection",
+    keywords: "powers inspector carrying out inspection exercise act manner set out Act regulations notice appropriate person remove examination test inquiry necessary determine complied",
+    amendments: ["2000, c. 16, s. 18 (1)"]
+  },
+  {
+    id: "TSSA-19-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "19(1)",
+    title: "Entry, inspection, etc.",
+    description: "Every person shall, (a) furnish all necessary means in his or her power to facilitate any entry, inspection, examination, test or inquiry by an inspector in the exercise of his or her powers and the carrying out of his or her duties; and (b) pay the fees required by the designated administrative authority for an inspection, examination, test or inquiry under clause (a).",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Inspections",
+    type: "subsection",
+    keywords: "entry inspection person shall furnish necessary means power facilitate examination test inquiry inspector exercise powers carrying duties pay fees required designated administrative authority",
+    amendments: ["2000, c. 16, s. 19 (1)"]
+  },
+  {
+    id: "TSSA-20-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "20(1)",
+    title: "Obstruction",
+    description: "No person shall hinder, obstruct or interfere with an inspector conducting an inspection, refuse to answer questions on matters relevant to the inspection or provide the inspector with information on matters relevant to the inspection that the person knows to be false or misleading.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Inspections",
+    type: "subsection",
+    keywords: "obstruction person shall not hinder obstruct interfere inspector conducting inspection refuse answer questions matters relevant provide information knows false misleading",
+    amendments: ["2000, c. 16, s. 20 (1)"]
+  },
+  {
+    id: "TSSA-21-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "21(1)",
+    title: "Inspection order",
+    description: "If an inspector finds that any provision of this Act, the regulations or a Minister's order is being contravened, or that a thing under this Act is unsafe or is not being operated or used in accordance with the authorization relating to it, the inspector may, (a) serve the person he or she believes to be the contravener or that person's supervisor or employer, or both, with an order in writing directing compliance with the provision or authorization and may require that the terms of the order be carried out forthwith or within such other time specified in the order; or (b) seal any thing to which this Act or the regulations apply where there is or may be a demonstrable threat to public safety, whether or not the thing is subject to an authorization.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Inspections",
+    type: "subsection",
+    keywords: "inspection order inspector finds provision Act regulations Minister order contravened thing unsafe operated used accordance authorization serve person believes contravener supervisor employer writing directing compliance terms carried out forthwith time specified seal demonstrable threat public safety subject",
+    amendments: ["2000, c. 16, s. 21 (1)"]
+  },
+  {
+    id: "TSSA-22-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "22(1)",
+    title: "Appeal",
+    description: "Any person affected by an order under clause 21 (1) (a), the affixing of a seal under subsection 18 (4) or clause 21 (1) (b) or a requirement to pay fees under clause 19 (1) (b) may appeal at any time to a director.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Inspections",
+    type: "subsection",
+    keywords: "appeal person affected order clause affixing seal subsection requirement pay fees may appeal time director",
+    amendments: ["2000, c. 16, s. 22 (1)"]
+  },
+
+  // ADDITIONAL POWERS AND DUTIES - Sections 24-30 (Previously Missing)
+  {
+    id: "TSSA-24-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "24(1)",
+    title: "Information confidential",
+    description: "An inspector shall not disclose to any person any information, record, report or statement obtained under the powers conferred under this Act and the regulations except for the purposes of carrying out his or her duties under this Act and the regulations.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Additional Powers and Duties of Directors",
+    type: "subsection",
+    keywords: "information confidential inspector shall not disclose person information record report statement obtained powers conferred Act regulations except purposes carrying duties",
+    amendments: ["2000, c. 16, s. 24 (1)"]
+  },
+  {
+    id: "TSSA-25",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "25",
+    title: "Investigation of accident",
+    description: "A director shall order such investigation as he or she considers necessary on being notified of an accident or incident.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Additional Powers and Duties of Directors",
+    type: "section",
+    keywords: "investigation accident director shall order considers necessary notified incident",
+    amendments: ["2000, c. 16, s. 25"]
+  },
+  {
+    id: "TSSA-26",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "26",
+    title: "Requirement to provide information",
+    description: "If a director receives a complaint alleging non-compliance with an authorization, the authorization holder shall, on request, provide the director with such information respecting the matter complained of as the director requires.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Additional Powers and Duties of Directors",
+    type: "section",
+    keywords: "requirement provide information director receives complaint alleging non-compliance authorization holder request respecting matter complained requires",
+    amendments: ["2000, c. 16, s. 26"]
+  },
+  {
+    id: "TSSA-27",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "27",
+    title: "Limited use",
+    description: "A director may, (a) establish the limits of operation and use of things that are found to be defective or do not conform with its authorization after fabrication or installation; (b) permit the operation and use of such thing within such limits as are prescribed, or if there are no such limits, as the director considers safe.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Additional Powers and Duties of Directors",
+    type: "section",
+    keywords: "limited use director may establish limits operation things found defective not conform authorization fabrication installation permit prescribed considers safe",
+    amendments: ["2000, c. 16, s. 27"]
+  },
+  {
+    id: "TSSA-28",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "28",
+    title: "Proof of inspection",
+    description: "A director may issue a proof of inspection with respect to things that have been inspected and found capable of being used or operated safely and may cancel such a proof.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Additional Powers and Duties of Directors",
+    type: "section",
+    keywords: "proof inspection director may issue things inspected found capable used operated safely cancel proof",
+    amendments: ["2000, c. 16, s. 28"]
+  },
+  {
+    id: "TSSA-29-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "29(1)",
+    title: "Use of sealed things",
+    description: "A director shall determine the operation and use of things that have been sealed by an inspector.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Additional Powers and Duties of Directors",
+    type: "subsection",
+    keywords: "use sealed things director shall determine operation things sealed inspector",
+    amendments: ["2000, c. 16, s. 29 (1)"]
+  },
+  {
+    id: "TSSA-30-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "30(1)",
+    title: "Retention of information",
+    description: "A director may establish the information, records, documents, plans, log books, drawings, instructions, specifications or any other thing to be kept or provided with respect to any matter.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Additional Powers and Duties of Directors",
+    type: "subsection",
+    keywords: "retention information director may establish records documents plans log books drawings instructions specifications thing kept provided respect matter",
+    amendments: ["2000, c. 16, s. 30 (1)"]
+  },
+
+  // OFFENCES - Section 37 (Previously Missing)
+  {
+    id: "TSSA-37-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "37(1)",
+    title: "Offences",
+    description: "Every person who, (a) contravenes or fails to comply with any provision of this Act, the regulations or a Minister's order; (b) knowingly makes a false statement or furnishes false information under this Act, the regulations or a Minister's order; (c) contravenes or fails to comply with a term or condition of an authorization; (d) contravenes or fails to comply with an order or requirement of an inspector or obstructs an inspector, is guilty of an offence and on conviction is liable to a fine of not more than $50,000 or to imprisonment for a term of not more than one year, or to both, or, if the person is a body corporate, to a fine of not more than $1,000,000.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "subsection",
+    keywords: "offences person contravenes fails comply provision Act regulations Minister order knowingly false statement furnishes information term condition authorization requirement inspector obstructs guilty offence conviction liable fine 50000 imprisonment year body corporate 1000000",
+    amendments: ["2000, c. 16, s. 37 (1)"]
+  },
+
+  // MISCELLANEOUS - Sections 38-44 (Previously Missing)
+  {
+    id: "TSSA-38",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "38",
+    title: "Crown bound",
+    description: "This Act binds the Crown.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "section",
+    keywords: "Crown bound Act binds",
+    amendments: ["2000, c. 16, s. 38"]
+  },
+  {
+    id: "TSSA-39",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "39",
+    title: "Municipal by-laws",
+    description: "This Act, the regulations and a Minister's order prevail over any municipal by-law.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "section",
+    keywords: "municipal by-laws Act regulations Minister order prevail over",
+    amendments: ["2000, c. 16, s. 39"]
+  },
+  {
+    id: "TSSA-40-1",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "40(1)",
+    title: "Priority of use, natural gas",
+    description: "Despite anything in this or any other Act, or in any contract for the supply of natural gas made between a distributor and a consumer, the Minister may, if the supply of natural gas to the distributor is interrupted or curtailed, order the distributor to halt or reduce the supply of natural gas to a consumer or a class of consumers if he or she considers it advisable in the circumstances.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "subsection",
+    keywords: "priority use natural gas despite anything Act contract supply made between distributor consumer Minister interrupted curtailed order halt reduce class considers advisable circumstances",
+    amendments: ["2000, c. 16, s. 40 (1)"]
+  },
+  {
+    id: "TSSA-41",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "41",
+    title: "Duties of employers, contractors",
+    description: "Every contractor and employer shall take all reasonable precautions to ensure that they and their agents and employees comply with this Act, the regulations or a Minister's order.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "section",
+    keywords: "duties employers contractors every contractor employer shall take reasonable precautions ensure agents employees comply Act regulations Minister order",
+    amendments: ["2000, c. 16, s. 41"]
+  },
+  {
+    id: "TSSA-42",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "42",
+    title: "Environmental Bill of Rights, 1993",
+    description: "The Environmental Bill of Rights, 1993 applies to this Act with respect to matters to which the predecessor Gasoline Handling Act would have applied had it not been repealed by this Act.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "section",
+    keywords: "Environmental Bill Rights 1993 applies Act respect matters predecessor Gasoline Handling would applied had not repealed",
+    amendments: ["2000, c. 16, s. 42"]
+  },
+  {
+    id: "TSSA-43",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "43",
+    title: "Minister's confirmation",
+    description: "The Minister may confirm in writing the designation of an administrative authority as a designated administrative authority under the Safety and Consumer Statutes Administration Act, 1996 and such written confirmation is proof, in the absence of evidence to the contrary, of the facts set out in it, without proof of signature.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "section",
+    keywords: "Minister confirmation confirm writing designation administrative authority designated Safety Consumer Statutes Administration Act 1996 written proof absence evidence contrary facts signature",
+    amendments: ["2000, c. 16, s. 43"]
+  },
+  {
+    id: "TSSA-44",
+    regulation: "Technical Standards and Safety Act, 2000",
+    section: "44",
+    title: "Conflict",
+    description: "In the event of conflict between this Act and any provision of the Safety and Consumer Statutes Administration Act, 1996, that Act prevails.",
+    document_title: "Technical Standards and Safety Act, 2000",
+    subtitle: "Miscellaneous",
+    type: "section",
+    keywords: "conflict event between Act provision Safety Consumer Statutes Administration 1996 prevails",
+    amendments: ["2000, c. 16, s. 44"]
+  },
+
   // =====================================
   // ONTARIO REGULATION 211/01 - PROPANE STORAGE AND HANDLING - COMPLETE
   // =====================================
