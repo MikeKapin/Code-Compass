@@ -10330,3 +10330,16 @@ export const searchRegulations = (query, searchIndex) => {
   // Sort by score (descending) and return
   return results.sort((a, b) => b.score - a.score);
 };
+
+// Create search index for regulations (for compatibility)
+export const createRegulationSearchIndex = () => {
+  // Return a simple index structure - not needed for current search implementation
+  return regulationsData.map(reg => ({
+    id: reg.id,
+    title: reg.title.toLowerCase(),
+    description: reg.description.toLowerCase(),
+    keywords: reg.keywords ? reg.keywords.toLowerCase() : '',
+    section: reg.section.toString(),
+    regulation: reg.regulation.toLowerCase()
+  }));
+};
