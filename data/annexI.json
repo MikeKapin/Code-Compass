@@ -1,0 +1,444 @@
+{
+  "annex": "I",
+  "title": "Annex I (informative) - General information",
+  "description": "This annex is not a mandatory part of this Code",
+  "sections": [
+    {
+      "section": "I.1",
+      "title": "Abbreviations",
+      "subsections": [
+        {
+          "subsection": "I.1.1",
+          "title": "Organizations",
+          "content": "The following abbreviations of names of organizations apply in this Code:",
+          "abbreviations": [
+            {"abbr": "ANSI", "full": "American National Standards Institute"},
+            {"abbr": "ASME", "full": "The American Society of Mechanical Engineers"},
+            {"abbr": "ASTM", "full": "American Society for Testing and Materials"},
+            {"abbr": "CGA", "full": "Canadian Gas Association (CGA Standards, Recommended Practices, and Codes are now published by CSA Group.)"},
+            {"abbr": "CGSB", "full": "Canadian General Standards Board"},
+            {"abbr": "CSA", "full": "CSA Group"},
+            {"abbr": "DOT", "full": "Department of Transportation"},
+            {"abbr": "NRC", "full": "National Research Council Canada / NRC Corporate Communications"},
+            {"abbr": "TC", "full": "Transport Canada"},
+            {"abbr": "UL", "full": "Underwriters Laboratories Inc."},
+            {"abbr": "ULC", "full": "Underwriters' Laboratories of Canada"}
+          ]
+        },
+        {
+          "subsection": "I.1.2",
+          "title": "Words and phrases",
+          "content": "The following abbreviations of words and phrases apply in this Code:",
+          "abbreviations": [
+            {"abbr": "B&SG", "full": "Brown and Sharpe gauge"},
+            {"abbr": "Btu/h", "full": "British thermal unit per hour"},
+            {"abbr": "°C", "full": "degree Celsius"},
+            {"abbr": "cf", "full": "cubic foot"},
+            {"abbr": "cfm", "full": "cubic foot per minute"},
+            {"abbr": "CGI", "full": "combustible gas indicator"},
+            {"abbr": "CSST", "full": "corrugated stainless steel tubing"},
+            {"abbr": "DFIAH", "full": "direct gas-fired industrial air heater"},
+            {"abbr": "DFMAH", "full": "direct-fired make-up air heater"},
+            {"abbr": "DFPAH", "full": "direct gas-fired process air heater"},
+            {"abbr": "dm³", "full": "cubic decimeter"},
+            {"abbr": "°F", "full": "degree Fahrenheit"},
+            {"abbr": "ft", "full": "foot"},
+            {"abbr": "FVIR", "full": "flammable vapours ignition resistant"},
+            {"abbr": "g", "full": "gram"},
+            {"abbr": "gal", "full": "gallon"},
+            {"abbr": "GSG", "full": "galvanized sheet gauge"},
+            {"abbr": "GPH", "full": "gallon per hour"},
+            {"abbr": "h", "full": "hour"},
+            {"abbr": "kg", "full": "kilogram"},
+            {"abbr": "kJ", "full": "kilojoule"},
+            {"abbr": "kPa", "full": "kilopascal"},
+            {"abbr": "kW", "full": "kilowatt"},
+            {"abbr": "lb", "full": "pound"},
+            {"abbr": "L", "full": "litre"},
+            {"abbr": "LEL", "full": "lower explosive level"},
+            {"abbr": "m", "full": "metre"},
+            {"abbr": "m³", "full": "cubic metre"},
+            {"abbr": "mA", "full": "milliampere"},
+            {"abbr": "min", "full": "minute"},
+            {"abbr": "mm", "full": "millimetre"},
+            {"abbr": "MSG", "full": "manufacturers standard gauge"},
+            {"abbr": "N", "full": "newton"},
+            {"abbr": "NGV", "full": "natural gas vehicle"},
+            {"abbr": "No.", "full": "number"},
+            {"abbr": "NPS", "full": "nominal pipe size"},
+            {"abbr": "NTS", "full": "nominal tube size"},
+            {"abbr": "oz", "full": "ounce"},
+            {"abbr": "Pa", "full": "pascal"},
+            {"abbr": "ppm", "full": "parts per million"},
+            {"abbr": "psia", "full": "pound per square inch absolute"},
+            {"abbr": "psig", "full": "pound per square inch gauge"},
+            {"abbr": "pt", "full": "pint"},
+            {"abbr": "RFA", "full": "residential fuelling appliance"},
+            {"abbr": "s", "full": "second"},
+            {"abbr": "scf", "full": "standard cubic feet"},
+            {"abbr": "SI", "full": "International System of Units"},
+            {"abbr": "SWG", "full": "steel wire gauge"},
+            {"abbr": "USWG", "full": "United States water gallon"},
+            {"abbr": "V", "full": "volt"},
+            {"abbr": "VAV", "full": "variable air volume"},
+            {"abbr": "VFA", "full": "vehicle fuelling appliance"},
+            {"abbr": "VRA", "full": "vehicle refuelling appliance"},
+            {"abbr": "W", "full": "watt"},
+            {"abbr": "w.c.", "full": "water column"},
+            {"abbr": "WC", "full": "water capacity"},
+            {"abbr": "wt", "full": "weight"}
+          ]
+        }
+      ]
+    },
+    {
+      "section": "I.2",
+      "title": "Properties of fuels for an average commercial fuel grade data",
+      "content": "The following data have been taken from various sources, and values shown related to the properties of fuels are for an average commercial fuel grade. It should be kept in mind that external variables for much of the data provided in this annex are significant, and the user must take care using this information. Where the information is to be used for a significant purpose, it is recommended that the user search out other sources of reference and investigate and verify the relevancy of the specific variables used to determine the constants provided.",
+      "tables": [
+        {
+          "table": "I.1",
+          "title": "Properties of commercial propane, butane, and natural gas",
+          "imperial": {
+            "propane": {
+              "chemical_formula": "C₃H₈",
+              "molecular_weight": 44.06,
+              "freezing_point_f": -310,
+              "boiling_point_f": -44,
+              "normal_state_60f": "Gas",
+              "relative_density_gas": 1.52,
+              "relative_density_liquid": 0.51,
+              "mass_per_gal_liquid_60f": 5.1,
+              "calorific_value_btu_ft3": 2520,
+              "btu_lb_vapourized": 21622,
+              "btu_imperial_gal_vapourized": 109956,
+              "ft3_vapour_from_1lb_liquid_60f": 8.5,
+              "ft3_vapour_from_1gal_liquid_60f": 44,
+              "latent_heat_vapourization_boiling_btu_lb": 185,
+              "latent_heat_vapourization_boiling_btu_gal": 944,
+              "specific_heat_vapour_btu_lb_f_60f": 0.405,
+              "specific_heat_liquid_btu_lb_f_60f": 0.59,
+              "mass_density_vapour_lb_ft3": 0.116,
+              "mass_density_liquid_lb_ft3": 31.7
+            },
+            "butane": {
+              "chemical_formula": "C₄H₁₀",
+              "molecular_weight": 58.1,
+              "freezing_point_f": -260,
+              "boiling_point_f": 32,
+              "normal_state_60f": "Gas",
+              "relative_density_gas": 2,
+              "relative_density_liquid": 0.58,
+              "mass_per_gal_liquid_60f": 5.8,
+              "calorific_value_btu_ft3": 3260,
+              "btu_lb_vapourized": 21190,
+              "btu_imperial_gal_vapourized": 122900,
+              "ft3_vapour_from_1lb_liquid_60f": 6.5,
+              "ft3_vapour_from_1gal_liquid_60f": 38,
+              "latent_heat_vapourization_boiling_btu_lb": 166,
+              "latent_heat_vapourization_boiling_btu_gal": 968,
+              "specific_heat_vapour_btu_lb_f_60f": 0.385,
+              "specific_heat_liquid_btu_lb_f_60f": 0.55,
+              "mass_density_vapour_lb_ft3": 0.153,
+              "mass_density_liquid_lb_ft3": 36
+            },
+            "natural_gas": {
+              "chemical_formula": "CH₄",
+              "molecular_weight": 16,
+              "freezing_point_f": -296,
+              "boiling_point_f": -260,
+              "normal_state_60f": "Gas",
+              "relative_density_gas": 0.6,
+              "relative_density_liquid": 0.3,
+              "mass_per_gal_liquid_60f": 59.8,
+              "calorific_value_btu_ft3": 1000,
+              "btu_lb_vapourized": 23875,
+              "btu_imperial_gal_vapourized": 101600,
+              "ft3_vapour_from_1lb_liquid_60f": 23,
+              "ft3_vapour_from_1gal_liquid_60f": 59,
+              "specific_heat_vapour_btu_lb_f_60f": 0.53,
+              "mass_density_vapour_lb_ft3": 0.042
+            }
+          },
+          "metric": {
+            "propane": {
+              "chemical_formula": "C₃H₈",
+              "molecular_weight": 44.06,
+              "freezing_point_c": -190,
+              "boiling_point_c": -42,
+              "normal_state_15c": "Gas",
+              "relative_density_vapour": 1.52,
+              "relative_density_liquid": 0.51,
+              "mass_per_l_liquid_15c": 2.3,
+              "calorific_value_kj_m3": 93800,
+              "kj_kg_vapourized": 49700,
+              "kj_l_vapourized": 24700,
+              "m3_vapour_from_1kg_liquid_15c": 0.53,
+              "m3_vapour_from_1l_liquid_15c": 0.265,
+              "specific_heat_liquid_j_kg_c_15c": 2470,
+              "mass_density_vapour_kg_m3": 1.86,
+              "mass_density_liquid_kg_l": 0.51
+            },
+            "butane": {
+              "chemical_formula": "C₄H₁₀",
+              "molecular_weight": 58.1,
+              "freezing_point_c": -162,
+              "boiling_point_c": 0,
+              "normal_state_15c": "Gas",
+              "relative_density_vapour": 2,
+              "relative_density_liquid": 0.58,
+              "mass_per_l_liquid_15c": 2.6,
+              "calorific_value_kj_m3": 121500,
+              "kj_kg_vapourized": 49400,
+              "kj_l_vapourized": 27600,
+              "m3_vapour_from_1kg_liquid_15c": 0.41,
+              "m3_vapour_from_1l_liquid_15c": 0.22,
+              "specific_heat_liquid_j_kg_c_15c": 2300,
+              "mass_density_vapour_kg_m3": 2.45,
+              "mass_density_liquid_kg_l": 0.58
+            },
+            "natural_gas": {
+              "chemical_formula": "CH₄",
+              "molecular_weight": 16,
+              "freezing_point_c": -182,
+              "boiling_point_c": -162,
+              "normal_state_15c": "Gas",
+              "relative_density_vapour": 0.6,
+              "relative_density_liquid": 0.3,
+              "mass_per_l_liquid_15c": 27.2,
+              "calorific_value_kj_m3": 37240,
+              "kj_kg_vapourized": 55600,
+              "kj_l_vapourized": 25400,
+              "mass_density_vapour_kg_m3": 0.676
+            }
+          }
+        },
+        {
+          "table": "I.2",
+          "title": "Combustion data",
+          "imperial": {
+            "propane": {
+              "ft3_air_required_burn_1ft3_gas": 23.5,
+              "ft3_oxygen_required_burn_1ft3_gas": 5,
+              "ft3_air_required_burn_1lb_gas": 200,
+              "approximate_ignition_temperature_f": 920,
+              "approximate_maximum_flame_temperature_f": 3600,
+              "percentage_gas_lower_limit": 2.1,
+              "percentage_gas_upper_limit": 9.5,
+              "approximate_theoretical_percentage_maximum_flame_propagation": 5,
+              "ft3_carbon_dioxide_per_ft3_gas": 3,
+              "ft3_water_vapour_per_ft3_gas": 4,
+              "ft3_nitrogen_per_ft3_gas": 18.5,
+              "lb_water_per_lb_gas": 1.6,
+              "lb_nitrogen_per_lb_gas": 12,
+              "ultimate_carbon_dioxide_percentage": 13.9
+            },
+            "butane": {
+              "ft3_air_required_burn_1ft3_gas": 30,
+              "ft3_oxygen_required_burn_1ft3_gas": 6.25,
+              "ft3_air_required_burn_1lb_gas": 195,
+              "approximate_ignition_temperature_f": 900,
+              "approximate_maximum_flame_temperature_f": 3600,
+              "percentage_gas_lower_limit": 1.9,
+              "percentage_gas_upper_limit": 8.5,
+              "approximate_theoretical_percentage_maximum_flame_propagation": 4,
+              "ft3_carbon_dioxide_per_ft3_gas": 3.9,
+              "ft3_water_vapour_per_ft3_gas": 5,
+              "ft3_nitrogen_per_ft3_gas": 23.6,
+              "lb_water_per_lb_gas": 1.5,
+              "lb_nitrogen_per_lb_gas": 11.8,
+              "ultimate_carbon_dioxide_percentage": 14.1
+            },
+            "natural_gas": {
+              "ft3_air_required_burn_1ft3_gas": 9.5,
+              "ft3_oxygen_required_burn_1ft3_gas": 2,
+              "ft3_air_required_burn_1lb_gas": 226,
+              "approximate_ignition_temperature_f": 1300,
+              "approximate_maximum_flame_temperature_f": 3600,
+              "percentage_gas_lower_limit": 4,
+              "percentage_gas_upper_limit": 15,
+              "approximate_theoretical_percentage_maximum_flame_propagation": 0,
+              "ft3_carbon_dioxide_per_ft3_gas": 1,
+              "ft3_water_vapour_per_ft3_gas": 2,
+              "ft3_nitrogen_per_ft3_gas": 8,
+              "lb_water_per_lb_gas": 2.25,
+              "lb_nitrogen_per_lb_gas": 13.2,
+              "ultimate_carbon_dioxide_percentage": 11.7
+            }
+          },
+          "metric": {
+            "propane": {
+              "m3_air_required_burn_1m3_gas": 23.5,
+              "m3_oxygen_required_burn_1m3_gas": 5,
+              "m3_air_required_burn_1kg_gas": 12.3,
+              "approximate_ignition_temperature_c": 490,
+              "approximate_maximum_flame_temperature_c": 1980,
+              "percentage_gas_lower_limit": 2.1,
+              "percentage_gas_upper_limit": 9.5,
+              "approximate_theoretical_percentage_maximum_flame_propagation": 4.8,
+              "m3_carbon_dioxide_per_m3_gas": 3,
+              "m3_water_vapour_per_m3_gas": 4,
+              "m3_nitrogen_per_m3_gas": 18.5,
+              "kg_water_per_kg_gas": 1.6,
+              "kg_nitrogen_per_kg_gas": 12,
+              "ultimate_carbon_dioxide_percentage": 13.9
+            },
+            "butane": {
+              "m3_air_required_burn_1m3_gas": 30,
+              "m3_oxygen_required_burn_1m3_gas": 6.25,
+              "m3_air_required_burn_1kg_gas": 11.7,
+              "approximate_ignition_temperature_c": 480,
+              "approximate_maximum_flame_temperature_c": 1980,
+              "percentage_gas_lower_limit": 1.9,
+              "percentage_gas_upper_limit": 8.5,
+              "approximate_theoretical_percentage_maximum_flame_propagation": 3.8,
+              "m3_carbon_dioxide_per_m3_gas": 3.9,
+              "m3_water_vapour_per_m3_gas": 5,
+              "m3_nitrogen_per_m3_gas": 23.6,
+              "kg_water_per_kg_gas": 1.5,
+              "kg_nitrogen_per_kg_gas": 11.8,
+              "ultimate_carbon_dioxide_percentage": 14.1
+            },
+            "natural_gas": {
+              "m3_air_required_burn_1m3_gas": 9.5,
+              "m3_oxygen_required_burn_1m3_gas": 2,
+              "m3_air_required_burn_1kg_gas": 14.1,
+              "approximate_ignition_temperature_c": 700,
+              "approximate_maximum_flame_temperature_c": 1980,
+              "percentage_gas_lower_limit": 4,
+              "percentage_gas_upper_limit": 15,
+              "approximate_theoretical_percentage_maximum_flame_propagation": 0,
+              "m3_carbon_dioxide_per_m3_gas": 1,
+              "m3_water_vapour_per_m3_gas": 2,
+              "m3_nitrogen_per_m3_gas": 8,
+              "kg_water_per_kg_gas": 2.25,
+              "kg_nitrogen_per_kg_gas": 13.2,
+              "ultimate_carbon_dioxide_percentage": 11.7
+            }
+          }
+        },
+        {
+          "table": "I.3",
+          "title": "Orifice capacity — Heat input calculation",
+          "content": "For standard conditions, the heat input calculation is as follows: Q = HHV • (1658.5 • K • A) • (√(H / P))",
+          "variables": {
+            "Q": "heat input, Btu/h",
+            "HHV": "gross heating value, Btu/ft³",
+            "K": "coefficient of discharge",
+            "A": "area of orifice, in²",
+            "H": "manifold pressure, in w.c.",
+            "P": "specific gravity of gas"
+          },
+          "gas_properties": {
+            "propane": {
+              "gross_heating_value_btu_ft3": 2520,
+              "orifice_factor": 0.8,
+              "manifold_pressure_in_wc": 11.00,
+              "specific_gravity": 1.52
+            },
+            "butane": {
+              "gross_heating_value_btu_ft3": 3260,
+              "orifice_factor": 0.8,
+              "manifold_pressure_in_wc": 11.00,
+              "specific_gravity": 2.00
+            },
+            "natural": {
+              "gross_heating_value_btu_ft3": 1000,
+              "orifice_factor": 0.779,
+              "manifold_pressure_in_wc": 3.50,
+              "specific_gravity": 0.6
+            }
+          },
+          "orifice_capacity_data": [
+            {"drill_size": 80, "diameter_in": 0.0135, "diameter_mm": 0.343, "propane_btu_h": 1288, "propane_kw": 0.378, "butane_btu_h": 1453, "butane_kw": 0.426, "natural_btu_h": 467, "natural_kw": 0.137},
+            {"drill_size": 79, "diameter_in": 0.0141, "diameter_mm": 0.358, "propane_btu_h": 1403, "propane_kw": 0.411, "butane_btu_h": 1583, "butane_kw": 0.464, "natural_btu_h": 509, "natural_kw": 0.149},
+            {"drill_size": 78, "diameter_in": 0.0160, "diameter_mm": 0.406, "propane_btu_h": 1805, "propane_kw": 0.529, "butane_btu_h": 2036, "butane_kw": 0.597, "natural_btu_h": 654, "natural_kw": 0.192}
+          ]
+        },
+        {
+          "table": "I.4",
+          "title": "Conversion of volumes of one kind of gas to volumes of a different kind of gas passing through an orifice or regulator",
+          "conversions": [
+            {
+              "if_you_have": "natural gas",
+              "want_to_know": "propane",
+              "multiply_by": 0.63
+            },
+            {
+              "if_you_have": "natural gas",
+              "want_to_know": "butane",
+              "multiply_by": 0.55
+            },
+            {
+              "if_you_have": "natural gas",
+              "want_to_know": "air",
+              "multiply_by": 0.77
+            },
+            {
+              "if_you_have": "butane",
+              "want_to_know": "propane",
+              "multiply_by": 1.15
+            },
+            {
+              "if_you_have": "butane",
+              "want_to_know": "natural gas",
+              "multiply_by": 1.83
+            },
+            {
+              "if_you_have": "butane",
+              "want_to_know": "air",
+              "multiply_by": 1.42
+            },
+            {
+              "if_you_have": "air",
+              "want_to_know": "propane",
+              "multiply_by": 0.81
+            },
+            {
+              "if_you_have": "air",
+              "want_to_know": "butane",
+              "multiply_by": 0.71
+            },
+            {
+              "if_you_have": "air",
+              "want_to_know": "natural gas",
+              "multiply_by": 1.29
+            },
+            {
+              "if_you_have": "propane",
+              "want_to_know": "butane",
+              "multiply_by": 0.87
+            },
+            {
+              "if_you_have": "propane",
+              "want_to_know": "natural gas",
+              "multiply_by": 1.58
+            },
+            {
+              "if_you_have": "propane",
+              "want_to_know": "air",
+              "multiply_by": 1.23
+            }
+          ]
+        },
+        {
+          "table": "I.5",
+          "title": "Conversion table",
+          "conversions": [
+            {"multiply": "Btu/h", "by": 0.00029295, "to_obtain": "kilowatts"},
+            {"multiply": "cubic feet", "by": 28.31685, "to_obtain": "cubic decimetres"},
+            {"multiply": "cubic feet", "by": 0.028317, "to_obtain": "cubic metres"},
+            {"multiply": "degrees Fahrenheit", "by": "(temp in °F - 32) x 5/9", "to_obtain": "degrees Celsius"},
+            {"multiply": "feet", "by": 0.3048, "to_obtain": "metres"},
+            {"multiply": "inches", "by": 25.4, "to_obtain": "millimetres"},
+            {"multiply": "inches water column", "by": 249, "to_obtain": "pascals"},
+            {"multiply": "inches water column", "by": 0.249, "to_obtain": "kilopascals"},
+            {"multiply": "pounds force", "by": 4.44822, "to_obtain": "newtons"},
+            {"multiply": "pounds per square inch", "by": 6.894757, "to_obtain": "kilopascals"},
+            {"multiply": "square inches", "by": 645.16, "to_obtain": "square millimetres"}
+          ]
+        }
+      ]
+    }
+  ]
+}

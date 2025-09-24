@@ -5717,7 +5717,107 @@ const fullCSAData = [
     "description": "A certified portable fire extinguisher classified in accordance with ULC Standard CAN/ULC-S508-02 (R2013) \"Standard for the Rating and Fire Testing of Fire Extinguishers\" of not less than 10-B:C rating shall be located at each booth or stall displaying appliances.",
     "annex": "M",
     "category": "Safety"
-  } 
+  },
+
+  // Annex I entries start here
+  {
+    "clause": "I.1",
+    "title": "Abbreviations",
+    "description": "Standard abbreviations used in CSA B149.1-25, including organizations and technical terms",
+    "annex": "I",
+    "category": "Reference"
+  },
+  {
+    "clause": "I.1.1",
+    "title": "Organizations",
+    "description": "ANSI - American National Standards Institute; ASME - The American Society of Mechanical Engineers; ASTM - American Society for Testing and Materials; CGA - Canadian Gas Association; CGSB - Canadian General Standards Board; CSA - CSA Group; DOT - Department of Transportation; NRC - National Research Council Canada; TC - Transport Canada; UL - Underwriters Laboratories Inc.; ULC - Underwriters' Laboratories of Canada",
+    "annex": "I",
+    "category": "Reference"
+  },
+  {
+    "clause": "I.1.2",
+    "title": "Words and phrases",
+    "description": "B&SG - Brown and Sharpe gauge; Btu/h - British thermal unit per hour; °C - degree Celsius; cf - cubic foot; cfm - cubic foot per minute; CGI - combustible gas indicator; CSST - corrugated stainless steel tubing; DFIAH - direct gas-fired industrial air heater; DFMAH - direct-fired make-up air heater; DFPAH - direct gas-fired process air heater; dm³ - cubic decimeter; °F - degree Fahrenheit; ft - foot; FVIR - flammable vapours ignition resistant; g - gram; gal - gallon; GSG - galvanized sheet gauge; GPH - gallon per hour; h - hour; Hz - hertz; in. - inch; in. w.c. - inch water column; J - joule; K - kelvin; kg - kilogram; kJ - kilojoule; kPa - kilopascal; kW - kilowatt; L - litre; LEL - lower explosive limit; LFL - lower flammable limit; m - metre; mg - milligram; MHz - megahertz; min - minute; mL - millilitre; mm - millimetre; MJ - megajoule; N - newton; Pa - pascal; ppm - parts per million; psi - pound per square inch; psig - pound per square inch gauge; R - rankine; s - second; UEL - upper explosive limit; UFL - upper flammable limit; V - volt; W - watt; W.C. - water column",
+    "annex": "I",
+    "category": "Reference"
+  },
+  {
+    "clause": "I.2",
+    "title": "Properties of fuels for commercial fuel grade data",
+    "description": "Comprehensive fuel properties including specific gravity, heating values, combustion characteristics, and air requirements for propane, butane, and natural gas.",
+    "annex": "I",
+    "category": "Technical Data"
+  },
+  {
+    "clause": "I.2.1",
+    "title": "Propane fuel properties",
+    "description": "Propane (C3H8): Specific gravity 1.52, Lower heating value 91,500 Btu/gal (25,500 kJ/L), Higher heating value 101,300 Btu/gal (28,200 kJ/L), Combustion air 23.9 cf/cf (23.9 m³/m³), Products 3.0 cf CO2 + 4.0 cf H2O per cf fuel (3.0 m³ CO2 + 4.0 m³ H2O per m³ fuel), Flame temperature 3560°F (1960°C), Ignition temperature 920-1020°F (493-549°C), Flammable limits 2.1-10.1% by volume",
+    "annex": "I",
+    "category": "Technical Data"
+  },
+  {
+    "clause": "I.2.2",
+    "title": "Butane fuel properties",
+    "description": "Butane (C4H10): Specific gravity 2.01, Lower heating value 119,500 Btu/gal (33,300 kJ/L), Higher heating value 130,000 Btu/gal (36,200 kJ/L), Combustion air 31.0 cf/cf (31.0 m³/m³), Products 4.0 cf CO2 + 5.0 cf H2O per cf fuel (4.0 m³ CO2 + 5.0 m³ H2O per m³ fuel), Flame temperature 3575°F (1968°C), Ignition temperature 761°F (405°C), Flammable limits 1.9-8.5% by volume",
+    "annex": "I",
+    "category": "Technical Data"
+  },
+  {
+    "clause": "I.2.3",
+    "title": "Natural gas fuel properties",
+    "description": "Natural Gas (assumed 100% CH4): Specific gravity 0.60, Heating value 1000 Btu/cf (37.2 MJ/m³), Combustion air 9.5 cf/cf (9.5 m³/m³), Products 1.0 cf CO2 + 2.0 cf H2O per cf fuel (1.0 m³ CO2 + 2.0 m³ H2O per m³ fuel), Flame temperature 3560°F (1960°C), Ignition temperature 1004°F (540°C), Flammable limits 5.0-15.0% by volume",
+    "annex": "I",
+    "category": "Technical Data"
+  },
+  {
+    "clause": "I.3",
+    "title": "Orifice capacity formulas",
+    "description": "Formulas for calculating gas orifice capacities: For Natural Gas Q = 3000 × Cd × A × sqrt(h × SG), For Propane/LP Gas Q = 2450 × Cd × A × sqrt(h × SG), where Q = capacity (Btu/h), Cd = discharge coefficient (0.6 typical), A = orifice area (in²), h = pressure drop across orifice (in. w.c.), SG = specific gravity",
+    "annex": "I",
+    "category": "Calculations"
+  },
+  {
+    "clause": "I.4",
+    "title": "Heat input calculations",
+    "description": "Heat input calculations for various gas appliances using orifice sizing, pressure measurements, and fuel properties to determine actual Btu/h input rates.",
+    "annex": "I",
+    "category": "Calculations"
+  },
+  {
+    "clause": "I.5",
+    "title": "Conversion tables",
+    "description": "Comprehensive conversion tables for pressure (psi to kPa, in. w.c. to Pa), volume (cf to L, gal to L), energy (Btu to kJ, Btu/h to kW), temperature (°F to °C), and dimensional conversions (in. to mm, ft to m).",
+    "annex": "I",
+    "category": "Conversions"
+  },
+  {
+    "clause": "I.6",
+    "title": "Combustion air requirements",
+    "description": "Air requirements for complete combustion: Propane requires 23.9 cf air per cf fuel, Butane requires 31.0 cf air per cf fuel, Natural Gas requires 9.5 cf air per cf fuel. Includes excess air factors for various appliance types.",
+    "annex": "I",
+    "category": "Technical Data"
+  },
+  {
+    "clause": "I.7",
+    "title": "Flammability limits",
+    "description": "Lower and upper flammable limits in air by volume: Natural Gas 5.0-15.0%, Propane 2.1-10.1%, Butane 1.9-8.5%. These limits are critical for safety and proper combustion design.",
+    "annex": "I",
+    "category": "Safety"
+  },
+  {
+    "clause": "I.8",
+    "title": "Ignition temperatures",
+    "description": "Auto-ignition temperatures for common fuels: Natural Gas 1004°F (540°C), Propane 920-1020°F (493-549°C), Butane 761°F (405°C). These temperatures represent the minimum temperature for self-ignition without external ignition source.",
+    "annex": "I",
+    "category": "Safety"
+  },
+  {
+    "clause": "I.9",
+    "title": "Flame temperatures",
+    "description": "Maximum theoretical flame temperatures in air: Natural Gas 3560°F (1960°C), Propane 3560°F (1960°C), Butane 3575°F (1968°C). Actual flame temperatures will be lower due to heat losses and incomplete combustion.",
+    "annex": "I",
+    "category": "Technical Data"
+  }
 ];
 
 // Search function with improved matching
@@ -5768,8 +5868,9 @@ export const getPopularSearchTerms = () => [
 export const getAnnexInfo = () => ({
   'C': 'Venting Requirements and Tables',
   'K': 'Pressure Regulators and Overpressure Protection',
-  'M': 'Operation at Shows and Exhibitions', 
-  'H': 'Purging Procedures'
+  'M': 'Operation at Shows and Exhibitions',
+  'H': 'Purging Procedures',
+  'I': 'General Information - Abbreviations, Fuel Properties, and Conversions'
 });
 
 // Export the complete CSA data array
