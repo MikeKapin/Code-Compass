@@ -13,6 +13,7 @@ import { renewalManager } from './utils/renewalManager.js';
 import AIInterpretation from './components/AIInterpretation.jsx';
 import PremiumPage from './components/PremiumPage.jsx';
 import ActivationModal from './components/ActivationModal.jsx';
+import { createHighlightedText } from './utils/textHighlighter.js';
 
 // The complete CSA B149.1-25 data is imported from the data file
 
@@ -731,14 +732,15 @@ const App = () => {
                 color: '#4CAF50',
                 marginBottom: '0.5rem'
               }}>
-                {item.clause || item.section || 'Section'} - {item.title}
+                <span>{item.clause || item.section || 'Section'} - </span>
+                <span dangerouslySetInnerHTML={createHighlightedText(item.title, query)} />
               </div>
               <div style={{
                 color: '#e2e8f0',
                 lineHeight: '1.6',
                 marginBottom: '1rem'
               }}>
-                {item.description}
+                <span dangerouslySetInnerHTML={createHighlightedText(item.description, query)} />
               </div>
               <div style={{
                 display: 'flex',
@@ -761,8 +763,8 @@ const App = () => {
                   </div>
                 )}
                 
-                {/* AI Explanation Button - only for premium users and CSA codes */}
-                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && isPremiumUser && !item.isPremiumUpgrade && (
+                {/* AI Explanation Button - for premium users on CSA codes and regulations */}
+                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2' || activeSearchType === 'regulations') && isPremiumUser && !item.isPremiumUpgrade && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -834,7 +836,7 @@ const App = () => {
                 )}
 
                 {/* AI Upgrade Button for non-premium users */}
-                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2') && !isPremiumUser && !item.isPremiumUpgrade && (
+                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2' || activeSearchType === 'regulations') && !isPremiumUser && !item.isPremiumUpgrade && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
