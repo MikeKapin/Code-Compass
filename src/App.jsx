@@ -14,6 +14,13 @@ import AIInterpretation from './components/AIInterpretation.jsx';
 import PremiumPage from './components/PremiumPage.jsx';
 import ActivationModal from './components/ActivationModal.jsx';
 import { createHighlightedText } from './utils/textHighlighter.js';
+import {
+  canUseAIExplanation,
+  incrementAIUsage,
+  getAIUsageStats,
+  formatAIUsageText,
+  hasReachedFreeLimit
+} from './utils/aiUsageTracker.js';
 
 // The complete CSA B149.1-25 data is imported from the data file
 
@@ -162,6 +169,9 @@ const App = () => {
   
   // Activation modal state
   const [showActivationModal, setShowActivationModal] = useState(false);
+
+  // AI usage tracking for free users
+  const [aiUsageStats, setAiUsageStats] = useState(getAIUsageStats());
 
   // Initialize search indices and check premium status on component mount
   useEffect(() => {
@@ -389,12 +399,23 @@ const App = () => {
   // AI interpretation handlers
   const handleAIInterpretation = useCallback((codeData) => {
     if (isPremiumUser) {
+      // Premium users get unlimited AI explanations
       setSelectedCodeForAI(codeData);
       setShowAIInterpretation(true);
     } else {
-      // Show premium page for non-premium users
-      setShowPremiumPage(true);
-      trackSubscriptionAttempt('ai_button');
+      // Check if free user has AI explanations remaining
+      if (canUseAIExplanation(isPremiumUser)) {
+        // Use one free AI explanation
+        const newStats = incrementAIUsage();
+        setAiUsageStats(newStats);
+
+        setSelectedCodeForAI(codeData);
+        setShowAIInterpretation(true);
+      } else {
+        // No free AI explanations remaining - show upgrade page
+        setShowPremiumPage(true);
+        trackSubscriptionAttempt('ai_limit_reached');
+      }
     }
   }, [isPremiumUser]);
 
@@ -797,6 +818,42 @@ const App = () => {
                     🤖 AI Explain
                   </button>
                 )}
+
+                {/* AI Explanation Button - for FREE users with remaining uses */}
+                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2' || activeSearchType === 'regulations') && !isPremiumUser && !item.isPremiumUpgrade && canUseAIExplanation(isPremiumUser) && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAIInterpretation(item);
+                    }}
+                    style={{
+                      background: 'linear-gradient(135deg, #4CAF50 0%, #45a049 100%)',
+                      border: 'none',
+                      color: 'white',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '8px',
+                      fontSize: '0.85rem',
+                      fontWeight: '500',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '0.5rem',
+                      transition: 'all 0.3s ease',
+                      boxShadow: '0 2px 8px rgba(76, 175, 80, 0.3)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.target.style.transform = 'translateY(-2px)';
+                      e.target.style.boxShadow = '0 4px 12px rgba(76, 175, 80, 0.4)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.target.style.transform = 'translateY(0)';
+                      e.target.style.boxShadow = '0 2px 8px rgba(76, 175, 80, 0.3)';
+                    }}
+                    title={`${aiUsageStats.remaining} free AI explanations remaining`}
+                  >
+                    🤖 AI Explain ({aiUsageStats.remaining} free)
+                  </button>
+                )}
                 
                 {/* Upgrade Button for Premium Upgrade prompts */}
                 {item.isPremiumUpgrade && (
@@ -835,15 +892,15 @@ const App = () => {
                   </button>
                 )}
 
-                {/* AI Upgrade Button for non-premium users */}
-                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2' || activeSearchType === 'regulations') && !isPremiumUser && !item.isPremiumUpgrade && (
+                {/* AI Upgrade Button for non-premium users who have used all free AI explanations */}
+                {(activeSearchType === 'b149-1' || activeSearchType === 'b149-2' || activeSearchType === 'regulations') && !isPremiumUser && !item.isPremiumUpgrade && !canUseAIExplanation(isPremiumUser) && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleUpgrade();
                     }}
                     style={{
-                      background: 'linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%)',
+                      background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
                       border: 'none',
                       color: 'white',
                       padding: '0.5rem 1rem',
@@ -855,18 +912,19 @@ const App = () => {
                       alignItems: 'center',
                       gap: '0.5rem',
                       transition: 'all 0.3s ease',
-                      boxShadow: '0 2px 8px rgba(155, 89, 182, 0.3)'
+                      boxShadow: '0 2px 8px rgba(231, 76, 60, 0.3)'
                     }}
                     onMouseEnter={(e) => {
                       e.target.style.transform = 'translateY(-2px)';
-                      e.target.style.boxShadow = '0 4px 12px rgba(155, 89, 182, 0.4)';
+                      e.target.style.boxShadow = '0 4px 12px rgba(231, 76, 60, 0.4)';
                     }}
                     onMouseLeave={(e) => {
                       e.target.style.transform = 'translateY(0)';
-                      e.target.style.boxShadow = '0 2px 8px rgba(155, 89, 182, 0.3)';
+                      e.target.style.boxShadow = '0 2px 8px rgba(231, 76, 60, 0.3)';
                     }}
+                    title="You've used all 10 free AI explanations. Upgrade for unlimited access!"
                   >
-                    🤖 Get AI + Full Codes
+                    🚫 AI Limit Reached - Upgrade
                   </button>
                 )}
               </div>
@@ -945,7 +1003,25 @@ const App = () => {
               </div>
             </div>
           </div>
-          
+
+          {/* AI Usage Indicator for free users */}
+          {!isPremiumUser && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontSize: '0.85rem',
+              color: aiUsageStats.hasReachedLimit ? '#e74c3c' : '#4CAF50',
+              background: 'rgba(255, 255, 255, 0.1)',
+              padding: '6px 12px',
+              borderRadius: '15px',
+              border: `1px solid ${aiUsageStats.hasReachedLimit ? 'rgba(231, 76, 60, 0.3)' : 'rgba(76, 175, 80, 0.3)'}`,
+              fontWeight: '500'
+            }}>
+              🤖 AI: {aiUsageStats.remaining}/{aiUsageStats.limit} free
+            </div>
+          )}
+
           {/* Already purchased button for non-premium users */}
           {!isPremiumUser && (
             <button
