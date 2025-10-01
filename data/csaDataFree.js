@@ -4,7 +4,6 @@
 
 // Free CSA B149.1-25 data (sections 1-4 only) - Extracted from complete dataset
 const freeCSAData = [
-  // Section 3 - Definitions (Core foundational definitions)
   {
     "clause": "3.1",
     "title": "Accessory",
@@ -71,14 +70,114 @@ const freeCSAData = [
     "description": "the governmental body responsible for the enforcement of any part of this Code, or the official or agency designated by that body to exercise such a function."
   },
   {
+    "clause": "3.14",
+    "title": "Automatic vent damper device",
+    "description": "a device intended for installation at the outlet or downstream of an individual appliance draft hood and designed to automatically open the venting system before or shortly after the main burner is activated and to automatically close the venting system after the main burner is deactivated."
+  },
+  {
+    "clause": "3.15",
+    "title": "Electrically operated vent damper device",
+    "description": "an automatic vent damper device that is controlled by electrical energy."
+  },
+  {
+    "clause": "3.16",
+    "title": "Thermally actuated vent damper device",
+    "description": "an automatic vent damper device dependent for operation exclusively upon the direct conversion of the thermal energy of the vent gases into mechanical energy."
+  },
+  {
+    "clause": "3.17",
+    "title": "Baffle",
+    "description": "a stationary device used to divert the flow of fluid (air, water, or steam) and flue gases (in the case of a flue baffle) or used to shield parts of an appliance from the effects of flame (in the case of a flame baffle) or heat (in the case of a heat baffle)."
+  },
+  {
+    "clause": "3.18",
+    "title": "Bathroom",
+    "description": "a room used primarily for bathing and containing a bathtub and/or shower."
+  },
+  {
+    "clause": "3.19",
+    "title": "Bedroom",
+    "description": "a room furnished with a bed and used primarily for sleeping."
+  },
+  {
+    "clause": "3.20",
+    "title": "Bed-sitting room",
+    "description": "a one-room apartment serving as both a bedroom and a sitting room."
+  },
+  {
+    "clause": "3.21",
+    "title": "Bleed vent",
+    "description": "a vent where the expiration or inspiration of air or gas occurs from or to one side of a diaphragm of any accessory, component, or equipment such as a valve, pressure regulator, or switch."
+  },
+  {
     "clause": "3.22",
     "title": "Boiler",
     "description": "an appliance intended to supply hot liquid or vapour for space-heating, processing, or power purposes (does not include appliances certified as water heaters)."
   },
   {
+    "clause": "3.23",
+    "title": "Branch line",
+    "description": "the part of a piping or tubing system that conveys gas from the main piping or tubing or header to an appliance(s)."
+  },
+  {
+    "clause": "3.24",
+    "title": "Building",
+    "description": "a structure or part thereof used or intended for supporting or sheltering persons, animals, or property and classified by its occupancy in accordance with the applicable building code of the authority having jurisdiction or, in the absence of such a code, in accordance with the National Building Code of Canada."
+  },
+  {
+    "clause": "3.25",
+    "title": "Aircraft hangar",
+    "description": "a building or other structure in any part of which aircraft are housed or stored and in which aircraft can undergo servicing, repairs, or alterations."
+  },
+  {
+    "clause": "3.26",
+    "title": "Assembly building",
+    "description": "any building or part of a building used by a gathering of persons for civic, political, travel, religious, social, educational, recreational, or like purposes, or for the consumption of food or drink."
+  },
+  {
+    "clause": "3.27",
+    "title": "Care or detention occupancy building",
+    "description": "any building or part thereof used or occupied by persons who require special care or treatment because of cognitive or physical limitations, or by persons who are incapable of self-preservation and who are restrained from self-destruction by security measures not under their control."
+  },
+  {
+    "clause": "3.28",
+    "title": "Commercial building",
+    "description": "any building used in connection with direct trade with, or service of, the public."
+  },
+  {
+    "clause": "3.29",
+    "title": "Industrial building",
+    "description": "any building used in connection with production or process work or with storage or warehousing."
+  },
+  {
+    "clause": "3.30",
+    "title": "Residential building",
+    "description": "any building or part thereof used by persons for whom sleeping accommodation is provided but who are not harboured or detained to receive medical care or treatment or are not involuntarily detained."
+  },
+  {
+    "clause": "3.31",
+    "title": "Building opening",
+    "description": "a planned aperture that is intended to permit air infiltration but does not include an exhaust vent or a non-openable window."
+  },
+  {
     "clause": "3.32",
     "title": "Burner",
     "description": "a device, or group of devices, that forms an integral unit for the introduction of gas, with or without air or oxygen, into the combustion zone for ignition."
+  },
+  {
+    "clause": "3.33",
+    "title": "Fan-assisted burner",
+    "description": "a burner in which the combustion air is supplied by a mechanical device such as a fan or blower at sufficient pressure to overcome the resistance of the burner only."
+  },
+  {
+    "clause": "3.34",
+    "title": "Forced-draft burner",
+    "description": "a burner in which the combustion air is supplied by a mechanical device such as a fan or blower at sufficient pressure to overcome the resistance of the burner and the appliance."
+  },
+  {
+    "clause": "3.35",
+    "title": "Natural-draft burner",
+    "description": "a burner that is not equipped with a mechanical device for supplying combustion air."
   },
   {
     "clause": "3.36",
@@ -91,9 +190,69 @@ const freeCSAData = [
     "description": "a primarily vertical shaft that encloses at least one flue for conducting flue gases outdoors."
   },
   {
+    "clause": "3.38",
+    "title": "Factory-built chimney",
+    "description": "a chimney that consists entirely of factory-made parts, each designed to be assembled with the other without requiring fabrication on site."
+  },
+  {
+    "clause": "3.39",
+    "title": "Masonry or concrete chimney",
+    "description": "a chimney of brick, stone, concrete, or approved masonry units constructed on site."
+  },
+  {
+    "clause": "3.40",
+    "title": "Metal chimney (smokestack)",
+    "description": "a single-wall chimney of metal constructed on site."
+  },
+  {
+    "clause": "3.41",
+    "title": "Combustible",
+    "description": "material that fails to conform to CAN/ULC-S114 requirements for noncombustibility."
+  },
+  {
     "clause": "3.42",
     "title": "Combustion products",
     "description": "constituents that result from the combustion of gas with the oxygen of the air and include inert gases but exclude excess air."
+  },
+  {
+    "clause": "3.43",
+    "title": "Combustion safety control (flame safeguard)",
+    "description": "a primary safety control that senses the presence of flame and causes gas to be shut off in the event of flame or ignition failure."
+  },
+  {
+    "clause": "3.44",
+    "title": "Commercial- and industrial-type appliance or equipment",
+    "description": "an appliance or equipment other than a residential or recreational type."
+  },
+  {
+    "clause": "3.45",
+    "title": "Commercial cooking appliance",
+    "description": "an appliance that complies with the applicable CSA Standard covering hotel and restaurant ranges and unit broilers, hotel and restaurant deep fat fryers, commercial baking and roasting ovens, counter appliances, kettles, steam cookers, or steam generators."
+  },
+  {
+    "clause": "3.46",
+    "title": "Component",
+    "description": "an essential part of an appliance or equipment."
+  },
+  {
+    "clause": "3.47",
+    "title": "Concealed piping or tubing",
+    "description": "piping or tubing that, when in place in a wall, floor, or ceiling of a finished building, is hidden from view and can only be exposed by use of a tool. The term does not apply to piping or tubing that passes directly through a wall or partition."
+  },
+  {
+    "clause": "3.48",
+    "title": "Condensate (condensation)",
+    "description": "a liquid separated from a gas (including flue gas) due to a reduction in temperature or an increase in pressure."
+  },
+  {
+    "clause": "3.49",
+    "title": "Container (with respect to NGV/propane storage)",
+    "description": "either a cylinder or a tank."
+  },
+  {
+    "clause": "3.50",
+    "title": "Cylinder (with respect to NGV/propane storage)",
+    "description": "a container designed and fabricated in accordance with the specifications of Transport Canada or the US Department of Transportation for the storage and transportation of gas."
   },
   {
     "clause": "3.51",
@@ -101,9 +260,34 @@ const freeCSAData = [
     "description": "a plate or valve for regulating the flow of air or flue gas."
   },
   {
+    "clause": "3.52",
+    "title": "Delivery pressure",
+    "description": "the outlet gas pressure from the service regulator for natural gas or a second stage propane regulator for propane."
+  },
+  {
+    "clause": "3.53",
+    "title": "Depressurization",
+    "description": "the maximum appliance input rating of a Category I appliance equipped with a draft hood that could be attached to the vent when the appliance is located in a structure that can experience sustained depressurization of up to 0.02 in w.c. (5 Pa), e.g., a tight structure with a mechanically ventilated structure."
+  },
+  {
+    "clause": "3.54",
+    "title": "Design pressure",
+    "description": "the maximum inlet pressure a gas piping system or valve train is capable and intended to continuously sustain, contain, or control under normal conditions."
+  },
+  {
+    "clause": "3.55",
+    "title": "Direct-fired appliance",
+    "description": "an appliance in which the combustion products or flue gases are intermixed with the medium being heated."
+  },
+  {
     "clause": "3.56",
     "title": "Direct-vent appliance",
     "description": "an appliance constructed so that all the combustion air is supplied directly from, and the products of combustion are vented directly to, the outdoors by independent enclosed passageways connected directly to the appliance."
+  },
+  {
+    "clause": "3.57",
+    "title": "Dirt pocket (dust pocket)",
+    "description": "a pocket in a piping system designed for the collection of dirt and from which the dirt can be removed."
   },
   {
     "clause": "3.58",
@@ -111,14 +295,174 @@ const freeCSAData = [
     "description": "the flow of air or combustion products, or both, through an appliance and its venting system."
   },
   {
+    "clause": "3.59",
+    "title": "Chimney draft",
+    "description": "the available natural draft of the chimney measured at or near the base of the chimney."
+  },
+  {
+    "clause": "3.60",
+    "title": "Mechanical draft",
+    "description": "a draft produced by a mechanical device, such as a fan, blower, or aspirator, that can supplement natural draft."
+  },
+  {
+    "clause": "3.61",
+    "title": "Forced draft",
+    "description": "a mechanical draft produced by a device upstream from the combustion zone of an appliance."
+  },
+  {
+    "clause": "3.62",
+    "title": "Induced draft",
+    "description": "a mechanical draft produced by a device downstream from the combustion zone of an appliance."
+  },
+  {
+    "clause": "3.63",
+    "title": "Natural draft",
+    "description": "a draft other than a mechanical draft."
+  },
+  {
+    "clause": "3.64",
+    "title": "Draft-control device",
+    "description": "either a draft hood or a draft regulator."
+  },
+  {
     "clause": "3.65",
     "title": "Draft hood",
     "description": "a draft-control device having neither movable nor adjustable parts. A draft hood may be built into an appliance, attached to an appliance, or made part of a vent connector. It is designed to ensure the ready escape of flue gases from the combustion chamber in the event of either no draft or stoppage downstream from the draft hood; prevent a backdraft from entering the combustion chamber of the appliance; and neutralize the effect of stack action of either a chimney or a vent upon the operation of the appliance."
   },
   {
+    "clause": "3.66",
+    "title": "Draft regulator (barometric damper)",
+    "description": "a draft-control device intended to stabilize the natural draft in an appliance by admitting room air to the venting system. A double-acting draft regulator is one whose balancing damper is free to move in either direction."
+  },
+  {
+    "clause": "3.67",
+    "title": "Drip pocket (drip)",
+    "description": "a pocket in a piping system designed for the collection of condensate and from which the condensate can be removed."
+  },
+  {
+    "clause": "3.68",
+    "title": "Dwelling unit",
+    "description": "a housekeeping unit used or intended to be used as a domicile by one or more persons, and usually containing cooking, eating, living, sleeping, and sanitary facilities."
+  },
+  {
+    "clause": "3.69",
+    "title": "Emergency generators (generators)",
+    "description": "engines that operate to provide power to critical operational support such as protection of property, firefighting activities, and building evacuation."
+  },
+  {
+    "clause": "3.70",
+    "title": "Enclosure",
+    "description": "a secondary structure (room) within or attached to a structure (building) in which an appliance is installed."
+  },
+  {
+    "clause": "3.71",
+    "title": "Engine",
+    "description": "a device that performs mechanical work that is used to operate other machinery and equipment."
+  },
+  {
+    "clause": "3.72",
+    "title": "Reciprocating engine (also known as a piston engine)",
+    "description": "an engine that utilizes one or more pistons in order to convert pressure into a rotating motion."
+  },
+  {
+    "clause": "3.73",
+    "title": "Turbine engine",
+    "description": "a rotary engine that extracts energy from a flow of combustion gas. It has an upstream compressor coupled to a downstream turbine and a combustion chamber in between."
+  },
+  {
+    "clause": "3.74",
+    "title": "Equipment",
+    "description": "a device, other than an appliance, accessory, or component, that is connected to a piping or tubing system."
+  },
+  {
+    "clause": "3.75",
+    "title": "False ceiling space",
+    "description": "ceiling space that is enclosed with tiles or panels that are removable without the use of a tool. A typical type is the T-bar-constructed suspended ceiling."
+  },
+  {
+    "clause": "3.76",
+    "title": "Fan-assisted combustion system",
+    "description": "an appliance equipped with an integral mechanical means to either draw or force products of combustion through the combustion chamber and/or heat exchanger."
+  },
+  {
+    "clause": "3.77",
+    "title": "FAN Max",
+    "description": "the maximum appliance input rating of a Category I appliance with a fan-assisted combustion system that could be attached to the vent."
+  },
+  {
+    "clause": "3.78",
+    "title": "FAN Min",
+    "description": "the minimum appliance input rating of a category I appliance with a fan-assisted combustion system that could be attached to the vent."
+  },
+  {
+    "clause": "3.79",
+    "title": "FAN+FAN",
+    "description": "the maximum combined input rating of two or more fan-assisted appliances attached to the common vent."
+  },
+  {
+    "clause": "3.80",
+    "title": "FAN+NAT",
+    "description": "the maximum combined input rating of one or more fan-assisted appliances and one or more draft-hood-equipped appliances attached to the common vent."
+  },
+  {
+    "clause": "3.81",
+    "title": "Fireplace",
+    "description": "a device for burning solid fuel that has the major portion of one or more essentially vertical sides open or openable for refuelling and for the visual effects of the burning fuel."
+  },
+  {
+    "clause": "3.82",
+    "title": "Fitting",
+    "description": "an item in a piping or tubing system that is used as a means of connection, such as an elbow, return bend, tee, union, bushing, coupling, or cross, but does not include such functioning items as a valve or pressure regulator."
+  },
+  {
+    "clause": "3.83",
+    "title": "Fixed-liquid-level gauge",
+    "description": "a type of liquid-level gauge that uses a small bleed valve and is designed to indicate when the liquid level in a container being filled reaches the point at which the gauge or its connecting tube communicates with the interior of the container."
+  },
+  {
+    "clause": "3.84",
+    "title": "Flammable liquid",
+    "description": "a liquid that has a flashpoint below 100 °F (38 °C) and that has a vapour pressure not exceeding 40 psia (276 kPa absolute) at 100 °F (38 °C)."
+  },
+  {
+    "clause": "3.85",
+    "title": "Flashpoint",
+    "description": "the minimum temperature at which a liquid within a container gives off vapour in sufficient concentration to form an ignitable mixture with air near the surface of the liquid."
+  },
+  {
+    "clause": "3.86",
+    "title": "Floor furnace",
+    "description": "a furnace that is suspended from the floor of the space being heated and that supplies warm air to such space through integral floor or wall grilles without the use of ducts."
+  },
+  {
     "clause": "3.87",
     "title": "Flue",
     "description": "an enclosed passageway for conveying flue gases."
+  },
+  {
+    "clause": "3.88",
+    "title": "Flue backflow preventer",
+    "description": "a system or device used in common venting of positive pressure appliances to prevent the exhaust flue from active appliances sharing the system from flowing back into the vent of dormant or idling appliance(s)."
+  },
+  {
+    "clause": "3.89",
+    "title": "Flue collar",
+    "description": "that portion of an appliance designed for the attachment of a draft hood, vent connector, or venting system."
+  },
+  {
+    "clause": "3.90",
+    "title": "Flue damper",
+    "description": "a movable plate for regulating the flow of flue gases and intended for installation either in the flue outlet of any gas appliance or in the vent connector from an individual appliance that is not equipped with a draft-control device."
+  },
+  {
+    "clause": "3.91",
+    "title": "Automatic flue damper",
+    "description": "a flue damper that is designed to fully open the venting system automatically before ignition of the main burner and is either interlocked to automatically close off the supply of gas to the appliance or provided with means to ensure that the damper will fall fully open upon loss of the driving medium."
+  },
+  {
+    "clause": "3.92",
+    "title": "Manually operated flue damper",
+    "description": "a flue damper that is adjustable and manually set and locked in the desired position, and is designed or constructed to provide a fixed minimum opening."
   },
   {
     "clause": "3.93",
@@ -131,36 +475,1114 @@ const freeCSAData = [
     "description": "an indirect-fired, flue-connected, space-heating appliance that uses warm air as the heating medium and usually has provision for the attachment of ducts."
   },
   {
+    "clause": "3.95",
+    "title": "Gallon",
+    "description": "the Canadian standard gallon as defined under the Canadian Weights and Measures Act. For the purpose of this Code, 1 imperial gallon is considered equal to 1 Canadian standard gallon."
+  },
+  {
+    "clause": "3.96",
+    "title": "Private garage",
+    "description": "a building, designed for the parking, storage, or repair of vehicles used to transport propane, that is approved by the authority having jurisdiction for its purpose and is located on property owned or leased by the owner of the vehicles."
+  },
+  {
+    "clause": "3.97",
+    "title": "Repair garage",
+    "description": "a building or part of a building where facilities are provided for the repair or servicing of a motor vehicle."
+  },
+  {
+    "clause": "3.98",
+    "title": "Storage garage",
+    "description": "a building or part of a building that is used or intended for either the storage or parking of motor vehicles and that contains no provision for either the repair or servicing of such vehicles."
+  },
+  {
+    "clause": "3.99",
+    "title": "Gas connector",
+    "description": "a factory-fabricated assembly consisting of gas conduit and related fittings designed to convey gaseous fuel from a gas supply piping to the gas inlet of an appliance. A gas connector is not intended for vibration isolation, nor expansion or contraction control."
+  },
+  {
+    "clause": "3.100",
+    "title": "Gas convenience outlet",
+    "description": "a permanently mounted hand-operated device that is certified to CSA/ANSI 221.90/CSA 6.24 providing a means for connecting and disconnecting an appliance to the gas supply piping by way of a gas hose or gas connector."
+  },
+  {
+    "clause": "3.101",
+    "title": "Gas hose",
+    "description": "a factory-fabricated flexible hose assembly and related fittings designed to convey gaseous fuel from a gas supply piping to the gas inlet to an appliance."
+  },
+  {
     "clause": "3.102",
     "title": "Gas piping system",
     "description": "all components that convey gas or liquids, such as piping, tubing, valves, hoses, and fittings, from the point of delivery to the inlet of the appliance."
+  },
+  {
+    "clause": "3.103",
+    "title": "Heat reclaimer",
+    "description": "a device installed either externally or internally to a venting system to extract heat from flue gases."
+  },
+  {
+    "clause": "3.104",
+    "title": "Catalytic heater",
+    "description": "a heater that employs a porous matrix on or in which is distributed a catalytic agent such as platinum; the role of the matrix is to support the catalyst and to provide a surface on which the combustion of the hydrocarbon fuel vapour takes place."
+  },
+  {
+    "clause": "3.105",
+    "title": "Construction heater",
+    "description": "a portable heater intended only for temporary use in heating buildings under construction, alteration, or repair."
+  },
+  {
+    "clause": "3.106",
+    "title": "Direct-fired make-up air heater (DFMAH)",
+    "description": "a self-contained direct-fired air heater used only to heat outside air to replace inside air that is exhausted; it is not intended for building heating."
+  },
+  {
+    "clause": "3.107",
+    "title": "Direct gas-fired process air heater (DFPAH)",
+    "description": "a direct gas-fired air heater that can be capable of either or both of two operating modes: the ventilation mode, suitable for use when people are present, in which all the products of combustion generated by the gas-burning device are released into the airstream being heated, and whose purpose is to offset building heat loss by heating only incoming outside air; and the process mode, for use when people are not present, in which the heater can operate as a direct gas-fired heater intended for the drying, baking, or curing of product."
+  },
+  {
+    "clause": "3.108",
+    "title": "Infrared heater",
+    "description": "a heater that transfers heat from the source to the heated objects without heating the intervening air."
+  },
+  {
+    "clause": "3.109",
+    "title": "Non-recirculating direct gas-fired industrial air heater (DFIAH)",
+    "description": "a heater in which all the products of combustion generated by the gas-burning device are released into the airstream being heated and whose purpose is to offset building heat loss by heating only incoming outside air."
+  },
+  {
+    "clause": "3.110",
+    "title": "Radiant heater",
+    "description": "a heater that radiates heat to the surrounding air."
+  },
+  {
+    "clause": "3.111",
+    "title": "Ignition",
+    "description": "the establishment of a flame."
+  },
+  {
+    "clause": "3.112",
+    "title": "Intermittent ignition",
+    "description": "a source of ignition that continues to function during the entire period that the flame is present."
+  },
+  {
+    "clause": "3.113",
+    "title": "Interrupted ignition",
+    "description": "a source of ignition that ceases to function after the trial-for-ignition period."
+  },
+  {
+    "clause": "3.114",
+    "title": "Indirect-fired appliance",
+    "description": "an appliance in which the combustion products or flue gases are not mixed within the appliance with the medium that is being heated."
   },
   {
     "clause": "3.115",
     "title": "Installer",
     "description": "any individual, firm, corporation, or company that either directly or through a representative is engaged in the installation, replacement, repair, or servicing of gas piping systems, venting systems, appliances, components, accessories, or equipment, and whose representative is either experienced or trained, or both, in such work and has complied with the requirements of the authority having jurisdiction."
   },
-  
-  // Section 4 - General Requirements (Key general provisions)
+  {
+    "clause": "3.116",
+    "title": "Insulating millboard",
+    "description": "a factory-fabricated board formed with noncombustible materials, normally fibres, and having a thermal conductivity not exceeding 1 Btu • in / h•ft² •°F (0.144 W / m•K)."
+  },
+  {
+    "clause": "3.117",
+    "title": "Lock-up (positive shut-off)",
+    "description": "a feature of a pressure regulator that is capable of maintaining a reduced outlet pressure when the fuel flow condition is static."
+  },
+  {
+    "clause": "3.118",
+    "title": "Maximum operating pressure",
+    "description": "the maximum pressure to which any component or portion of the fuel system can be subjected."
+  },
+  {
+    "clause": "3.119",
+    "title": "Mechanical air intake",
+    "description": "a means to mechanically provide ventilation and/or combustion and flue gas dilution air requirements to a building."
+  },
+  {
+    "clause": "3.120",
+    "title": "Mobile home",
+    "description": "a dwelling that consists of a vehicular portable structure built on a chassis and designed to be used with or without a permanent foundation and to be connected to indicated utilities."
+  },
+  {
+    "clause": "3.121",
+    "title": "Mobile industrial or commercial structure",
+    "description": "a structure that is not intended as a dwelling unit, is towable on its own chassis, and is designed for use without a permanent foundation. Such a structure is built specifically for commercial or industrial use, such as a construction office, bunkhouse, wash house, kitchen and dining unit, library, television unit, industrial display unit, laboratory unit, or medical clinic."
+  },
+  {
+    "clause": "3.122",
+    "title": "Multiple-section mobile home",
+    "description": "a single structure composed of separate mobile units, each towable on its own chassis; when the units are towed to the site, they are coupled together mechanically and electrically to form the single structure. These structures are sometimes referred to as 'double-wide mobile homes' when only two units are joined together."
+  },
+  {
+    "clause": "3.123",
+    "title": "Swing-out and expandable room-section mobile home",
+    "description": "a mobile home that can be telescoped when towed and expanded later for additional capacity."
+  },
+  {
+    "clause": "3.124",
+    "title": "Mobile outdoor food service unit",
+    "description": "a unit used outdoors for preparation and dispensing of food or beverages and that contains appliances or equipment operated by propane in the vapour state. The unit can be equipped with wheels and its own motive power."
+  },
+  {
+    "clause": "3.125",
+    "title": "N/A",
+    "description": "not applicable due to physical or geometric constraints."
+  },
+  {
+    "clause": "3.126",
+    "title": "NAT Max",
+    "description": "the maximum appliance input rating of a Category I appliance equipped with a draft hood that could be attached to the vent. There are no minimum appliance input ratings for draft-hood-equipped appliances."
+  },
+  {
+    "clause": "3.127",
+    "title": "NAT+NAT",
+    "description": "the maximum combined input rating of two or more draft-hood-equipped appliances attached to the common vent."
+  },
+  {
+    "clause": "3.128",
+    "title": "NGV",
+    "description": "natural gas stored in a gaseous state to be used as engine fuel for a highway vehicle."
+  },
+  {
+    "clause": "3.129",
+    "title": "Noncombustible",
+    "description": "material that conforms to CAN/ULC-S114 requirements for noncombustibility."
+  },
+  {
+    "clause": "3.130",
+    "title": "NR",
+    "description": "not recommended due to potential for condensate formation and/or pressurization of the venting system."
+  },
+  {
+    "clause": "3.131",
+    "title": "Operating control",
+    "description": "a control used to regulate or control the normal operation of an appliance."
+  },
+  {
+    "clause": "3.132",
+    "title": "Overpressure protection device",
+    "description": "a device that under abnormal conditions will act to reduce, restrict, or shut off the supply of gas flowing into a system to prevent gas pressure in that system from exceeding the rated pressure of the system components."
+  },
+  {
+    "clause": "3.133",
+    "title": "Monitoring regulator",
+    "description": "an overpressure protection device that functions as a second gas pressure regulator in series with the primary gas pressure regulator."
+  },
+  {
+    "clause": "3.134",
+    "title": "Overpressure relief device",
+    "description": "an overpressure protection device that functions by discharging gas from the downstream system."
+  },
+  {
+    "clause": "3.135",
+    "title": "Overpressure shut-off device",
+    "description": "an overpressure protection device that functions by completely shutting off the flow of gas into the downstream system."
+  },
+  {
+    "clause": "3.136",
+    "title": "Pilot",
+    "description": "a flame that is used to ignite a gas/air or propane/air mixture at the main burner(s)."
+  },
+  {
+    "clause": "3.137",
+    "title": "Continuous pilot",
+    "description": "a pilot that burns without turndown throughout the entire time the burner is in service, whether the main burner is firing or not."
+  },
+  {
+    "clause": "3.138",
+    "title": "Expanding pilot",
+    "description": "a pilot that burns at low turndown throughout the entire time the burner is in service, whether or not the main burner is firing, except that upon a call for heat, the fuel flow to the pilot is automatically increased to produce a flame that will reliably ignite the main burner fuel."
+  },
+  {
+    "clause": "3.139",
+    "title": "Intermittent pilot",
+    "description": "a pilot that is automatically lighted each time there is a call for heat and that burns during the entire period that the main burner is firing."
+  },
+  {
+    "clause": "3.140",
+    "title": "Interrupted pilot",
+    "description": "a pilot that is automatically lighted each time there is a call for heat and that is cut off automatically at the end of the trial-for-ignition period of the main burner."
+  },
+  {
+    "clause": "3.141",
+    "title": "Proved pilot",
+    "description": "a pilot flame supervised by a primary safety control that senses the presence of the pilot prior to gas being admitted to the main burner."
+  },
+  {
+    "clause": "3.142",
+    "title": "Pipe wrap tape",
+    "description": "adhesive tape made of PVC or polyethylene material with minimum thickness of 10 mil (0.3 mm), with an adhesive resistant to water."
+  },
+  {
+    "clause": "3.143",
+    "title": "Piping",
+    "description": "components of a gas piping system that include fittings, rigid pipe, and flanges."
+  },
+  {
+    "clause": "3.144",
+    "title": "Point of transfer",
+    "description": "the dispensing hose inlet connection."
+  },
+  {
+    "clause": "3.145",
+    "title": "Power venter",
+    "description": "a field-installed device that provides mechanical draft and, when installed, is located between the appliance flue outlet or draft-control device and the vent or chimney termination, or at the vent or chimney termination."
+  },
+  {
+    "clause": "3.146",
+    "title": "Pressure regulator",
+    "description": "a device, either adjustable or nonadjustable, for controlling, maintaining within acceptable limits, a uniform outlet pressure."
+  },
+  {
+    "clause": "3.147",
+    "title": "Appliance regulator",
+    "description": "a pressure regulator located in the valve train of an appliance."
+  },
+  {
+    "clause": "3.148",
+    "title": "Industrial regulator",
+    "description": "a pressure regulator installed downstream of the service regulator and upstream of utilization equipment or another pressure regulator and that is either not certified, or certified but used in an application different than the scope of its certification."
+  },
+  {
+    "clause": "3.149",
+    "title": "Line pressure regulator",
+    "description": "a pressure regulator installed downstream of the service regulator or second stage propane service regulator and upstream of gas utilization equipment, and certified to CSA/ANSI 221.80/CSA 6.22 or UL 144."
+  },
+  {
+    "clause": "3.150",
+    "title": "Lock-up (positive shut-off) regulator",
+    "description": "a regulator that is capable of maintaining a reduced outlet pressure when the fuel flow condition is static."
+  },
+  {
+    "clause": "3.151",
+    "title": "Service regulator",
+    "description": "a pressure regulator installed on a service line to control the pressure of the gas delivered to the customer."
+  },
+  {
+    "clause": "3.152",
+    "title": "Second stage propane regulator",
+    "description": "in a propane application, a pressure regulator at the service entrance intended to reduce first-stage pressure to control the gas pressure inside a building. This regulator is also sometimes known as a '2 psi liquefied propane regulator'."
+  },
+  {
+    "clause": "3.153",
+    "title": "Purge",
+    "description": "to replace the existing fluid (gaseous or liquid) in piping, tubing, equipment, a container, or an appliance with a desired fluid."
+  },
+  {
+    "clause": "3.154",
+    "title": "Purge burner",
+    "description": "a burner equipped with a constant ignition source and a flame arrestor, intended to burn the escaping (discharged) gas during purging operations."
+  },
+  {
+    "clause": "3.155",
+    "title": "Quick-disconnect device",
+    "description": "a hand-operated device that is used for connecting and disconnecting an appliance or a hose or certain types of gas connectors to a gas supply, that is equipped with an automatic means to shut off the gas supply when the device is disconnected, and that is certified to CSA/ANSI 221.41/CSA 6.9."
+  },
+  {
+    "clause": "3.156",
+    "title": "Rated pressure",
+    "description": "the maximum pressure that the materials, gas piping, devices, valve train components, operating controls, or safety controls are designed to contain or control."
+  },
+  {
+    "clause": "3.157",
+    "title": "Readily accessible",
+    "description": "capable of being reached quickly for operation, renewal, servicing, or inspection, without requiring climbing over, or the removal of, an obstacle or the use of a portable ladder."
+  },
+  {
+    "clause": "3.158",
+    "title": "Recreational vehicle",
+    "description": "a portable structure intended as temporary accommodation for travel, vacation, or recreational use. Such a structure includes a chassis-mounted camper, motorized home, slide-in camper, tent trailer, or travel trailer."
+  },
+  {
+    "clause": "3.159",
+    "title": "Chassis-mounted camper",
+    "description": "an accommodation body that attaches onto a truck chassis and is not intended for removal."
+  },
+  {
+    "clause": "3.160",
+    "title": "Motorized home",
+    "description": "a vehicular portable structure of self-propelled design."
+  },
+  {
+    "clause": "3.161",
+    "title": "Slide-in camper",
+    "description": "an accommodation body that fits into a standard vehicle and is designed to be easily removable."
+  },
+  {
+    "clause": "3.162",
+    "title": "Tent trailer",
+    "description": "a vehicular portable structure built on its own chassis and having a rigid or canvas top and side walls that can be folded or otherwise condensed for transit."
+  },
+  {
+    "clause": "3.163",
+    "title": "Travel trailer",
+    "description": "a vehicular portable structure that is intended to be towed by a motor vehicle and that does not fold up or reduce in size for transit."
+  },
+  {
+    "clause": "3.164",
+    "title": "Relief device",
+    "description": "a device designed to open to prevent a rise of gas pressure in excess of a specified value due to an emergency or abnormal conditions."
+  },
+  {
+    "clause": "3.165",
+    "title": "Residential appliance",
+    "description": "an appliance commonly used in, but not restricted to use in, a dwelling unit."
+  },
+  {
+    "clause": "3.166",
+    "title": "Residential fuelling appliance (RFA)",
+    "description": "an appliance that dispenses natural gas for vehicles directly into the vehicle natural gas fuel storage system."
+  },
+  {
+    "clause": "3.167",
+    "title": "Safe location (for venting of gas)",
+    "description": "a location that allows for the destruction or dispersal of vented gas so that it can reasonably be expected that the following will be prevented: blocking of the vent termination by snow, ice, water, or any other object or thing; gas accumulating in or under a building or enclosure; gas accumulating near a source of ignition, hot surface, electrical equipment, or operating control; gas accumulating in an area where a person would likely have difficulty in quickly leaving the area; or in an industrial application, gas discharging directly toward a person, walkway, staircase, or ladder."
+  },
+  {
+    "clause": "3.168",
+    "title": "Safety limit control",
+    "description": "a safety control intended to prevent an unsafe condition of temperature, pressure, or liquid level."
+  },
+  {
+    "clause": "3.169",
+    "title": "Spray area",
+    "description": "any fully enclosed, partly enclosed, or unenclosed area within a building in which spray processes are performed that could result in dangerous quantities of flammable or combustible vapours, mists, residues, dust, or deposits. Spray areas can include any area in the direct path of a spray operation process, a spray booth, a spray room, or a spray workstation."
+  },
+  {
+    "clause": "3.170",
+    "title": "Structure",
+    "description": "the entire building in which an appliance is installed."
+  },
+  {
+    "clause": "3.171",
+    "title": "Supply pressure",
+    "description": "the gas pressure at the manual shut-off valve of an appliance or equipment."
+  },
+  {
+    "clause": "3.172",
+    "title": "Tank (with respect to NGV/propane storage)",
+    "description": "the class of container for the storage and transportation of gas, designed and fabricated in accordance with CSA B51."
+  },
+  {
+    "clause": "3.173",
+    "title": "Tubing",
+    "description": "components of a gas piping system that include fittings and flexible pipe, tube, corrugated stainless steel tubing (CSST), and feedback lines."
+  },
+  {
+    "clause": "3.174",
+    "title": "Two-stage regulation",
+    "description": "a propane gas vapour delivery system that utilizes a first-stage regulator and a second-stage regulator(s) or utilizes an integral two-stage regulator or automatic changeover regulator."
+  },
+  {
+    "clause": "3.175",
+    "title": "Valve",
+    "description": "a device by which the flow of a fluid can be started, stopped, or regulated by a movable part that opens or obstructs passage."
+  },
+  {
+    "clause": "3.176",
+    "title": "Back check valve",
+    "description": "a valve that is normally closed and allows flow in only one direction."
+  },
+  {
+    "clause": "3.177",
+    "title": "Cylinder valve",
+    "description": "a valve fitted to a cylinder."
+  },
+  {
+    "clause": "3.178",
+    "title": "Emergency shut-off valve",
+    "description": "a valve that is part of a system that is designed to limit and shut down the flow of propane in the event that a vehicle moves away from a transfer point with the transfer hose or swivel-type piping connected to it."
+  },
+  {
+    "clause": "3.179",
+    "title": "Excess-flow valve",
+    "description": "a valve designed to close when the liquid or vapour passing through it exceeds a prescribed flow rate as determined by a pressure drop across the valve."
+  },
+  {
+    "clause": "3.180",
+    "title": "Fast-closing valve",
+    "description": "an automatic valve that has a closing time of less than 5 s upon being de-energized."
+  },
+  {
+    "clause": "3.181",
+    "title": "Hydrostatic relief valve",
+    "description": "a pressure relief valve installed in a liquid propane line."
+  },
+  {
+    "clause": "3.182",
+    "title": "Internal excess-flow valve",
+    "description": "an excess-flow valve that remains functional within the tank when any portion of the valve external to the tank's perimeter is sheared off or otherwise damaged. An internal excess-flow valve can be integral to another valve."
+  },
+  {
+    "clause": "3.183",
+    "title": "Internal relief valve",
+    "description": "an overpressure relief device that is built into the body of the diaphragm assembly of a pressure regulator."
+  },
+  {
+    "clause": "3.184",
+    "title": "Internal valve",
+    "description": "a valve designed and installed so that its seat is within a tank and the arrangement of the parts of the valve are such that damage to the parts outside the tank will not prevent effective seating of the valve."
+  },
+  {
+    "clause": "3.185",
+    "title": "Line relief valve",
+    "description": "an overpressure relief device installed in the piping or tubing system downstream of a pressure regulator."
+  },
+  {
+    "clause": "3.186",
+    "title": "Lubricated-plug-type valve",
+    "description": "a manually operated valve of the plug and barrel type that is provided with means for maintaining a lubricant between its bearing surfaces; so designed that the lapped bearing surfaces can be lubricated and the lubricant level maintained without removing the valve from service; so constructed that the lubricant can be stored in a reservoir that enables the lubricant to be distributed evenly over the entire lapped bearing surfaces of the valve when the plug is rotated; and equipped with built-in stops to limit the rotation of the plug to one quarter turn when fully opening or fully closing the valve."
+  },
+  {
+    "clause": "3.187",
+    "title": "Manual shut-off valve",
+    "description": "a manually operated valve in a gas piping system or a valve train for shutting off the fuel for maintenance, testing, and safety purposes."
+  },
+  {
+    "clause": "3.188",
+    "title": "Safety shut-off valve",
+    "description": "a valve that automatically shuts off the supply of gas when de-energized by a combustion safety control, safety limit control, or loss of actuating medium."
+  },
+  {
+    "clause": "3.189",
+    "title": "Stop-fill valve",
+    "description": "a device in a container that is intended to automatically shut off the flow of liquid into the container when a predetermined fixed level is achieved."
+  },
+  {
+    "clause": "3.190",
+    "title": "Valve train",
+    "description": "all gas-confining valves, controls, piping, fittings, hoses, and tubing of an appliance downstream of the manual shut-off valve to the inlet of the burner."
+  },
+  {
+    "clause": "3.191",
+    "title": "Vapourizer",
+    "description": "an appliance for converting liquid propane to vapour by means other than atmospheric heat transfer through the surface of the container."
+  },
+  {
+    "clause": "3.192",
+    "title": "Direct-fired vapourizer",
+    "description": "a vapourizer in which heat furnished by a flame is directly applied to a heat-exchange surface in contact with the liquid propane to be vapourized."
+  },
+  {
+    "clause": "3.193",
+    "title": "Indirect vapourizer",
+    "description": "a vapourizer in which heat furnished by steam, hot water, or another heating medium is applied to a vapourizing chamber's tubing, pipe coils, or other heat-exchange surface containing the liquid propane to be vapourized. The heating of the medium being used occurs at a point remote from the vapourizer."
+  },
+  {
+    "clause": "3.194",
+    "title": "Vehicle fuelling appliance (VFA)",
+    "description": "an appliance that compresses natural gas for vehicles and dispenses directly into onboard vehicle storage or delivers to external natural gas storage systems."
+  },
+  {
+    "clause": "3.195",
+    "title": "Vent",
+    "description": "that portion of a venting system designed to convey flue gases directly to the outdoors from either a vent connector or an appliance when a vent connector is not used."
+  },
+  {
+    "clause": "3.196",
+    "title": "Type B vent",
+    "description": "a vent complying with CAN/ULC-S605 consisting entirely of factory-made parts, each designed to be assembled with the others without requiring field fabrication, and intended for venting gas appliances."
+  },
+  {
+    "clause": "3.197",
+    "title": "Type BH vent",
+    "description": "a vent complying with ULC S636 consisting entirely of factory-made parts, each designed to be assembled with the others without requiring field fabrication, and intended for venting gas appliances."
+  },
+  {
+    "clause": "3.198",
+    "title": "Type BW vent",
+    "description": "a vent complying with CAN/ULC-S605 consisting entirely of factory-made parts, each designed to be assembled with the others without requiring field fabrication, and intended for venting only wall furnaces for use with this type of vent."
+  },
+  {
+    "clause": "3.199",
+    "title": "Type L vent",
+    "description": "a vent complying with CAN/ULC-S609 consisting of factory-made parts, each designed to be assembled with the others without requiring field fabrication."
+  },
+  {
+    "clause": "3.200",
+    "title": "Vent connector",
+    "description": "that part of a venting system that conducts the flue gases from the flue collar of an appliance to a chimney or vent, and that may include a draft-control device."
+  },
+  {
+    "clause": "3.201",
+    "title": "Vent limiter",
+    "description": "a means that limits the flow of gas from a pressure regulator's atmospheric diaphragm chamber to the atmosphere in the event of a diaphragm rupture. This may be either a limiting orifice or a limiting device."
+  },
+  {
+    "clause": "3.202",
+    "title": "Limiting orifice type",
+    "description": "a vent limiter where the flow through the limiter is the same in both directions."
+  },
+  {
+    "clause": "3.203",
+    "title": "Ventilated space",
+    "description": "a space where there is an air change by means of natural ventilation or mechanical means, or where the space communicates with the rest of the structure by means of permanent openings."
+  },
+  {
+    "clause": "3.204",
+    "title": "Ventilation (with respect to the space in which an appliance is installed)",
+    "description": "the removal of inside air, leaked or spilled products of combustion, or flue gases from the space in which an appliance is installed to outside the space, and the replacement of same by air from outside the space."
+  },
+  {
+    "clause": "3.205",
+    "title": "Venting system",
+    "description": "a system for the removal of flue gases to the outdoors by means of a chimney, vent connector, vent, or a natural or mechanical exhaust system."
+  },
+  {
+    "clause": "3.206",
+    "title": "Special venting system",
+    "description": "a venting system certified with the appliance and either supplied or specified by the appliance manufacturer."
+  },
+  {
+    "clause": "3.207",
+    "title": "Wash-mobile",
+    "description": "a mobile outdoor unit that uses propane-heated water, or a solution, for the purpose of cleaning."
+  },
+  {
+    "clause": "3.208",
+    "title": "Zero governor",
+    "description": "a regulating device that is adjusted to deliver gas at atmospheric pressure within its flow rating."
+  },
   {
     "clause": "4.1",
-    "title": "Scope of work",
-    "description": "This Code covers the installation of gas piping systems, appliances, and related equipment from the outlet of the gas meter or service regulator to and including the appliance."
+    "title": "Application",
+    "description": "General application requirements for the gas code."
+  },
+  {
+    "clause": "4.1.1",
+    "title": "Requirements",
+    "description": "For the purpose of this Code, the requirements contained in CAN/CGSB-3.14 for propane or CAN/CGSB-3.13 for butane shall apply."
+  },
+  {
+    "clause": "4.1.2",
+    "title": "Code conflicts",
+    "description": "When a specification or document referenced in Clause 1 contains a requirement that conflicts with a requirement in this Code, the requirement in this Code shall govern."
+  },
+  {
+    "clause": "4.1.3",
+    "title": "Installation instructions",
+    "description": "Except as required by Clause 4.1.4 an appliance, accessory, component, equipment, or any other item shall be installed in accordance with the manufacturer's certified instructions and this Code."
+  },
+  {
+    "clause": "4.1.4",
+    "title": "Field-approved appliance installation",
+    "description": "A field-approved appliance or equipment shall be installed in accordance with the Clause 10.1 of CSA B149.3 and this Code."
+  },
+  {
+    "clause": "4.1.5",
+    "title": "Conflicts",
+    "description": "Where a conflict exists between the manufacturer's instructions and this Code, the requirements of this Code shall prevail unless otherwise approved."
   },
   {
     "clause": "4.2",
-    "title": "Materials and equipment",
-    "description": "All materials, appliances, and equipment shall be suitable for the intended use and shall comply with the applicable standards referenced in Section 2."
+    "title": "Approval of appliances, accessories, components, equipment, and material",
+    "description": "Requirements for approval of equipment and materials used in gas installations."
+  },
+  {
+    "clause": "4.2.1",
+    "title": "Installation",
+    "description": "An appliance, accessory, component, equipment, or material used in an installation shall be of a type and rating approved for the specific purpose for which it is employed."
+  },
+  {
+    "clause": "4.2.2",
+    "title": "Deviation",
+    "description": "When deviation from or postponement of these requirements is necessary, permission in writing shall be obtained from the authority having jurisdiction before the work proceeds, and this permission shall apply only to the particular installation for which it is given."
+  },
+  {
+    "clause": "4.2.3",
+    "title": "Assembly or construction approval",
+    "description": "The approval of the assembly or construction of an appliance is subject to the authority having jurisdiction. (CSA B149.3 contains provisions for the assembly and construction of appliances.)"
+  },
+  {
+    "clause": "4.2.4",
+    "title": "Biogas",
+    "description": "When using biogas, this Code shall be used in conjunction with CSA/ANSI B149.6."
   },
   {
     "clause": "4.3",
-    "title": "Workmanship",
-    "description": "All work shall be performed in a workmanlike manner in accordance with accepted trade practices."
+    "title": "Responsibilities of the installer",
+    "description": "Duties and responsibilities of gas equipment installers."
+  },
+  {
+    "clause": "4.3.1",
+    "title": "Initial installation",
+    "description": "Before leaving installations, installers shall ensure that the appliance, accessory, component, equipment, or piping and tubing they installed complies with the Code requirements, and the person initially activating the appliance shall ensure that the appliance is in safe working order."
+  },
+  {
+    "clause": "4.3.2",
+    "title": "User instructions",
+    "description": "Installers shall instruct the user in the safe and correct operation of all appliances or equipment that they install."
+  },
+  {
+    "clause": "4.3.3",
+    "title": "Manufacturer instructions",
+    "description": "The installer shall ensure that the manufacturer's instructions supplied with the appliance are left with the user."
+  },
+  {
+    "clause": "4.3.4",
+    "title": "Replacement parts",
+    "description": "Before installing any replacement part of an appliance, the installer shall ensure that the replacement part provides operational characteristics at least equivalent to those of the original part."
+  },
+  {
+    "clause": "4.3.5",
+    "title": "Appliance conversion",
+    "description": "When the installation or conversion of an appliance constitutes a conversion from another form of energy, the installer shall advise the user of the appliance, at the time of installation or conversion, to have the former form of energy either removed or left safe and secure from accidental activation."
+  },
+  {
+    "clause": "4.3.6",
+    "title": "User procedures",
+    "description": "The installer installing the installation or conversion, as specified in Clause 4.3.5, shall advise the user of the appliance in writing of the procedures to be followed in discontinuing the supply of the former form of energy."
+  },
+  {
+    "clause": "4.3.7",
+    "title": "Piping pressure test",
+    "description": "It shall be the responsibility of the installer of a gas piping system to perform pressure tests in accordance with Clause 6.22.2 and to ensure that the piping or tubing system is gas-tight at the completion of the tests."
+  },
+  {
+    "clause": "4.3.8",
+    "title": "Gas tight test",
+    "description": "It shall be the responsibility of the installer of an appliance to perform tests in accordance with Clause 6.22.3 and to ensure that the system is gas-tight at the completion of the tests."
   },
   {
     "clause": "4.4",
-    "title": "Installation permits",
-    "description": "Installation permits may be required by the authority having jurisdiction prior to the commencement of work."
+    "title": "Training and quality of labour",
+    "description": "Requirements for worker training and work quality standards."
+  },
+  {
+    "clause": "4.4.1",
+    "title": "Work quality",
+    "description": "All work shall be done in a skillful, thorough manner. Careful attention shall be paid not only to the mechanical execution of the work but also to the arrangement of the installation."
+  },
+  {
+    "clause": "4.4.2",
+    "title": "Training",
+    "description": "Personnel performing installation, operation, and maintenance work shall be properly trained in such functions."
+  },
+  {
+    "clause": "4.5",
+    "title": "Suitability of use",
+    "description": "Requirements for proper application and use of gas equipment."
+  },
+  {
+    "clause": "4.5.1",
+    "title": "Type of gas and pressure",
+    "description": "An appliance shall not be installed unless it is designed for use with the type of gas to which it is to be connected and is suitable for the pressure supplied."
+  },
+  {
+    "clause": "4.5.2",
+    "title": "Hazards",
+    "description": "The use of an appliance, accessory, component, equipment, or material shall be prohibited where a hazard is created."
+  },
+  {
+    "clause": "4.5.3",
+    "title": "Appliance conversion",
+    "description": "When an appliance is converted from the gas or fuel specified on the rating plate, the conversion shall be in accordance with the manufacturer's certified instructions. If there are no manufacturer's instructions for conversion of the appliance, the converted appliance shall be approved."
+  },
+  {
+    "clause": "4.5.4",
+    "title": "Rating plate conversion",
+    "description": "If an appliance is converted from one gas to another, the gas to which it is converted shall be marked on the appliance rating plate by the fitter making the conversion. For hydrogen-natural gas blends, the maximum percentage of hydrogen shall be marked."
+  },
+  {
+    "clause": "4.5.5",
+    "title": "Damaged appliances and piping",
+    "description": "Appliances, accessories, components, equipment, and gas piping systems that have been exposed to fire, explosion, flood, or other damage shall not be offered for sale, installed, reactivated, or reconnected to the supply until the appliance, accessory, component, equipment, gas piping system has been inspected by a person acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "4.5.6",
+    "title": "Used appliances",
+    "description": "A used appliance shall be inspected and determined to be safe for continued use by the installer before reconnection to the gas piping system."
+  },
+  {
+    "clause": "4.6",
+    "title": "Meter and service regulator installations",
+    "description": "Requirements for meter and service regulator installations."
+  },
+  {
+    "clause": "4.6.1",
+    "title": "Installations",
+    "description": "Meter and service regulator installations shall be in accordance with CSA Z662."
+  },
+  {
+    "clause": "4.6.2",
+    "title": "Supplier distributor systems",
+    "description": "No person other than an employee or person authorized by the supplier or distributor shall perform any alterations, repairs, tests, services, removals, changes, installations, connections, or any other type of work on the supplier's or distributor's system."
+  },
+  {
+    "clause": "4.7",
+    "title": "Electrical connections and components",
+    "description": "Requirements for electrical connections in gas appliance installations."
+  },
+  {
+    "clause": "4.7.1",
+    "title": "Code requirements",
+    "description": "Electrical connections between an appliance and building wiring shall comply with the local electrical code or, in the absence of such, with the Canadian Electrical Code, Part I."
+  },
+  {
+    "clause": "4.7.2",
+    "title": "Electrical circuit",
+    "description": "An electrical circuit employed for operating an automatic main control valve, automatic pilot, room-temperature thermostat, safety limit control, or another electrical device used with an appliance shall be in accordance with the appliance wiring diagram."
+  },
+  {
+    "clause": "4.7.3",
+    "title": "Equipotential bonding",
+    "description": "All building metal gas piping systems connected to one or more gas-fired appliances, shall be made electrically continuous and shall be equipotentially bonded as specified."
+  },
+  {
+    "clause": "4.7.4",
+    "title": "Bonding through appliance",
+    "description": "Gas piping systems shall be considered to be bonded to the electrical system when the metal gas piping system or CSST certified with an arc-resistant jacket or coating system in compliance with CSA/ANSI LC 1/CSA 6.26 used in a gas piping system is connected to one or more appliances permanently connected to the bonding conductor of the circuit supplying the appliance."
+  },
+  {
+    "clause": "4.7.5",
+    "title": "Bonding non arc-resistance CSST",
+    "description": "In addition to the requirements of Clause 4.7.3, CSST that does not have an arc-resistant jacket or coating system in compliance with CSA/ANSI LC 1/CSA 6.26 used in a gas piping system shall be bonded according to the CSST manufacturer's installation instructions."
+  },
+  {
+    "clause": "4.8",
+    "title": "Mobile homes and recreational vehicles",
+    "description": "Special requirements for gas installations in mobile homes and recreational vehicles."
+  },
+  {
+    "clause": "4.8.1",
+    "title": "Appliance installation",
+    "description": "The installation of gas-burning appliances and the gas piping system in mobile homes shall be in accordance with CSA Z240.4.1. In a recreational vehicle, it shall comply with the requirements of CSA Z240.4.2."
+  },
+  {
+    "clause": "4.8.2",
+    "title": "Placement",
+    "description": "When a vehicle ceases to be used as a mobile home or recreational vehicle and is placed at a location in a permanent fixed manner, the system shall comply with all applicable requirements of this Code."
+  },
+  {
+    "clause": "4.8.3",
+    "title": "Appliance application",
+    "description": "An appliance in the application described in Clause 4.8.2 shall not be required to be certified specifically for use within a mobile home."
+  },
+  {
+    "clause": "4.9",
+    "title": "Hazardous and corrosive locations",
+    "description": "Restrictions on appliance installation in hazardous or corrosive environments."
+  },
+  {
+    "clause": "4.9.1",
+    "title": "Installation",
+    "description": "An appliance shall not be installed in a location that has an environment corrosive to an appliance or venting system."
+  },
+  {
+    "clause": "4.9.2",
+    "title": "Approved installation",
+    "description": "An appliance, unless certified or approved for installation in a hazardous location, shall not be installed in any location where a flammable vapour, combustible dust or fibres, or an explosive mixture is present."
+  },
+  {
+    "clause": "4.10",
+    "title": "Smoking",
+    "description": "Smoking or providing any other source of ignition shall not be permitted in the area where work is being done on piping, tubing, or equipment that either contains or has contained gas, unless the gas piping system or equipment has been purged of all gas as outlined in Clause 6.23."
+  },
+  {
+    "clause": "4.11",
+    "title": "Isolation of safety devices",
+    "description": "Isolating or rendering inoperative a safety shut-off valve, safety limit control, or relief valve shall be prohibited."
+  },
+  {
+    "clause": "4.12",
+    "title": "Leak detection",
+    "description": "Safety requirements for detecting gas leaks."
+  },
+  {
+    "clause": "4.12.1",
+    "title": "Sources of ignition",
+    "description": "A match, candle, flame, or other source of ignition shall not be used to check for a gas leak."
+  },
+  {
+    "clause": "4.12.2",
+    "title": "Light and/or flashlight use",
+    "description": "A light, including a flashlight, used in connection with a search for gas leakage shall be of the Class I, Group IIA type."
+  },
+  {
+    "clause": "4.12.3",
+    "title": "Electric switches",
+    "description": "An electric switch either in or adjacent to an area of gas leakage shall not be operated unless it is a Class I, Group IIA type."
+  },
+  {
+    "clause": "4.13",
+    "title": "Appliance clearances to combustible material",
+    "description": "Requirements for maintaining safe clearances between appliances and combustible materials."
+  },
+  {
+    "clause": "4.13.1",
+    "title": "Clearances",
+    "description": "The clearances required in Clause 7 between an appliance and combustible material shall be considered the minimum without protection and shall be measured from the appliance, disregarding either the burner or any other projecting component."
+  },
+  {
+    "clause": "4.13.2",
+    "title": "Clearance reduction",
+    "description": "The clearances to combustible material specified in Clause 7 shall not be reduced unless such reduced clearance is certified as safe by a nationally recognized certification organization acceptable to the authority having jurisdiction and so marked on the appliance nameplate; or protection is provided for the combustible material, and such protection and such reduced clearance are in accordance with Table 4.1."
+  },
+  {
+    "clause": "4.13.3",
+    "title": "Combustible floor material",
+    "description": "An appliance with an input up to and including 400,000 Btu/h (120 kW) and certified for installation on noncombustible flooring may be installed on a floor constructed of combustible material, provided that the floor is protected with at least two continuous courses of 4 in (100 mm) thick hollow masonry units covered with sheet metal at least 0.0195 in (0.56 mm) thick; the masonry units are arranged so that the hollow cores will permit air circulation through them; and the base as specified extends not less than 6 in (150 mm) beyond the sides of the appliance."
+  },
+  {
+    "clause": "4.13.4",
+    "title": "Aircraft storage installations",
+    "description": "A heater located in an aircraft storage or servicing area shall be installed so that no portion of an aircraft that can occupy the area is within the clearance to combustible material, as marked on the appliance rating plate. Clearances specified in Table 4.1 shall not apply."
+  },
+  {
+    "clause": "4.14",
+    "title": "Accessibility",
+    "description": "Requirements for ensuring appliances are accessible for servicing and maintenance."
+  },
+  {
+    "clause": "4.14.1",
+    "title": "Installation",
+    "description": "An appliance shall be installed so that it is accessible for servicing."
+  },
+  {
+    "clause": "4.14.2",
+    "title": "Service clearances",
+    "description": "An appliance shall be installed with a minimum service clearance of 24 in (610 mm) to any side, top, or bottom where service could be necessary, except where a greater distance is indicated on the appliance rating plate; or the distance is not sufficient for the removal, replacement, or repair of a component, an accessory, or any equipment either forming an integral part of the appliance or connected to the appliance."
+  },
+  {
+    "clause": "4.14.3",
+    "title": "Access dimensions",
+    "description": "An access opening with minimum dimensions of 24 x 30 in (610 x 760 mm) shall be provided to the space in which an appliance is located."
+  },
+  {
+    "clause": "4.14.4",
+    "title": "Appliance passageways",
+    "description": "A clear and unobstructed passageway at least 36 in (900 mm) high and 36 in (900 mm) wide shall be provided to each appliance."
+  },
+  {
+    "clause": "4.14.5",
+    "title": "Roof access",
+    "description": "An appliance shall not be installed on a roof exceeding 13 ft (4 m) in height from grade to roof elevation unless fixed access to the roof is provided; and exceeding 26 ft (8 m) in height from grade to roof elevation unless permanent fixed access to the roof by means of either a stairway or a stairway leading to a ladder not exceeding 13 ft (4 m) in height is provided."
+  },
+  {
+    "clause": "4.14.6",
+    "title": "Roof installation clearances",
+    "description": "When an appliance is installed on a roof, specific requirements for drainage, walkways, clearances, and enclosures must be met as detailed in the clause."
+  },
+  {
+    "clause": "4.14.7",
+    "title": "Means of service",
+    "description": "An appliance installed at a distance of 10 ft (3 m) or more from either the floor or finished grade level, as measured from the lowest point of the appliance, shall be provided with either a permanent accessible service platform that permits access to all parts of the appliance requiring service; or other approved means of service access."
+  },
+  {
+    "clause": "4.15",
+    "title": "Outdoor installations",
+    "description": "Special requirements for appliances installed outdoors."
+  },
+  {
+    "clause": "4.15.1",
+    "title": "Appliance approval",
+    "description": "An appliance installed outdoors shall be approved for outdoor use."
+  },
+  {
+    "clause": "4.15.2",
+    "title": "Flue gases",
+    "description": "An appliance installed outdoors shall be located to prevent circulation of flue gases into the combustion air inlet or circulating airstream of an adjacent appliance."
+  },
+  {
+    "clause": "4.15.3",
+    "title": "Space heater or pool heater installation",
+    "description": "A space-heating or pool-heating appliance installed outdoors at grade level shall be placed on a base consisting of poured-in-place concrete or a reinforced concrete slab of the preformed type, extending at least 6 in (150 mm) beyond all sides of the appliance; and 2 in (50 mm) above grade level. The ground shall first be prepared and provided with gravel for drainage."
+  },
+  {
+    "clause": "4.16",
+    "title": "Appliances in garages",
+    "description": "Special requirements for gas appliances installed in garages."
+  },
+  {
+    "clause": "4.16.1",
+    "title": "Protection",
+    "description": "An appliance in a garage shall be protected against damage."
+  },
+  {
+    "clause": "4.16.2",
+    "title": "Flammable vapours",
+    "description": "In a storage garage, except for an appliance certified as flammable vapours ignition resistant (FVIR), an appliance shall be installed so that a component capable of igniting a flammable vapour is located not less than 18 in (450 mm) above the floor."
+  },
+  {
+    "clause": "4.16.3",
+    "title": "Flammable vapour clearance",
+    "description": "In a repair garage, an appliance shall be installed so that a component capable of igniting a flammable vapour is located not less than 4.5 ft (1400 mm) above the floor."
+  },
+  {
+    "clause": "4.16.4",
+    "title": "Building Code requirements",
+    "description": "The installation of a forced-air appliance in a garage shall be in accordance with local building codes or, in the absence of local codes, the National Building Code of Canada."
+  },
+  {
+    "clause": "4.17",
+    "title": "Appliance ductwork connections",
+    "description": "Requirements for connecting ductwork to gas appliances."
+  },
+  {
+    "clause": "4.17.1",
+    "title": "Approved use",
+    "description": "Ductwork shall not be connected to an appliance unless the appliance is approved for use with ductwork."
+  },
+  {
+    "clause": "4.17.2",
+    "title": "Return air ducts",
+    "description": "Return air ducts installed in an enclosure shall be in accordance with the provisions set out for duct systems in the National Building Code of Canada."
+  },
+  {
+    "clause": "4.18",
+    "title": "Combined heating systems",
+    "description": "Requirements for systems that combine gas and solid fuel heating."
+  },
+  {
+    "clause": "4.18.1",
+    "title": "Solid fuel heated air",
+    "description": "Air heated by a solid-fuel-fired appliance or fireplace shall not be introduced into any part of the ductwork system of a gas-fired appliance, except where either a certified combination gas and solid-fuel-fired appliance is installed; or a certified solid-fuel-fired furnace downstream series add-on to a gas-fired furnace is installed."
+  },
+  {
+    "clause": "4.18.2",
+    "title": "Building code requirements",
+    "description": "The installation of a solid-fuel-fired portion of the appliance referred to in Clause 4.18.1 a) and the installation of a solid-fuel-fired downstream series add-on furnace referred to in Clause 4.18.1 b) shall conform to the applicable provincial or territorial building code or, in its absence, to CAN/CSA-B365."
+  },
+  {
+    "clause": "4.19",
+    "title": "Appliances protected by automatic fire-extinguishing systems",
+    "description": "Requirements for appliances protected by automatic fire suppression systems."
+  },
+  {
+    "clause": "4.19.1",
+    "title": "Interlock system",
+    "description": "When an exhaust system protected by an automatic fire-extinguishing system is installed over an appliance not provided with a flame safeguard, the operation of the fire-extinguishing system shall be interlocked with the gas supply to the appliance so as to automatically shut off the gas, including the pilot, to the appliance to be protected by the system and also to any other appliance that can be affected by the extinguishing system."
+  },
+  {
+    "clause": "4.19.2",
+    "title": "Interlock valve",
+    "description": "The valve used to shut off the gas supply referred to in Clause 4.19.1 shall be located outside the protected area, be identified as to its function, and have permanent legible relighting instructions posted adjacent to it. The valve shall be either an approved mechanical non-electric fast-closing valve of the manual-reset type; or an automatic electrically operated fast-closing valve of the manual-reset type; or provided with a remote manual-reset function to open."
+  },
+  {
+    "clause": "4.19.3",
+    "title": "Manual shutoff valve",
+    "description": "A manual shut-off valve shall be installed immediately upstream of the valve referred to in Clause 4.19.2."
+  },
+  {
+    "clause": "4.20",
+    "title": "Control of appliances with self-energizing pilots",
+    "description": "When two or more appliances with self-energizing pilots are installed, each shall be independently controlled by a separate actuating device such as a thermostat."
+  },
+  {
+    "clause": "4.21",
+    "title": "Defective heat exchangers",
+    "description": "Requirements for handling defective heat exchangers in gas appliances."
+  },
+  {
+    "clause": "4.21.1",
+    "title": "Replacement",
+    "description": "Where the heat exchanger of a furnace installed in a dwelling unit is found to be defective, it shall be replaced."
+  },
+  {
+    "clause": "4.21.2",
+    "title": "Temporary repair",
+    "description": "The heat exchanger referred to in Clause 4.21.1 may be temporarily repaired if necessary, and the repair shall be in accordance with procedures acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "4.21.3",
+    "title": "Commercial or industrial repair",
+    "description": "Where the heat exchanger of a commercial or industrial appliance is found to be defective, it may be repaired, and the repair shall be in accordance with procedures acceptable to the authority having jurisdiction."
+  },
+  {
+    "clause": "4.22",
+    "title": "High-altitude installations",
+    "description": "Special requirements for gas appliances installed at high altitudes."
+  },
+  {
+    "clause": "4.22.1",
+    "title": "Certification and adjustment",
+    "description": "For high-altitude installations, appliances shall be certified in compliance with CSA Z17 and shall be adjusted to the high-altitude rating shown on the nameplate following the manufacturer's instructions when installed at elevations between 2000 and 4500 ft (600 and 1350 m) above sea level."
+  },
+  {
+    "clause": "4.22.2",
+    "title": "Elevation input rating",
+    "description": "When an appliance is installed at elevations above the maximum elevation option provided by the manufacturer, the input rate shall be reduced following the manufacturer's certified instructions. If no instructions are given for configuring the appliance for higher altitudes, the input rate shall be reduced at the rate of 4% for each additional 1000 ft (300 m)."
+  },
+  {
+    "clause": "4.23",
+    "title": "Protection of appliances from physical damage",
+    "description": "Where an appliance is installed in an area where physical damage can be incurred, the appliance shall be protected from such damage."
+  },
+  {
+    "clause": "4.24",
+    "title": "Odourization",
+    "description": "Requirements for adding odorants to gas supplies for safety detection."
+  },
+  {
+    "clause": "4.24.1",
+    "title": "Natural gas odourization",
+    "description": "Natural gas or hydrogen-natural gas blends used for fuel purposes supplying an occupied building shall be odourized in accordance with CSA Z662 or be otherwise readily detectable, or the building shall be equipped with an approved means of gas detection."
+  },
+  {
+    "clause": "4.24.2",
+    "title": "Propane odourization",
+    "description": "Propane distributed for fuel purposes shall be odourized in accordance with CAN/CGSB-3.14."
+  },
+  {
+    "clause": "4.24.3",
+    "title": "Propane odourization responsibility",
+    "description": "Odourization of the propane shall be the responsibility of the producer or processor, who shall indicate on the shipping document its compliance with CAN/CGSB-3.14 as referenced in Clause 4.24.2 of this Code."
+  },
+  {
+    "clause": "4.25",
+    "title": "Mobile homes and recreational vehicles",
+    "description": "Additional specific requirements for mobile homes and recreational vehicles beyond those in Clause 4.8."
+  },
+  {
+    "clause": "4.25.1",
+    "title": "Appliance type and separation",
+    "description": "Every heating appliance, water heater, or refrigerator installed in a mobile home or a vehicle, other than a canvas-top tent trailer, shall be of the direct-vent appliance type or equivalent, and shall be installed to provide complete separation of the combustion system from the atmosphere of the space provided for living."
+  },
+  {
+    "clause": "4.25.2",
+    "title": "Air inlet or flue gas outlet clearances",
+    "description": "A combustion air inlet or flue gas outlet of an appliance or any other vehicle opening shall be located at least 3 ft (0.9 m) from any container filler spout or fixed-liquid-level gauge of a vehicle if the intake, outlet, or opening is located above or at the same level. If any portion of such inlet, outlet, or opening is located below the spout or fixed-liquid-level gauge, the clearance shall be the sum of the vertical distance below the spout or fixed-liquid-level gauge plus 3 ft (0.9 m)."
+  },
+  {
+    "clause": "4.25.3",
+    "title": "Propane vapour supply pressure",
+    "description": "Propane vapour, at a pressure not in excess of 13 in w.c. (3.2 kPa), shall be supplied into the piping or tubing supplying any appliance."
+  },
+  {
+    "clause": "4.25.4",
+    "title": "Appliance certification",
+    "description": "An appliance installed in a propane-equipped mobile home or recreational vehicle shall be certified for use with propane."
+  },
+  {
+    "clause": "4.25.5",
+    "title": "Combustion air",
+    "description": "Provision shall be made to ensure a supply of combustion air for an appliance, other than an appliance of the direct-vent type, as described in Clause 8."
+  },
+  {
+    "clause": "4.25.6",
+    "title": "Alternate means of combustion or ventilation air",
+    "description": "An open door may be used as an alternative means of providing combustion or ventilation air to a wash-mobile or food service vehicle, provided that the door is interlocked to the propane supply to ensure that the door remains open during appliance operation."
+  },
+  {
+    "clause": "4.25.7",
+    "title": "Cargo heater",
+    "description": "A cargo heater shall be installed in a readily accessible location."
+  },
+  {
+    "clause": "4.25.8",
+    "title": "Cargo heater installation",
+    "description": "A cargo heater shall be protected to prevent damage or impaired operation resulting from the shifting or handling of cargo."
+  },
+  {
+    "clause": "4.25.9",
+    "title": "Propane warning labels",
+    "description": "A durable label in both English and French made of a material that is not adversely affected by water, employing an adhesive that is not water soluble, and measuring not less than 4.5 x 5.75 in (100 x 125 mm) shall be provided. This label shall be located on the vehicle, adjacent to the propane container and shall contain specific warnings about propane system use, safety procedures, and operational requirements as detailed in the clause."
+  },
+  {
+    "clause": "4.25.10",
+    "title": "Appliance warning labels",
+    "description": "On all vehicles equipped with appliances, a durable label, made of material not adversely affected by water and employing an adhesive that is not water soluble, shall be provided in both English and French. This label shall be attached adjacent to any fuel-filling locations (gasoline, diesel, or NGV) and propane cylinders. The label warns that engine ignition and all appliance pilot lights shall be turned off before and during refuelling of motor fuel tanks or any mounted propane container."
   }
 ];
 
