@@ -165,21 +165,31 @@ const freeCSAData = [
 ];
 
 // Search function for free CSA data with upgrade prompts
+// Normalize search terms to handle hyphenated words
+const normalizeSearchTerm = (text) => {
+  return text.toLowerCase().replace(/-/g, ' ');
+};
+
 export const searchFreeCSAData = (query) => {
   if (!query || query.trim() === '') return [];
-  
+
   const searchTerm = query.toLowerCase().trim();
-  
+  const normalizedSearchTerm = normalizeSearchTerm(searchTerm);
+
   const results = freeCSAData.filter(item => {
+    const normalizedClause = normalizeSearchTerm(item.clause);
+    const normalizedTitle = normalizeSearchTerm(item.title);
+    const normalizedDescription = normalizeSearchTerm(item.description);
+
     // Check clause number (exact match gets priority)
-    if (item.clause.toLowerCase().includes(searchTerm)) return true;
-    
-    // Check title (word matching)
-    if (item.title.toLowerCase().includes(searchTerm)) return true;
-    
-    // Check description (word matching)
-    if (item.description.toLowerCase().includes(searchTerm)) return true;
-    
+    if (item.clause.toLowerCase().includes(searchTerm) || normalizedClause.includes(normalizedSearchTerm)) return true;
+
+    // Check title (word matching with and without hyphens)
+    if (item.title.toLowerCase().includes(searchTerm) || normalizedTitle.includes(normalizedSearchTerm)) return true;
+
+    // Check description (word matching with and without hyphens)
+    if (item.description.toLowerCase().includes(searchTerm) || normalizedDescription.includes(normalizedSearchTerm)) return true;
+
     return false;
   }).sort((a, b) => {
     // Sort by clause number for better organization
@@ -270,13 +280,18 @@ const freeCSAB149_2_Data = [
 // Search function for free CSA B149.2 data  
 export const searchFreeCSAB149_2_Data = (query) => {
   if (!query || query.trim() === '') return [];
-  
+
   const searchTerm = query.toLowerCase().trim();
-  
+  const normalizedSearchTerm = normalizeSearchTerm(searchTerm);
+
   const results = freeCSAB149_2_Data.filter(item => {
-    if (item.clause.toLowerCase().includes(searchTerm)) return true;
-    if (item.title.toLowerCase().includes(searchTerm)) return true;
-    if (item.description.toLowerCase().includes(searchTerm)) return true;
+    const normalizedClause = normalizeSearchTerm(item.clause);
+    const normalizedTitle = normalizeSearchTerm(item.title);
+    const normalizedDescription = normalizeSearchTerm(item.description);
+
+    if (item.clause.toLowerCase().includes(searchTerm) || normalizedClause.includes(normalizedSearchTerm)) return true;
+    if (item.title.toLowerCase().includes(searchTerm) || normalizedTitle.includes(normalizedSearchTerm)) return true;
+    if (item.description.toLowerCase().includes(searchTerm) || normalizedDescription.includes(normalizedSearchTerm)) return true;
     return false;
   });
 

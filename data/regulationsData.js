@@ -10287,28 +10287,39 @@ export const regulationsData = [
   }
 ];
 
+// Normalize search terms to handle hyphenated words
+const normalizeSearchTerm = (text) => {
+  return text.toLowerCase().replace(/-/g, ' ');
+};
+
 // Search function for regulations
 export const searchRegulations = (query, searchIndex) => {
   if (!query || query.length < 2) return [];
 
   const searchTerm = query.toLowerCase().trim();
+  const normalizedSearchTerm = normalizeSearchTerm(searchTerm);
   const results = [];
 
   for (const regulation of regulationsData) {
     let score = 0;
 
+    const normalizedTitle = normalizeSearchTerm(regulation.title);
+    const normalizedDescription = normalizeSearchTerm(regulation.description);
+    const normalizedKeywords = regulation.keywords ? normalizeSearchTerm(regulation.keywords) : '';
+    const normalizedRegulation = regulation.regulation ? normalizeSearchTerm(regulation.regulation) : '';
+
     // Title matches (highest priority)
-    if (regulation.title.toLowerCase().includes(searchTerm)) {
+    if (regulation.title.toLowerCase().includes(searchTerm) || normalizedTitle.includes(normalizedSearchTerm)) {
       score += 10;
     }
 
     // Description matches
-    if (regulation.description.toLowerCase().includes(searchTerm)) {
+    if (regulation.description.toLowerCase().includes(searchTerm) || normalizedDescription.includes(normalizedSearchTerm)) {
       score += 5;
     }
 
     // Keywords matches
-    if (regulation.keywords && regulation.keywords.toLowerCase().includes(searchTerm)) {
+    if (regulation.keywords && (regulation.keywords.toLowerCase().includes(searchTerm) || normalizedKeywords.includes(normalizedSearchTerm))) {
       score += 3;
     }
 
@@ -10318,7 +10329,7 @@ export const searchRegulations = (query, searchIndex) => {
     }
 
     // Regulation name matches
-    if (regulation.regulation && regulation.regulation.toLowerCase().includes(searchTerm)) {
+    if (regulation.regulation && (regulation.regulation.toLowerCase().includes(searchTerm) || normalizedRegulation.includes(normalizedSearchTerm))) {
       score += 1;
     }
 

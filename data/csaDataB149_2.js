@@ -1099,19 +1099,34 @@ export const createCSASearchIndex = () => {
   return searchIndex;
 };
 
+// Normalize search terms to handle hyphenated words
+const normalizeSearchTerm = (text) => {
+  return text.toLowerCase().replace(/-/g, ' ');
+};
+
 // Search function for CSA B149.2
 export const searchCSACode = (query, searchIndex = null) => {
   if (!query || query.trim().length < 2) return [];
-  
+
   const index = searchIndex || createCSASearchIndex();
   const searchTerm = query.toLowerCase().trim();
-  
-  return index.filter(item => 
-    item.title.toLowerCase().includes(searchTerm) ||
-    item.description.toLowerCase().includes(searchTerm) ||
-    item.clause.toLowerCase().includes(searchTerm) ||
-    item.category.toLowerCase().includes(searchTerm)
-  ).slice(0, 50); // Limit results to 50
+  const normalizedSearchTerm = normalizeSearchTerm(searchTerm);
+
+  return index.filter(item => {
+    const normalizedTitle = normalizeSearchTerm(item.title);
+    const normalizedDescription = normalizeSearchTerm(item.description);
+    const normalizedCategory = normalizeSearchTerm(item.category);
+
+    return (
+      item.title.toLowerCase().includes(searchTerm) ||
+      normalizedTitle.includes(normalizedSearchTerm) ||
+      item.description.toLowerCase().includes(searchTerm) ||
+      normalizedDescription.includes(normalizedSearchTerm) ||
+      item.clause.toLowerCase().includes(searchTerm) ||
+      item.category.toLowerCase().includes(searchTerm) ||
+      normalizedCategory.includes(normalizedSearchTerm)
+    );
+  }).slice(0, 50); // Limit results to 50
 };
 
 // Get section by key
@@ -1134,20 +1149,25 @@ export const getAllDefinitions = () => {
 export const searchInSection = (query, sectionKey) => {
   const section = getSectionByKey(sectionKey);
   if (!section) return [];
-  
+
   const searchTerm = query.toLowerCase().trim();
+  const normalizedSearchTerm = normalizeSearchTerm(searchTerm);
   const results = [];
-  
+
   if (section.clauses) {
     Object.entries(section.clauses).forEach(([key, clause]) => {
       let clauseText = '';
+      let normalizedClauseText = '';
+
       if (typeof clause === 'object') {
         clauseText = `${clause.title || ''} ${clause.description || ''}`.toLowerCase();
+        normalizedClauseText = normalizeSearchTerm(clauseText);
       } else {
         clauseText = `${key} ${clause}`.toLowerCase();
+        normalizedClauseText = normalizeSearchTerm(clauseText);
       }
-      
-      if (clauseText.includes(searchTerm)) {
+
+      if (clauseText.includes(searchTerm) || normalizedClauseText.includes(normalizedSearchTerm)) {
         results.push({
           id: `${sectionKey}-${key}`,
           clause: `${sectionKey.replace('section_', '')}.${key}`,

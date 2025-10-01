@@ -5821,27 +5821,39 @@ const fullCSAData = [
 ];
 
 // Search function with improved matching
+// Normalize search terms to handle hyphenated words
+// e.g., "direct fired" will match "direct-fired"
+const normalizeSearchTerm = (text) => {
+  return text.toLowerCase().replace(/-/g, ' ');
+};
+
 export const searchCSAData = (query) => {
   if (!query || query.trim() === '') return [];
-  
+
   const searchTerm = query.toLowerCase().trim();
-  
+  const normalizedSearchTerm = normalizeSearchTerm(searchTerm);
+
   return fullCSAData.filter(item => {
+    // Normalize item text for comparison (remove hyphens)
+    const normalizedClause = normalizeSearchTerm(item.clause);
+    const normalizedTitle = normalizeSearchTerm(item.title);
+    const normalizedDescription = normalizeSearchTerm(item.description);
+
     // Check clause number (exact match gets priority)
-    if (item.clause.toLowerCase().includes(searchTerm)) return true;
-    
-    // Check title (word matching)
-    if (item.title.toLowerCase().includes(searchTerm)) return true;
-    
-    // Check description (word matching)
-    if (item.description.toLowerCase().includes(searchTerm)) return true;
-    
+    if (normalizedClause.includes(normalizedSearchTerm) || item.clause.toLowerCase().includes(searchTerm)) return true;
+
+    // Check title (word matching with and without hyphens)
+    if (normalizedTitle.includes(normalizedSearchTerm) || item.title.toLowerCase().includes(searchTerm)) return true;
+
+    // Check description (word matching with and without hyphens)
+    if (normalizedDescription.includes(normalizedSearchTerm) || item.description.toLowerCase().includes(searchTerm)) return true;
+
     // Check annex letter (for annex searches)
     if (item.annex && item.annex.toLowerCase().includes(searchTerm)) return true;
-    
+
     // Check category
-    if (item.category && item.category.toLowerCase().includes(searchTerm)) return true;
-    
+    if (item.category && (normalizeSearchTerm(item.category).includes(normalizedSearchTerm) || item.category.toLowerCase().includes(searchTerm))) return true;
+
     return false;
   }).sort((a, b) => {
     // Sort by clause number for better organization
