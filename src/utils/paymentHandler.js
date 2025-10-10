@@ -370,45 +370,92 @@ class PaymentHandler {
   // Show success message to user
   showSuccessMessage(subscription, activationCode = null) {
     console.log('PaymentHandler: Showing success message...');
-    
+
     let message;
+    let codeDisplay = '';
     if (activationCode) {
       const subscriptionYear = subscription.subscriptionYear || new Date().getFullYear();
       const expiryDate = new Date(subscription.expiresAt).toLocaleDateString();
-      message = `🎉 Welcome to Code Compass! Your ${subscriptionYear} activation code is: ${activationCode}. This code is valid for 12 months until ${expiryDate} and can be used on up to 4 devices (Phone + Tablet + Computer + 1 Spare). A new code will be automatically generated when this one expires.`;
+      message = `🎉 Welcome to Code Compass! Your ${subscriptionYear} activation code is valid until ${expiryDate} and can be used on up to 4 devices (Phone + Tablet + Computer + 1 Spare).`;
+      codeDisplay = activationCode;
     } else {
       message = `🎉 Welcome to Code Compass! Your subscription is now active until ${new Date(subscription.expiresAt).toLocaleDateString()}.`;
     }
-    
+
     console.log('PaymentHandler: Success message:', message);
-    
-    // Create success banner
-    const banner = document.createElement('div');
-    banner.style.cssText = `
+
+    // Create modal overlay
+    const overlay = document.createElement('div');
+    overlay.style.cssText = `
       position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #4CAF50, #45a049);
-      color: white;
-      padding: 16px 24px;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
       z-index: 10000;
-      max-width: 500px;
-      text-align: center;
-      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     `;
-    banner.textContent = message;
-    
-    document.body.appendChild(banner);
-    
-    // Remove banner after 10 seconds
-    setTimeout(() => {
-      if (banner.parentNode) {
-        banner.parentNode.removeChild(banner);
-      }
-    }, 10000);
+
+    // Create success modal
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+      background: white;
+      border-radius: 16px;
+      padding: 40px 30px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      text-align: center;
+    `;
+
+    modal.innerHTML = `
+      <div style="font-size: 3rem; margin-bottom: 16px;">🎉</div>
+      <h2 style="color: #333; font-size: 1.8rem; font-weight: 700; margin: 0 0 16px 0;">Payment Successful!</h2>
+      <p style="color: #666; font-size: 1rem; margin: 0 0 24px 0;">${message}</p>
+      ${codeDisplay ? `
+        <div style="background: #f8fafc; border: 2px solid #4CAF50; border-radius: 12px; padding: 20px; margin-bottom: 20px;">
+          <p style="color: #333; font-weight: 600; margin: 0 0 12px 0;">Your Activation Code:</p>
+          <div style="font-size: 2rem; font-weight: 700; color: #4CAF50; letter-spacing: 4px; font-family: monospace; margin-bottom: 16px;">${codeDisplay}</div>
+          <button id="copyCodeBtn" style="background: #4CAF50; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1rem;">
+            📋 Copy Code
+          </button>
+          <p style="color: #888; font-size: 0.85rem; margin: 12px 0 0 0;">⚠️ Please save this code! You'll need it to activate the app on your devices.</p>
+        </div>
+      ` : ''}
+      <button id="closeSuccessBtn" style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; border: none; padding: 16px 32px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 1.1rem; width: 100%;">
+        Continue to Code Compass
+      </button>
+    `;
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
+
+    // Copy code functionality
+    if (codeDisplay) {
+      const copyBtn = document.getElementById('copyCodeBtn');
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(codeDisplay).then(() => {
+          copyBtn.textContent = '✓ Copied!';
+          copyBtn.style.background = '#45a049';
+          setTimeout(() => {
+            copyBtn.innerHTML = '📋 Copy Code';
+            copyBtn.style.background = '#4CAF50';
+          }, 2000);
+        });
+      });
+    }
+
+    // Close modal
+    const closeBtn = document.getElementById('closeSuccessBtn');
+    closeBtn.addEventListener('click', () => {
+      overlay.remove();
+      // Reload page to show premium features
+      window.location.reload();
+    });
   }
 
   // Show error message to user
