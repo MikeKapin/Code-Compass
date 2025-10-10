@@ -191,8 +191,9 @@ async function sendEmailWithResend(email, activationCode, customerName, subscrip
 
         if (!response.ok) {
             const error = await response.text();
-            console.error('Resend API error:', error);
-            return false;
+            console.error('Resend API error - Status:', response.status);
+            console.error('Resend API error - Body:', error);
+            throw new Error(`Resend API error (${response.status}): ${error}`);
         }
 
         const result = await response.json();
@@ -200,8 +201,8 @@ async function sendEmailWithResend(email, activationCode, customerName, subscrip
         return true;
 
     } catch (error) {
-        console.error('Resend error:', error);
-        return false;
+        console.error('Resend error:', error.message || error);
+        throw error; // Re-throw to get full error details in main handler
     }
 }
 
