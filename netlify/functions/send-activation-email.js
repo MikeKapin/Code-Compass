@@ -182,8 +182,7 @@ async function sendEmailWithResend(email, activationCode, customerName, subscrip
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                from: 'LARK Labs <onboarding@resend.dev>', // Using Resend's default domain (works immediately!)
-                // TODO: Change to 'LARK Labs <noreply@larklabs.org>' after verifying domain in Resend
+                from: 'LARK Labs <noreply@larklabs.org>', // ✅ Verified domain!
                 to: email,
                 subject: 'Your Code Compass Activation Code - Thank You for Your Purchase! 🧭',
                 html: emailHtml
