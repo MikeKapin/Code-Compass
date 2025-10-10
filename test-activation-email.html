@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Activation Email - Code Compass</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input:focus {
+            outline: none;
+            border-color: #4CAF50;
+        }
+        button {
+            width: 100%;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .status {
+            margin-top: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            display: none;
+        }
+        .status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .status.loading {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .code {
+            font-family: monospace;
+            background: #f8fafc;
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: #4CAF50;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Test Activation Email</h1>
+
+        <div class="info">
+            <strong>ℹ️ Test Instructions:</strong><br>
+            1. Enter your email address below<br>
+            2. Click "Send Test Email"<br>
+            3. Check your inbox (and spam folder)<br>
+            4. Verify the email looks professional<br><br>
+            <strong>Test Code:</strong> <span class="code">TEST1234</span>
+        </div>
+
+        <form id="emailTestForm">
+            <div class="form-group">
+                <label for="testEmail">Your Email Address:</label>
+                <input
+                    type="email"
+                    id="testEmail"
+                    name="testEmail"
+                    placeholder="your@email.com"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="customerName">Customer Name (optional):</label>
+                <input
+                    type="text"
+                    id="customerName"
+                    name="customerName"
+                    placeholder="John Doe"
+                >
+            </div>
+
+            <button type="submit" id="sendBtn">
+                📧 Send Test Email
+            </button>
+        </form>
+
+        <div id="status" class="status"></div>
+
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 14px; color: #666;">
+            <strong>Troubleshooting:</strong><br>
+            • Email not arriving? Check spam folder<br>
+            • Error? Check Netlify function logs<br>
+            • Still issues? Verify RESEND_API_KEY in Netlify environment variables
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('emailTestForm');
+        const statusDiv = document.getElementById('status');
+        const sendBtn = document.getElementById('sendBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('testEmail').value;
+            const customerName = document.getElementById('customerName').value;
+
+            // Show loading
+            statusDiv.className = 'status loading';
+            statusDiv.style.display = 'block';
+            statusDiv.innerHTML = '⏳ Sending test email...';
+            sendBtn.disabled = true;
+            sendBtn.textContent = 'Sending...';
+
+            try {
+                // Calculate expiry date (1 year from now)
+                const expiryDate = new Date();
+                expiryDate.setFullYear(expiryDate.getFullYear() + 1);
+
+                const response = await fetch('/.netlify/functions/send-activation-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        activationCode: 'TEST1234',
+                        customerName: customerName || 'Test User',
+                        subscriptionData: {
+                            subscriptionYear: 2025,
+                            expiresAt: expiryDate.toISOString(),
+                            plan: 'annual'
+                        }
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    statusDiv.className = 'status success';
+                    statusDiv.innerHTML = `
+                        ✅ <strong>Success!</strong><br>
+                        Test email sent to <strong>${email}</strong><br>
+                        Check your inbox (and spam folder)!<br><br>
+                        <small>If you don't see it, check Netlify function logs for errors.</small>
+                    `;
+                } else {
+                    throw new Error(result.error || 'Unknown error');
+                }
+
+            } catch (error) {
+                console.error('Email test error:', error);
+                statusDiv.className = 'status error';
+                statusDiv.innerHTML = `
+                    ❌ <strong>Error sending email:</strong><br>
+                    ${error.message}<br><br>
+                    <strong>Possible causes:</strong><br>
+                    • RESEND_API_KEY not set in Netlify<br>
+                    • API key is invalid<br>
+                    • Domain not verified in Resend<br>
+                    • Network connection issue<br><br>
+                    <small>Check browser console (F12) for details.</small>
+                `;
+            } finally {
+                sendBtn.disabled = false;
+                sendBtn.textContent = '📧 Send Test Email';
+            }
+        });
+
+        // Auto-fill with customer email for quick testing
+        window.addEventListener('load', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const prefillEmail = urlParams.get('email');
+            if (prefillEmail) {
+                document.getElementById('testEmail').value = prefillEmail;
+            }
+        });
+    </script>
+</body>
+</html>
