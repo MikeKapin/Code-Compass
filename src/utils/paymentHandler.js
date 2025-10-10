@@ -207,6 +207,45 @@ class PaymentHandler {
         subscriptionData.usedActivations = 1; // This device counts as first activation
       }
 
+      // Send activation code email to customer
+      if (activationCode && email && email !== 'unknown@example.com') {
+        console.log('PaymentHandler: Sending activation email to:', email);
+        try {
+          const emailApiEndpoint = window.location.protocol === 'capacitor:' ||
+                                  window.location.hostname === 'localhost' ||
+                                  window.location.hostname === '127.0.0.1'
+            ? 'https://codecompassapp.netlify.app/.netlify/functions/send-activation-email'
+            : '/.netlify/functions/send-activation-email';
+
+          const emailResponse = await fetch(emailApiEndpoint, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: email,
+              activationCode: activationCode,
+              customerName: paymentData.customer_name || null,
+              subscriptionData: {
+                subscriptionYear: subscriptionYear,
+                expiresAt: subscriptionData.expiresAt,
+                plan: subscriptionData.plan
+              }
+            })
+          });
+
+          const emailResult = await emailResponse.json();
+          if (emailResult.success) {
+            console.log('PaymentHandler: ✅ Activation email sent successfully!');
+          } else {
+            console.error('PaymentHandler: Failed to send email:', emailResult.error);
+          }
+        } catch (emailError) {
+          console.error('PaymentHandler: Email sending failed:', emailError);
+          // Continue even if email fails - user still has the code in the modal
+        }
+      }
+
       // Call payment webhook to update database
       console.log('PaymentHandler: Calling payment webhook...');
       try {
