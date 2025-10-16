@@ -29,6 +29,29 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
       'EXPO2024', // Exhibition code
       'DEMO7DAY'  // Demo code
     ];
+
+    // Special 12-month codes (LARK0001 - LARK0080) - one-time use only
+    if (/^LARK\d{4}$/.test(upperCode)) {
+      const codeNumber = parseInt(upperCode.substring(4));
+
+      // Validate code is in range 1-80
+      if (codeNumber >= 1 && codeNumber <= 80) {
+        const expirationDate = new Date();
+        expirationDate.setFullYear(expirationDate.getFullYear() + 1); // 12 months from now
+
+        return {
+          success: true,
+          activated: true,
+          specialCode: true,
+          message: `Special 12-month access activated! Full premium access until ${expirationDate.toLocaleDateString()}. After expiration, app will revert to freemium version.`,
+          usedActivations: 1,
+          remainingActivations: 0, // One-time use only
+          expiresAt: expirationDate.toISOString(),
+          months: 12,
+          isSpecialActivation: true
+        };
+      }
+    }
     
     if (masterCodes.includes(upperCode)) {
       return {
@@ -163,6 +186,8 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
           deviceId: deviceId,
           remainingActivations: result.remainingActivations,
           // Mark different code types
+          isSpecialActivation: result.isSpecialActivation || false,
+          specialCode: result.specialCode || false,
           isTrialActivation: result.isTrialActivation || false,
           trialCode: result.trialCode || false,
           masterCode: result.masterCode || false,
@@ -175,7 +200,9 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
 
         // Different success messages for different code types
         let displayMessage = result.message || 'Activation successful!';
-        if (result.trialCode) {
+        if (result.specialCode) {
+          displayMessage = `🎉 Special 12-Month Access Activated! Full premium access until ${new Date(result.expiresAt).toLocaleDateString()}. After expiration, app will revert to freemium version.`;
+        } else if (result.trialCode) {
           displayMessage = `🎉 7-Day Trial Activated! Full access until ${new Date(result.expiresAt).toLocaleDateString()}. After trial expires, app reverts to free version.`;
         } else if (result.masterCode) {
           displayMessage = '🎉 Developer Access Activated! Unlimited premium features unlocked.';
@@ -210,6 +237,8 @@ const ActivationModal = ({ isVisible, onClose, onActivationSuccess }) => {
           activationCode: activationCode.toUpperCase(),
           deviceId: getDeviceId(),
           remainingActivations: offlineResult.remainingActivations,
+          isSpecialActivation: offlineResult.isSpecialActivation || false,
+          specialCode: offlineResult.specialCode || false,
           isTrialActivation: offlineResult.isTrialActivation || false,
           trialCode: offlineResult.trialCode || false,
           masterCode: offlineResult.masterCode || false,

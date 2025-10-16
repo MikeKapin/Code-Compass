@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Special Codes - Code Compass</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+        }
+        .test-section h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .code-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            font-family: monospace;
+            text-align: center;
+            letter-spacing: 3px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .btn {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #45a049;
+        }
+        .result {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 6px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Code Compass - Special Code Testing</h1>
+
+        <div class="test-section">
+            <h3>Test 1: Valid Special Code (LARK0001)</h3>
+            <button class="btn" onclick="testCode('LARK0001')">Test LARK0001</button>
+            <div id="result1" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 2: Valid Special Code (LARK0050)</h3>
+            <button class="btn" onclick="testCode('LARK0050')">Test LARK0050</button>
+            <div id="result2" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 3: Valid Special Code (LARK0080)</h3>
+            <button class="btn" onclick="testCode('LARK0080')">Test LARK0080</button>
+            <div id="result3" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 4: Invalid Code (LARK0000 - out of range)</h3>
+            <button class="btn" onclick="testCode('LARK0000')">Test LARK0000</button>
+            <div id="result4" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 5: Invalid Code (LARK0081 - out of range)</h3>
+            <button class="btn" onclick="testCode('LARK0081')">Test LARK0081</button>
+            <div id="result5" class="result" style="display:none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test 6: Custom Code Test</h3>
+            <input type="text" class="code-input" id="customCode" placeholder="Enter code to test" maxlength="8">
+            <button class="btn" onclick="testCustomCode()">Test Custom Code</button>
+            <div id="result6" class="result" style="display:none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Copied validation logic from ActivationModal.jsx
+        function validateSpecialCode(code) {
+            const upperCode = code.toUpperCase();
+
+            // Special 12-month codes (LARK0001 - LARK0080)
+            if (/^LARK\d{4}$/.test(upperCode)) {
+                const codeNumber = parseInt(upperCode.substring(4));
+
+                // Validate code is in range 1-80
+                if (codeNumber >= 1 && codeNumber <= 80) {
+                    const expirationDate = new Date();
+                    expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+
+                    return {
+                        success: true,
+                        activated: true,
+                        specialCode: true,
+                        message: `✅ Special 12-month access activated! Full premium access until ${expirationDate.toLocaleDateString()}. After expiration, app will revert to freemium version.`,
+                        usedActivations: 1,
+                        remainingActivations: 0,
+                        expiresAt: expirationDate.toISOString(),
+                        months: 12,
+                        isSpecialActivation: true,
+                        codeNumber: codeNumber
+                    };
+                } else {
+                    return {
+                        success: false,
+                        error: `❌ Code number ${codeNumber} is out of range. Valid codes are LARK0001 through LARK0080.`
+                    };
+                }
+            }
+
+            return {
+                success: false,
+                error: '❌ Invalid code format. Special codes must match format: LARK####'
+            };
+        }
+
+        let testCount = 0;
+
+        function testCode(code) {
+            testCount++;
+            const resultId = 'result' + testCount;
+            const resultDiv = document.getElementById(resultId);
+
+            console.log(`\n=== Testing Code: ${code} ===`);
+
+            const result = validateSpecialCode(code);
+
+            resultDiv.style.display = 'block';
+
+            if (result.success) {
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+<strong>✅ TEST PASSED</strong>
+Code: ${code}
+Valid: YES
+Type: Special 12-Month Access
+Expires: ${new Date(result.expiresAt).toLocaleDateString()}
+Message: ${result.message}
+
+Full Result:
+${JSON.stringify(result, null, 2)}`;
+
+                console.log('✅ TEST PASSED:', result);
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+<strong>❌ TEST FAILED</strong>
+Code: ${code}
+Valid: NO
+Error: ${result.error}
+
+Full Result:
+${JSON.stringify(result, null, 2)}`;
+
+                console.log('❌ TEST FAILED:', result);
+            }
+        }
+
+        function testCustomCode() {
+            const code = document.getElementById('customCode').value.trim();
+            if (!code) {
+                alert('Please enter a code to test');
+                return;
+            }
+
+            const resultDiv = document.getElementById('result6');
+
+            console.log(`\n=== Testing Custom Code: ${code} ===`);
+
+            const result = validateSpecialCode(code);
+
+            resultDiv.style.display = 'block';
+
+            if (result.success) {
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+<strong>✅ VALID CODE</strong>
+Code: ${code}
+Type: Special 12-Month Access
+Expires: ${new Date(result.expiresAt).toLocaleDateString()}
+
+Full Result:
+${JSON.stringify(result, null, 2)}`;
+
+                console.log('✅ VALID:', result);
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+<strong>❌ INVALID CODE</strong>
+Code: ${code}
+Error: ${result.error}
+
+Full Result:
+${JSON.stringify(result, null, 2)}`;
+
+                console.log('❌ INVALID:', result);
+            }
+        }
+
+        // Run all tests on page load
+        window.addEventListener('load', function() {
+            console.log('='.repeat(60));
+            console.log('CODE COMPASS - SPECIAL CODE VALIDATION TESTS');
+            console.log('='.repeat(60));
+
+            // Info message
+            const info = document.createElement('div');
+            info.className = 'result info';
+            info.innerHTML = `
+<strong>ℹ️ Test Information</strong>
+This page tests the special code validation logic.
+All tests log results to the browser console (F12).
+
+Valid Code Format: LARK + 4 digits (0001-0080)
+Examples: LARK0001, LARK0042, LARK0080`;
+
+            document.querySelector('.test-container').insertBefore(
+                info,
+                document.querySelector('.test-section')
+            );
+        });
+    </script>
+</body>
+</html>

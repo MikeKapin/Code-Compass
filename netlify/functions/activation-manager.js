@@ -105,6 +105,38 @@ async function useActivationCode(activationCode, deviceId, headers) {
         'EXPO2024', // Exhibition code
         'DEMO7DAY'  // Demo code
     ];
+
+    // Special 12-month codes (LARK0001 - LARK0080) - one-time use only
+    // These codes grant 12 months access and revert to freemium after expiration
+    if (/^LARK\d{4}$/.test(activationCode.toUpperCase())) {
+        const codeNumber = parseInt(activationCode.substring(4));
+
+        // Validate code is in range 1-80
+        if (codeNumber >= 1 && codeNumber <= 80) {
+            console.log('Special 12-month code used:', activationCode);
+
+            // Calculate 12 months from now
+            const expirationDate = new Date();
+            expirationDate.setFullYear(expirationDate.getFullYear() + 1);
+
+            return {
+                statusCode: 200,
+                headers,
+                body: JSON.stringify({
+                    success: true,
+                    activated: true,
+                    specialCode: true,
+                    message: `Special 12-month access activated! Full premium access until ${expirationDate.toLocaleDateString()}. After expiration, app will revert to freemium version.`,
+                    usedActivations: 1,
+                    remainingActivations: 0, // One-time use only
+                    expiresAt: expirationDate.toISOString(),
+                    months: 12,
+                    isSpecialActivation: true,
+                    codeType: 'special_12month'
+                })
+            };
+        }
+    }
     
     if (masterCodes.includes(activationCode.toUpperCase())) {
         console.log('Master developer code used:', activationCode);
