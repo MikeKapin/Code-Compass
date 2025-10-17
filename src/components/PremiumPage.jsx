@@ -206,257 +206,66 @@ const PremiumPage = ({ isVisible, onClose }) => {
             </div>
           </div>
 
-          {/* Pricing Cards - 3 Options */}
-          <h2 style={{
-            textAlign: 'center',
-            color: '#333',
-            fontSize: '1.8rem',
-            fontWeight: '600',
-            marginBottom: '32px'
-          }}>
-            Choose Your Plan
-          </h2>
-
+          {/* Pricing */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '20px',
+            textAlign: 'center',
+            backgroundColor: '#f8fafc',
+            padding: '32px',
+            borderRadius: '12px',
+            border: '2px solid #4CAF50',
             marginBottom: '32px'
           }}>
-            {/* Free Plan */}
             <div style={{
-              backgroundColor: '#f8fafc',
-              padding: '28px 24px',
-              borderRadius: '12px',
-              border: '2px solid #e2e8f0',
-              textAlign: 'center'
+              fontSize: '3rem',
+              fontWeight: '700',
+              color: '#4CAF50',
+              marginBottom: '8px'
             }}>
-              <div style={{
-                fontSize: '2.5rem',
-                marginBottom: '12px'
-              }}>🔓</div>
-              <h3 style={{
-                color: '#333',
-                fontSize: '1.4rem',
-                fontWeight: '700',
-                marginBottom: '8px'
-              }}>
-                Free
-              </h3>
-              <div style={{
-                fontSize: '2.5rem',
-                fontWeight: '700',
-                color: '#666',
-                marginBottom: '8px'
-              }}>
-                $0
-              </div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#888',
-                marginBottom: '20px'
-              }}>
-                Limited access
-              </div>
-              <ul style={{
-                textAlign: 'left',
-                color: '#666',
-                fontSize: '0.9rem',
-                lineHeight: '1.8',
-                marginBottom: '24px',
-                paddingLeft: '20px',
-                minHeight: '120px'
-              }}>
-                <li>Search 1,118+ code clauses</li>
-                <li>Basic code text viewing</li>
-                <li>No AI explanations</li>
-                <li>Ad-supported</li>
-              </ul>
-              <button
-                onClick={onClose}
-                style={{
-                  background: '#e2e8f0',
-                  color: '#666',
-                  border: 'none',
-                  padding: '12px 32px',
-                  borderRadius: '25px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  width: '100%'
-                }}
-              >
-                Current Plan
-              </button>
+              $79
             </div>
-
-            {/* Student Plan - HIGHLIGHTED */}
             <div style={{
-              backgroundColor: '#fff7ed',
-              padding: '28px 24px',
-              borderRadius: '12px',
-              border: '3px solid #f97316',
-              textAlign: 'center',
-              position: 'relative',
-              transform: 'scale(1.05)',
-              boxShadow: '0 8px 30px rgba(249, 115, 22, 0.2)'
+              fontSize: '1.2rem',
+              color: '#666',
+              marginBottom: '16px'
             }}>
-              <div style={{
-                position: 'absolute',
-                top: '-12px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: 'linear-gradient(135deg, #f97316, #ea580c)',
+              per year
+            </div>
+            <div style={{
+              fontSize: '0.9rem',
+              color: '#888',
+              marginBottom: '20px'
+            }}>
+              That's just $6.58 per month • Cancel anytime
+            </div>
+            
+            {/* Buy Now Button */}
+            <button
+              onClick={handleBuyNow}
+              style={{
+                background: 'linear-gradient(135deg, #4CAF50, #45a049)',
                 color: 'white',
-                padding: '4px 16px',
-                borderRadius: '12px',
-                fontSize: '0.75rem',
+                border: 'none',
+                padding: '16px 48px',
+                borderRadius: '50px',
+                fontSize: '1.2rem',
                 fontWeight: '700',
+                cursor: 'pointer',
+                boxShadow: '0 4px 20px rgba(76, 175, 80, 0.3)',
+                transition: 'all 0.3s ease',
                 textTransform: 'uppercase',
                 letterSpacing: '0.5px'
-              }}>
-                Best Value
-              </div>
-              <div style={{
-                fontSize: '2.5rem',
-                marginBottom: '12px'
-              }}>🎓</div>
-              <h3 style={{
-                color: '#333',
-                fontSize: '1.4rem',
-                fontWeight: '700',
-                marginBottom: '8px'
-              }}>
-                Student Access
-              </h3>
-              <div style={{
-                fontSize: '2.5rem',
-                fontWeight: '700',
-                color: '#f97316',
-                marginBottom: '8px'
-              }}>
-                FREE
-              </div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#888',
-                marginBottom: '20px'
-              }}>
-                12 months with LARK code
-              </div>
-              <ul style={{
-                textAlign: 'left',
-                color: '#666',
-                fontSize: '0.9rem',
-                lineHeight: '1.8',
-                marginBottom: '24px',
-                paddingLeft: '20px',
-                minHeight: '120px'
-              }}>
-                <li>✓ Full code access (1,118+ clauses)</li>
-                <li>✓ Unlimited AI explanations</li>
-                <li>✓ All premium features</li>
-                <li>✓ Ad-free experience</li>
-                <li>✓ Valid for 12 months</li>
-              </ul>
-              <div style={{
-                background: 'linear-gradient(135deg, #f97316, #ea580c)',
-                color: 'white',
-                padding: '12px 32px',
-                borderRadius: '25px',
-                fontSize: '1rem',
-                fontWeight: '600',
-                width: '100%'
-              }}>
-                Use LARK Code
-              </div>
-              <p style={{
-                fontSize: '0.75rem',
-                color: '#666',
-                marginTop: '12px',
-                fontStyle: 'italic'
-              }}>
-                Code provided by your instructor
-              </p>
-            </div>
-
-            {/* Premium Plan */}
-            <div style={{
-              backgroundColor: '#f0fdf4',
-              padding: '28px 24px',
-              borderRadius: '12px',
-              border: '2px solid #4CAF50',
-              textAlign: 'center'
-            }}>
-              <div style={{
-                fontSize: '2.5rem',
-                marginBottom: '12px'
-              }}>⭐</div>
-              <h3 style={{
-                color: '#333',
-                fontSize: '1.4rem',
-                fontWeight: '700',
-                marginBottom: '8px'
-              }}>
-                Premium
-              </h3>
-              <div style={{
-                fontSize: '2.5rem',
-                fontWeight: '700',
-                color: '#4CAF50',
-                marginBottom: '8px'
-              }}>
-                $79
-              </div>
-              <div style={{
-                fontSize: '0.9rem',
-                color: '#888',
-                marginBottom: '20px'
-              }}>
-                per year ($6.58/month)
-              </div>
-              <ul style={{
-                textAlign: 'left',
-                color: '#666',
-                fontSize: '0.9rem',
-                lineHeight: '1.8',
-                marginBottom: '24px',
-                paddingLeft: '20px',
-                minHeight: '120px'
-              }}>
-                <li>✓ Full code access (1,118+ clauses)</li>
-                <li>✓ Unlimited AI explanations</li>
-                <li>✓ Priority support</li>
-                <li>✓ Ad-free experience</li>
-                <li>✓ Cancel anytime</li>
-              </ul>
-              <button
-                onClick={handleBuyNow}
-                style={{
-                  background: 'linear-gradient(135deg, #4CAF50, #45a049)',
-                  color: 'white',
-                  border: 'none',
-                  padding: '12px 32px',
-                  borderRadius: '25px',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  boxShadow: '0 4px 15px rgba(76, 175, 80, 0.3)',
-                  transition: 'all 0.3s ease',
-                  width: '100%'
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.transform = 'translateY(-2px)';
-                  e.target.style.boxShadow = '0 6px 20px rgba(76, 175, 80, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.transform = 'translateY(0)';
-                  e.target.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.3)';
-                }}
-              >
-                Buy Now
-              </button>
-            </div>
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 6px 25px rgba(76, 175, 80, 0.4)';
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = '0 4px 20px rgba(76, 175, 80, 0.3)';
+              }}
+            >
+              🔓 Buy Now - Unlock Full Access
+            </button>
           </div>
 
           {/* Trust indicators */}
