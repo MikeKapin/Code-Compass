@@ -54,6 +54,16 @@
   status = 200
 
 [[redirects]]
+  from = "/api/admin-dashboard"
+  to = "/.netlify/functions/admin-dashboard"
+  status = 200
+
+[[redirects]]
+  from = "/larklabs-admin"
+  to = "/larklabs-admin.html"
+  status = 200
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200

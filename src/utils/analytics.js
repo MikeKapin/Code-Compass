@@ -170,27 +170,46 @@ export const setUserProperties = (properties) => {
   analytics.setUserProperties(properties);
 };
 
-// Auto-track page views (disabled to prevent initialization issues)
-// TODO: Re-enable after fixing circular dependency issues
-/*
+// Auto-track page views (re-enabled with proper initialization)
 if (typeof window !== 'undefined') {
-  // Track initial page view
-  analytics.trackPageView();
-  
+  // Track initial page view after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      analytics.trackPageView();
+    });
+  } else {
+    // DOM is already ready
+    analytics.trackPageView();
+  }
+
   // Track page views on navigation (for SPAs)
   let currentPath = window.location.pathname;
-  const observer = new MutationObserver(() => {
-    if (window.location.pathname !== currentPath) {
-      currentPath = window.location.pathname;
+
+  // Use a more reliable method for SPA navigation tracking
+  const trackNavigation = () => {
+    const newPath = window.location.pathname;
+    if (newPath !== currentPath) {
+      currentPath = newPath;
       analytics.trackPageView();
     }
-  });
-  
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
+  };
+
+  // Track both popstate (back/forward) and pushState/replaceState
+  window.addEventListener('popstate', trackNavigation);
+
+  // Monkey-patch history methods to detect navigation
+  const originalPushState = history.pushState;
+  const originalReplaceState = history.replaceState;
+
+  history.pushState = function(...args) {
+    originalPushState.apply(this, args);
+    trackNavigation();
+  };
+
+  history.replaceState = function(...args) {
+    originalReplaceState.apply(this, args);
+    trackNavigation();
+  };
 }
-*/
 
 export default analytics;
